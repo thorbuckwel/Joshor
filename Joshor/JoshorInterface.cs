@@ -22,7 +22,6 @@ namespace Joshor
         }
 
 
-
         private void lblExperience_Click(object sender, EventArgs e)
         {
 
@@ -45,6 +44,20 @@ namespace Joshor
 
         private void JoshorInterface_Load(object sender, EventArgs e)
         {
+            var list = new List<Monster>();
+            using (StreamReader reader = File.OpenText(@"C:\Users\thorb_000\Desktop\GitHub\Joshor\Engine"))
+            {
+                while (!reader.EndOfStream)
+                {
+                    int id = int.Parse(reader.ReadLine());
+                    String name = reader.ReadLine();
+                    int xp = int.Parse(reader.ReadLine());
+                    int gold = int.Parse(reader.ReadLine());
+                    int armor = int.Parse(reader.ReadLine());
+                    int damage = int.Parse(reader.ReadLine());
+                    int baseAttack = int.Parse(reader.ReadLine());
+                }
+            }
 
         }
     }

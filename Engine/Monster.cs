@@ -10,18 +10,16 @@ namespace Engine
         public int exp { get; set; }
         public int gold { get; set; }
         public int ac { get; set; }
-        public int hitPoints { get; set; }
         public int damage { get; set; }
         public int baseAttack { get; set; }
 
-        public Monster(int id, string name, int xp, int gold, int armor, int hp, int dam, int ba)
+        public Monster(int id, string name, int xp, int gold, int armor, int dam, int ba)
         { 
             this.ID = id;
             this.name = name;
             this.exp = xp;
             this.gold = gold;
             this.ac = armor;
-            this.hitPoints = hp;
             this.damage = dam;
             this.baseAttack = ba;
         }

@@ -48,7 +48,9 @@
     <Compile Include="World.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Monsters.txt" />
+    <Content Include="Monsters.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Room.txt" />
     <Content Include="Weapon.txt" />
   </ItemGroup>

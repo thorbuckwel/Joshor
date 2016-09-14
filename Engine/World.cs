@@ -14,7 +14,5 @@ namespace Engine
         public static readonly List<Weapons> Weapons = new List<Weapons>();
         public static readonly List<Item> Item = new List<Item>();
 
-       
-
-    }
+     }
 }
