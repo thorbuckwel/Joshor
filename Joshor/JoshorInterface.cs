@@ -56,6 +56,7 @@ namespace Joshor
                     int armor = int.Parse(reader.ReadLine());
                     int damage = int.Parse(reader.ReadLine());
                     int baseAttack = int.Parse(reader.ReadLine());
+                    list.Add(new Monster(id, name, xp, gold, armor, damage, baseAttack));
                 }
             }
 
