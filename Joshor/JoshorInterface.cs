@@ -45,7 +45,7 @@ namespace Joshor
         private void JoshorInterface_Load(object sender, EventArgs e)
         {
             var list = new List<Monster>();
-            using (StreamReader reader = File.OpenText(@"C:\Users\thorb_000\Desktop\GitHub\Joshor\Engine"))
+            using (StreamReader reader = File.OpenText(@"C:\Users\thorb_000\Desktop\Monsters.txt"))
             {
                 while (!reader.EndOfStream)
                 {
