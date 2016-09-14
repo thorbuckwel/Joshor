@@ -1,0 +1,4 @@
+﻿1, Club, 0, 6, Blunt
+2, Dagger, 2, 4, Pierce
+3, Falchion, 75, 8, Slash
+4, Sai, 1, 4, Blunt
