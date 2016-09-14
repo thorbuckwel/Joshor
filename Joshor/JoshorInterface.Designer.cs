@@ -477,6 +477,7 @@
             this.Controls.Add(this.grbInventory);
             this.Name = "JoshorInterface";
             this.Text = "Joshor";
+            this.Load += new System.EventHandler(this.JoshorInterface_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.grbInventory.ResumeLayout(false);
             this.grbStats.ResumeLayout(false);

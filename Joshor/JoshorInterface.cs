@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using Engine;
+
+
 
 namespace Joshor
 {
@@ -16,6 +20,8 @@ namespace Joshor
         {
             InitializeComponent();
         }
+
+
 
         private void lblExperience_Click(object sender, EventArgs e)
         {
@@ -33,6 +39,11 @@ namespace Joshor
         }
 
         private void grpEnvironmentItems_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void JoshorInterface_Load(object sender, EventArgs e)
         {
 
         }
