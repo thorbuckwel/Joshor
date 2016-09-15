@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public class Item
+    class Treasure
     {
         private int value;
-        private int durability;
     }
 }

@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public class Item
+    class Player
     {
-        private int value;
-        private int durability;
+        private int xp;
+        private int gold;
+        private int lvl;
     }
 }

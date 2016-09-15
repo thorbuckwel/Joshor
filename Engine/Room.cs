@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public class Item
+    public class Room
     {
-        private int value;
-        private int durability;
+        private int ID;
+        private String roomName;
+        private String roomDescript;
     }
 }
