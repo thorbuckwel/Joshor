@@ -50,7 +50,7 @@
             this.grbRoom = new System.Windows.Forms.GroupBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.grbEnvironment = new System.Windows.Forms.GroupBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.rtbEnv = new System.Windows.Forms.RichTextBox();
             this.grpRoomControls = new System.Windows.Forms.GroupBox();
             this.btnScan = new System.Windows.Forms.Button();
             this.btnLook = new System.Windows.Forms.Button();
@@ -122,7 +122,6 @@
             this.grbStats.TabIndex = 2;
             this.grbStats.TabStop = false;
             this.grbStats.Text = "Stats";
-            //this.grbStats.Enter += new System.EventHandler(this.grbStats_Enter);
             // 
             // label3
             // 
@@ -214,7 +213,6 @@
             this.lblExperience.Size = new System.Drawing.Size(63, 13);
             this.lblExperience.TabIndex = 5;
             this.lblExperience.Text = "Experience:";
-            //this.lblExperience.Click += new System.EventHandler(this.lblExperience_Click);
             // 
             // lblGold
             // 
@@ -281,7 +279,7 @@
             // 
             // grbEnvironment
             // 
-            this.grbEnvironment.Controls.Add(this.richTextBox1);
+            this.grbEnvironment.Controls.Add(this.rtbEnv);
             this.grbEnvironment.Location = new System.Drawing.Point(590, 293);
             this.grbEnvironment.Name = "grbEnvironment";
             this.grbEnvironment.Size = new System.Drawing.Size(404, 345);
@@ -289,13 +287,13 @@
             this.grbEnvironment.TabStop = false;
             this.grbEnvironment.Text = "Environment";
             // 
-            // richTextBox1
+            // rtbEnv
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(6, 19);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(392, 320);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
+            this.rtbEnv.Location = new System.Drawing.Point(6, 19);
+            this.rtbEnv.Name = "rtbEnv";
+            this.rtbEnv.Size = new System.Drawing.Size(392, 320);
+            this.rtbEnv.TabIndex = 0;
+            this.rtbEnv.Text = "";
             // 
             // grpRoomControls
             // 
@@ -347,7 +345,6 @@
             this.btnEast.TabIndex = 2;
             this.btnEast.Text = "East";
             this.btnEast.UseVisualStyleBackColor = true;
-            //this.btnEast.Click += new System.EventHandler(this.button3_Click);
             // 
             // btnWest
             // 
@@ -384,7 +381,6 @@
             this.grpEnvironmentItems.TabIndex = 6;
             this.grpEnvironmentItems.TabStop = false;
             this.grpEnvironmentItems.Text = "Environment Items";
-            //this.grpEnvironmentItems.Enter += new System.EventHandler(this.grpEnvironmentItems_Enter);
             // 
             // btnAttack
             // 
@@ -507,7 +503,7 @@
         private System.Windows.Forms.Label llblRace;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox rtbEnv;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;

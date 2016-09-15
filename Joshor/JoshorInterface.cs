@@ -23,7 +23,7 @@ namespace Joshor
 
         private void JoshorInterface_Load(object sender, EventArgs e)
         {
-            using (StreamReader reader = File.OpenText(@"C:\Users\buckwelw5455\Desktop\Monsters.txt"))
+            using (StreamReader reader = File.OpenText(@"C:\Users\thorb_000\Desktop\Monsters.txt"))
             {
                 while (!reader.EndOfStream)
                 {

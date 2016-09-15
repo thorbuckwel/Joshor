@@ -52,10 +52,19 @@
     <Compile Include="JoshorInterface.Designer.cs">
       <DependentUpon>JoshorInterface.cs</DependentUpon>
     </Compile>
+    <Compile Include="MobInterface.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MobInterface.Designer.cs">
+      <DependentUpon>MobInterface.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="JoshorInterface.resx">
       <DependentUpon>JoshorInterface.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MobInterface.resx">
+      <DependentUpon>MobInterface.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
