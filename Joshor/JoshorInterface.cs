@@ -28,6 +28,8 @@ namespace Joshor
             {
                 while (!reader.EndOfStream)
                 {
+                    MessageBox.Show("Hello!");
+
                     int id = int.Parse(reader.ReadLine());
                     String name = reader.ReadLine();
                     int xp = int.Parse(reader.ReadLine());
