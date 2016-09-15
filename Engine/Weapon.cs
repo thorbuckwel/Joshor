@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public class Weapons
+    public class Weapon
     {
-        private int id;
-        private String name;
-        private int cost;
-        private int damage;
-        private String damageType;
+        public int id;
+        public String name;
+        public int cost;
+        public int damage;
+        public String damageType;
 
-        public Weapons(int id, String name, int cost, int damage, String damageType)
+        public Weapon(int id, String name, int cost, int damage, String damageType)
         {
             this.id = id;
             this.name = name;

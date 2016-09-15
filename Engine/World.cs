@@ -11,7 +11,7 @@ namespace Engine
     public static class World
     {
         public static readonly List<Monster> Monsters = new List<Monster>();
-        public static readonly List<Weapons> Weapons = new List<Weapons>();
+        public static readonly List<Weapon> Weapons = new List<Weapon>();
         public static readonly List<Item> Item = new List<Item>();
 
 
