@@ -21,27 +21,6 @@ namespace Joshor
             InitializeComponent();
         }
 
-
-        private void lblExperience_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void grbStats_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void grpEnvironmentItems_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void JoshorInterface_Load(object sender, EventArgs e)
         {
             var list = new List<Monster>();

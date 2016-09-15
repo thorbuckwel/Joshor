@@ -122,7 +122,7 @@
             this.grbStats.TabIndex = 2;
             this.grbStats.TabStop = false;
             this.grbStats.Text = "Stats";
-            this.grbStats.Enter += new System.EventHandler(this.grbStats_Enter);
+            //this.grbStats.Enter += new System.EventHandler(this.grbStats_Enter);
             // 
             // label3
             // 
@@ -214,7 +214,7 @@
             this.lblExperience.Size = new System.Drawing.Size(63, 13);
             this.lblExperience.TabIndex = 5;
             this.lblExperience.Text = "Experience:";
-            this.lblExperience.Click += new System.EventHandler(this.lblExperience_Click);
+            //this.lblExperience.Click += new System.EventHandler(this.lblExperience_Click);
             // 
             // lblGold
             // 
@@ -347,7 +347,7 @@
             this.btnEast.TabIndex = 2;
             this.btnEast.Text = "East";
             this.btnEast.UseVisualStyleBackColor = true;
-            this.btnEast.Click += new System.EventHandler(this.button3_Click);
+            //this.btnEast.Click += new System.EventHandler(this.button3_Click);
             // 
             // btnWest
             // 
@@ -384,7 +384,7 @@
             this.grpEnvironmentItems.TabIndex = 6;
             this.grpEnvironmentItems.TabStop = false;
             this.grpEnvironmentItems.Text = "Environment Items";
-            this.grpEnvironmentItems.Enter += new System.EventHandler(this.grpEnvironmentItems_Enter);
+            //this.grpEnvironmentItems.Enter += new System.EventHandler(this.grpEnvironmentItems_Enter);
             // 
             // btnAttack
             // 
