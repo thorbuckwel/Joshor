@@ -4,7 +4,7 @@ namespace Engine
 {
     public class LivingCreature : INotifyPropertyChanged
     {
-        private int _currentHitPoints;                  // Varable to hold the current hitpoints
+        public int _currentHitPoints;                  // Varable to hold the current hitpoints
 
         public int CurrentHitPoints                     // This gives us a way to set and get info from the varable. 
         {

@@ -36,11 +36,28 @@ namespace Engine
                     int cost = int.Parse(reader.ReadLine());
                     int damage = int.Parse(reader.ReadLine());
                     String type = reader.ReadLine();
-                   
+
                     World.Weapons.Add(new Weapon(id, name, cost, damage, type));
                 }
             }
 
+            using (StreamReader reader = File.OpenText(@"C:\Users\thorb_000\Desktop\Room.txt"))
+            {
+                while (!reader.EndOfStream)
+                {
+                    int id = int.Parse(reader.ReadLine());
+                    String name = reader.ReadLine();
+                    String descript = reader.ReadLine();
+                    String exit1 = reader.ReadLine();
+                    String exit2 = reader.ReadLine();
+                    String exit3 = reader.ReadLine();
+                    String exit4 = reader.ReadLine();
+
+                    World.Location.Add(new Room(id, name, descript, exit1, exit2, exit3, exit4));
+                }
+
+            }
         }
     }
+    
 }

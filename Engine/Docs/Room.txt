@@ -1,1 +1,35 @@
-﻿
+﻿401
+Entrence
+A shabby little door opened into a small dark room. The is a hall leading further north.
+North
+North
+North
+North
+402
+Hall
+A long hall leading into the darkness. 
+North
+North
+South
+South
+403
+Small Room
+Littered with bones this room smells of death.
+North
+North
+South
+South
+404
+A scorched hallway
+There seems to be plenty of burned tiles along this hall, not to mention bones.
+North
+North
+South
+South
+405
+The Great Room
+A large room that seems to have a....hmmmm.....Think thats a dragon.
+South
+South
+South
+South

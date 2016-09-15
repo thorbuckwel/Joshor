@@ -31,9 +31,9 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.grbInventory = new System.Windows.Forms.GroupBox();
             this.grbStats = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblDisplayPlayerClass = new System.Windows.Forms.Label();
+            this.lblDisplayPlayerRace = new System.Windows.Forms.Label();
+            this.lblDisplayPlayerName = new System.Windows.Forms.Label();
             this.lblDisplayAC = new System.Windows.Forms.Label();
             this.lblDisplayLvl = new System.Windows.Forms.Label();
             this.lblDisplayExp = new System.Windows.Forms.Label();
@@ -48,7 +48,7 @@
             this.llblRace = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.grbRoom = new System.Windows.Forms.GroupBox();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.rtbLocation = new System.Windows.Forms.RichTextBox();
             this.grbEnvironment = new System.Windows.Forms.GroupBox();
             this.rtbEnv = new System.Windows.Forms.RichTextBox();
             this.grpRoomControls = new System.Windows.Forms.GroupBox();
@@ -100,9 +100,9 @@
             // 
             // grbStats
             // 
-            this.grbStats.Controls.Add(this.label3);
-            this.grbStats.Controls.Add(this.label2);
-            this.grbStats.Controls.Add(this.label1);
+            this.grbStats.Controls.Add(this.lblDisplayPlayerClass);
+            this.grbStats.Controls.Add(this.lblDisplayPlayerRace);
+            this.grbStats.Controls.Add(this.lblDisplayPlayerName);
             this.grbStats.Controls.Add(this.lblDisplayAC);
             this.grbStats.Controls.Add(this.lblDisplayLvl);
             this.grbStats.Controls.Add(this.lblDisplayExp);
@@ -123,29 +123,29 @@
             this.grbStats.TabStop = false;
             this.grbStats.Text = "Stats";
             // 
-            // label3
+            // lblDisplayPlayerClass
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(233, 29);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 13);
-            this.label3.TabIndex = 15;
+            this.lblDisplayPlayerClass.Location = new System.Drawing.Point(204, 29);
+            this.lblDisplayPlayerClass.Name = "lblDisplayPlayerClass";
+            this.lblDisplayPlayerClass.Size = new System.Drawing.Size(97, 23);
+            this.lblDisplayPlayerClass.TabIndex = 15;
+            this.lblDisplayPlayerClass.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // lblDisplayPlayerRace
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(128, 29);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 13);
-            this.label2.TabIndex = 14;
+            this.lblDisplayPlayerRace.Location = new System.Drawing.Point(107, 29);
+            this.lblDisplayPlayerRace.Name = "lblDisplayPlayerRace";
+            this.lblDisplayPlayerRace.Size = new System.Drawing.Size(79, 23);
+            this.lblDisplayPlayerRace.TabIndex = 14;
+            this.lblDisplayPlayerRace.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label1
+            // lblDisplayPlayerName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 13);
-            this.label1.TabIndex = 13;
+            this.lblDisplayPlayerName.Location = new System.Drawing.Point(6, 29);
+            this.lblDisplayPlayerName.Name = "lblDisplayPlayerName";
+            this.lblDisplayPlayerName.Size = new System.Drawing.Size(77, 23);
+            this.lblDisplayPlayerName.TabIndex = 13;
+            this.lblDisplayPlayerName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblDisplayAC
             // 
@@ -235,33 +235,36 @@
             // lblClass
             // 
             this.lblClass.AutoSize = true;
+            this.lblClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClass.Location = new System.Drawing.Point(233, 16);
             this.lblClass.Name = "lblClass";
-            this.lblClass.Size = new System.Drawing.Size(32, 13);
+            this.lblClass.Size = new System.Drawing.Size(37, 13);
             this.lblClass.TabIndex = 2;
             this.lblClass.Text = "Class";
             // 
             // llblRace
             // 
             this.llblRace.AutoSize = true;
+            this.llblRace.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.llblRace.Location = new System.Drawing.Point(128, 16);
             this.llblRace.Name = "llblRace";
-            this.llblRace.Size = new System.Drawing.Size(33, 13);
+            this.llblRace.Size = new System.Drawing.Size(37, 13);
             this.llblRace.TabIndex = 1;
             this.llblRace.Text = "Race";
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.Location = new System.Drawing.Point(26, 16);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(35, 13);
+            this.lblName.Size = new System.Drawing.Size(39, 13);
             this.lblName.TabIndex = 0;
             this.lblName.Text = "Name";
             // 
             // grbRoom
             // 
-            this.grbRoom.Controls.Add(this.richTextBox2);
+            this.grbRoom.Controls.Add(this.rtbLocation);
             this.grbRoom.Location = new System.Drawing.Point(590, 12);
             this.grbRoom.Name = "grbRoom";
             this.grbRoom.Size = new System.Drawing.Size(404, 275);
@@ -269,13 +272,13 @@
             this.grbRoom.TabStop = false;
             this.grbRoom.Text = "Room";
             // 
-            // richTextBox2
+            // rtbLocation
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(6, 19);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(392, 250);
-            this.richTextBox2.TabIndex = 0;
-            this.richTextBox2.Text = "";
+            this.rtbLocation.Location = new System.Drawing.Point(6, 19);
+            this.rtbLocation.Name = "rtbLocation";
+            this.rtbLocation.Size = new System.Drawing.Size(392, 250);
+            this.rtbLocation.TabIndex = 0;
+            this.rtbLocation.Text = "";
             // 
             // grbEnvironment
             // 
@@ -502,11 +505,11 @@
         private System.Windows.Forms.Label lblClass;
         private System.Windows.Forms.Label llblRace;
         private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.RichTextBox rtbLocation;
         private System.Windows.Forms.RichTextBox rtbEnv;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblDisplayPlayerClass;
+        private System.Windows.Forms.Label lblDisplayPlayerRace;
+        private System.Windows.Forms.Label lblDisplayPlayerName;
         private System.Windows.Forms.Label lblDisplayAC;
         private System.Windows.Forms.Label lblDisplayLvl;
         private System.Windows.Forms.Label lblDisplayExp;
