@@ -5,6 +5,8 @@ Goblin
 6
 6
 1
+6
+6
 2
 Hobgolin
 200
@@ -12,6 +14,8 @@ Hobgolin
 17
 10
 1
+17
+17
 3
 Kobold
 100
@@ -19,6 +23,8 @@ Kobold
 5
 5
 1
+5
+5
 4
 Dog
 135
@@ -26,6 +32,8 @@ Dog
 6
 5
 0
+6
+6
 5
 Black Dragon
 12800
@@ -33,3 +41,5 @@ Black Dragon
 161
 22
 14
+161
+161

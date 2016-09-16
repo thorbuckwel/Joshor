@@ -12,7 +12,7 @@ namespace Engine
 
         public static void Build()
         {
-            using (StreamReader reader = File.OpenText(@"C:\Users\thorb_000\Desktop\Monsters.txt"))
+            using (StreamReader reader = File.OpenText(@"../../../Engine/Docs/Monsters.txt"))
             {
                 while (!reader.EndOfStream)
                 {
@@ -29,7 +29,7 @@ namespace Engine
                 }
             }
 
-            using (StreamReader reader = File.OpenText(@"C:\Users\thorb_000\Desktop\Weapons.txt"))
+            using (StreamReader reader = File.OpenText(@"../../../Engine/Docs/Weapon.txt"))
             {
                 while (!reader.EndOfStream)
                 {
@@ -43,7 +43,7 @@ namespace Engine
                 }
             }
 
-            using (StreamReader reader = File.OpenText(@"C:\Users\thorb_000\Desktop\Room.txt"))
+            using (StreamReader reader = File.OpenText(@"../../../Engine/Docs/Room.txt"))
             {
                 while (!reader.EndOfStream)
                 {
