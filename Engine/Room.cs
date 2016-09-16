@@ -8,15 +8,18 @@ namespace Engine
 {
     public class Room
     {
-        public int ID { get; set; }
-        public String roomName { get; set; }
-        public String roomDescript { get; set; }
-        public String exit1 { get; set; }
-        public String exit2 { get; set; }
-        public String exit3 { get; set; }
-        public String exit4 { get; set; }
+        public int ID { get; set; }                         // To hold the Room's ID number
+        public String roomName { get; set; }                // To hold the Room's name
+        public String roomDescript { get; set; }            // To hold the Room's description
+        public String exit1 { get; set; }                   // To hold the Room's exit1 string
+        public String exit2 { get; set; }                   // To hold the Room's exit2 string
+        public String exit3 { get; set; }                   // To hold the Room's exit3 string
+        public String exit4 { get; set; }                   // To hold the Room's exit4 string
 
-
+        /**
+         * This is the Room constructor. It creates a Room object with the passed variables then assignd
+         * those to the class variables.
+         */
         public Room(int id, String name, String descript, String exit1, String exit2, String exit3, String exit4)
         {
             this.ID = id;

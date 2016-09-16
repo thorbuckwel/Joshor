@@ -60,7 +60,7 @@
             this.btnNorth = new System.Windows.Forms.Button();
             this.grpEnvironmentItems = new System.Windows.Forms.GroupBox();
             this.btnAttack = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboWeapons = new System.Windows.Forms.ComboBox();
             this.lblWeapon = new System.Windows.Forms.Label();
             this.btnGet = new System.Windows.Forms.Button();
             this.cboItems = new System.Windows.Forms.ComboBox();
@@ -370,7 +370,7 @@
             // grpEnvironmentItems
             // 
             this.grpEnvironmentItems.Controls.Add(this.btnAttack);
-            this.grpEnvironmentItems.Controls.Add(this.comboBox1);
+            this.grpEnvironmentItems.Controls.Add(this.cboWeapons);
             this.grpEnvironmentItems.Controls.Add(this.lblWeapon);
             this.grpEnvironmentItems.Controls.Add(this.btnGet);
             this.grpEnvironmentItems.Controls.Add(this.cboItems);
@@ -394,13 +394,13 @@
             this.btnAttack.Text = "Attack With";
             this.btnAttack.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // cboWeapons
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(69, 138);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 7;
+            this.cboWeapons.FormattingEnabled = true;
+            this.cboWeapons.Location = new System.Drawing.Point(69, 138);
+            this.cboWeapons.Name = "cboWeapons";
+            this.cboWeapons.Size = new System.Drawing.Size(121, 21);
+            this.cboWeapons.TabIndex = 7;
             // 
             // lblWeapon
             // 
@@ -525,7 +525,7 @@
         private System.Windows.Forms.Button btnNorth;
         private System.Windows.Forms.Label lblEnemies;
         private System.Windows.Forms.Button btnAttack;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboWeapons;
         private System.Windows.Forms.Label lblWeapon;
         private System.Windows.Forms.Button btnGet;
         private System.Windows.Forms.ComboBox cboItems;

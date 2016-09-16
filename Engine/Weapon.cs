@@ -8,12 +8,16 @@ namespace Engine
 {
     public class Weapon
     {
-        public int id;
-        public String name;
-        public int cost;
-        public int damage;
-        public String damageType;
+        public int id { get; set; }                         // To hold the Weapon's ID number
+        public String name { get; set; }                    // To hold the Weapon's name
+        public int cost { get; set; }                       // To hold the Weapon's cost
+        public int damage { get; set; }                     // To hold the Weapon's damage
+        public String damageType { get; set; }              // To hold the Weapon's damage type
 
+        /**
+         * This is the Weapons constructor. It creates a Room object with the passed variables then assignd
+         * those to the class variables.
+         */
         public Weapon(int id, String name, int cost, int damage, String damageType)
         {
             this.id = id;

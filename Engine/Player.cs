@@ -8,15 +8,20 @@ namespace Engine
 {
     public class Player : LivingCreature
     {
-        public String playerName { get; set; }
-        public String playerClass { get; set;}
-        public String playerRace { get; set; }
-        public int xp { get; set; }
-        public int gold { get; set;}
-        public int lvl { get; set; }
-        public int ac { get; set; }
-        private Room _currentLocation;
+        public String playerName { get; set; }              // To hold the player's name
+        public String playerClass { get; set;}              // To hold the player's class
+        public String playerRace { get; set; }              // To hold the player's race
+        public int xp { get; set; }                         // To hold the player's xp
+        public int gold { get; set;}                        // To hold the player's gold
+        public int lvl { get; set; }                        // To hold the player's level
+        public int ac { get; set; }                         // To hold the player's armor
+        private Room _currentLocation;                      // Not used as of yet!
 
+        /**
+        * This is the constructor for the Player class. It accepts values to be assigned to the class variables
+        * plus passing the current and max hit points to the LivingCreature class that the Player class is 
+        * derived from so that the player can inherate these values.
+        */
         public Player (String name, String PC, String PR, int gold, int currentHitPoints, int maximumHitPoints) 
             : base(currentHitPoints, maximumHitPoints)
         {
@@ -29,6 +34,9 @@ namespace Engine
             this.ac = 10;
         }
 
+        /**
+         * Not used as of yet!
+         */
         public Room CurrentLocation
         {
             get { return _currentLocation; }

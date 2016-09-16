@@ -7,14 +7,7 @@ namespace Engine
         public static int _currentHitPoints;                  // Varable to hold the current hitpoints
 
         public int CurrentHitPoints                     // This gives us a way to set and get info from the varable. 
-        {
-            get { return _currentHitPoints; }
-            set
-            {
-                _currentHitPoints = value;
-                OnPropertyChanged("CurrentHitPoints");
-            }
-        }
+        {get { return _currentHitPoints; } set{_currentHitPoints = value; OnPropertyChanged("CurrentHitPoints");}}
 
         public static int MaximumHitPoints { get; set; }      // This give use access to the maximum HP the living creature will have
 

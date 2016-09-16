@@ -12,6 +12,14 @@ namespace Engine
 
         public static void Build()
         {
+            /**
+             * We need to build each object to go into the Monster List. First we use the StreamReader
+             * to open the Monsters text file that stores all the information that is need to create
+             * the monsters. This file is formated to be in a certain order. Then we use the while loop
+             * to assign the value to the variables one line at a time until we reach the end of the
+             * text file. After we have assigned values to the variables we then pass the variables
+             * to create the monster object that is then stored in the Monster List.
+             */
             using (StreamReader reader = File.OpenText(@"../../../Engine/Docs/Monsters.txt"))
             {
                 while (!reader.EndOfStream)
@@ -30,6 +38,14 @@ namespace Engine
                 }
             }
 
+            /**
+             * We need to build each object to go into the Weapon List. First we use the StreamReader
+             * to open the Monsters text file that stores all the information that is need to create
+             * the weaponss. This file is formated to be in a certain order. Then we use the while loop
+             * to assign the value to the variables one line at a time until we reach the end of the
+             * text file. After we have assigned values to the variables we then pass the variables
+             * to create the weapon object that is then stored in the Weapon List.
+             */
             using (StreamReader reader = File.OpenText(@"../../../Engine/Docs/Weapon.txt"))
             {
                 while (!reader.EndOfStream)
@@ -44,6 +60,14 @@ namespace Engine
                 }
             }
 
+            /**
+             * We need to build each object to go into the Room List. First we use the StreamReader
+             * to open the Monsters text file that stores all the information that is need to create
+             * the rooms. This file is formated to be in a certain order. Then we use the while loop
+             * to assign the value to the variables one line at a time until we reach the end of the
+             * text file. After we have assigned values to the variables we then pass the variables
+             * to create the room object that is then stored in the Rooms List.
+             */
             using (StreamReader reader = File.OpenText(@"../../../Engine/Docs/Room.txt"))
             {
                 while (!reader.EndOfStream)

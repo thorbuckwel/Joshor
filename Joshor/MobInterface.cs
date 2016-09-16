@@ -14,7 +14,7 @@ namespace Joshor
 {
     public partial class MobInterface : Form
     {
-        JoshorInterface JoshorInterface;
+        JoshorInterface JoshorInterface;                        // To give this form access to JoshorInterface
         public MobInterface(JoshorInterface passed)
         {
             InitializeComponent();
@@ -24,11 +24,19 @@ namespace Joshor
         
         private void MobInterface_Load(object sender, EventArgs e)
         {
+            /**
+             * Clear the lbls at load time
+             */
             lblCreatureName.Text = "";
             lblDisplayHP.Text = "";
             lblDisplayAC.Text = "";
             lblDisplayDamage.Text = "";
 
+            /**
+             * This will access cboEnemies and get the current value in it. We then search the Monsters List
+             * to match the name in the combobox to a Monster's name in the list and fill in the lbls with values
+             * from that Monster object.
+             */
             Monster mobs = World.Monsters.FirstOrDefault(mob => mob.name == JoshorInterface.cboEnemies.Text);
             if (mobs != null)
             {

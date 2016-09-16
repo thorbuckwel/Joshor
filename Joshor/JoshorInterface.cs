@@ -22,8 +22,11 @@ namespace Joshor
         {
             InitializeComponent();
 
-            _player = new Player("Killakia", "Warrior", "Human", 100, 10, 10);
+            _player = new Player("Killakia", "Warrior", "Human", 100, 10, 10);  // Creating a player object 
 
+            /**
+             * Displaying the players stats int the stat group
+             */
             lblDisplayPlayerName.Text = _player.playerName;
             lblDisplayPlayerRace.Text = _player.playerRace;
             lblDisplayPlayerClass.Text = _player.playerClass;
@@ -39,18 +42,21 @@ namespace Joshor
         public void JoshorInterface_Load(object sender, EventArgs e)
         {
 
-            ListBuilder.Build();
+            ListBuilder.Build();                // On load we need to call the ListBuilder to build all out List
 
+
+            /**
+             * The following is just test code to see if our other code is working
+             */
             foreach(Monster mob in World.Monsters)
             {
-                rtbEnv.Text += mob.name + Environment.NewLine;
                 cboEnemies.Items.Add(mob.name);
             }
 
             foreach(Weapon weapon in World.Weapons)
             {
-                //rtbEnv.Text += weapon.name + Environment.NewLine;
-                comboBox1.Items.Add(weapon.name);
+                cboWeapons.Items.Add(weapon.name);
+
             }
 
             foreach (Room Location in World.Location)
