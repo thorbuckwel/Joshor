@@ -47,7 +47,8 @@ namespace Joshor
 
             foreach(Weapon weapon in World.Weapons)
             {
-                rtbEnv.Text += weapon.name + Environment.NewLine;
+                //rtbEnv.Text += weapon.name + Environment.NewLine;
+                comboBox1.Items.Add(weapon.name);
             }
 
             foreach (Room Location in World.Location)
