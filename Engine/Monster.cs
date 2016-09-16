@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Engine
 {
-    public class Monster
+    public class Monster : LivingCreature
     {
         public int ID { get; set; }
         public string name { get; set; }
@@ -13,7 +13,8 @@ namespace Engine
         public int damage { get; set; }
         public int baseAttack { get; set; }
 
-        public Monster(int id, string name, int xp, int gold, int armor, int dam, int ba)
+        public Monster(int id, string name, int xp, int gold, int armor, int dam, int ba, int currentHitpoints, int maxHitpoints) 
+            : base(_currentHitPoints, MaximumHitPoints)
         { 
             this.ID = id;
             this.name = name;

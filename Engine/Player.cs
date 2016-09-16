@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public class Player
+    public class Player : LivingCreature
     {
         public String playerName { get; set; }
         public String playerClass { get; set;}
@@ -16,7 +16,8 @@ namespace Engine
         public int lvl { get; set; }
         public int ac { get; set; }
 
-        public Player (String name, String PC, String PR, int gold)
+        public Player (String name, String PC, String PR, int gold, int currentHitPoints, int maximumHitPoints) 
+            : base(currentHitPoints, maximumHitPoints)
         {
             this.playerName = name;
             this.playerClass = PC;

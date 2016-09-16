@@ -445,6 +445,7 @@
             this.btnEnemyView.TabIndex = 2;
             this.btnEnemyView.Text = "View";
             this.btnEnemyView.UseVisualStyleBackColor = true;
+            this.btnEnemyView.Click += new System.EventHandler(this.btnEnemyView_Click);
             // 
             // cboEnemies
             // 
@@ -522,9 +523,7 @@
         private System.Windows.Forms.Button btnEast;
         private System.Windows.Forms.Button btnWest;
         private System.Windows.Forms.Button btnNorth;
-        private System.Windows.Forms.GroupBox grpEnvironmentItems;
         private System.Windows.Forms.Button btnEnemyView;
-        private System.Windows.Forms.ComboBox cboEnemies;
         private System.Windows.Forms.Label lblEnemies;
         private System.Windows.Forms.Button btnAttack;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -532,6 +531,8 @@
         private System.Windows.Forms.Button btnGet;
         private System.Windows.Forms.ComboBox cboItems;
         private System.Windows.Forms.Label lblItems;
+        public System.Windows.Forms.ComboBox cboEnemies;
+        public System.Windows.Forms.GroupBox grpEnvironmentItems;
     }
 }
 

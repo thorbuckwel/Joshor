@@ -22,7 +22,7 @@ namespace Joshor
         {
             InitializeComponent();
 
-            _player = new Player("Killakia", "Warrior", "Human", 100);
+            _player = new Player("Killakia", "Warrior", "Human", 100, 10, 10);
 
             lblDisplayPlayerName.Text = _player.playerName;
             lblDisplayPlayerRace.Text = _player.playerRace;
@@ -31,11 +31,12 @@ namespace Joshor
             lblDisplayGold.Text = _player.gold.ToString();
             lblDisplayExp.Text = _player.xp.ToString();
             lblDisplayAC.Text = _player.ac.ToString();
+            lblDisplayHP.Text = _player.CurrentHitPoints.ToString();
 
 
         }
 
-        private void JoshorInterface_Load(object sender, EventArgs e)
+        public void JoshorInterface_Load(object sender, EventArgs e)
         {
 
             ListBuilder.Build();
@@ -43,6 +44,7 @@ namespace Joshor
             foreach(Monster mob in World.Monsters)
             {
                 rtbEnv.Text += mob.name + Environment.NewLine;
+                cboEnemies.Items.Add(mob.name);
             }
 
             foreach(Weapon weapon in World.Weapons)
@@ -53,7 +55,17 @@ namespace Joshor
             foreach (Room Location in World.Location)
             {
                 rtbLocation.Text += Location.roomName + Environment.NewLine;
+               
             }
+
+            
+            
+        }
+
+        public void btnEnemyView_Click(object sender, EventArgs e)
+        {
+            MobInterface frm2 = new MobInterface();
+            frm2.ShowDialog();
         }
     }
 }

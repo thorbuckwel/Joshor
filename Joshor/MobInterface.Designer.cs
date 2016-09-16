@@ -30,13 +30,13 @@
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblCreatureName = new System.Windows.Forms.Label();
             this.lblHP = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblDisplayHP = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblDisplayAC = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblDisplayDamage = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -59,14 +59,14 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Creature:";
             // 
-            // label2
+            // lblCreatureName
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(335, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(115, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "888888888888888888";
+            this.lblCreatureName.AutoSize = true;
+            this.lblCreatureName.Location = new System.Drawing.Point(335, 25);
+            this.lblCreatureName.Name = "lblCreatureName";
+            this.lblCreatureName.Size = new System.Drawing.Size(115, 13);
+            this.lblCreatureName.TabIndex = 2;
+            this.lblCreatureName.Text = "888888888888888888";
             // 
             // lblHP
             // 
@@ -78,14 +78,14 @@
             this.lblHP.TabIndex = 3;
             this.lblHP.Text = "Hit Points:";
             // 
-            // label3
+            // lblDisplayHP
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(335, 53);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(103, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "8888888888888888";
+            this.lblDisplayHP.AutoSize = true;
+            this.lblDisplayHP.Location = new System.Drawing.Point(335, 53);
+            this.lblDisplayHP.Name = "lblDisplayHP";
+            this.lblDisplayHP.Size = new System.Drawing.Size(103, 13);
+            this.lblDisplayHP.TabIndex = 4;
+            this.lblDisplayHP.Text = "8888888888888888";
             // 
             // label4
             // 
@@ -97,14 +97,14 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "AC:";
             // 
-            // label5
+            // lblDisplayAC
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(335, 81);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(97, 13);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "888888888888888";
+            this.lblDisplayAC.AutoSize = true;
+            this.lblDisplayAC.Location = new System.Drawing.Point(335, 81);
+            this.lblDisplayAC.Name = "lblDisplayAC";
+            this.lblDisplayAC.Size = new System.Drawing.Size(97, 13);
+            this.lblDisplayAC.TabIndex = 6;
+            this.lblDisplayAC.Text = "888888888888888";
             // 
             // label6
             // 
@@ -116,14 +116,14 @@
             this.label6.TabIndex = 7;
             this.label6.Text = "Damage:";
             // 
-            // label7
+            // lblDisplayDamage
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(335, 109);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(91, 13);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "88888888888888";
+            this.lblDisplayDamage.AutoSize = true;
+            this.lblDisplayDamage.Location = new System.Drawing.Point(335, 109);
+            this.lblDisplayDamage.Name = "lblDisplayDamage";
+            this.lblDisplayDamage.Size = new System.Drawing.Size(91, 13);
+            this.lblDisplayDamage.TabIndex = 8;
+            this.lblDisplayDamage.Text = "88888888888888";
             // 
             // button1
             // 
@@ -133,6 +133,7 @@
             this.button1.TabIndex = 9;
             this.button1.Text = "Close";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MobInterface
             // 
@@ -140,17 +141,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(483, 232);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lblDisplayDamage);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblDisplayAC);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblDisplayHP);
             this.Controls.Add(this.lblHP);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblCreatureName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Name = "MobInterface";
             this.Text = "MobInterface";
+            this.Load += new System.EventHandler(this.MobInterface_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -161,13 +163,13 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblCreatureName;
         private System.Windows.Forms.Label lblHP;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblDisplayHP;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblDisplayAC;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblDisplayDamage;
         private System.Windows.Forms.Button button1;
     }
 }
