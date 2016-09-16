@@ -35,6 +35,7 @@ namespace Joshor
             lblDisplayExp.Text = _player.xp.ToString();
             lblDisplayAC.Text = _player.ac.ToString();
             lblDisplayHP.Text = _player.CurrentHitPoints.ToString();
+            
 
 
         }
@@ -43,12 +44,12 @@ namespace Joshor
         {
 
             ListBuilder.Build();                // On load we need to call the ListBuilder to build all out List
-
+            _player.CurrentLocation = World.Location[0];
 
             /**
              * The following is just test code to see if our other code is working
              */
-            foreach(Monster mob in World.Monsters)
+            foreach (Monster mob in World.Monsters)
             {
                 cboEnemies.Items.Add(mob.name);
             }
@@ -59,14 +60,8 @@ namespace Joshor
 
             }
 
-            foreach (Room Location in World.Location)
-            {
-                rtbLocation.Text += Location.roomName + Environment.NewLine;
-               
-            }
-
-            
-            
+            rtbLocation.Text += _player.CurrentLocation.roomName + Environment.NewLine;
+            rtbLocation.Text += _player.CurrentLocation.roomDescript + Environment.NewLine;            
         }
 
         
