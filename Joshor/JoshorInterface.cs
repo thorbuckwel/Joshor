@@ -63,10 +63,11 @@ namespace Joshor
             
         }
 
+        
         public void btnEnemyView_Click(object sender, EventArgs e)
         {
-            MobInterface frm2 = new MobInterface();
-            frm2.ShowDialog();
+            MobInterface mobInter = new MobInterface(this);
+            mobInter.Show();
         }
     }
 }

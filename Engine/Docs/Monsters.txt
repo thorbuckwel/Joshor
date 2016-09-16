@@ -7,6 +7,7 @@ Goblin
 1
 6
 6
+Goblin.PNG
 2
 Hobgolin
 200
@@ -16,6 +17,7 @@ Hobgolin
 1
 17
 17
+Hobgoblin.jpg
 3
 Kobold
 100
@@ -25,6 +27,7 @@ Kobold
 1
 5
 5
+Kobold.jpg
 4
 Dog
 135
@@ -34,6 +37,7 @@ Dog
 0
 6
 6
+Dog.jpg
 5
 Black Dragon
 12800
@@ -43,3 +47,4 @@ Black Dragon
 14
 161
 161
+BlackDragon.jpg

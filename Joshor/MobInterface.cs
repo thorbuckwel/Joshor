@@ -14,11 +14,12 @@ namespace Joshor
 {
     public partial class MobInterface : Form
     {
-        JoshorInterface Form1Object = new JoshorInterface();
-
-        public MobInterface()
+        JoshorInterface JoshorInterface;
+        public MobInterface(JoshorInterface passed)
         {
             InitializeComponent();
+            this.JoshorInterface = passed;
+            
         }
         
         private void MobInterface_Load(object sender, EventArgs e)
@@ -28,18 +29,19 @@ namespace Joshor
             lblDisplayAC.Text = "";
             lblDisplayDamage.Text = "";
 
-            foreach(Monster mob in World.Monsters)
+            Monster mobs = World.Monsters.FirstOrDefault(mob => mob.name == JoshorInterface.cboEnemies.Text);
+            if (mobs != null)
             {
-                if(mob.name == Form1Object.cboEnemies.Text)
-                {
-                    lblCreatureName.Text = mob.name;
-                    lblDisplayHP.Text = mob.CurrentHitPoints.ToString();
-                    lblDisplayAC.Text = mob.ac.ToString();
-                    lblDisplayDamage.Text = mob.damage.ToString();
+                lblCreatureName.Text = mobs.name;
+                lblDisplayHP.Text = mobs.CurrentHitPoints.ToString();
+                lblDisplayAC.Text = mobs.ac.ToString();
+                lblDisplayDamage.Text = mobs.damage.ToString();
+                picMonster.Image = Image.FromFile(@"../../../Engine/Image/" + mobs.image);
 
 
-                }
             }
+
+            
         }
 
         private void button1_Click(object sender, EventArgs e)

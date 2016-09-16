@@ -8,14 +8,14 @@ namespace Engine
 {
     public class Room
     {
-        public int ID;
-        public String roomName;
-        public String roomDescript;
-        public String exit1;
-        public String exit2;
-        public String exit3;
-        public String exit4;
-    
+        public int ID { get; set; }
+        public String roomName { get; set; }
+        public String roomDescript { get; set; }
+        public String exit1 { get; set; }
+        public String exit2 { get; set; }
+        public String exit3 { get; set; }
+        public String exit4 { get; set; }
+
 
         public Room(int id, String name, String descript, String exit1, String exit2, String exit3, String exit4)
         {

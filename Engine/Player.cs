@@ -15,6 +15,7 @@ namespace Engine
         public int gold { get; set;}
         public int lvl { get; set; }
         public int ac { get; set; }
+        private Room _currentLocation;
 
         public Player (String name, String PC, String PR, int gold, int currentHitPoints, int maximumHitPoints) 
             : base(currentHitPoints, maximumHitPoints)
@@ -28,6 +29,16 @@ namespace Engine
             this.ac = 10;
         }
 
+        public Room CurrentLocation
+        {
+            get { return _currentLocation; }
+            set
+            {
+                _currentLocation = value;
+                OnPropertyChanged("CurrentLocation");
+            }
+        }
 
+        
     }
 }

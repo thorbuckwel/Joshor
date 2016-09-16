@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picMonster = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblCreatureName = new System.Windows.Forms.Label();
             this.lblHP = new System.Windows.Forms.Label();
@@ -38,16 +38,17 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblDisplayDamage = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMonster)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // picMonster
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(223, 208);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.picMonster.Location = new System.Drawing.Point(12, 12);
+            this.picMonster.Name = "picMonster";
+            this.picMonster.Size = new System.Drawing.Size(223, 208);
+            this.picMonster.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picMonster.TabIndex = 0;
+            this.picMonster.TabStop = false;
             // 
             // label1
             // 
@@ -149,11 +150,11 @@
             this.Controls.Add(this.lblHP);
             this.Controls.Add(this.lblCreatureName);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.picMonster);
             this.Name = "MobInterface";
             this.Text = "MobInterface";
             this.Load += new System.EventHandler(this.MobInterface_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMonster)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,7 +162,7 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picMonster;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblCreatureName;
         private System.Windows.Forms.Label lblHP;

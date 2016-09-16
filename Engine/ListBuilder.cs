@@ -18,14 +18,15 @@ namespace Engine
                 {
                     int id = int.Parse(reader.ReadLine());
                     String name = reader.ReadLine();
-                    int xp = int.Parse(reader.ReadLine());
-                    int gold = int.Parse(reader.ReadLine());
+                    int xp = int.Parse(reader.ReadLine());                    
                     int armor = int.Parse(reader.ReadLine());
+                    int gold = int.Parse(reader.ReadLine());
                     int damage = int.Parse(reader.ReadLine());
                     int baseAttack = int.Parse(reader.ReadLine());
                     int currentHitpoints = int.Parse(reader.ReadLine());
                     int maxHitpoints = int.Parse(reader.ReadLine());
-                    World.Monsters.Add(new Monster(id, name, xp, gold, armor, damage, baseAttack, currentHitpoints, maxHitpoints));
+                    String image = reader.ReadLine();
+                    World.Monsters.Add(new Monster(id, name, xp, gold, armor, damage, baseAttack, currentHitpoints, maxHitpoints, image));
                 }
             }
 

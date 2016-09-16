@@ -523,7 +523,6 @@
         private System.Windows.Forms.Button btnEast;
         private System.Windows.Forms.Button btnWest;
         private System.Windows.Forms.Button btnNorth;
-        private System.Windows.Forms.Button btnEnemyView;
         private System.Windows.Forms.Label lblEnemies;
         private System.Windows.Forms.Button btnAttack;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -533,6 +532,7 @@
         private System.Windows.Forms.Label lblItems;
         public System.Windows.Forms.ComboBox cboEnemies;
         public System.Windows.Forms.GroupBox grpEnvironmentItems;
+        public System.Windows.Forms.Button btnEnemyView;
     }
 }
 
