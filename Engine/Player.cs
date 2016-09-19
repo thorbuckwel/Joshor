@@ -33,10 +33,7 @@ namespace Engine
             this.lvl = 1;
             this.ac = 10;
         }
-
-        /**
-         * Not used as of yet!
-         */
+                
         public Room CurrentLocation
         {
             get { return _currentLocation; }
@@ -47,6 +44,39 @@ namespace Engine
             }
         }
 
-        
+        public void ChangeLocation(Room location)
+        {
+            _currentLocation = location;
+        }
+
+        public void MoveTo(Room location)
+        {
+            // The player can enter this location
+            ChangeLocation(location);
+            
+            
+         }
+        private void MoveHome()
+        {
+            MoveTo(World.Location[4]);
+        }
+
+        public void MoveNorth()
+        {
+            if (World.Location != null)
+            {
+                MoveTo(World.Location[+1]);
+                
+            }
+        }
+
+        public void MoveSouth(int ele)
+        {
+            if (World.Location != null)
+            {
+                MoveTo(World.Location[ele]);
+
+            }
+        }        
     }
 }

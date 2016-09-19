@@ -70,5 +70,59 @@ namespace Joshor
             MobInterface mobInter = new MobInterface(this);
             mobInter.Show();
         }
+
+        private void btnNorth_Click(object sender, EventArgs e)
+        {
+            _player.MoveNorth();
+            rtbLocation.Text = "";
+            rtbLocation.Text += _player.CurrentLocation.roomName + Environment.NewLine;
+            rtbLocation.Text += _player.CurrentLocation.roomDescript + Environment.NewLine;
+            Exits(_player);
+        }
+
+        private void btnSouth_Click(object sender, EventArgs e)
+        {
+            _player.MoveSouth(-1);
+            rtbLocation.Text += _player.CurrentLocation.roomName + Environment.NewLine;
+            rtbLocation.Text += _player.CurrentLocation.roomDescript + Environment.NewLine;
+            
+        }
+
+        public void Exits(Player location)
+        {
+            if (_player.CurrentLocation.LocationToNorth != true)
+            {
+                if(_player.CurrentLocation.LocationToEast != true)
+                {
+                    if(_player.CurrentLocation.LocationToSouth != true)
+                    {
+                        if(_player.CurrentLocation.LocationWest != true)
+                        {
+                            btnWest.Visible = false;
+                        }
+                        else
+                        {
+                            btnWest.Visible = true;
+                        }
+
+                        btnSouth.Visible = false;
+                    }
+                    else
+                    {
+                        btnSouth.Visible = true;
+                    }
+                    btnEast.Visible = false;
+                }
+                else
+                {
+                    btnEast.Visible = true;
+                }
+                btnNorth.Visible = false;
+            }
+            else
+            {
+                btnNorth.Visible = true;
+            }
+        }
     }
 }

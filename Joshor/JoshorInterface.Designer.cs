@@ -339,6 +339,7 @@
             this.btnSouth.TabIndex = 3;
             this.btnSouth.Text = "South";
             this.btnSouth.UseVisualStyleBackColor = true;
+            this.btnSouth.Click += new System.EventHandler(this.btnSouth_Click);
             // 
             // btnEast
             // 
@@ -366,6 +367,7 @@
             this.btnNorth.TabIndex = 0;
             this.btnNorth.Text = "North";
             this.btnNorth.UseVisualStyleBackColor = true;
+            this.btnNorth.Click += new System.EventHandler(this.btnNorth_Click);
             // 
             // grpEnvironmentItems
             // 
@@ -522,7 +524,6 @@
         private System.Windows.Forms.Button btnSouth;
         private System.Windows.Forms.Button btnEast;
         private System.Windows.Forms.Button btnWest;
-        private System.Windows.Forms.Button btnNorth;
         private System.Windows.Forms.Label lblEnemies;
         private System.Windows.Forms.Button btnAttack;
         private System.Windows.Forms.ComboBox cboWeapons;
@@ -533,6 +534,7 @@
         public System.Windows.Forms.ComboBox cboEnemies;
         public System.Windows.Forms.GroupBox grpEnvironmentItems;
         public System.Windows.Forms.Button btnEnemyView;
+        public System.Windows.Forms.Button btnNorth;
     }
 }
 
