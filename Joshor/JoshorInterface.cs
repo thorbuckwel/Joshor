@@ -37,7 +37,7 @@ namespace Joshor
             lblDisplayHP.Text = _player.CurrentHitPoints.ToString();
 
             ListBuilder.Build();                // On load we need to call the ListBuilder to build all out List
-
+            
         }
 
         public void JoshorInterface_Load(object sender, EventArgs e)
@@ -83,46 +83,48 @@ namespace Joshor
         private void btnSouth_Click(object sender, EventArgs e)
         {
             _player.MoveSouth();
+            rtbLocation.Text = "";
             rtbLocation.Text += _player.CurrentLocation.roomName + Environment.NewLine;
             rtbLocation.Text += _player.CurrentLocation.roomDescript + Environment.NewLine;
-            
+            Exits(_player);
         }
 
         public void Exits(Player location)
         {
             if (_player.CurrentLocation.LocationToNorth != true)
             {
-                if(_player.CurrentLocation.LocationToEast != true)
-                {
-                    if(_player.CurrentLocation.LocationToSouth != true)
-                    {
-                        if(_player.CurrentLocation.LocationWest != true)
-                        {
-                            btnWest.Visible = false;
-                        }
-                        else
-                        {
-                            btnWest.Visible = true;
-                        }
-
-                        btnSouth.Visible = false;
-                    }
-                    else
-                    {
-                        btnSouth.Visible = true;
-                    }
-                    btnEast.Visible = false;
-                }
-                else
-                {
-                    btnEast.Visible = true;
-                }
                 btnNorth.Visible = false;
             }
             else
             {
                 btnNorth.Visible = true;
             }
+            if (_player.CurrentLocation.LocationToEast != true)
+            {
+                btnEast.Visible = false;
+            }
+            else
+            {
+                btnEast.Visible = true;
+            }
+            if (_player.CurrentLocation.LocationToSouth != true)
+            {
+                btnSouth.Visible = false;
+            }
+            else
+            {
+                btnSouth.Visible = true;
+            }
+            if (_player.CurrentLocation.LocationToWest != true)
+            {
+                btnWest.Visible = false;
+            }
+            else
+            {
+                btnWest.Visible = true;
+            }
+
+
         }
     }
 }

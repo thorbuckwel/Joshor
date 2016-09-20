@@ -339,6 +339,7 @@
             this.btnSouth.TabIndex = 3;
             this.btnSouth.Text = "South";
             this.btnSouth.UseVisualStyleBackColor = true;
+            this.btnSouth.Visible = false;
             this.btnSouth.Click += new System.EventHandler(this.btnSouth_Click);
             // 
             // btnEast
@@ -349,6 +350,7 @@
             this.btnEast.TabIndex = 2;
             this.btnEast.Text = "East";
             this.btnEast.UseVisualStyleBackColor = true;
+            this.btnEast.Visible = false;
             // 
             // btnWest
             // 
@@ -358,6 +360,7 @@
             this.btnWest.TabIndex = 1;
             this.btnWest.Text = "West";
             this.btnWest.UseVisualStyleBackColor = true;
+            this.btnWest.Visible = false;
             // 
             // btnNorth
             // 

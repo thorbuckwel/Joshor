@@ -14,7 +14,7 @@ namespace Engine
         public bool LocationToNorth { get; set; }                   // To hold the Room's exit1 string
         public bool LocationToEast { get; set; }                   // To hold the Room's exit2 string
         public bool LocationToSouth { get; set; }                   // To hold the Room's exit3 string
-        public bool LocationWest { get; set; }                   // To hold the Room's exit4 string
+        public bool LocationToWest { get; set; }                   // To hold the Room's exit4 string
 
         public List<Monster> inhabitants;
         public List<Item> roomItems;
@@ -34,7 +34,7 @@ namespace Engine
             this.LocationToNorth = exit1;
             this.LocationToEast = exit2;
             this.LocationToSouth = exit3;
-            this.LocationWest = exit4;
+            this.LocationToWest = exit4;
         }
 
        
