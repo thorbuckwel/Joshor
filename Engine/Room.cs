@@ -16,6 +16,12 @@ namespace Engine
         public bool LocationToSouth { get; set; }                   // To hold the Room's exit3 string
         public bool LocationWest { get; set; }                   // To hold the Room's exit4 string
 
+        public List<Monster> inhabitants;
+        public List<Item> roomItems;
+        int numMonsters;
+        int numItems;
+
+
         /**
          * This is the Room constructor. It creates a Room object with the passed variables then assignd
          * those to the class variables.

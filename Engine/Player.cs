@@ -58,23 +58,26 @@ namespace Engine
          }
         private void MoveHome()
         {
-            MoveTo(World.Location[4]);
+            MoveTo(World.Location[0]);
         }
 
         public void MoveNorth()
         {
+
             if (World.Location != null)
             {
-                MoveTo(World.Location[+1]);
-                
+                int ele = World.Location.IndexOf(_currentLocation);
+                MoveTo(World.Location[(++ele)]);
+                                
             }
         }
 
-        public void MoveSouth(int ele)
+        public void MoveSouth()
         {
             if (World.Location != null)
             {
-                MoveTo(World.Location[ele]);
+                int ele = World.Location.IndexOf(_currentLocation);
+                MoveTo(World.Location[--ele]);
 
             }
         }        

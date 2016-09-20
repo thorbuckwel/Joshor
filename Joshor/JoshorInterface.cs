@@ -35,15 +35,14 @@ namespace Joshor
             lblDisplayExp.Text = _player.xp.ToString();
             lblDisplayAC.Text = _player.ac.ToString();
             lblDisplayHP.Text = _player.CurrentHitPoints.ToString();
-            
 
+            ListBuilder.Build();                // On load we need to call the ListBuilder to build all out List
 
         }
 
         public void JoshorInterface_Load(object sender, EventArgs e)
         {
-
-            ListBuilder.Build();                // On load we need to call the ListBuilder to build all out List
+            
             _player.CurrentLocation = World.Location[0];
 
             /**
@@ -78,11 +77,12 @@ namespace Joshor
             rtbLocation.Text += _player.CurrentLocation.roomName + Environment.NewLine;
             rtbLocation.Text += _player.CurrentLocation.roomDescript + Environment.NewLine;
             Exits(_player);
+            
         }
 
         private void btnSouth_Click(object sender, EventArgs e)
         {
-            _player.MoveSouth(-1);
+            _player.MoveSouth();
             rtbLocation.Text += _player.CurrentLocation.roomName + Environment.NewLine;
             rtbLocation.Text += _player.CurrentLocation.roomDescript + Environment.NewLine;
             
