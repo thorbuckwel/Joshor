@@ -44,6 +44,9 @@ namespace Engine
             }
         }
 
+        /**
+         * This method takes the new location and assigns it to the player's current location.
+         */
         public void ChangeLocation(Room location)
         {
             _currentLocation = location;
@@ -55,12 +58,21 @@ namespace Engine
             ChangeLocation(location);
             
             
-         }
+        }
+
+        /**
+         * If the player were to die or for any reason we need to send the player
+         * back to the starting postion this will be the method called to do so.
+         */
         private void MoveHome()
         {
             MoveTo(World.Location[0]);
         }
 
+        /**
+         * This method will add one to the element in the list to move to the next
+         * room north
+         */
         public void MoveNorth()
         {
 
@@ -72,6 +84,10 @@ namespace Engine
             }
         }
 
+        /**
+         * This method will subtract one to the element in the list to move to the next
+         * room to the south
+         */
         public void MoveSouth()
         {
             if (World.Location != null)

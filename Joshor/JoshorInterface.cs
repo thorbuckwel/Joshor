@@ -63,13 +63,20 @@ namespace Joshor
             rtbLocation.Text += _player.CurrentLocation.roomDescript + Environment.NewLine;            
         }
 
-        
+        /**
+         * This method passes the monster that has been selected in the combo box. Then
+         * calls a new form to display the monster's attributes.
+         */
         public void btnEnemyView_Click(object sender, EventArgs e)
         {
             MobInterface mobInter = new MobInterface(this);
             mobInter.Show();
         }
 
+        /**
+         * When the North button is click We call the MoveNorth method in the player 
+         * object to set the players current location to the next room north 
+         */
         private void btnNorth_Click(object sender, EventArgs e)
         {
             _player.MoveNorth();
@@ -80,6 +87,10 @@ namespace Joshor
             
         }
 
+        /**
+         * When the South button is click We call the MoveNorth method in the player 
+         * object to set the players current location to the next room south 
+         */
         private void btnSouth_Click(object sender, EventArgs e)
         {
             _player.MoveSouth();
@@ -89,6 +100,11 @@ namespace Joshor
             Exits(_player);
         }
 
+        /**
+         *  This method recieves an argument so it can check if the new room has exits.
+         *  if the the exit holds the bool true then it will turn on the button for that
+         *  direction. If not then the button is not enabled.
+         */
         public void Exits(Player location)
         {
             if (_player.CurrentLocation.LocationToNorth != true)
