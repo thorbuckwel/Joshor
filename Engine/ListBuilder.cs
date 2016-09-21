@@ -79,8 +79,9 @@ namespace Engine
                     bool exit2 = bool.Parse(reader.ReadLine());
                     bool exit3 = bool.Parse(reader.ReadLine());
                     bool exit4 = bool.Parse(reader.ReadLine());
+                    int idMonster = int.Parse(reader.ReadLine());
 
-                    World.Location.Add(new Room(id, name, descript, exit1, exit2, exit3, exit4));
+                    World.Location.Add(new Room(id, name, descript, exit1, exit2, exit3, exit4, idMonster));
                 }
             }
         }

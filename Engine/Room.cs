@@ -27,7 +27,7 @@ namespace Engine
          * This is the Room constructor. It creates a Room object with the passed variables then assignd
          * those to the class variables.
          */
-        public Room(int id, String name, String descript, bool exit1, bool exit2, bool exit3, bool exit4, Monster monsterLivingHere = null)
+        public Room(int id, String name, String descript, bool exit1, bool exit2, bool exit3, bool exit4, int idMonster)
         {
             this.ID = id;
             this.roomName = name;
@@ -36,13 +36,10 @@ namespace Engine
             this.LocationToEast = exit2;
             this.LocationToSouth = exit3;
             this.LocationToWest = exit4;
-            this.Monsters = monsterLivingHere;
-        }
-
-        public Monster NewInstanceOfMonsterLivingHere()
-        {
-            return Monsters == null ? null : Monsters.NewInstanceOfMonster();
-        }     
-                          
+            if (idMonster > 0)
+            {
+                this.Monsters = World.Monsters[idMonster];
+            }
+        }                          
     }
 }

@@ -38,3 +38,4 @@ text file.
 //If there is an exit East then true, or else false
 //If there is an exit South then true, or else false
 //If there is an exit West then true, or else false
+//Is there a monster in this room, -1 no, or the list element of the monster.

@@ -5,6 +5,7 @@ true
 false
 false
 false
+-1
 402
 Hall
 A long hall leading into the darkness. 
@@ -12,6 +13,7 @@ true
 false
 true
 false
+3
 403
 Small Room
 Littered with bones this room smells of death.
@@ -19,6 +21,7 @@ true
 false
 true
 false
+2
 404
 A scorched hallway
 There seems to be plenty of burned tiles along this hall, not to mention bones.
@@ -26,6 +29,7 @@ true
 false
 true
 false
+-1
 405
 The Great Room
 A large room that seems to have a....hmmmm.....Think thats a dragon.
@@ -33,3 +37,4 @@ false
 false
 true
 false
+4

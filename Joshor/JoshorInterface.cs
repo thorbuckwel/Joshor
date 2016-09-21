@@ -71,6 +71,15 @@ namespace Joshor
             rtbLocation.Text += _player.CurrentLocation.roomDescript + Environment.NewLine;
             Exits(_player);
             
+            if(_player.CurrentLocation.Monsters != null)
+            {
+                cboEnemies.Text = _player.CurrentLocation.Monsters.name; 
+            }
+            else
+            {
+                cboEnemies.Text = "";
+            }
+                       
         }
 
         /**
@@ -84,6 +93,15 @@ namespace Joshor
             rtbLocation.Text += _player.CurrentLocation.roomName + Environment.NewLine;
             rtbLocation.Text += _player.CurrentLocation.roomDescript + Environment.NewLine;
             Exits(_player);
+
+            if (_player.CurrentLocation.Monsters != null)
+            {
+                cboEnemies.Text = _player.CurrentLocation.Monsters.name;
+            }
+            else
+            {
+                cboEnemies.Text = "";
+            }
         }
 
         /**
@@ -137,6 +155,19 @@ namespace Joshor
             {
                 WeaponInterface weaponInterface = new WeaponInterface(this);
                 weaponInterface.Show();
+            }
+        }
+
+        private void JoshorInterface_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                _player.MoveNorth();
+                rtbLocation.Text = "";
+                rtbLocation.Text += _player.CurrentLocation.roomName + Environment.NewLine;
+                rtbLocation.Text += _player.CurrentLocation.roomDescript + Environment.NewLine;
+                Exits(_player);
+
             }
         }
     }

@@ -59,6 +59,7 @@
             this.btnWest = new System.Windows.Forms.Button();
             this.btnNorth = new System.Windows.Forms.Button();
             this.grpEnvironmentItems = new System.Windows.Forms.GroupBox();
+            this.btnInspectWeapon = new System.Windows.Forms.Button();
             this.btnAttack = new System.Windows.Forms.Button();
             this.cboWeapons = new System.Windows.Forms.ComboBox();
             this.lblWeapon = new System.Windows.Forms.Label();
@@ -68,7 +69,6 @@
             this.btnEnemyView = new System.Windows.Forms.Button();
             this.cboEnemies = new System.Windows.Forms.ComboBox();
             this.lblEnemies = new System.Windows.Forms.Label();
-            this.btnInspectWeapon = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.grbInventory.SuspendLayout();
             this.grbStats.SuspendLayout();
@@ -392,6 +392,16 @@
             this.grpEnvironmentItems.TabStop = false;
             this.grpEnvironmentItems.Text = "Environment Items";
             // 
+            // btnInspectWeapon
+            // 
+            this.btnInspectWeapon.Location = new System.Drawing.Point(143, 165);
+            this.btnInspectWeapon.Name = "btnInspectWeapon";
+            this.btnInspectWeapon.Size = new System.Drawing.Size(75, 23);
+            this.btnInspectWeapon.TabIndex = 9;
+            this.btnInspectWeapon.Text = "Inspect";
+            this.btnInspectWeapon.UseVisualStyleBackColor = true;
+            this.btnInspectWeapon.Click += new System.EventHandler(this.btnInspectWeapon_Click);
+            // 
             // btnAttack
             // 
             this.btnAttack.Location = new System.Drawing.Point(42, 165);
@@ -471,16 +481,6 @@
             this.lblEnemies.TabIndex = 0;
             this.lblEnemies.Text = "Enemies";
             // 
-            // btnInspectWeapon
-            // 
-            this.btnInspectWeapon.Location = new System.Drawing.Point(143, 165);
-            this.btnInspectWeapon.Name = "btnInspectWeapon";
-            this.btnInspectWeapon.Size = new System.Drawing.Size(75, 23);
-            this.btnInspectWeapon.TabIndex = 9;
-            this.btnInspectWeapon.Text = "Inspect";
-            this.btnInspectWeapon.UseVisualStyleBackColor = true;
-            this.btnInspectWeapon.Click += new System.EventHandler(this.btnInspectWeapon_Click);
-            // 
             // JoshorInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -492,9 +492,11 @@
             this.Controls.Add(this.grbRoom);
             this.Controls.Add(this.grbStats);
             this.Controls.Add(this.grbInventory);
+            this.KeyPreview = true;
             this.Name = "JoshorInterface";
             this.Text = "Joshor";
             this.Load += new System.EventHandler(this.JoshorInterface_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.JoshorInterface_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.grbInventory.ResumeLayout(false);
             this.grbStats.ResumeLayout(false);
