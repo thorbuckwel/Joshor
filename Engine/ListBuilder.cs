@@ -82,9 +82,7 @@ namespace Engine
 
                     World.Location.Add(new Room(id, name, descript, exit1, exit2, exit3, exit4));
                 }
-
             }
         }
-    }
-    
+    }    
 }

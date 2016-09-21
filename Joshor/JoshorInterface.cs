@@ -21,7 +21,7 @@ namespace Joshor
         public JoshorInterface()
         {
             InitializeComponent();
-
+            
             _player = new Player("Killakia", "Warrior", "Human", 100, 10, 10);  // Creating a player object 
 
             /**
@@ -43,21 +43,7 @@ namespace Joshor
         public void JoshorInterface_Load(object sender, EventArgs e)
         {
             
-            _player.CurrentLocation = World.Location[0];
-
-            /**
-             * The following is just test code to see if our other code is working
-             */
-            foreach (Monster mob in World.Monsters)
-            {
-                cboEnemies.Items.Add(mob.name);
-            }
-
-            foreach(Weapon weapon in World.Weapons)
-            {
-                cboWeapons.Items.Add(weapon.name);
-
-            }
+            _player.CurrentLocation = World.Location[0];            
 
             rtbLocation.Text += _player.CurrentLocation.roomName + Environment.NewLine;
             rtbLocation.Text += _player.CurrentLocation.roomDescript + Environment.NewLine;            
@@ -139,8 +125,6 @@ namespace Joshor
             {
                 btnWest.Visible = true;
             }
-
-
         }
     }
 }

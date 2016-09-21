@@ -13,6 +13,8 @@ namespace Engine
         public static readonly List<Monster> Monsters = new List<Monster>();    // To hold objects of Mobs
         public static readonly List<Weapon> Weapons = new List<Weapon>();       // To hold objects of weapons
         public static readonly List<Item> Item = new List<Item>();              // To hold objects of Items
-        public static readonly List<Room> Location = new List<Room>();          // To hold objects of rooms
-     }
+        public static readonly List<Room> Location = new List<Room>();          // To hold objects of rooms 
+        
+                   
+    }
 }

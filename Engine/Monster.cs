@@ -31,5 +31,12 @@ namespace Engine
             this.baseAttack = ba;
             this.image = image;
         }
+
+        internal Monster NewInstanceOfMonster()
+        {
+            Monster newMonster = new Monster(ID, name, exp, gold, ac, damage, baseAttack, CurrentHitPoints, MaximumHitPoints, image);
+
+            return newMonster;
+        }
     }
 }

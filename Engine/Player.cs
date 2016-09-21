@@ -16,6 +16,7 @@ namespace Engine
         public int lvl { get; set; }                        // To hold the player's level
         public int ac { get; set; }                         // To hold the player's armor
         private Room _currentLocation;                      // Not used as of yet!
+        private Player _player;
 
         /**
         * This is the constructor for the Player class. It accepts values to be assigned to the class variables
@@ -55,9 +56,7 @@ namespace Engine
         public void MoveTo(Room location)
         {
             // The player can enter this location
-            ChangeLocation(location);
-            
-            
+            ChangeLocation(location);         
         }
 
         /**
@@ -75,13 +74,11 @@ namespace Engine
          */
         public void MoveNorth()
         {
-
             if (World.Location != null)
             {
                 int ele = World.Location.IndexOf(_currentLocation);
-                MoveTo(World.Location[(++ele)]);
-                                
-            }
+                MoveTo(World.Location[(++ele)]);                                
+            }            
         }
 
         /**
@@ -94,8 +91,7 @@ namespace Engine
             {
                 int ele = World.Location.IndexOf(_currentLocation);
                 MoveTo(World.Location[--ele]);
-
             }
-        }        
+        }                
     }
 }

@@ -1,0 +1,13 @@
+﻿			 /**
+             * The following is just test code to see if our other code is working
+             */
+            foreach (Monster mob in World.Monsters)
+            {
+                cboEnemies.Items.Add(mob.name);
+            }
+
+            foreach(Weapon weapon in World.Weapons)
+            {
+                cboWeapons.Items.Add(weapon.name);
+
+            }

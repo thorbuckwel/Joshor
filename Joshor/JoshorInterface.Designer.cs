@@ -267,7 +267,7 @@
             this.grbRoom.Controls.Add(this.rtbLocation);
             this.grbRoom.Location = new System.Drawing.Point(590, 12);
             this.grbRoom.Name = "grbRoom";
-            this.grbRoom.Size = new System.Drawing.Size(404, 275);
+            this.grbRoom.Size = new System.Drawing.Size(404, 186);
             this.grbRoom.TabIndex = 3;
             this.grbRoom.TabStop = false;
             this.grbRoom.Text = "Room";
@@ -276,16 +276,16 @@
             // 
             this.rtbLocation.Location = new System.Drawing.Point(6, 19);
             this.rtbLocation.Name = "rtbLocation";
-            this.rtbLocation.Size = new System.Drawing.Size(392, 250);
+            this.rtbLocation.Size = new System.Drawing.Size(392, 154);
             this.rtbLocation.TabIndex = 0;
             this.rtbLocation.Text = "";
             // 
             // grbEnvironment
             // 
             this.grbEnvironment.Controls.Add(this.rtbEnv);
-            this.grbEnvironment.Location = new System.Drawing.Point(590, 293);
+            this.grbEnvironment.Location = new System.Drawing.Point(590, 204);
             this.grbEnvironment.Name = "grbEnvironment";
-            this.grbEnvironment.Size = new System.Drawing.Size(404, 345);
+            this.grbEnvironment.Size = new System.Drawing.Size(404, 434);
             this.grbEnvironment.TabIndex = 4;
             this.grbEnvironment.TabStop = false;
             this.grbEnvironment.Text = "Environment";
