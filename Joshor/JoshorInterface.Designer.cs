@@ -410,6 +410,7 @@
             this.btnAttack.TabIndex = 8;
             this.btnAttack.Text = "Attack With";
             this.btnAttack.UseVisualStyleBackColor = true;
+            this.btnAttack.Click += new System.EventHandler(this.btnAttack_Click);
             // 
             // cboWeapons
             // 
@@ -526,7 +527,6 @@
         private System.Windows.Forms.Label llblRace;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.RichTextBox rtbLocation;
-        private System.Windows.Forms.RichTextBox rtbEnv;
         private System.Windows.Forms.Label lblDisplayPlayerClass;
         private System.Windows.Forms.Label lblDisplayPlayerRace;
         private System.Windows.Forms.Label lblDisplayPlayerName;
@@ -534,7 +534,6 @@
         private System.Windows.Forms.Label lblDisplayLvl;
         private System.Windows.Forms.Label lblDisplayExp;
         private System.Windows.Forms.Label lblDisplayGold;
-        private System.Windows.Forms.Label lblDisplayHP;
         private System.Windows.Forms.GroupBox grpRoomControls;
         private System.Windows.Forms.Button btnScan;
         private System.Windows.Forms.Button btnLook;
@@ -553,6 +552,8 @@
         public System.Windows.Forms.Button btnNorth;
         private System.Windows.Forms.Button btnInspectWeapon;
         public System.Windows.Forms.ComboBox cboWeapons;
+        public System.Windows.Forms.RichTextBox rtbEnv;
+        public System.Windows.Forms.Label lblDisplayHP;
     }
 }
 

@@ -11,12 +11,19 @@ namespace Engine
 
         public static int MaximumHitPoints { get; set; }                    // This give use access to the maximum HP the living creature will have
 
-        public bool IsDead { get { return CurrentHitPoints <= 0; } }        // We need to know if they are dead right?
-                
-        public LivingCreature(int currentHitPoints, int maximumHitPoints)   // This is a const to create a livinig creature. This is the base.
+        private bool isDead;        // We need to know if they are dead right?
+
+        public bool IsDead
+        {
+            get { return isDead; }
+            set { isDead = value; }
+        }
+
+        public LivingCreature(int currentHitPoints, int maximumHitPoints, bool isDead)   // This is a const to create a livinig creature. This is the base.
         {
             CurrentHitPoints = currentHitPoints;
             MaximumHitPoints = maximumHitPoints;
+            IsDead = isDead;
         }
 
         /*

@@ -32,9 +32,10 @@ namespace Engine
                     int damage = int.Parse(reader.ReadLine());
                     int baseAttack = int.Parse(reader.ReadLine());
                     int currentHitpoints = int.Parse(reader.ReadLine());
-                    int maxHitpoints = int.Parse(reader.ReadLine());
+                    int maxHitpoints = int.Parse(reader.ReadLine());                    
                     String image = reader.ReadLine();
-                    World.Monsters.Add(new Monster(id, name, xp, gold, armor, damage, baseAttack, currentHitpoints, maxHitpoints, image));
+                    bool isDead = bool.Parse(reader.ReadLine());
+                    World.Monsters.Add(new Monster(id, name, xp, gold, armor, damage, baseAttack, currentHitpoints, maxHitpoints, image, isDead));
                 }
             }
 

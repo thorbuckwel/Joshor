@@ -19,8 +19,8 @@ namespace Engine
          * plus passing the current and max hit points to the LivingCreature class that the Monster class is 
          * derived from so that the monster can inherate these values.
          */
-        public Monster(int id, string name, int xp, int gold, int armor, int dam, int ba, int currentHitpoints, int maximumHitpoints, string image) 
-            : base(currentHitpoints, maximumHitpoints)
+        public Monster(int id, string name, int xp, int gold, int armor, int dam, int ba, int currentHitpoints, int maximumHitpoints, string image, bool isDead) 
+            : base(currentHitpoints, maximumHitpoints, isDead)
         { 
             this.ID = id;
             this.name = name;
@@ -30,13 +30,6 @@ namespace Engine
             this.damage = dam;
             this.baseAttack = ba;
             this.image = image;
-        }
-
-        internal Monster NewInstanceOfMonster()
-        {
-            Monster newMonster = new Monster(ID, name, exp, gold, ac, damage, baseAttack, CurrentHitPoints, MaximumHitPoints, image);
-
-            return newMonster;
-        }
+        }        
     }
 }

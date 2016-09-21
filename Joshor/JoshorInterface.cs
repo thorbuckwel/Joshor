@@ -16,13 +16,14 @@ namespace Joshor
 {
     public partial class JoshorInterface : Form
     {
-        private Player _player;
+        private Player _player;        
 
         public JoshorInterface()
         {
             InitializeComponent();
-            
-            _player = new Player("Killakia", "Warrior", "Human", 100, 10, 10);  // Creating a player object 
+
+            ListBuilder.Build();                // On load we need to call the ListBuilder to build all out List
+            _player = new Player("Killakia", "Warrior", "Human", 100, 10, 10, World.Weapons[2], false);  // Creating a player object 
 
             /**
              * Displaying the players stats int the stat group
@@ -35,9 +36,7 @@ namespace Joshor
             lblDisplayExp.Text = _player.xp.ToString();
             lblDisplayAC.Text = _player.ac.ToString();
             lblDisplayHP.Text = _player.CurrentHitPoints.ToString();
-
-            ListBuilder.Build();                // On load we need to call the ListBuilder to build all out List
-            
+            cboWeapons.Text = _player.equipt.name.ToString();            
         }
 
         public void JoshorInterface_Load(object sender, EventArgs e)
@@ -170,5 +169,17 @@ namespace Joshor
 
             }
         }
+
+        private void btnAttack_Click(object sender, EventArgs e)
+        {
+            Monster enemy = World.Monsters.First(item => item.name == cboEnemies.Text);
+            Weapon equipt = World.Weapons.First(item => item.name == cboWeapons.Text);
+            Combat fight = new Combat();
+            fight.Fight(enemy, _player, equipt, this);
+            if (enemy.IsDead == true)
+            {
+                cboEnemies.Text = "";
+            }
+        }        
     }
 }
