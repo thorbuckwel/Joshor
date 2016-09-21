@@ -68,6 +68,7 @@
             this.btnEnemyView = new System.Windows.Forms.Button();
             this.cboEnemies = new System.Windows.Forms.ComboBox();
             this.lblEnemies = new System.Windows.Forms.Label();
+            this.btnInspectWeapon = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.grbInventory.SuspendLayout();
             this.grbStats.SuspendLayout();
@@ -374,6 +375,7 @@
             // 
             // grpEnvironmentItems
             // 
+            this.grpEnvironmentItems.Controls.Add(this.btnInspectWeapon);
             this.grpEnvironmentItems.Controls.Add(this.btnAttack);
             this.grpEnvironmentItems.Controls.Add(this.cboWeapons);
             this.grpEnvironmentItems.Controls.Add(this.lblWeapon);
@@ -392,7 +394,7 @@
             // 
             // btnAttack
             // 
-            this.btnAttack.Location = new System.Drawing.Point(93, 165);
+            this.btnAttack.Location = new System.Drawing.Point(42, 165);
             this.btnAttack.Name = "btnAttack";
             this.btnAttack.Size = new System.Drawing.Size(75, 23);
             this.btnAttack.TabIndex = 8;
@@ -469,6 +471,16 @@
             this.lblEnemies.TabIndex = 0;
             this.lblEnemies.Text = "Enemies";
             // 
+            // btnInspectWeapon
+            // 
+            this.btnInspectWeapon.Location = new System.Drawing.Point(143, 165);
+            this.btnInspectWeapon.Name = "btnInspectWeapon";
+            this.btnInspectWeapon.Size = new System.Drawing.Size(75, 23);
+            this.btnInspectWeapon.TabIndex = 9;
+            this.btnInspectWeapon.Text = "Inspect";
+            this.btnInspectWeapon.UseVisualStyleBackColor = true;
+            this.btnInspectWeapon.Click += new System.EventHandler(this.btnInspectWeapon_Click);
+            // 
             // JoshorInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -529,7 +541,6 @@
         private System.Windows.Forms.Button btnWest;
         private System.Windows.Forms.Label lblEnemies;
         private System.Windows.Forms.Button btnAttack;
-        private System.Windows.Forms.ComboBox cboWeapons;
         private System.Windows.Forms.Label lblWeapon;
         private System.Windows.Forms.Button btnGet;
         private System.Windows.Forms.ComboBox cboItems;
@@ -538,6 +549,8 @@
         public System.Windows.Forms.GroupBox grpEnvironmentItems;
         public System.Windows.Forms.Button btnEnemyView;
         public System.Windows.Forms.Button btnNorth;
+        private System.Windows.Forms.Button btnInspectWeapon;
+        public System.Windows.Forms.ComboBox cboWeapons;
     }
 }
 

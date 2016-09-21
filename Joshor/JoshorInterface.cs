@@ -142,5 +142,18 @@ namespace Joshor
 
 
         }
+
+        private void btnInspectWeapon_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms.OfType<WeaponInterface>().Count() == 1)
+            {
+
+            }
+            else
+            {
+                WeaponInterface weaponInterface = new WeaponInterface(this);
+                weaponInterface.Show();
+            }
+        }
     }
 }
