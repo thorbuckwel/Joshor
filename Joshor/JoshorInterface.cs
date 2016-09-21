@@ -72,7 +72,14 @@ namespace Joshor
             
             if(_player.CurrentLocation.Monsters != null)
             {
-                cboEnemies.Text = _player.CurrentLocation.Monsters.name; 
+                if (_player.CurrentLocation.Monsters.ID != 5)
+                {
+                    cboEnemies.Text = World.Monsters[RandomNumberGenerator.NumberBetween(0, 3)].name;
+                }
+                else
+                {
+                    cboEnemies.Text = _player.CurrentLocation.Monsters.name;
+                }
             }
             else
             {
@@ -95,7 +102,14 @@ namespace Joshor
 
             if (_player.CurrentLocation.Monsters != null)
             {
-                cboEnemies.Text = _player.CurrentLocation.Monsters.name;
+                if (_player.CurrentLocation.Monsters.ID != 5)
+                {
+                    cboEnemies.Text = World.Monsters[RandomNumberGenerator.NumberBetween(0, 3)].name;
+                }
+                else
+                {
+                    cboEnemies.Text = _player.CurrentLocation.Monsters.name;
+                }               
             }
             else
             {
