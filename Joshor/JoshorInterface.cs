@@ -227,14 +227,13 @@ namespace Joshor
             //Add a null check for stupidty reasons
                        
             Weapon equipt = World.Weapons.First(item => item.name == cboWeapons.Text);
-            Combat fight = new Combat();
-            fight.Fight(inhab, _player, equipt, this);
-            if (inhab.IsDead == true)
+            rtbEnv.Text = Combat.Fight(inhab, _player);
+            if (inhab.HasTakenFatalDamage)
             {
                 cboEnemies.Text = "";
             }
 
-            if (_player.CurrentHitPoints <= 0)
+            if (_player.HasTakenFatalDamage)
             {
                 DeathScreen deathScreen = new DeathScreen();
                 deathScreen.Show();

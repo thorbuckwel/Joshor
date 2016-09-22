@@ -8,44 +8,20 @@ namespace Engine
 {
     public class Dice
     { 
-        private int _diceSize;      // To hold the number of size of the die
-        private int _diceResult;    // To hold the result of the Roll method
+        public int NumberOfSides { get; private set; }
 
-        // Create the Class Properties
-        public int DiceSize
+        public Dice(int sides)
         {
-            get { return _diceSize; }
-            set { _diceSize = value; }
+            NumberOfSides = sides;
         }
 
-        public int DiceResult
+        public int Roll()
         {
-            get
-            {
-                Roll();
-                return _diceResult;
-            }
-        }
-
-        // Create Constructor
-        public Dice()
-        {
-            DiceSize = 6;
-        }
-
-        public Dice(int Size)
-        {
-            DiceSize = Size;
-        }
-
-
-        // Create random object
-        Random rand = new Random();
-
-        // Method to determine a random number for the die.
-        private void Roll()
-        {
-            _diceResult = rand.Next(_diceSize) + 1;
-        }
+            Random roll = new Random();
+            //Random.Next(x, y): 
+            //X is the inclusive lower bound
+            //Y is exclusive - so add 1 to be able to roll this number
+            return roll.Next(1, (NumberOfSides + 1));
+        } 
     }
 }

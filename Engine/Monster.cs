@@ -17,6 +17,11 @@ namespace Engine
         public int MaxHitPoints { get; set; }
         public bool IsDead { get; set; }
 
+        public bool HasTakenFatalDamage
+        {
+            get { return (CurrentHitPoints < 0); }
+        }
+
         /**
          * This is the constructor for the Monster class. It accepts values to be assigned to the class variables
          * plus passing the current and max hit points to the LivingCreature class that the Monster class is 

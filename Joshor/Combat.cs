@@ -8,107 +8,98 @@ using Engine;
 namespace Joshor
 {
     class Combat
-    {
-        private int _round;         // To keep track of the rounds
-        private int _attackResult;  // To hold the value of the attack roll.
-        private int _damageResult; // To hold the value of the damage roll.
+    {      
 
-        // Create the Combat Properties
-        public int Round
+        public static string Fight(Monster theMonster, Player thePlayer)
         {
-            get { return _round; }
-            set { _round = value; }
-        }
+            string combatResults = "";
+            int roundCounter = 1; // To keep track of the rounds
 
-        public int AttackResults
-        {
-            get { return _attackResult; }
-        }
-
-        public int DamageResults
-        {
-            get { return _damageResult; }
-        }
-
-        // Create a no arg constructor
-        public Combat()
-        {
-            _round = 1;
-        }
-
-        public void Fight(Monster enemy, Player player, Weapon equipt, JoshorInterface myInterface)
-        {
-
-            // Create the Dice objects
-            Dice attack = new Dice(20);
-            Dice damage = new Dice(6);
-
-            while (enemy.IsDead != true && player.IsDead != true)
+            while (theMonster.IsDead != true && thePlayer.HasTakenFatalDamage != true)
             {
-                _attackResult = attack.DiceResult;
+                combatResults += PlayerTurn(thePlayer, theMonster);
 
-                myInterface.rtbEnv.Text += "Your attack with your " + myInterface.cboWeapons.Text + ": " + AttackResults +
-                                            Environment.NewLine;
-
-                if (AttackResults > enemy.AC)
+                if (theMonster.HasTakenFatalDamage)
                 {
-                    myInterface.rtbEnv.Text += "You hit the creature" + Environment.NewLine;
-                  
-
-                    _damageResult = damage.DiceResult;
-                    myInterface.rtbEnv.Text += "You did " + DamageResults + " points of damage." + Environment.NewLine;
-                                        
-                    enemy.CurrentHitPoints -= DamageResults;
-                    myInterface.rtbEnv.Text += enemy.Name + " has " + enemy.CurrentHitPoints + " hitpoints left" 
-                                                + Environment.NewLine;
-                    
-
-                    if (enemy.CurrentHitPoints <= 0)
-                    {
-                        myInterface.rtbEnv.Text += "The creature is dead!" + Environment.NewLine;
-                        enemy.IsDead = true;
-                        player.xp += enemy.Exp;
-                        player.gold += enemy.Gold;
-                        break;
-                    }
-                }
-                else
-                {
-                    myInterface.rtbEnv.Text += "You Missed your attack!" + Environment.NewLine;
+                    combatResults += "The creature is dead!" + Environment.NewLine;
+                    thePlayer.xp += theMonster.Exp;
+                    thePlayer.gold += theMonster.Gold;
+                    break;
                 }
 
-                _attackResult = attack.DiceResult;
-                myInterface.rtbEnv.Text += "Creature attacks you: " + AttackResults + Environment.NewLine;
-                
-                if (AttackResults > player.ac)
-                {
-                    myInterface.rtbEnv.Text += "The creature hits you!" + Environment.NewLine;
-                    
-                    _damageResult = damage.DiceResult;
-                    myInterface.rtbEnv.Text += "The creature did " + DamageResults + " points of damage."
-                                                + Environment.NewLine;
-                    
-                    player.CurrentHitPoints -= DamageResults;
-                    myInterface.rtbEnv.Text += "You have " + player.CurrentHitPoints + " hitpoints left." + Environment.NewLine;
-                    myInterface.lblDisplayHP.Text = player.CurrentHitPoints.ToString();
-                    
-                    if (player.CurrentHitPoints <= 0)
-                    {
-                        myInterface.rtbEnv.Text += "You are dead!" + Environment.NewLine;
-                        player.IsDead = true;
-                        break;
-                    }
-                }
-                else
-                {
-                    myInterface.rtbEnv.Text += "The creature missed you!" + Environment.NewLine;
-                }
+                combatResults += MonsterTurn(thePlayer, theMonster);
+                //activeUI.lblDisplayHP.Text = thePlayer.CurrentHitPoints.ToString();
+                //As long as combat is done in one continous loop, the player will never
+                //see their HP change as each round progresses.
 
-                Round++;
-
+                if (thePlayer.HasTakenFatalDamage)
+                {
+                    combatResults += "You are dead!" + Environment.NewLine;
+                    break;
+                }
+                combatResults += Environment.NewLine;
+                roundCounter++; //Is this used?
             }
 
-            myInterface.rtbEnv.Text += "The fight took " + Round + " rounds to finish." + Environment.NewLine;            
+            combatResults += "The fight took " + roundCounter + " rounds to finish." + Environment.NewLine;
+            return combatResults;    
+        }
+
+        private static string PlayerTurn(Player thePlayer, Monster theMonster)
+        {
+            
+            Dice chanceToAttack = new Dice(20);
+            Dice damageDice = new Dice(6);
+            int rollToBeatAC = chanceToAttack.Roll();
+
+            //_attackResult = attack.DiceResult;
+            string attackLog = "You attack with your " + thePlayer.equipt.name + Environment.NewLine;
+
+            if (rollToBeatAC > theMonster.AC) //Tie goes to the defender?
+            {
+                //Do all the math and actual combat stuff
+                int damageDealt = damageDice.Roll();
+                theMonster.CurrentHitPoints -= damageDealt;
+
+                /* Since its a hit, you know what the flavor text is going to be
+                 * Separating it from the actual logic helps keep readability
+ 
+                 * Example: you have a typo with what is being printed out? You know exactly where to look. */
+                attackLog += "You hit the creature with a roll of: " + rollToBeatAC + Environment.NewLine;
+                attackLog += "You did " + damageDealt + " points of damage." + Environment.NewLine;
+                attackLog += theMonster.Name + " has " + theMonster.CurrentHitPoints + " hitpoints left" + Environment.NewLine;
+            }
+            else
+            {
+                attackLog += "You Missed your attack!" + Environment.NewLine;
+            }
+
+            return attackLog;
+        }
+
+        private static string MonsterTurn(Player thePlayer, Monster theMonster)
+        {
+
+            int rollToBeatAC = new Dice(20).Roll();
+
+            string attackLog = theMonster.Name + "attemps to attack you." + Environment.NewLine;
+
+            if (rollToBeatAC > thePlayer.ac)
+            {
+                int damageDealt = new Dice(6).Roll();
+                thePlayer.CurrentHitPoints -= damageDealt;
+
+                attackLog += "The creature hits you! (Your AC of: " + thePlayer.ac + " vs " + rollToBeatAC + ")" + Environment.NewLine;
+                attackLog += "The creature did " + damageDealt + " points of damage." + Environment.NewLine;
+                attackLog += "You have " + thePlayer.CurrentHitPoints + " hitpoints left." + Environment.NewLine;
+
+            }
+            else
+            {
+                attackLog += "The creature missed you!" + Environment.NewLine;
+            }
+
+            return attackLog;
         }
     }
 }
