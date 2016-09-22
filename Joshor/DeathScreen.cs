@@ -22,7 +22,9 @@ namespace Joshor
         private void btnRestart_Click(object sender, EventArgs e)
         {
             Program.Restart();
+            this.Dispose(false);
             this.Close();
+
                
         }
 

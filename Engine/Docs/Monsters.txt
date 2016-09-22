@@ -10,7 +10,7 @@ Goblin
 Goblin.PNG
 false
 2
-Hobgolin
+Hobgoblin
 200
 16
 17

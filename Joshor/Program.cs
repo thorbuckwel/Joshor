@@ -8,6 +8,7 @@ namespace Joshor
 {
     static class Program
     {
+        public static bool KeepRunning { get; set; }
         private static JoshorInterface Game;
         /// <summary>
         /// The main entry point for the application.
@@ -17,8 +18,14 @@ namespace Joshor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Game = new JoshorInterface();
-            Application.Run(Game);
+            KeepRunning = true;
+            while(KeepRunning)
+            {
+                KeepRunning = false;
+                Game = new JoshorInterface();
+                Application.Run(Game);
+            }
+
         }
 
         public static void Restart()

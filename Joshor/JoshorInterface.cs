@@ -91,6 +91,7 @@ namespace Joshor
                 }
                 else
                 {
+                    inhab = new Monster(World.Monsters[4]);
                     cboEnemies.Text = _player.CurrentLocation.Monsters.Name;
                     rtbEnv.Text = " A large " + _player.CurrentLocation.Monsters.Name + " fills the room with its massive body." +
                                     Environment.NewLine;
@@ -247,5 +248,6 @@ namespace Joshor
             lblDisplayLvl.Text = _player.lvl.ToString();
             lblDisplayGold.Text = _player.gold.ToString();
         }
+        
     }
 }

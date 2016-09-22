@@ -50,10 +50,11 @@ namespace Joshor
                 myInterface.rtbEnv.Text += "Your attack with your " + myInterface.cboWeapons.Text + ": " + AttackResults +
                                             Environment.NewLine;
 
-                if (AttackResults > enemy.AC)
+                if (AttackResults >= enemy.AC)
                 {
-                    myInterface.rtbEnv.Text += "You hit the creature" + Environment.NewLine;
-                  
+                    myInterface.rtbEnv.Text += "You hit the " + enemy.Name + Environment.NewLine;
+
+
 
                     _damageResult = damage.DiceResult;
                     myInterface.rtbEnv.Text += "You did " + DamageResults + " points of damage." + Environment.NewLine;
@@ -65,7 +66,7 @@ namespace Joshor
 
                     if (enemy.CurrentHitPoints <= 0)
                     {
-                        myInterface.rtbEnv.Text += "The creature is dead!" + Environment.NewLine;
+                        myInterface.rtbEnv.Text += "The " + enemy.Name + " is dead!" + Environment.NewLine;
                         enemy.IsDead = true;
                         player.xp += enemy.Exp;
                         player.gold += enemy.Gold;
@@ -78,14 +79,14 @@ namespace Joshor
                 }
 
                 _attackResult = attack.DiceResult;
-                myInterface.rtbEnv.Text += "Creature attacks you: " + AttackResults + Environment.NewLine;
+                myInterface.rtbEnv.Text += enemy.Name + " attacks you: " + AttackResults + Environment.NewLine;
                 
                 if (AttackResults > player.ac)
                 {
-                    myInterface.rtbEnv.Text += "The creature hits you!" + Environment.NewLine;
+                    myInterface.rtbEnv.Text += "The " + enemy.Name + " hits you!" + Environment.NewLine;
                     
                     _damageResult = damage.DiceResult;
-                    myInterface.rtbEnv.Text += "The creature did " + DamageResults + " points of damage."
+                    myInterface.rtbEnv.Text += "The " + enemy.Name + " did " + DamageResults + " points of damage."
                                                 + Environment.NewLine;
                     
                     player.CurrentHitPoints -= DamageResults;
@@ -101,7 +102,7 @@ namespace Joshor
                 }
                 else
                 {
-                    myInterface.rtbEnv.Text += "The creature missed you!" + Environment.NewLine;
+                    myInterface.rtbEnv.Text += "The " + enemy.Name + " missed you!" + Environment.NewLine;
                 }
 
                 Round++;
