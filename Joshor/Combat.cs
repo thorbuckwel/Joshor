@@ -43,14 +43,14 @@ namespace Joshor
             Dice attack = new Dice(20);
             Dice damage = new Dice(6);
 
-            while (enemy.isDead != true && player.IsDead != true)
+            while (enemy.IsDead != true && player.IsDead != true)
             {
                 _attackResult = attack.DiceResult;
 
                 myInterface.rtbEnv.Text += "Your attack with your " + myInterface.cboWeapons.Text + ": " + AttackResults +
                                             Environment.NewLine;
 
-                if (AttackResults > enemy.ac)
+                if (AttackResults > enemy.AC)
                 {
                     myInterface.rtbEnv.Text += "You hit the creature" + Environment.NewLine;
                   
@@ -58,15 +58,15 @@ namespace Joshor
                     _damageResult = damage.DiceResult;
                     myInterface.rtbEnv.Text += "You did " + DamageResults + " points of damage." + Environment.NewLine;
                                         
-                    enemy.currentHitPoints -= DamageResults;
-                    myInterface.rtbEnv.Text += enemy.name + " has " + enemy.currentHitPoints + " hitpoints left" 
+                    enemy.CurrentHitPoints -= DamageResults;
+                    myInterface.rtbEnv.Text += enemy.Name + " has " + enemy.CurrentHitPoints + " hitpoints left" 
                                                 + Environment.NewLine;
                     
 
-                    if (enemy.currentHitPoints <= 0)
+                    if (enemy.CurrentHitPoints <= 0)
                     {
                         myInterface.rtbEnv.Text += "The creature is dead!" + Environment.NewLine;
-                        enemy.isDead = true;
+                        enemy.IsDead = true;
                         break;
                     }
                 }

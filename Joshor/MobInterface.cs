@@ -37,14 +37,14 @@ namespace Joshor
              * to match the name in the combobox to a Monster's name in the list and fill in the lbls with values
              * from that Monster object.
              */
-            Monster mobs = World.Monsters.FirstOrDefault(mob => mob.name == JoshorInterface.cboEnemies.Text);
+            Monster mobs = World.Monsters.FirstOrDefault(mob => mob.Name == JoshorInterface.cboEnemies.Text);
             if (mobs != null)
             {
-                lblCreatureName.Text = mobs.name;
-                lblDisplayMobHP.Text = mobs.currentHitPoints.ToString();
-                lblDisplayAC.Text = mobs.ac.ToString();
-                lblDisplayDamage.Text = mobs.damage.ToString();
-                picMonster.Image = Image.FromFile(@"../../../Engine/Image/" + mobs.image);
+                lblCreatureName.Text = mobs.Name;
+                lblDisplayMobHP.Text = mobs.CurrentHitPoints.ToString();
+                lblDisplayAC.Text = mobs.AC.ToString();
+                lblDisplayDamage.Text = mobs.Damage.ToString();
+                picMonster.Image = Image.FromFile(@"../../../Engine/Image/" + mobs.Image);
 
 
             }

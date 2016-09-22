@@ -11,3 +11,12 @@
                 cboWeapons.Items.Add(weapon.name);
 
             }
+
+			for (int index = 0; index < World.Monsters.Count; index++)
+            {
+                if (World.Monsters[index].name.Equals(cboEnemies.Text))
+                {
+                    enemy = World.Monsters[index];
+                    break;
+                }
+            }

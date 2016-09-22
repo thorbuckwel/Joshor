@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -16,7 +17,7 @@ namespace Joshor
 {
     public partial class JoshorInterface : Form
     {
-        
+        Monster inhab;
         private Player _player;                 // Create a player from the PLayer class    
 
         /**
@@ -78,21 +79,20 @@ namespace Joshor
             rtbLocation.Text = "";
             rtbLocation.Text += _player.CurrentLocation.roomName + Environment.NewLine;
             rtbLocation.Text += _player.CurrentLocation.roomDescript + Environment.NewLine;
-            Exits(_player);
-            Monster inhab;
+            Exits(_player);            
             
             if(_player.CurrentLocation.Monsters != null)
             {
                 if (_player.CurrentLocation.Monsters.ID != 5)
                 {
-                    inhab = World.Monsters[RandomNumberGenerator.NumberBetween(0, 3)];
-                    cboEnemies.Text = inhab.name.ToString();
-                    rtbEnv.Text = "A " + inhab.name + " is wondering around here." + Environment.NewLine;
+                    inhab = new Monster(World.Monsters[RandomNumberGenerator.NumberBetween(0, 3)]);
+                    cboEnemies.Text = inhab.Name.ToString();
+                    rtbEnv.Text = "A " + inhab.Name + " is wondering around here." + Environment.NewLine;
                 }
                 else
                 {
-                    cboEnemies.Text = _player.CurrentLocation.Monsters.name;
-                    rtbEnv.Text = " A large " + _player.CurrentLocation.Monsters.name + " fills the room with its massive body." +
+                    cboEnemies.Text = _player.CurrentLocation.Monsters.Name;
+                    rtbEnv.Text = " A large " + _player.CurrentLocation.Monsters.Name + " fills the room with its massive body." +
                                     Environment.NewLine;
                 }
             }
@@ -120,15 +120,15 @@ namespace Joshor
             {
                 if (_player.CurrentLocation.Monsters.ID != 5)
                 {
-                    inhab = World.Monsters[RandomNumberGenerator.NumberBetween(0, 3)];
-                    cboEnemies.Text = inhab.name.ToString();
-                    rtbEnv.Text = "A " + inhab.name + " is wondering around here." + Environment.NewLine;
+                    inhab = new Monster(World.Monsters[RandomNumberGenerator.NumberBetween(0, 3)]);
+                    cboEnemies.Text = inhab.Name.ToString();
+                    rtbEnv.Text = "A " + inhab.Name + " is wondering around here." + Environment.NewLine;
 
                 }
                 else
                 {
-                    cboEnemies.Text = _player.CurrentLocation.Monsters.name;
-                    rtbEnv.Text = " A large " + _player.CurrentLocation.Monsters.name + " fills the room with its massive body." +
+                    cboEnemies.Text = _player.CurrentLocation.Monsters.Name;
+                    rtbEnv.Text = " A large " + _player.CurrentLocation.Monsters.Name + " fills the room with its massive body." +
                                         Environment.NewLine;
                 }               
             }
@@ -221,12 +221,15 @@ namespace Joshor
          *  interface.
          */
         private void btnAttack_Click(object sender, EventArgs e)
-        {
-            Monster enemy = World.Monsters.First(item => item.name == cboEnemies.Text);
+        {          
+            
+            
+            //Add a null check for stupidty reasons
+                       
             Weapon equipt = World.Weapons.First(item => item.name == cboWeapons.Text);
             Combat fight = new Combat();
-            fight.Fight(enemy, _player, equipt, this);
-            if (enemy.isDead == true)
+            fight.Fight(inhab, _player, equipt, this);
+            if (inhab.IsDead == true)
             {
                 cboEnemies.Text = "";
             }
