@@ -54,19 +54,20 @@ namespace Joshor
 
         private static string PlayerTurn(Player thePlayer, Monster theMonster, Dice rollToHitAC, Dice damageDice)
         {
-            
+
             int rollToBeatAC = rollToHitAC.Roll();
+            int criticalHitMultipler = (rollToBeatAC == 20) ? 2 : 1; //Natural 20!
             string attackLog = "You attack with your " + thePlayer.EquippedWeapon.name + Environment.NewLine;
 
             if (rollToBeatAC > theMonster.ArmorClass) //Tie goes to the defender?
             {
                 //Deal damage to the Monster
-                int damageDealt = damageDice.Roll();
+                int damageDealt = damageDice.Roll() * criticalHitMultipler;
                 theMonster.CurrentHitPoints -= damageDealt;
-
+                string crticial = (criticalHitMultipler == 2) ? " Critical Hit!" : "";
                 //Update the Combat log
                 attackLog += "You hit the creature! (Roll: " + rollToBeatAC + " vs AC: " + theMonster.ArmorClass + ")" + Environment.NewLine;
-                attackLog += "You did " + damageDealt + " points of damage." + Environment.NewLine;
+                attackLog += "You did " + damageDealt + " points of damage." + crticial + Environment.NewLine;
                 attackLog += theMonster.Name + " has " + theMonster.CurrentHitPoints + " hitpoints left" + Environment.NewLine;
             }
             else
@@ -81,17 +82,19 @@ namespace Joshor
         {
 
             int rollToBeatAC = rollToHitAC.Roll();
+            int criticalHitMultipler = (rollToBeatAC == 20) ? 2 : 1; //Natural 20!
+            rollToBeatAC += theMonster.BaseHitChance;
             string attackLog = theMonster.Name + " attemps to attack you." + Environment.NewLine;
 
             if (rollToBeatAC > thePlayer.ArmorClass)
             {
                 //Deal damage to the player
-                int damageDealt = theMonster.DamageDice.Roll();
+                int damageDealt = theMonster.DamageDice.Roll() * criticalHitMultipler;
                 thePlayer.CurrentHitPoints -= damageDealt;
-
+                string crticial = (criticalHitMultipler == 2) ? " Critical Hit!" : "";
                 //Update the combat log
                 attackLog += "The creature hits you! (Roll: " + rollToBeatAC + " vs AC: " + thePlayer.ArmorClass + ")" + Environment.NewLine;
-                attackLog += "The creature did " + damageDealt + " points of damage." + Environment.NewLine;
+                attackLog += "The creature did " + damageDealt + " points of damage."+ crticial + Environment.NewLine;
                 attackLog += "You have " + thePlayer.CurrentHitPoints + " hitpoints left." + Environment.NewLine;
             }
             else

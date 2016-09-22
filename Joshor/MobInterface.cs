@@ -12,13 +12,13 @@ using Engine;
 
 namespace Joshor
 {
-    public partial class MobInterface : Form
+    public partial class MonsterInfoWindow : Form
     {
-        DungeonUI JoshorInterface;                        // To give this form access to JoshorInterface
-        public MobInterface(DungeonUI passed)
+        DungeonUI mainDungeonUI;                        // To give this form access to JoshorInterface
+        public MonsterInfoWindow(DungeonUI passed)
         {
             InitializeComponent();
-            this.JoshorInterface = passed;
+            this.mainDungeonUI = passed;
             
         }
         
@@ -37,24 +37,22 @@ namespace Joshor
              * to match the name in the combobox to a Monster's name in the list and fill in the lbls with values
              * from that Monster object.
              */
-            Monster mobs = World.Monsters.FirstOrDefault(mob => mob.Name == JoshorInterface.cboEnemies.Text);
-            if (mobs != null)
+            Monster monster = World.Monsters.FirstOrDefault(mob => mob.Name == mainDungeonUI.cboEnemies.Text);
+            if (monster != null)
             {
-                lblCreatureName.Text = mobs.Name;
-                lblDisplayMobHP.Text = mobs.CurrentHitPoints.ToString();
-                lblDisplayAC.Text = mobs.ArmorClass.ToString();
-                lblDisplayDamage.Text = mobs.DamageDice.ToString();
-                picMonster.Image = Image.FromFile(@"../../../Engine/Image/" + mobs.ImagePath);
-
-
+                lblCreatureName.Text = monster.Name;
+                lblDisplayMobHP.Text = monster.CurrentHitPoints.ToString();
+                lblDisplayAC.Text = monster.ArmorClass.ToString();
+                lblDisplayDamage.Text = "1d" + monster.DamageDice.NumberOfSides.ToString();
+                picMonster.Image = Image.FromFile(@"../../../Engine/Image/" + monster.ImagePath);
             }
 
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void closeButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Dispose();
         }
     }
 }

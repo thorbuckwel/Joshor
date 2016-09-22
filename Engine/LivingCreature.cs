@@ -23,8 +23,6 @@ namespace Engine
             }
         }
 
-        
-
         public bool HasTakenFatalDamage
         {
             get

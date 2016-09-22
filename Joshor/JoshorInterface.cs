@@ -71,8 +71,8 @@ namespace Joshor
          */
         public void btnEnemyView_Click(object sender, EventArgs e)
         {
-            MobInterface mobInter = new MobInterface(this);
-            mobInter.Show();
+            MonsterInfoWindow monsterWindow = new MonsterInfoWindow(this);
+            monsterWindow.Show();
         }
 
         /// <summary>
@@ -204,8 +204,14 @@ namespace Joshor
             //This more belongs in a cboWeapons_Changed event method to update the player
             //class when the selection is changed.
 
+ 
 
             rtbEnv.Text = Combat.Fight(theMonster, thePlayer);
+
+            //The callback for CurrentHitPoints being modified is not implemented
+            //Remove this when it has been.
+            lblDisplayHP.Text = thePlayer.CurrentHitPoints.ToString();
+
             if (theMonster.HasTakenFatalDamage)
             {
                 cboEnemies.Text = "";
