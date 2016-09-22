@@ -74,11 +74,11 @@ namespace Joshor
             {
                 if (_player.CurrentLocation.Monsters.ID != 5)
                 {
-                    cboEnemies.Text = World.Monsters[RandomNumberGenerator.NumberBetween(0, 3)].name;
+                    cboEnemies.Items.Add(World.Monsters[RandomNumberGenerator.NumberBetween(0, 3)].name);
                 }
                 else
                 {
-                    cboEnemies.Text = _player.CurrentLocation.Monsters.name;
+                    cboEnemies.Items.Add(_player.CurrentLocation.Monsters.name);
                 }
             }
             else
