@@ -16,6 +16,7 @@ namespace Joshor
 {
     public partial class JoshorInterface : Form
     {
+        
         private Player _player;                 // Create a player from the PLayer class    
 
         /**

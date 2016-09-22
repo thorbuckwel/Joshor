@@ -21,7 +21,9 @@ namespace Joshor
 
         private void btnRestart_Click(object sender, EventArgs e)
         {
-            
+            Program.Restart();
+            this.Close();
+               
         }
 
         private void btnExitGame_Click(object sender, EventArgs e)
