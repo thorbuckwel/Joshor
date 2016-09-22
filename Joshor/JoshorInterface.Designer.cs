@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.grbInventory = new System.Windows.Forms.GroupBox();
             this.grbStats = new System.Windows.Forms.GroupBox();
@@ -69,6 +70,7 @@
             this.btnEnemyView = new System.Windows.Forms.Button();
             this.cboEnemies = new System.Windows.Forms.ComboBox();
             this.lblEnemies = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.grbInventory.SuspendLayout();
             this.grbStats.SuspendLayout();
@@ -482,6 +484,11 @@
             this.lblEnemies.TabIndex = 0;
             this.lblEnemies.Text = "Enemies";
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // JoshorInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -554,6 +561,7 @@
         public System.Windows.Forms.ComboBox cboWeapons;
         public System.Windows.Forms.RichTextBox rtbEnv;
         public System.Windows.Forms.Label lblDisplayHP;
+        public System.Windows.Forms.Timer timer1;
     }
 }
 

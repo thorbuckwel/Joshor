@@ -67,6 +67,8 @@ namespace Joshor
                     {
                         myInterface.rtbEnv.Text += "The creature is dead!" + Environment.NewLine;
                         enemy.IsDead = true;
+                        player.xp += enemy.Exp;
+                        player.gold += enemy.Gold;
                         break;
                     }
                 }

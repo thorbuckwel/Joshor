@@ -13,7 +13,7 @@ namespace Engine
         public String playerRace { get; set; }              // To hold the player's race
         public int xp;                                      // To hold the player's xp
         public int gold;                                    // To hold the player's gold
-        public int lvl { get; set; }                        // To hold the player's level
+        public int lvl { get { return ((xp / 100) + 1); } }                        // To hold the player's level
         public int ac { get; set; }                         // To hold the player's armor
         public Room _currentLocation;                      // Not used as of yet!
         public Weapon equipt;                               // To hold the currently equipt weapon
@@ -49,7 +49,7 @@ namespace Engine
             this.playerRace = PR;
             this.gold = gold;
             this.xp = 0;
-            this.lvl = 1;
+            //this.lvl = 1;
             this.ac = 10;
             this.equipt = equipt;
         }

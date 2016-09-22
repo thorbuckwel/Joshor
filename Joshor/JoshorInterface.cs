@@ -239,6 +239,13 @@ namespace Joshor
                 DeathScreen deathScreen = new DeathScreen();
                 deathScreen.Show();
             }
-        }        
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblDisplayExp.Text = _player.xp.ToString();
+            lblDisplayLvl.Text = _player.lvl.ToString();
+            lblDisplayGold.Text = _player.gold.ToString();
+        }
     }
 }
