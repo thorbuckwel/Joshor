@@ -32,7 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblCreatureName = new System.Windows.Forms.Label();
             this.lblHP = new System.Windows.Forms.Label();
-            this.lblDisplayHP = new System.Windows.Forms.Label();
+            this.lblDisplayMobHP = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblDisplayAC = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -79,14 +79,14 @@
             this.lblHP.TabIndex = 3;
             this.lblHP.Text = "Hit Points:";
             // 
-            // lblDisplayHP
+            // lblDisplayMobHP
             // 
-            this.lblDisplayHP.AutoSize = true;
-            this.lblDisplayHP.Location = new System.Drawing.Point(335, 53);
-            this.lblDisplayHP.Name = "lblDisplayHP";
-            this.lblDisplayHP.Size = new System.Drawing.Size(103, 13);
-            this.lblDisplayHP.TabIndex = 4;
-            this.lblDisplayHP.Text = "8888888888888888";
+            this.lblDisplayMobHP.AutoSize = true;
+            this.lblDisplayMobHP.Location = new System.Drawing.Point(335, 53);
+            this.lblDisplayMobHP.Name = "lblDisplayMobHP";
+            this.lblDisplayMobHP.Size = new System.Drawing.Size(103, 13);
+            this.lblDisplayMobHP.TabIndex = 4;
+            this.lblDisplayMobHP.Text = "8888888888888888";
             // 
             // label4
             // 
@@ -146,7 +146,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.lblDisplayAC);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.lblDisplayHP);
+            this.Controls.Add(this.lblDisplayMobHP);
             this.Controls.Add(this.lblHP);
             this.Controls.Add(this.lblCreatureName);
             this.Controls.Add(this.label1);
@@ -166,7 +166,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblCreatureName;
         private System.Windows.Forms.Label lblHP;
-        private System.Windows.Forms.Label lblDisplayHP;
+        private System.Windows.Forms.Label lblDisplayMobHP;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblDisplayAC;
         private System.Windows.Forms.Label label6;

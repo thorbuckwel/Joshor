@@ -28,7 +28,7 @@ namespace Joshor
              * Clear the lbls at load time
              */
             lblCreatureName.Text = "";
-            lblDisplayHP.Text = "";
+            lblDisplayMobHP.Text = "";
             lblDisplayAC.Text = "";
             lblDisplayDamage.Text = "";
 
@@ -41,7 +41,7 @@ namespace Joshor
             if (mobs != null)
             {
                 lblCreatureName.Text = mobs.name;
-                lblDisplayHP.Text = mobs.CurrentHitPoints.ToString();
+                lblDisplayMobHP.Text = mobs.currentHitPoints.ToString();
                 lblDisplayAC.Text = mobs.ac.ToString();
                 lblDisplayDamage.Text = mobs.damage.ToString();
                 picMonster.Image = Image.FromFile(@"../../../Engine/Image/" + mobs.image);

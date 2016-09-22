@@ -16,8 +16,13 @@ namespace Joshor
 {
     public partial class JoshorInterface : Form
     {
-        private Player _player;        
+        private Player _player;                 // Create a player from the PLayer class    
 
+        /**
+         * There are several things that need to happen when the interface is initialized.
+         * First we need to populate all our list by calling a ListBuilder class method. Then
+         * we need to build a new player and populate the labels with the player's stats
+         */
         public JoshorInterface()
         {
             InitializeComponent();
@@ -39,6 +44,10 @@ namespace Joshor
             cboWeapons.Text = _player.equipt.name.ToString();            
         }
 
+        /**
+         * On Interface load we want to assign the player a starting location and then
+         * display that locations information into the interface.
+         */
         public void JoshorInterface_Load(object sender, EventArgs e)
         {
             
@@ -169,6 +178,10 @@ namespace Joshor
             }
         }
 
+        /**
+         * When the view button is pressed if there is a weapon in the combo box then
+         * we pull up the weapon interface to get the weapons stats. 
+         */
         private void btnInspectWeapon_Click(object sender, EventArgs e)
         {
             if (Application.OpenForms.OfType<WeaponInterface>().Count() == 1)
@@ -182,6 +195,10 @@ namespace Joshor
             }
         }
 
+        /**
+         * This was a test to see if we could move through the rooms using just the up 
+         * arrow. It does work however it needs inprovements.
+         */
         private void JoshorInterface_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Up)
@@ -195,13 +212,20 @@ namespace Joshor
             }
         }
 
+        /**
+         *  When the Attack with button is attack we assign a copy of both the mob and 
+         *  the weapon into thier own varaible. Then we create a new combat object to
+         *  resolve the battle. Into the new combat object we pass the enemy, weapon,
+         *  and this interface so that the combat object can make changes to the
+         *  interface.
+         */
         private void btnAttack_Click(object sender, EventArgs e)
         {
             Monster enemy = World.Monsters.First(item => item.name == cboEnemies.Text);
             Weapon equipt = World.Weapons.First(item => item.name == cboWeapons.Text);
             Combat fight = new Combat();
             fight.Fight(enemy, _player, equipt, this);
-            if (enemy.IsDead == true)
+            if (enemy.isDead == true)
             {
                 cboEnemies.Text = "";
             }
