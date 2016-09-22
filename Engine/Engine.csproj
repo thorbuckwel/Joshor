@@ -63,6 +63,7 @@
     <Content Include="Docs\SavedCode.txt" />
     <Content Include="Docs\Weapon.txt" />
     <Content Include="Image\BlackDragon.jpg" />
+    <Content Include="Image\deathpic.jpg" />
     <Content Include="Image\Dog.jpg" />
     <Content Include="Image\Goblin.PNG" />
     <Content Include="Image\Hobgoblin.jpg" />

@@ -69,16 +69,21 @@ namespace Joshor
             rtbLocation.Text += _player.CurrentLocation.roomName + Environment.NewLine;
             rtbLocation.Text += _player.CurrentLocation.roomDescript + Environment.NewLine;
             Exits(_player);
+            Monster inhab;
             
             if(_player.CurrentLocation.Monsters != null)
             {
                 if (_player.CurrentLocation.Monsters.ID != 5)
                 {
-                    cboEnemies.Text = World.Monsters[RandomNumberGenerator.NumberBetween(0, 3)].name;
+                    inhab = World.Monsters[RandomNumberGenerator.NumberBetween(0, 3)];
+                    cboEnemies.Text = inhab.name.ToString();
+                    rtbEnv.Text = "A " + inhab.name + " is wondering around here." + Environment.NewLine;
                 }
                 else
                 {
                     cboEnemies.Text = _player.CurrentLocation.Monsters.name;
+                    rtbEnv.Text = " A large " + _player.CurrentLocation.Monsters.name + " fills the room with its massive body." +
+                                    Environment.NewLine;
                 }
             }
             else
@@ -99,16 +104,22 @@ namespace Joshor
             rtbLocation.Text += _player.CurrentLocation.roomName + Environment.NewLine;
             rtbLocation.Text += _player.CurrentLocation.roomDescript + Environment.NewLine;
             Exits(_player);
+            Monster inhab;
 
             if (_player.CurrentLocation.Monsters != null)
             {
                 if (_player.CurrentLocation.Monsters.ID != 5)
                 {
-                    cboEnemies.Text = World.Monsters[RandomNumberGenerator.NumberBetween(0, 3)].name;
+                    inhab = World.Monsters[RandomNumberGenerator.NumberBetween(0, 3)];
+                    cboEnemies.Text = inhab.name.ToString();
+                    rtbEnv.Text = "A " + inhab.name + " is wondering around here." + Environment.NewLine;
+
                 }
                 else
                 {
                     cboEnemies.Text = _player.CurrentLocation.Monsters.name;
+                    rtbEnv.Text = " A large " + _player.CurrentLocation.Monsters.name + " fills the room with its massive body." +
+                                        Environment.NewLine;
                 }               
             }
             else
@@ -193,6 +204,12 @@ namespace Joshor
             if (enemy.IsDead == true)
             {
                 cboEnemies.Text = "";
+            }
+
+            if (_player.CurrentHitPoints <= 0)
+            {
+                DeathScreen deathScreen = new DeathScreen();
+                deathScreen.Show();
             }
         }        
     }
