@@ -13,7 +13,7 @@ namespace Joshor
 {
     public partial class DeathScreen : Form
     {
-        JoshorInterface JoshorInterface; //Allows this form to interact with the parent form
+        DungeonUI JoshorInterface; //Allows this form to interact with the parent form
         public DeathScreen()
         {
             InitializeComponent();

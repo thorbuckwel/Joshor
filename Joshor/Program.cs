@@ -8,7 +8,7 @@ namespace Joshor
 {
     static class Program
     {
-        private static JoshorInterface Game;
+        private static DungeonUI Game;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -17,13 +17,13 @@ namespace Joshor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Game = new JoshorInterface();
+            Game = new DungeonUI();
             Application.Run(Game);
         }
 
         public static void Restart()
         {
-            Game = new JoshorInterface();
+            Game = new DungeonUI();
             Game.Show();
                        
         }        

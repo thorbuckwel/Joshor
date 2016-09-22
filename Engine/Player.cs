@@ -16,7 +16,7 @@ namespace Engine
         public int lvl { get { return ((xp / 100) + 1); } }                        // To hold the player's level
         public int ac { get; set; }                         // To hold the player's armor
         public Room _currentLocation;                      // Not used as of yet!
-        public Weapon equipt;                               // To hold the currently equipt weapon
+        public Weapon EquippedWeapon;                               // To hold the currently equipt weapon
 
         public int Gold { get { return gold; } set { gold = value; OnPropertyChanged("Gold"); } }
         public int ExperiencePoints
@@ -51,7 +51,7 @@ namespace Engine
             this.xp = 0;
             //this.lvl = 1;
             this.ac = 10;
-            this.equipt = equipt;
+            this.EquippedWeapon = equipt;
         }
                 
         public Room CurrentLocation
@@ -60,24 +60,19 @@ namespace Engine
             set
             {
                 _currentLocation = value;
-                OnPropertyChanged("CurrentLocation");
+                OnPropertyChanged("CurrentLocation"); //Is this even actually used? Where?
             }
         }
 
-        /**
-         * This method takes the new location and assigns it to the player's current location.
-         */
-        public void ChangeLocation(Room location)
+        public void MoveTo(int roomIndex)
         {
-            _currentLocation = location;
-            
-        }
-
-        public void MoveTo(Room location)
-        {
-            // The player can enter this location
-            ChangeLocation(location);  
-                   
+            if (World.Location != null && (roomIndex >= 0 && roomIndex <= World.Location.Count))
+            {
+                //Make sure the list isn't null; then make sure the room we're attempting to move to
+                //actually exists; roomIndex must be:
+                // [0, List.Count], inclusive    --     0 <= roomIndex <= List.Count
+                _currentLocation = World.Location[roomIndex];
+            }                 
         }
 
         /**
@@ -86,33 +81,7 @@ namespace Engine
          */
         private void MoveHome()
         {
-            MoveTo(World.Location[0]);
-        }
-
-        /**
-         * This method will add one to the element in the list to move to the next
-         * room north
-         */
-        public void MoveNorth()
-        {
-            if (World.Location != null)
-            {
-                int ele = World.Location.IndexOf(_currentLocation);
-                MoveTo(World.Location[(++ele)]);                                
-            }            
-        }
-
-        /**
-         * This method will subtract one to the element in the list to move to the next
-         * room to the south
-         */
-        public void MoveSouth()
-        {
-            if (World.Location != null)
-            {
-                int ele = World.Location.IndexOf(_currentLocation);
-                MoveTo(World.Location[--ele]);
-            }
-        }                
+            MoveTo(0);
+        }            
     }
 }

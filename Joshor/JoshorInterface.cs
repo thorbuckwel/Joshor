@@ -15,48 +15,46 @@ using Engine;
 
 namespace Joshor
 {
-    public partial class JoshorInterface : Form
+    public partial class DungeonUI : Form
     {
-        Monster inhab;
-        private Player _player;                 // Create a player from the PLayer class    
+        private Monster theMonster;
+        private Player thePlayer;                 // Create a player from the PLayer class    
 
         /**
          * There are several things that need to happen when the interface is initialized.
          * First we need to populate all our list by calling a ListBuilder class method. Then
          * we need to build a new player and populate the labels with the player's stats
          */
-        public JoshorInterface()
+        public DungeonUI()
         {
             InitializeComponent();
 
             ListBuilder.Build();                // On load we need to call the ListBuilder to build all out List
-            _player = new Player("Killakia", "Warrior", "Human", 100, 10, 10, World.Weapons[2], false);  // Creating a player object 
+            thePlayer = new Player("Killakia", "Warrior", "Human", 100, 10, 10, World.Weapons[2], false);  // Creating a player object 
 
-            /**
-             * Displaying the players stats int the stat group
-             */
-            lblDisplayPlayerName.Text = _player.playerName;
-            lblDisplayPlayerRace.Text = _player.playerRace;
-            lblDisplayPlayerClass.Text = _player.playerClass;
-            lblDisplayLvl.Text = _player.lvl.ToString();
-            lblDisplayGold.Text = _player.gold.ToString();
-            lblDisplayExp.Text = _player.xp.ToString();
-            lblDisplayAC.Text = _player.ac.ToString();
-            lblDisplayHP.Text = _player.CurrentHitPoints.ToString();
-            cboWeapons.Text = _player.equipt.name.ToString();            
         }
 
         /**
-         * On Interface load we want to assign the player a starting location and then
+         * On load we want to assign the player a starting location and then
          * display that locations information into the interface.
          */
-        public void JoshorInterface_Load(object sender, EventArgs e)
+        public void DungeonUI_Load(object sender, EventArgs e)
         {
-            
-            _player.CurrentLocation = World.Location[0];            
+            //Display Player Character Information
+            lblDisplayPlayerName.Text = thePlayer.playerName;
+            lblDisplayPlayerRace.Text = thePlayer.playerRace;
+            lblDisplayPlayerClass.Text = thePlayer.playerClass;
+            lblDisplayLvl.Text = thePlayer.lvl.ToString();
+            lblDisplayGold.Text = thePlayer.gold.ToString();
+            lblDisplayExp.Text = thePlayer.xp.ToString();
+            lblDisplayAC.Text = thePlayer.ac.ToString();
+            lblDisplayHP.Text = thePlayer.CurrentHitPoints.ToString();
+            cboWeapons.Text = thePlayer.EquippedWeapon.name.ToString();
 
-            rtbLocation.Text += _player.CurrentLocation.roomName + Environment.NewLine;
-            rtbLocation.Text += _player.CurrentLocation.roomDescript + Environment.NewLine;            
+            //Display the starting room's information in the UI
+            thePlayer.CurrentLocation = World.Location[0];
+            UpdateRoomFlavorText();
+            ShowPossibleExits();      
         }
 
         /**
@@ -69,113 +67,83 @@ namespace Joshor
             mobInter.Show();
         }
 
-        /**
-         * When the North button is click We call the MoveNorth method in the player 
-         * object to set the players current location to the next room north 
-         */
+        /// <summary>
+        /// Moving north, we want to increase the roomIndex by 1
+        /// </summary>
         private void btnNorth_Click(object sender, EventArgs e)
         {
-            _player.MoveNorth();
-            rtbLocation.Text = "";
-            rtbLocation.Text += _player.CurrentLocation.roomName + Environment.NewLine;
-            rtbLocation.Text += _player.CurrentLocation.roomDescript + Environment.NewLine;
-            Exits(_player);            
-            
-            if(_player.CurrentLocation.Monsters != null)
-            {
-                if (_player.CurrentLocation.Monsters.ID != 5)
-                {
-                    inhab = new Monster(World.Monsters[RandomNumberGenerator.NumberBetween(0, 3)]);
-                    cboEnemies.Text = inhab.Name.ToString();
-                    rtbEnv.Text = "A " + inhab.Name + " is wondering around here." + Environment.NewLine;
-                }
-                else
-                {
-                    cboEnemies.Text = _player.CurrentLocation.Monsters.Name;
-                    rtbEnv.Text = " A large " + _player.CurrentLocation.Monsters.Name + " fills the room with its massive body." +
-                                    Environment.NewLine;
-                }
-            }
-            else
-            {
-                cboEnemies.Text = "";
-            }
-                       
+            MovePlayer(1);
         }
 
-        /**
-         * When the South button is click We call the MoveNorth method in the player 
-         * object to set the players current location to the next room south 
-         */
+        /// <summary>
+        /// Moving south, we want to decrease the roomIndex by 1
+        /// </summary>
         private void btnSouth_Click(object sender, EventArgs e)
         {
-            _player.MoveSouth();
-            rtbLocation.Text = "";
-            rtbLocation.Text += _player.CurrentLocation.roomName + Environment.NewLine;
-            rtbLocation.Text += _player.CurrentLocation.roomDescript + Environment.NewLine;
-            Exits(_player);
-            Monster inhab;
+            MovePlayer(-1);
+        }
 
-            if (_player.CurrentLocation.Monsters != null)
-            {
-                if (_player.CurrentLocation.Monsters.ID != 5)
-                {
-                    inhab = new Monster(World.Monsters[RandomNumberGenerator.NumberBetween(0, 3)]);
-                    cboEnemies.Text = inhab.Name.ToString();
-                    rtbEnv.Text = "A " + inhab.Name + " is wondering around here." + Environment.NewLine;
+        /// <summary>
+        /// Move to and load the new room.
+        /// </summary>
+        private void MovePlayer(int directionToMoveIndex)
+        {
+            int destinationRoomIndex = World.Location.IndexOf(thePlayer.CurrentLocation) + directionToMoveIndex;
+            //Tell the player to move North/South
+            thePlayer.MoveTo(destinationRoomIndex);
 
-                }
-                else
-                {
-                    cboEnemies.Text = _player.CurrentLocation.Monsters.Name;
-                    rtbEnv.Text = " A large " + _player.CurrentLocation.Monsters.Name + " fills the room with its massive body." +
-                                        Environment.NewLine;
-                }               
-            }
-            else
+            //Update the UI
+            UpdateRoomFlavorText();
+            ShowPossibleExits();
+
+            //Spawn Monsters
+            if (thePlayer.CurrentLocation.Monsters != null)
             {
-                cboEnemies.Text = "";
+                SpawnMonsterInRoom();
             }
         }
 
-        /**
-         *  This method recieves an argument so it can check if the new room has exits.
-         *  if the the exit holds the bool true then it will turn on the button for that
-         *  direction. If not then the button is not enabled.
-         */
-        public void Exits(Player location)
+        /// <summary>
+        /// Helper function to handle updating the RichTextBox Location and ComboBox Enemies;
+        /// Called on every Room change.
+        /// </summary>
+        private void UpdateRoomFlavorText()
         {
-            if (_player.CurrentLocation.LocationToNorth != true)
+            rtbLocation.Text = "";
+            rtbLocation.Text += thePlayer.CurrentLocation.roomName + Environment.NewLine;
+            rtbLocation.Text += thePlayer.CurrentLocation.roomDescript + Environment.NewLine;
+            cboEnemies.Text = "";
+        }
+
+        /// <summary>
+        /// Checks each possible neighbor of the CurrentRoom, and enables the corresponding
+        /// movement button if their is a neighbor in that direction.
+        /// </summary>
+        private void ShowPossibleExits()
+        {
+            btnNorth.Enabled = thePlayer.CurrentLocation.LocationToNorth;
+            btnSouth.Enabled = thePlayer.CurrentLocation.LocationToSouth;
+            btnEast.Enabled = thePlayer.CurrentLocation.LocationToEast;
+            btnWest.Enabled = thePlayer.CurrentLocation.LocationToWest;
+        }
+
+        /// <summary>
+        /// Helper function to handle the logic of updating Enemy flavor text, and spawning a random monster in the room
+        /// </summary>
+        private void SpawnMonsterInRoom()
+        {
+            int monsterIndex = (thePlayer.CurrentLocation.Monsters.ID != 5) ? RandomNumberGenerator.NumberBetween(0, 3) : 4;
+            theMonster = new Monster(World.Monsters[monsterIndex]);
+
+            if (monsterIndex != 4) //Need a better way to check if it is the dragon or not
             {
-                btnNorth.Visible = false;
+                cboEnemies.Text = theMonster.Name.ToString();
+                rtbEnv.Text = "A " + theMonster.Name + " is wondering around here." + Environment.NewLine;
             }
             else
             {
-                btnNorth.Visible = true;
-            }
-            if (_player.CurrentLocation.LocationToEast != true)
-            {
-                btnEast.Visible = false;
-            }
-            else
-            {
-                btnEast.Visible = true;
-            }
-            if (_player.CurrentLocation.LocationToSouth != true)
-            {
-                btnSouth.Visible = false;
-            }
-            else
-            {
-                btnSouth.Visible = true;
-            }
-            if (_player.CurrentLocation.LocationToWest != true)
-            {
-                btnWest.Visible = false;
-            }
-            else
-            {
-                btnWest.Visible = true;
+                cboEnemies.Text = thePlayer.CurrentLocation.Monsters.Name;
+                rtbEnv.Text = " A large " + thePlayer.CurrentLocation.Monsters.Name + " fills the room with its massive body." + Environment.NewLine;
             }
         }
 
@@ -196,20 +164,20 @@ namespace Joshor
             }
         }
 
-        /**
-         * This was a test to see if we could move through the rooms using just the up 
-         * arrow. It does work however it needs inprovements.
-         */
+        /// <summary>
+        /// If the Up or Down arrow key is pressed down; check to see if the corresponding movement button is enabled.
+        /// If true, allow the player to move in that direction.
+        /// </summary>
         private void JoshorInterface_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Up)
+            if (e.KeyCode == Keys.Up && btnNorth.Enabled)
             {
-                _player.MoveNorth();
-                rtbLocation.Text = "";
-                rtbLocation.Text += _player.CurrentLocation.roomName + Environment.NewLine;
-                rtbLocation.Text += _player.CurrentLocation.roomDescript + Environment.NewLine;
-                Exits(_player);
+                MovePlayer(1);
+            }
 
+            if (e.KeyCode == Keys.Down && btnSouth.Enabled)
+            {
+                MovePlayer(-1);
             }
         }
 
@@ -221,30 +189,36 @@ namespace Joshor
          *  interface.
          */
         private void btnAttack_Click(object sender, EventArgs e)
-        {          
-            
-            
-            //Add a null check for stupidty reasons
-                       
-            Weapon equipt = World.Weapons.First(item => item.name == cboWeapons.Text);
-            rtbEnv.Text = Combat.Fight(inhab, _player);
-            if (inhab.HasTakenFatalDamage)
+        {
+            //What is the point of this? 
+            //Weapon equipt = World.Weapons.First(item => item.name == cboWeapons.Text);
+            //The Player.EquippedWeapon should be storing the currently selected weapon
+            //This more belongs in a cboWeapons_Changed event method to update the player
+            //class when the selection is changed.
+
+
+            rtbEnv.Text = Combat.Fight(theMonster, thePlayer);
+            if (theMonster.HasTakenFatalDamage)
             {
                 cboEnemies.Text = "";
             }
 
-            if (_player.HasTakenFatalDamage)
+            if (thePlayer.HasTakenFatalDamage)
             {
                 DeathScreen deathScreen = new DeathScreen();
                 deathScreen.Show();
             }
         }
 
+
+        //What is this used for?
+        //Deprecated or important?
+        //"timer1" is a very vague event name
         private void timer1_Tick(object sender, EventArgs e)
         {
-            lblDisplayExp.Text = _player.xp.ToString();
-            lblDisplayLvl.Text = _player.lvl.ToString();
-            lblDisplayGold.Text = _player.gold.ToString();
+            lblDisplayExp.Text = thePlayer.xp.ToString();
+            lblDisplayLvl.Text = thePlayer.lvl.ToString();
+            lblDisplayGold.Text = thePlayer.gold.ToString();
         }
     }
 }

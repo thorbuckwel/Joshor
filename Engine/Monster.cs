@@ -19,7 +19,7 @@ namespace Engine
 
         public bool HasTakenFatalDamage
         {
-            get { return (CurrentHitPoints < 0); }
+            get { return (CurrentHitPoints <= 0); }
         }
 
         /**

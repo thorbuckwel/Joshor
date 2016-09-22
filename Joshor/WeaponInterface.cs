@@ -13,8 +13,8 @@ namespace Joshor
 {
     public partial class WeaponInterface : Form
     {
-        JoshorInterface JoshorInterface; //Allows this form to interact with the parent form
-        public WeaponInterface(JoshorInterface passed)
+        DungeonUI JoshorInterface; //Allows this form to interact with the parent form
+        public WeaponInterface(DungeonUI passed)
         {
             InitializeComponent();
             this.JoshorInterface = passed;

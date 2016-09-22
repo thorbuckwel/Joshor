@@ -13,7 +13,7 @@ namespace Engine
 
         public bool HasTakenFatalDamage
         {
-            get { return (CurrentHitPoints < 0); }
+            get { return (CurrentHitPoints <= 0); }
         }
 
         public LivingCreature(int currentHitPoints, int maximumHitPoints, bool isDead)   // This is a const to create a livinig creature. This is the base.

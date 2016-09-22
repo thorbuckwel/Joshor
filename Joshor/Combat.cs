@@ -15,9 +15,17 @@ namespace Joshor
             string combatResults = "";
             int roundCounter = 1; // To keep track of the rounds
 
-            while (theMonster.IsDead != true && thePlayer.HasTakenFatalDamage != true)
+            //These need to be decleared outside the loop, to prevent .Next() from
+            //returning the same value; since System.Random's seed is based off of time
+            //and the loop is resolving in > 1 second - resulting in 200+ rounds of the same
+            //roles, until someone dies.
+            Dice rollToHitAC = new Dice(20);
+            Dice playerDamageDice = new Dice(thePlayer.EquippedWeapon.damage);
+            Dice monsterDamageDice = new Dice(theMonster.Damage);
+
+            while (!theMonster.HasTakenFatalDamage && !thePlayer.HasTakenFatalDamage)
             {
-                combatResults += PlayerTurn(thePlayer, theMonster);
+                combatResults += PlayerTurn(thePlayer, theMonster, rollToHitAC, playerDamageDice);
 
                 if (theMonster.HasTakenFatalDamage)
                 {
@@ -27,7 +35,7 @@ namespace Joshor
                     break;
                 }
 
-                combatResults += MonsterTurn(thePlayer, theMonster);
+                combatResults += MonsterTurn(thePlayer, theMonster, rollToHitAC, monsterDamageDice);
                 //activeUI.lblDisplayHP.Text = thePlayer.CurrentHitPoints.ToString();
                 //As long as combat is done in one continous loop, the player will never
                 //see their HP change as each round progresses.
@@ -45,58 +53,51 @@ namespace Joshor
             return combatResults;    
         }
 
-        private static string PlayerTurn(Player thePlayer, Monster theMonster)
+        private static string PlayerTurn(Player thePlayer, Monster theMonster, Dice rollToHitAC, Dice damageDice)
         {
             
-            Dice chanceToAttack = new Dice(20);
-            Dice damageDice = new Dice(6);
-            int rollToBeatAC = chanceToAttack.Roll();
-
-            //_attackResult = attack.DiceResult;
-            string attackLog = "You attack with your " + thePlayer.equipt.name + Environment.NewLine;
+            int rollToBeatAC = rollToHitAC.Roll();
+            string attackLog = "You attack with your " + thePlayer.EquippedWeapon.name + Environment.NewLine;
 
             if (rollToBeatAC > theMonster.AC) //Tie goes to the defender?
             {
-                //Do all the math and actual combat stuff
+                //Deal damage to the Monster
                 int damageDealt = damageDice.Roll();
                 theMonster.CurrentHitPoints -= damageDealt;
 
-                /* Since its a hit, you know what the flavor text is going to be
-                 * Separating it from the actual logic helps keep readability
- 
-                 * Example: you have a typo with what is being printed out? You know exactly where to look. */
-                attackLog += "You hit the creature with a roll of: " + rollToBeatAC + Environment.NewLine;
+                //Update the Combat log
+                attackLog += "You hit the creature! (Roll: " + rollToBeatAC + " vs AC: " + theMonster.AC + ")" + Environment.NewLine;
                 attackLog += "You did " + damageDealt + " points of damage." + Environment.NewLine;
                 attackLog += theMonster.Name + " has " + theMonster.CurrentHitPoints + " hitpoints left" + Environment.NewLine;
             }
             else
             {
-                attackLog += "You Missed your attack!" + Environment.NewLine;
+                attackLog += "You Missed your attack! (Roll: " + rollToBeatAC + " vs AC: " + theMonster.AC + ")" + Environment.NewLine;
             }
 
             return attackLog;
         }
 
-        private static string MonsterTurn(Player thePlayer, Monster theMonster)
+        private static string MonsterTurn(Player thePlayer, Monster theMonster, Dice rollToHitAC, Dice damageDice)
         {
 
-            int rollToBeatAC = new Dice(20).Roll();
-
-            string attackLog = theMonster.Name + "attemps to attack you." + Environment.NewLine;
+            int rollToBeatAC = rollToHitAC.Roll();
+            string attackLog = theMonster.Name + " attemps to attack you." + Environment.NewLine;
 
             if (rollToBeatAC > thePlayer.ac)
             {
-                int damageDealt = new Dice(6).Roll();
+                //Deal damage to the player
+                int damageDealt = damageDice.Roll();
                 thePlayer.CurrentHitPoints -= damageDealt;
 
-                attackLog += "The creature hits you! (Your AC of: " + thePlayer.ac + " vs " + rollToBeatAC + ")" + Environment.NewLine;
+                //Update the combat log
+                attackLog += "The creature hits you! (Roll: " + rollToBeatAC + " vs AC: " + thePlayer.ac + ")" + Environment.NewLine;
                 attackLog += "The creature did " + damageDealt + " points of damage." + Environment.NewLine;
                 attackLog += "You have " + thePlayer.CurrentHitPoints + " hitpoints left." + Environment.NewLine;
-
             }
             else
             {
-                attackLog += "The creature missed you!" + Environment.NewLine;
+                attackLog += "The creature missed you! (Roll: " + rollToBeatAC + " vs AC: " + thePlayer.ac + ")" + Environment.NewLine;
             }
 
             return attackLog;

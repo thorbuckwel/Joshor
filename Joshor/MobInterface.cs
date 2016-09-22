@@ -14,8 +14,8 @@ namespace Joshor
 {
     public partial class MobInterface : Form
     {
-        JoshorInterface JoshorInterface;                        // To give this form access to JoshorInterface
-        public MobInterface(JoshorInterface passed)
+        DungeonUI JoshorInterface;                        // To give this form access to JoshorInterface
+        public MobInterface(DungeonUI passed)
         {
             InitializeComponent();
             this.JoshorInterface = passed;
