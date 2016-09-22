@@ -9,10 +9,18 @@ namespace Engine
 {
     public static class ListBuilder
     {
-
+        /* !-----------------WARNING------------!
+         * TODO ::
+         * Use Try{ } Catch { } for your reading of the files;
+         * It helps not fatally crash the program, and gives you a more detailed
+         * idea of what went wrong when trying to read in information.
+         * 
+         * Also, don't forget to use StreamReader's .Close() method when you 
+         * have finished reading the file
+         */
         public static void Build()
         {
-            /**
+            /*
              * We need to build each object to go into the Monster List. First we use the StreamReader
              * to open the Monsters text file that stores all the information that is need to create
              * the monsters. This file is formated to be in a certain order. Then we use the while loop
@@ -24,22 +32,31 @@ namespace Engine
             {
                 while (!reader.EndOfStream)
                 {
-                    int id = int.Parse(reader.ReadLine());
-                    String name = reader.ReadLine();
-                    int xp = int.Parse(reader.ReadLine());                    
-                    int armor = int.Parse(reader.ReadLine());
-                    int gold = int.Parse(reader.ReadLine());
-                    int damage = int.Parse(reader.ReadLine());
-                    int baseAttack = int.Parse(reader.ReadLine());
-                    int currentHitpoints = int.Parse(reader.ReadLine());
-                    int maxHitpoints = int.Parse(reader.ReadLine());                    
-                    String image = reader.ReadLine();
-                    bool isDead = bool.Parse(reader.ReadLine());
-                    World.Monsters.Add(new Monster(id, name, xp, gold, armor, damage, baseAttack, currentHitpoints, maxHitpoints, image, isDead));
+                    string line = reader.ReadLine();
+
+                     /* 0 = ID
+                      * 1 = Name
+                      * 2 = Exp
+                      * 3 = Gold
+                      * 4 = ArmorClass
+                      * 5 = Damage Die
+                      * 6 = BaseChanceToHit
+                      * 7 = Max hit Points
+                      * 8 = Path */ 
+
+                    string[] properties = line.Split(',');
+                    Monster m = new Monster(
+                        int.Parse(properties[7]),
+                        properties[1],
+                        int.Parse(properties[4]),
+                        properties
+                        );
+                    World.Monsters.Add(m);
                 }
+                reader.Close();
             }
 
-            /**
+            /*
              * We need to build each object to go into the Weapon List. First we use the StreamReader
              * to open the Monsters text file that stores all the information that is need to create
              * the weaponss. This file is formated to be in a certain order. Then we use the while loop
@@ -59,6 +76,7 @@ namespace Engine
 
                     World.Weapons.Add(new Weapon(id, name, cost, damage, type));
                 }
+                reader.Close();
             }
 
             /**
@@ -84,6 +102,7 @@ namespace Engine
 
                     World.Location.Add(new Room(id, name, descript, exit1, exit2, exit3, exit4, idMonster));
                 }
+                reader.Close();
             }
         }
     }    

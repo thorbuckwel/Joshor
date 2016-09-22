@@ -8,23 +8,46 @@ namespace Engine
 {
     public class Player : LivingCreature
     {
-        public String playerName { get; set; }              // To hold the player's name
-        public String playerClass { get; set;}              // To hold the player's class
-        public String playerRace { get; set; }              // To hold the player's race
-        public int xp;                                      // To hold the player's xp
-        public int gold;                                    // To hold the player's gold
-        public int lvl { get { return ((xp / 100) + 1); } }                        // To hold the player's level
-        public int ac { get; set; }                         // To hold the player's armor
-        public Room _currentLocation;                      // Not used as of yet!
-        public Weapon EquippedWeapon;                               // To hold the currently equipt weapon
+        public string Class { get; private set;}                // To hold the player's class
+        public string Race { get; private set; }                // To hold the player's race
 
-        public int Gold { get { return gold; } set { gold = value; OnPropertyChanged("Gold"); } }
-        public int ExperiencePoints
+        public Weapon EquippedWeapon { get; private set; }                           // To hold the currently equipt weapon
+
+        private Room _currentLocation;
+        public Room CurrentLocation
         {
-            get { return xp; }
+            get { return _currentLocation; }
             private set
             {
-                xp = value;
+                _currentLocation = value;
+                OnPropertyChanged("CurrentLocation");
+            }
+        }
+
+        private int _gold;
+        public int Gold {
+            get
+            {
+                return _gold;
+            }
+            set
+            {
+                _gold = value;
+                OnPropertyChanged("Gold");
+            }
+        }
+
+        private int _experiencePoints;
+        public int ExperiencePoints
+        {
+            get
+            {
+                return _experiencePoints;
+            }
+
+            set
+            {
+                _experiencePoints = value;
                 OnPropertyChanged("ExperiencePoints");
                 OnPropertyChanged("Level");
             }
@@ -32,37 +55,23 @@ namespace Engine
 
         public int Level
         {
-            get { return ((ExperiencePoints / 100) + 1); }
-        }
-
-
-        /**
-        * This is the constructor for the Player class. It accepts values to be assigned to the class variables
-        * plus passing the current and max hit points to the LivingCreature class that the Player class is 
-        * derived from so that the player can inherate these values.
-        */
-        public Player (String name, String PC, String PR, int gold, int currentHitPoints, int maximumHitPoints, Weapon equipt, bool isDead) 
-            : base(currentHitPoints, maximumHitPoints, isDead)
-        {
-            this.playerName = name;
-            this.playerClass = PC;
-            this.playerRace = PR;
-            this.gold = gold;
-            this.xp = 0;
-            //this.lvl = 1;
-            this.ac = 10;
-            this.EquippedWeapon = equipt;
-        }
-                
-        public Room CurrentLocation
-        {
-            get { return _currentLocation; }
-            set
+            get
             {
-                _currentLocation = value;
-                OnPropertyChanged("CurrentLocation"); //Is this even actually used? Where?
+                return ((ExperiencePoints / 100) + 1);
             }
         }
+
+        public Player (string name, string playerClass, string race, int gold, int maximumHitPoints, Weapon currentlyEquippedWeapon, int armorClass) 
+            : base(maximumHitPoints, name, armorClass)
+        {
+            this.Class = playerClass;
+            this.Race = race;
+            this._gold = gold;
+            this._experiencePoints = 0;
+            this.EquippedWeapon = currentlyEquippedWeapon;
+        }
+                
+
 
         public void MoveTo(int roomIndex)
         {

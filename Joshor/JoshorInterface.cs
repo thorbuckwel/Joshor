@@ -30,7 +30,15 @@ namespace Joshor
             InitializeComponent();
 
             ListBuilder.Build();                // On load we need to call the ListBuilder to build all out List
-            thePlayer = new Player("Killakia", "Warrior", "Human", 100, 10, 10, World.Weapons[2], false);  // Creating a player object 
+            // Creating a player object 
+            thePlayer = new Player(
+                name: "Killakia", 
+                playerClass: "Warrior", 
+                race: "Human", 
+                gold: 100,
+                maximumHitPoints: 10,
+                currentlyEquippedWeapon: World.Weapons[2],
+                armorClass: 10);  
 
         }
 
@@ -41,18 +49,18 @@ namespace Joshor
         public void DungeonUI_Load(object sender, EventArgs e)
         {
             //Display Player Character Information
-            lblDisplayPlayerName.Text = thePlayer.playerName;
-            lblDisplayPlayerRace.Text = thePlayer.playerRace;
-            lblDisplayPlayerClass.Text = thePlayer.playerClass;
-            lblDisplayLvl.Text = thePlayer.lvl.ToString();
-            lblDisplayGold.Text = thePlayer.gold.ToString();
-            lblDisplayExp.Text = thePlayer.xp.ToString();
-            lblDisplayAC.Text = thePlayer.ac.ToString();
+            lblDisplayPlayerName.Text = thePlayer.Name;
+            lblDisplayPlayerRace.Text = thePlayer.Race;
+            lblDisplayPlayerClass.Text = thePlayer.Class;
+            lblDisplayLvl.Text = thePlayer.Level.ToString();
+            lblDisplayGold.Text = thePlayer.Gold.ToString();
+            lblDisplayExp.Text = thePlayer.ExperiencePoints.ToString();
+            lblDisplayAC.Text = thePlayer.ArmorClass.ToString();
             lblDisplayHP.Text = thePlayer.CurrentHitPoints.ToString();
             cboWeapons.Text = thePlayer.EquippedWeapon.name.ToString();
 
             //Display the starting room's information in the UI
-            thePlayer.CurrentLocation = World.Location[0];
+            thePlayer.MoveTo(0);
             UpdateRoomFlavorText();
             ShowPossibleExits();      
         }
@@ -216,9 +224,9 @@ namespace Joshor
         //"timer1" is a very vague event name
         private void timer1_Tick(object sender, EventArgs e)
         {
-            lblDisplayExp.Text = thePlayer.xp.ToString();
-            lblDisplayLvl.Text = thePlayer.lvl.ToString();
-            lblDisplayGold.Text = thePlayer.gold.ToString();
+            lblDisplayExp.Text = thePlayer.ExperiencePoints.ToString();
+            lblDisplayLvl.Text = thePlayer.Level.ToString();
+            lblDisplayGold.Text = thePlayer.Gold.ToString();
         }
     }
 }

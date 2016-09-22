@@ -4,22 +4,41 @@ namespace Engine
 {
     public class LivingCreature : INotifyPropertyChanged
     {
-        public static int _currentHitPoints;                                // Varable to hold the current hitpoints
+        public string Name { get; private set; }
+        public int ArmorClass { get; private set; }
+        public virtual int MaximumHitPoints { get; protected set; }
 
-        public int CurrentHitPoints                                          // This gives us a way to set and get info from the varable. 
-        {get { return _currentHitPoints; } set{_currentHitPoints = value; OnPropertyChanged("CurrentHitPoints");}}
+        protected int _currentHitPoints;
+        public virtual int CurrentHitPoints
+        {
+            get
+            {
+                return _currentHitPoints;
+            }
 
-        public static int MaximumHitPoints { get; set; }                    // This give use access to the maximum HP the living creature will have
+            set
+            {
+                _currentHitPoints = value;
+                OnPropertyChanged("CurrentHitPoints");
+            }
+        }
+
+        
 
         public bool HasTakenFatalDamage
         {
-            get { return (CurrentHitPoints <= 0); }
+            get
+            {
+                return (CurrentHitPoints <= 0);
+            }
         }
-
-        public LivingCreature(int currentHitPoints, int maximumHitPoints, bool isDead)   // This is a const to create a livinig creature. This is the base.
+        
+        public LivingCreature(int maximumHitPoints, string name, int armorClass)   
         {
-            CurrentHitPoints = currentHitPoints;
+            CurrentHitPoints = maximumHitPoints;
             MaximumHitPoints = maximumHitPoints;
+            Name = name;
+            ArmorClass = armorClass;
         }
 
         /*

@@ -42,9 +42,9 @@ namespace Joshor
             {
                 lblCreatureName.Text = mobs.Name;
                 lblDisplayMobHP.Text = mobs.CurrentHitPoints.ToString();
-                lblDisplayAC.Text = mobs.AC.ToString();
-                lblDisplayDamage.Text = mobs.Damage.ToString();
-                picMonster.Image = Image.FromFile(@"../../../Engine/Image/" + mobs.Image);
+                lblDisplayAC.Text = mobs.ArmorClass.ToString();
+                lblDisplayDamage.Text = mobs.DamageDice.ToString();
+                picMonster.Image = Image.FromFile(@"../../../Engine/Image/" + mobs.ImagePath);
 
 
             }
