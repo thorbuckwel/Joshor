@@ -53,6 +53,12 @@
     <Compile Include="DamageTypesExplanation.Designer.cs">
       <DependentUpon>DamageTypesExplanation.cs</DependentUpon>
     </Compile>
+    <Compile Include="DeathScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeathScreen.Designer.cs">
+      <DependentUpon>DeathScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="JoshorInterface.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +82,9 @@
     <EmbeddedResource Include="DamageTypesExplanation.resx">
       <DependentUpon>DamageTypesExplanation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DeathScreen.resx">
+      <DependentUpon>DeathScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="JoshorInterface.resx">
       <DependentUpon>JoshorInterface.cs</DependentUpon>
     </EmbeddedResource>
@@ -90,6 +99,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="WeaponInterface.resx">
       <DependentUpon>WeaponInterface.cs</DependentUpon>
@@ -112,6 +122,9 @@
       <Project>{2db84aae-d88a-4203-90d7-e6ac4a27d775}</Project>
       <Name>Engine</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\deathpic.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

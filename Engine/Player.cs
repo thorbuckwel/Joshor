@@ -15,7 +15,7 @@ namespace Engine
         public int gold;                                    // To hold the player's gold
         public int lvl { get; set; }                        // To hold the player's level
         public int ac { get; set; }                         // To hold the player's armor
-        private Room _currentLocation;                      // Not used as of yet!
+        public Room _currentLocation;                      // Not used as of yet!
         public Weapon equipt;                               // To hold the currently equipt weapon
 
         public int Gold { get { return gold; } set { gold = value; OnPropertyChanged("Gold"); } }
