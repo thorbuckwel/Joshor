@@ -4,22 +4,19 @@ namespace Engine
 {
     public class LivingCreature : INotifyPropertyChanged
     {
-        public static int _currentHitPoints;                                // Varable to hold the current hitpoints
+        private static int _currentHitPoints;                                // Varable to hold the current hitpoints
+        private bool _isDead;                                                // We need to know if they are dead right?
+        private static int _maximumHitPoints { get; set; }                   // This give use access to the maximum HP the living creature will have
 
-        public int CurrentHitPoints                                          // This gives us a way to set and get info from the varable. 
-        {get { return _currentHitPoints; } set{_currentHitPoints = value; OnPropertyChanged("CurrentHitPoints");}}
+        /**
+         * The properties to allow use access to the private variables
+         */
+        public int CurrentHitPoints { get { return _currentHitPoints; } set { _currentHitPoints = value; } }
+        public bool IsDead { get { return _isDead;} set { _isDead = value; }}
+        public int MaximumHitPoints { get { return _maximumHitPoints; } set { _maximumHitPoints = value;} }
 
-        public static int MaximumHitPoints { get; set; }                    // This give use access to the maximum HP the living creature will have
-
-        private bool isDead;        // We need to know if they are dead right?
-
-        public bool IsDead
-        {
-            get { return isDead; }
-            set { isDead = value; }
-        }
-
-        public LivingCreature(int currentHitPoints, int maximumHitPoints, bool isDead)   // This is a const to create a livinig creature. This is the base.
+        // This is a const to create a livinig creature. This is the base.
+        public LivingCreature(int currentHitPoints, int maximumHitPoints, bool isDead)   
         {
             CurrentHitPoints = currentHitPoints;
             MaximumHitPoints = maximumHitPoints;

@@ -68,8 +68,8 @@ namespace Joshor
                     {
                         myInterface.rtbEnv.Text += "The " + enemy.Name + " is dead!" + Environment.NewLine;
                         enemy.IsDead = true;
-                        player.xp += enemy.Exp;
-                        player.gold += enemy.Gold;
+                        player.ExperiencePoints += enemy.Experiance;
+                        player.Gold += enemy.Gold;
                         break;
                     }
                 }
@@ -81,7 +81,7 @@ namespace Joshor
                 _attackResult = attack.DiceResult;
                 myInterface.rtbEnv.Text += enemy.Name + " attacks you: " + AttackResults + Environment.NewLine;
                 
-                if (AttackResults > player.ac)
+                if (AttackResults > player.AC)
                 {
                     myInterface.rtbEnv.Text += "The " + enemy.Name + " hits you!" + Environment.NewLine;
                     

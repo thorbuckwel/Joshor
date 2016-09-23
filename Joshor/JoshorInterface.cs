@@ -35,15 +35,15 @@ namespace Joshor
             /**
              * Displaying the players stats int the stat group
              */
-            lblDisplayPlayerName.Text = _player.playerName;
-            lblDisplayPlayerRace.Text = _player.playerRace;
-            lblDisplayPlayerClass.Text = _player.playerClass;
-            lblDisplayLvl.Text = _player.lvl.ToString();
-            lblDisplayGold.Text = _player.gold.ToString();
-            lblDisplayExp.Text = _player.xp.ToString();
-            lblDisplayAC.Text = _player.ac.ToString();
+            lblDisplayPlayerName.Text = _player.PlayerName;
+            lblDisplayPlayerRace.Text = _player.PlayerRace;
+            lblDisplayPlayerClass.Text = _player.PlayerClass;
+            lblDisplayLvl.Text = _player.Level.ToString();
+            lblDisplayGold.Text = _player.Gold.ToString();
+            lblDisplayExp.Text = _player.ExperiencePoints.ToString();
+            lblDisplayAC.Text = _player.AC.ToString();
             lblDisplayHP.Text = _player.CurrentHitPoints.ToString();
-            cboWeapons.Text = _player.equipt.name.ToString();            
+            cboWeapons.Text = _player.Equipt.Name.ToString();            
         }
 
         /**
@@ -55,8 +55,8 @@ namespace Joshor
             
             _player.CurrentLocation = World.Location[0];            
 
-            rtbLocation.Text += _player.CurrentLocation.roomName + Environment.NewLine;
-            rtbLocation.Text += _player.CurrentLocation.roomDescript + Environment.NewLine;            
+            rtbLocation.Text += _player.CurrentLocation.RoomName + Environment.NewLine;
+            rtbLocation.Text += _player.CurrentLocation.RoomDescript + Environment.NewLine;            
         }
 
         /**
@@ -77,8 +77,8 @@ namespace Joshor
         {
             _player.MoveNorth();
             rtbLocation.Text = "";
-            rtbLocation.Text += _player.CurrentLocation.roomName + Environment.NewLine;
-            rtbLocation.Text += _player.CurrentLocation.roomDescript + Environment.NewLine;
+            rtbLocation.Text += _player.CurrentLocation.RoomName + Environment.NewLine;
+            rtbLocation.Text += _player.CurrentLocation.RoomDescript + Environment.NewLine;
             Exits(_player);            
             
             if(_player.CurrentLocation.Monsters != null)
@@ -112,8 +112,8 @@ namespace Joshor
         {
             _player.MoveSouth();
             rtbLocation.Text = "";
-            rtbLocation.Text += _player.CurrentLocation.roomName + Environment.NewLine;
-            rtbLocation.Text += _player.CurrentLocation.roomDescript + Environment.NewLine;
+            rtbLocation.Text += _player.CurrentLocation.RoomName + Environment.NewLine;
+            rtbLocation.Text += _player.CurrentLocation.RoomDescript + Environment.NewLine;
             Exits(_player);
             Monster inhab;
 
@@ -207,8 +207,8 @@ namespace Joshor
             {
                 _player.MoveNorth();
                 rtbLocation.Text = "";
-                rtbLocation.Text += _player.CurrentLocation.roomName + Environment.NewLine;
-                rtbLocation.Text += _player.CurrentLocation.roomDescript + Environment.NewLine;
+                rtbLocation.Text += _player.CurrentLocation.RoomName + Environment.NewLine;
+                rtbLocation.Text += _player.CurrentLocation.RoomDescript + Environment.NewLine;
                 Exits(_player);
 
             }
@@ -227,7 +227,7 @@ namespace Joshor
             
             //Add a null check for stupidty reasons
                        
-            Weapon equipt = World.Weapons.First(item => item.name == cboWeapons.Text);
+            Weapon equipt = World.Weapons.First(item => item.Name == cboWeapons.Text);
             Combat fight = new Combat();
             fight.Fight(inhab, _player, equipt, this);
             if (inhab.IsDead == true)
@@ -244,9 +244,9 @@ namespace Joshor
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            lblDisplayExp.Text = _player.xp.ToString();
-            lblDisplayLvl.Text = _player.lvl.ToString();
-            lblDisplayGold.Text = _player.gold.ToString();
+            lblDisplayExp.Text = _player.ExperiencePoints.ToString();
+            lblDisplayLvl.Text = _player.Level.ToString();
+            lblDisplayGold.Text = _player.Gold.ToString();
         }
         
     }

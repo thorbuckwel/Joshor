@@ -8,6 +8,6 @@ namespace Engine
 {
     class Treasure
     {
-        private int value;
+        
     }
 }

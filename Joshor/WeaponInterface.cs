@@ -40,13 +40,13 @@ namespace Joshor
             lblDamageValue.Text = string.Empty;
             lblDamageType.Text = string.Empty;
 
-            Weapon weapons = World.Weapons.FirstOrDefault(weapon => weapon.name == JoshorInterface.cboWeapons.Text);
+            Weapon weapons = World.Weapons.FirstOrDefault(weapon => weapon.Name == JoshorInterface.cboWeapons.Text);
             if(weapons != null)
             {
-                lblWepName.Text = weapons.name.ToString();
-                lblWepCost.Text = weapons.cost.ToString();
-                lblDamageValue.Text = weapons.damage.ToString();
-                lblDamageType.Text = weapons.damageType.ToString();
+                lblWepName.Text = weapons.Name.ToString();
+                lblWepCost.Text = weapons.Cost.ToString();
+                lblDamageValue.Text = weapons.Damage.ToString();
+                lblDamageType.Text = weapons.DamageType.ToString();
             }
         }
     }
