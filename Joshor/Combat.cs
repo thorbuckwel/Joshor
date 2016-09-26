@@ -8,12 +8,13 @@ using Engine;
 namespace Joshor
 {
     class Combat
-    {      
+    {
+        public int RoundCounter = 1;
 
-        public static string Fight(Monster theMonster, Player thePlayer)
+        public string Fight(Monster theMonster, Player thePlayer)
         {
-            string combatResults = "";
-            int roundCounter = 1; // To keep track of the rounds
+
+            string turnOfCombat = "";
 
             //These need to be decleared outside the loop, to prevent .Next() from
             //returning the same value; since System.Random's seed is based off of time
@@ -22,42 +23,63 @@ namespace Joshor
             Dice rollToHitAC = new Dice(20);
             Dice playerDamageDice = new Dice(thePlayer.EquippedWeapon.damage);
 
-            while (!theMonster.HasTakenFatalDamage && !thePlayer.HasTakenFatalDamage)
+            turnOfCombat += PlayerTurn(thePlayer, theMonster, rollToHitAC, playerDamageDice);
+
+            if (theMonster.HasTakenFatalDamage)
             {
-                combatResults += PlayerTurn(thePlayer, theMonster, rollToHitAC, playerDamageDice);
-
-                if (theMonster.HasTakenFatalDamage)
-                {
-                    combatResults += "The creature is dead!" + Environment.NewLine;
-                    thePlayer.ExperiencePoints += theMonster.Exp;
-                    thePlayer.Gold += theMonster.Gold;
-                    break;
-                }
-
-                combatResults += MonsterTurn(thePlayer, theMonster, rollToHitAC);
-                //activeUI.lblDisplayHP.Text = thePlayer.CurrentHitPoints.ToString();
-                //As long as combat is done in one continous loop, the player will never
-                //see their HP change as each round progresses.
-
-                if (thePlayer.HasTakenFatalDamage)
-                {
-                    combatResults += "You are dead!" + Environment.NewLine;
-                    break;
-                }
-                combatResults += Environment.NewLine;
-                roundCounter++; //Is this used?
+                turnOfCombat += "The creature is dead!" + Environment.NewLine;
+                thePlayer.ExperiencePoints += theMonster.Exp;
+                thePlayer.Gold += theMonster.Gold;
+                return turnOfCombat;
             }
 
-            combatResults += "The fight took " + roundCounter + " rounds to finish." + Environment.NewLine;
-            return combatResults;    
+            turnOfCombat += MonsterTurn(thePlayer, theMonster, rollToHitAC);
+
+
+            if (thePlayer.HasTakenFatalDamage)
+            {
+                turnOfCombat += "You are dead!" + Environment.NewLine;
+                return turnOfCombat;
+            }
+
+            turnOfCombat += Environment.NewLine;
+            RoundCounter++;
+            return turnOfCombat;    
         }
+
+        //Work in progress on using a single method for combat
+        //private static string Turn<T>(LivingCreature Attacker, LivingCreature Defender, Dice rollToHitAC) where T : LivingCreature
+        //{
+        //    int rollToBeatAC = rollToHitAC.Roll();
+        //    int criticalHitMultipler = (rollToBeatAC == 20) ? 2 : 1; //Natural 20!
+        //    string attackLog = "";
+
+        //    if (rollToBeatAC > Defender.ArmorClass) //Tie goes to the defender?
+        //    {
+        //        //Deal damage to the Monster
+        //        int damageDealt = Attacker.damageDice.Roll() * criticalHitMultipler;
+        //        theMonster.CurrentHitPoints -= damageDealt;
+        //        string crticial = (criticalHitMultipler == 2) ? " Critical Hit!" : "";
+        //        //Update the Combat log
+        //        attackLog += "You hit the " + theMonster.Name + "with your" + thePlayer.EquippedWeapon.ToString() + Environment.NewLine;
+        //        attackLog += " (Roll: " + rollToBeatAC + " vs AC: " + theMonster.ArmorClass + ")" + Environment.NewLine;
+        //        attackLog += "You did " + damageDealt + " points of damage." + crticial + Environment.NewLine;
+        //        attackLog += theMonster.Name + " has " + theMonster.CurrentHitPoints + " hitpoints left" + Environment.NewLine;
+        //    }
+        //    else
+        //    {
+        //        attackLog += "You missed your attack! (Roll: " + rollToBeatAC + " vs AC: " + theMonster.ArmorClass + ")" + Environment.NewLine;
+        //    }
+
+        //    return attackLog;
+        //}
 
         private static string PlayerTurn(Player thePlayer, Monster theMonster, Dice rollToHitAC, Dice damageDice)
         {
-
+            
             int rollToBeatAC = rollToHitAC.Roll();
             int criticalHitMultipler = (rollToBeatAC == 20) ? 2 : 1; //Natural 20!
-            string attackLog = "You attack with your " + thePlayer.EquippedWeapon.name + Environment.NewLine;
+            string attackLog = "";
 
             if (rollToBeatAC > theMonster.ArmorClass) //Tie goes to the defender?
             {
@@ -66,13 +88,14 @@ namespace Joshor
                 theMonster.CurrentHitPoints -= damageDealt;
                 string crticial = (criticalHitMultipler == 2) ? " Critical Hit!" : "";
                 //Update the Combat log
-                attackLog += "You hit the creature! (Roll: " + rollToBeatAC + " vs AC: " + theMonster.ArmorClass + ")" + Environment.NewLine;
+                attackLog += "You hit the " + theMonster.Name +  "with your"+ thePlayer.EquippedWeapon.ToString() + Environment.NewLine;
+                attackLog += " (Roll: " + rollToBeatAC + " vs AC: " + theMonster.ArmorClass + ")" + Environment.NewLine;
                 attackLog += "You did " + damageDealt + " points of damage." + crticial + Environment.NewLine;
                 attackLog += theMonster.Name + " has " + theMonster.CurrentHitPoints + " hitpoints left" + Environment.NewLine;
             }
             else
             {
-                attackLog += "You Missed your attack! (Roll: " + rollToBeatAC + " vs AC: " + theMonster.ArmorClass + ")" + Environment.NewLine;
+                attackLog += "You missed your attack! (Roll: " + rollToBeatAC + " vs AC: " + theMonster.ArmorClass + ")" + Environment.NewLine;
             }
 
             return attackLog;
@@ -84,7 +107,7 @@ namespace Joshor
             int rollToBeatAC = rollToHitAC.Roll();
             int criticalHitMultipler = (rollToBeatAC == 20) ? 2 : 1; //Natural 20!
             rollToBeatAC += theMonster.BaseHitChance;
-            string attackLog = theMonster.Name + " attemps to attack you." + Environment.NewLine;
+            string attackLog = "";
 
             if (rollToBeatAC > thePlayer.ArmorClass)
             {
@@ -93,16 +116,21 @@ namespace Joshor
                 thePlayer.CurrentHitPoints -= damageDealt;
                 string crticial = (criticalHitMultipler == 2) ? " Critical Hit!" : "";
                 //Update the combat log
-                attackLog += "The creature hits you! (Roll: " + rollToBeatAC + " vs AC: " + thePlayer.ArmorClass + ")" + Environment.NewLine;
-                attackLog += "The creature did " + damageDealt + " points of damage."+ crticial + Environment.NewLine;
+                attackLog += "The "+ theMonster.Name +" hits you! (Roll: " + rollToBeatAC + " vs AC: " + thePlayer.ArmorClass + ")" + Environment.NewLine;
+                attackLog += "The " + theMonster.Name + " did " + damageDealt + " points of damage."+ crticial + Environment.NewLine;
                 attackLog += "You have " + thePlayer.CurrentHitPoints + " hitpoints left." + Environment.NewLine;
             }
             else
             {
-                attackLog += "The creature missed you! (Roll: " + rollToBeatAC + " vs AC: " + thePlayer.ArmorClass + ")" + Environment.NewLine;
+                attackLog += "The " + theMonster.Name + " missed you! (Roll: " + rollToBeatAC + " vs AC: " + thePlayer.ArmorClass + ")" + Environment.NewLine;
             }
 
             return attackLog;
+        }
+
+        public void EndCombat()
+        {
+            RoundCounter = 1;
         }
     }
 }

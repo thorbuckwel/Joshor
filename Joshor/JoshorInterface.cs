@@ -17,9 +17,10 @@ namespace Joshor
 {
     public partial class DungeonUI : Form
     {
+        private static Combat _combatManager;
         private Monster theMonster;
         private Player thePlayer;                 // Create a player from the PLayer class    
-
+        private int _previouslyEnteredRoomID;
         /**
          * There are several things that need to happen when the interface is initialized.
          * First we need to populate all our list by calling a ListBuilder class method. Then
@@ -28,6 +29,8 @@ namespace Joshor
         public DungeonUI()
         {
             InitializeComponent();
+
+            _combatManager = new Combat();
 
             ListBuilder.Build();                // On load we need to call the ListBuilder to build all out List
             // Creating a player object 
@@ -38,7 +41,7 @@ namespace Joshor
                 gold: 100,
                 maximumHitPoints: 10,
                 currentlyEquippedWeapon: World.Weapons[2],
-                armorClass: 10);  
+                armorClass: 10);
 
         }
 
@@ -61,8 +64,7 @@ namespace Joshor
 
             //Display the starting room's information in the UI
             thePlayer.MoveTo(0);
-            UpdateRoomFlavorText();
-            ShowPossibleExits();      
+            UpdateUI(false);
         }
 
         /**
@@ -96,13 +98,14 @@ namespace Joshor
         /// </summary>
         private void MovePlayer(int directionToMoveIndex)
         {
+            //Save the previous room for use when fleeing combat
+            _previouslyEnteredRoomID = World.Location.IndexOf(thePlayer.CurrentLocation);
+
             int destinationRoomIndex = World.Location.IndexOf(thePlayer.CurrentLocation) + directionToMoveIndex;
             //Tell the player to move North/South
             thePlayer.MoveTo(destinationRoomIndex);
-
             //Update the UI
-            UpdateRoomFlavorText();
-            ShowPossibleExits();
+            UpdateUI(false);
 
             //Spawn Monsters
             if (thePlayer.CurrentLocation.Monsters != null)
@@ -113,22 +116,28 @@ namespace Joshor
 
         /// <summary>
         /// Helper function to handle updating the RichTextBox Location and ComboBox Enemies;
-        /// Called on every Room change.
+        /// and
+        /// Checks each possible neighbor of the CurrentRoom, and enables the corresponding
+        /// movement button if their is a neighbor in that direction.
         /// </summary>
-        private void UpdateRoomFlavorText()
+        private void UpdateUI(bool fledCombat)
         {
+            //Update flavor text:
             rtbLocation.Text = "";
             rtbLocation.Text += thePlayer.CurrentLocation.roomName + Environment.NewLine;
             rtbLocation.Text += thePlayer.CurrentLocation.roomDescript + Environment.NewLine;
             cboEnemies.Text = "";
-        }
 
-        /// <summary>
-        /// Checks each possible neighbor of the CurrentRoom, and enables the corresponding
-        /// movement button if their is a neighbor in that direction.
-        /// </summary>
-        private void ShowPossibleExits()
-        {
+            if (fledCombat)
+            {
+                rtbEnv.Text = "You have fled from battle.";
+            }
+            else
+            {
+                rtbEnv.Text = "";
+            }
+
+            //Enable buttons for exits
             btnNorth.Enabled = thePlayer.CurrentLocation.LocationToNorth;
             btnSouth.Enabled = thePlayer.CurrentLocation.LocationToSouth;
             btnEast.Enabled = thePlayer.CurrentLocation.LocationToEast;
@@ -198,29 +207,40 @@ namespace Joshor
          */
         private void btnAttack_Click(object sender, EventArgs e)
         {
-            //What is the point of this? 
-            //Weapon equipt = World.Weapons.First(item => item.name == cboWeapons.Text);
-            //The Player.EquippedWeapon should be storing the currently selected weapon
-            //This more belongs in a cboWeapons_Changed event method to update the player
-            //class when the selection is changed.
+            string turnOfCombat = _combatManager.Fight(theMonster, thePlayer);
 
- 
-
-            rtbEnv.Text = Combat.Fight(theMonster, thePlayer);
+            if (_combatManager.RoundCounter == 1)
+            {
+                //Clear out the Environment RTB for new combat log
+                rtbEnv.Text = turnOfCombat;
+            }
+            else
+            {
+                //Add the turn's results to the Environment combat log
+                rtbEnv.Text += turnOfCombat;
+            }
+            
 
             //The callback for CurrentHitPoints being modified is not implemented
             //Remove this when it has been.
             lblDisplayHP.Text = thePlayer.CurrentHitPoints.ToString();
 
-            if (theMonster.HasTakenFatalDamage)
+            if (theMonster.HasTakenFatalDamage || thePlayer.HasTakenFatalDamage)
             {
-                cboEnemies.Text = "";
-            }
-
-            if (thePlayer.HasTakenFatalDamage)
-            {
-                DeathScreen deathScreen = new DeathScreen();
-                deathScreen.Show();
+                //Combat has ended, display end of combat message 
+                rtbEnv.Text += "The fight took " + _combatManager.RoundCounter + " rounds to finish." + Environment.NewLine;
+                //Reset the round counter
+                _combatManager.EndCombat();
+                if (thePlayer.HasTakenFatalDamage)
+                {
+                    DeathScreen deathScreen = new DeathScreen();
+                    deathScreen.Show();
+                }
+               if (theMonster.HasTakenFatalDamage)
+                {
+                    cboEnemies.Text = "";
+                }
+                
             }
         }
 
@@ -233,6 +253,20 @@ namespace Joshor
             lblDisplayExp.Text = thePlayer.ExperiencePoints.ToString();
             lblDisplayLvl.Text = thePlayer.Level.ToString();
             lblDisplayGold.Text = thePlayer.Gold.ToString();
+        }
+
+        private void fleeButton_Click(object sender, EventArgs e)
+        {
+            if (thePlayer.HasTakenFatalDamage == false)
+            {
+                //Reset the round counter
+                _combatManager.EndCombat();
+                //If the player is still alive, let them flee to the previous room
+                thePlayer.MoveTo(_previouslyEnteredRoomID);
+                
+                //Refresh the UI to reflect the new location
+                UpdateUI(true);
+            }
         }
     }
 }

@@ -71,6 +71,7 @@
             this.cboEnemies = new System.Windows.Forms.ComboBox();
             this.lblEnemies = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.fleeButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.grbInventory.SuspendLayout();
             this.grbStats.SuspendLayout();
@@ -86,7 +87,7 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(0, 37);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(6);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(602, 387);
@@ -96,9 +97,9 @@
             // 
             this.grbInventory.Controls.Add(this.dataGridView1);
             this.grbInventory.Location = new System.Drawing.Point(24, 792);
-            this.grbInventory.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.grbInventory.Margin = new System.Windows.Forms.Padding(6);
             this.grbInventory.Name = "grbInventory";
-            this.grbInventory.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.grbInventory.Padding = new System.Windows.Forms.Padding(6);
             this.grbInventory.Size = new System.Drawing.Size(614, 435);
             this.grbInventory.TabIndex = 1;
             this.grbInventory.TabStop = false;
@@ -123,9 +124,9 @@
             this.grbStats.Controls.Add(this.llblRace);
             this.grbStats.Controls.Add(this.lblName);
             this.grbStats.Location = new System.Drawing.Point(24, 23);
-            this.grbStats.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.grbStats.Margin = new System.Windows.Forms.Padding(6);
             this.grbStats.Name = "grbStats";
-            this.grbStats.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.grbStats.Padding = new System.Windows.Forms.Padding(6);
             this.grbStats.Size = new System.Drawing.Size(614, 358);
             this.grbStats.TabIndex = 2;
             this.grbStats.TabStop = false;
@@ -290,9 +291,9 @@
             // 
             this.grbRoom.Controls.Add(this.rtbLocation);
             this.grbRoom.Location = new System.Drawing.Point(1180, 23);
-            this.grbRoom.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.grbRoom.Margin = new System.Windows.Forms.Padding(6);
             this.grbRoom.Name = "grbRoom";
-            this.grbRoom.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.grbRoom.Padding = new System.Windows.Forms.Padding(6);
             this.grbRoom.Size = new System.Drawing.Size(808, 358);
             this.grbRoom.TabIndex = 3;
             this.grbRoom.TabStop = false;
@@ -301,7 +302,7 @@
             // rtbLocation
             // 
             this.rtbLocation.Location = new System.Drawing.Point(12, 37);
-            this.rtbLocation.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.rtbLocation.Margin = new System.Windows.Forms.Padding(6);
             this.rtbLocation.Name = "rtbLocation";
             this.rtbLocation.Size = new System.Drawing.Size(780, 292);
             this.rtbLocation.TabIndex = 0;
@@ -311,9 +312,9 @@
             // 
             this.grbEnvironment.Controls.Add(this.rtbEnv);
             this.grbEnvironment.Location = new System.Drawing.Point(1180, 392);
-            this.grbEnvironment.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.grbEnvironment.Margin = new System.Windows.Forms.Padding(6);
             this.grbEnvironment.Name = "grbEnvironment";
-            this.grbEnvironment.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.grbEnvironment.Padding = new System.Windows.Forms.Padding(6);
             this.grbEnvironment.Size = new System.Drawing.Size(808, 835);
             this.grbEnvironment.TabIndex = 4;
             this.grbEnvironment.TabStop = false;
@@ -322,7 +323,7 @@
             // rtbEnv
             // 
             this.rtbEnv.Location = new System.Drawing.Point(12, 37);
-            this.rtbEnv.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.rtbEnv.Margin = new System.Windows.Forms.Padding(6);
             this.rtbEnv.Name = "rtbEnv";
             this.rtbEnv.Size = new System.Drawing.Size(780, 612);
             this.rtbEnv.TabIndex = 0;
@@ -337,9 +338,9 @@
             this.grpRoomControls.Controls.Add(this.btnWest);
             this.grpRoomControls.Controls.Add(this.btnNorth);
             this.grpRoomControls.Location = new System.Drawing.Point(650, 25);
-            this.grpRoomControls.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.grpRoomControls.Margin = new System.Windows.Forms.Padding(6);
             this.grpRoomControls.Name = "grpRoomControls";
-            this.grpRoomControls.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.grpRoomControls.Padding = new System.Windows.Forms.Padding(6);
             this.grpRoomControls.Size = new System.Drawing.Size(518, 527);
             this.grpRoomControls.TabIndex = 5;
             this.grpRoomControls.TabStop = false;
@@ -348,7 +349,7 @@
             // btnScan
             // 
             this.btnScan.Location = new System.Drawing.Point(14, 471);
-            this.btnScan.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnScan.Margin = new System.Windows.Forms.Padding(6);
             this.btnScan.Name = "btnScan";
             this.btnScan.Size = new System.Drawing.Size(150, 44);
             this.btnScan.TabIndex = 5;
@@ -358,7 +359,7 @@
             // btnLook
             // 
             this.btnLook.Location = new System.Drawing.Point(356, 471);
-            this.btnLook.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnLook.Margin = new System.Windows.Forms.Padding(6);
             this.btnLook.Name = "btnLook";
             this.btnLook.Size = new System.Drawing.Size(150, 44);
             this.btnLook.TabIndex = 4;
@@ -368,7 +369,7 @@
             // btnSouth
             // 
             this.btnSouth.Location = new System.Drawing.Point(186, 131);
-            this.btnSouth.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnSouth.Margin = new System.Windows.Forms.Padding(6);
             this.btnSouth.Name = "btnSouth";
             this.btnSouth.Size = new System.Drawing.Size(150, 44);
             this.btnSouth.TabIndex = 3;
@@ -379,7 +380,7 @@
             // btnEast
             // 
             this.btnEast.Location = new System.Drawing.Point(356, 83);
-            this.btnEast.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnEast.Margin = new System.Windows.Forms.Padding(6);
             this.btnEast.Name = "btnEast";
             this.btnEast.Size = new System.Drawing.Size(150, 44);
             this.btnEast.TabIndex = 2;
@@ -389,7 +390,7 @@
             // btnWest
             // 
             this.btnWest.Location = new System.Drawing.Point(12, 83);
-            this.btnWest.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnWest.Margin = new System.Windows.Forms.Padding(6);
             this.btnWest.Name = "btnWest";
             this.btnWest.Size = new System.Drawing.Size(150, 44);
             this.btnWest.TabIndex = 1;
@@ -399,7 +400,7 @@
             // btnNorth
             // 
             this.btnNorth.Location = new System.Drawing.Point(186, 35);
-            this.btnNorth.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnNorth.Margin = new System.Windows.Forms.Padding(6);
             this.btnNorth.Name = "btnNorth";
             this.btnNorth.Size = new System.Drawing.Size(150, 44);
             this.btnNorth.TabIndex = 0;
@@ -409,6 +410,7 @@
             // 
             // grpEnvironmentItems
             // 
+            this.grpEnvironmentItems.Controls.Add(this.fleeButton);
             this.grpEnvironmentItems.Controls.Add(this.btnInspectWeapon);
             this.grpEnvironmentItems.Controls.Add(this.btnAttack);
             this.grpEnvironmentItems.Controls.Add(this.cboWeapons);
@@ -420,9 +422,9 @@
             this.grpEnvironmentItems.Controls.Add(this.cboEnemies);
             this.grpEnvironmentItems.Controls.Add(this.lblEnemies);
             this.grpEnvironmentItems.Location = new System.Drawing.Point(650, 563);
-            this.grpEnvironmentItems.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.grpEnvironmentItems.Margin = new System.Windows.Forms.Padding(6);
             this.grpEnvironmentItems.Name = "grpEnvironmentItems";
-            this.grpEnvironmentItems.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.grpEnvironmentItems.Padding = new System.Windows.Forms.Padding(6);
             this.grpEnvironmentItems.Size = new System.Drawing.Size(506, 663);
             this.grpEnvironmentItems.TabIndex = 6;
             this.grpEnvironmentItems.TabStop = false;
@@ -430,8 +432,8 @@
             // 
             // btnInspectWeapon
             // 
-            this.btnInspectWeapon.Location = new System.Drawing.Point(286, 317);
-            this.btnInspectWeapon.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnInspectWeapon.Location = new System.Drawing.Point(330, 356);
+            this.btnInspectWeapon.Margin = new System.Windows.Forms.Padding(6);
             this.btnInspectWeapon.Name = "btnInspectWeapon";
             this.btnInspectWeapon.Size = new System.Drawing.Size(150, 44);
             this.btnInspectWeapon.TabIndex = 9;
@@ -441,8 +443,8 @@
             // 
             // btnAttack
             // 
-            this.btnAttack.Location = new System.Drawing.Point(84, 317);
-            this.btnAttack.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnAttack.Location = new System.Drawing.Point(38, 219);
+            this.btnAttack.Margin = new System.Windows.Forms.Padding(6);
             this.btnAttack.Name = "btnAttack";
             this.btnAttack.Size = new System.Drawing.Size(150, 44);
             this.btnAttack.TabIndex = 8;
@@ -453,8 +455,8 @@
             // cboWeapons
             // 
             this.cboWeapons.FormattingEnabled = true;
-            this.cboWeapons.Location = new System.Drawing.Point(138, 265);
-            this.cboWeapons.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cboWeapons.Location = new System.Drawing.Point(28, 386);
+            this.cboWeapons.Margin = new System.Windows.Forms.Padding(6);
             this.cboWeapons.Name = "cboWeapons";
             this.cboWeapons.Size = new System.Drawing.Size(238, 33);
             this.cboWeapons.TabIndex = 7;
@@ -462,7 +464,7 @@
             // lblWeapon
             // 
             this.lblWeapon.AutoSize = true;
-            this.lblWeapon.Location = new System.Drawing.Point(206, 235);
+            this.lblWeapon.Location = new System.Drawing.Point(96, 356);
             this.lblWeapon.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblWeapon.Name = "lblWeapon";
             this.lblWeapon.Size = new System.Drawing.Size(92, 25);
@@ -471,8 +473,8 @@
             // 
             // btnGet
             // 
-            this.btnGet.Location = new System.Drawing.Point(186, 510);
-            this.btnGet.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnGet.Location = new System.Drawing.Point(191, 575);
+            this.btnGet.Margin = new System.Windows.Forms.Padding(6);
             this.btnGet.Name = "btnGet";
             this.btnGet.Size = new System.Drawing.Size(150, 44);
             this.btnGet.TabIndex = 5;
@@ -482,8 +484,8 @@
             // cboItems
             // 
             this.cboItems.FormattingEnabled = true;
-            this.cboItems.Location = new System.Drawing.Point(138, 458);
-            this.cboItems.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cboItems.Location = new System.Drawing.Point(143, 523);
+            this.cboItems.Margin = new System.Windows.Forms.Padding(6);
             this.cboItems.Name = "cboItems";
             this.cboItems.Size = new System.Drawing.Size(238, 33);
             this.cboItems.TabIndex = 4;
@@ -491,7 +493,7 @@
             // lblItems
             // 
             this.lblItems.AutoSize = true;
-            this.lblItems.Location = new System.Drawing.Point(230, 427);
+            this.lblItems.Location = new System.Drawing.Point(235, 492);
             this.lblItems.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblItems.Name = "lblItems";
             this.lblItems.Size = new System.Drawing.Size(63, 25);
@@ -501,7 +503,7 @@
             // btnEnemyView
             // 
             this.btnEnemyView.Location = new System.Drawing.Point(186, 125);
-            this.btnEnemyView.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnEnemyView.Margin = new System.Windows.Forms.Padding(6);
             this.btnEnemyView.Name = "btnEnemyView";
             this.btnEnemyView.Size = new System.Drawing.Size(150, 44);
             this.btnEnemyView.TabIndex = 2;
@@ -513,7 +515,7 @@
             // 
             this.cboEnemies.FormattingEnabled = true;
             this.cboEnemies.Location = new System.Drawing.Point(138, 73);
-            this.cboEnemies.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cboEnemies.Margin = new System.Windows.Forms.Padding(6);
             this.cboEnemies.Name = "cboEnemies";
             this.cboEnemies.Size = new System.Drawing.Size(238, 33);
             this.cboEnemies.TabIndex = 1;
@@ -533,6 +535,17 @@
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // fleeButton
+            // 
+            this.fleeButton.Location = new System.Drawing.Point(320, 219);
+            this.fleeButton.Margin = new System.Windows.Forms.Padding(6);
+            this.fleeButton.Name = "fleeButton";
+            this.fleeButton.Size = new System.Drawing.Size(150, 44);
+            this.fleeButton.TabIndex = 10;
+            this.fleeButton.Text = "Flee";
+            this.fleeButton.UseVisualStyleBackColor = true;
+            this.fleeButton.Click += new System.EventHandler(this.fleeButton_Click);
+            // 
             // DungeonUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -545,7 +558,7 @@
             this.Controls.Add(this.grbStats);
             this.Controls.Add(this.grbInventory);
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "DungeonUI";
             this.Text = "Joshor";
             this.Load += new System.EventHandler(this.DungeonUI_Load);
@@ -607,6 +620,7 @@
         public System.Windows.Forms.RichTextBox rtbEnv;
         public System.Windows.Forms.Label lblDisplayHP;
         public System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button fleeButton;
     }
 }
 
