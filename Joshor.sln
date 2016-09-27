@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joshor", "Joshor\Joshor.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine", "Engine\Engine.csproj", "{2DB84AAE-D88A-4203-90D7-E6AC4A27D775}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JosherConsole", "JosherConsole\JosherConsole.csproj", "{6A2BA15C-B9A1-4FB5-A943-9132B4527E20}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,6 +24,10 @@ Global
 		{2DB84AAE-D88A-4203-90D7-E6AC4A27D775}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{2DB84AAE-D88A-4203-90D7-E6AC4A27D775}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DB84AAE-D88A-4203-90D7-E6AC4A27D775}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A2BA15C-B9A1-4FB5-A943-9132B4527E20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A2BA15C-B9A1-4FB5-A943-9132B4527E20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A2BA15C-B9A1-4FB5-A943-9132B4527E20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A2BA15C-B9A1-4FB5-A943-9132B4527E20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Xml;
 
 namespace Engine
 {
@@ -17,7 +17,9 @@ namespace Engine
         private int _ac;                                    // To hold the player's armor
         private Room _currentLocation;                      // Not used as of yet!
         private Weapon _equipt;                             // To hold the currently equipt weapon
-        
+
+        public event EventHandler<MessageEventArgs> OnMessage;
+
         /**
          * Setting Properties to be able to access the private variables.
          */
@@ -98,6 +100,14 @@ namespace Engine
                 int ele = World.Location.IndexOf(_currentLocation);
                 MoveTo(World.Location[--ele]);
             }
-        }                
+        }
+
+        private void RaiseMessage(string message, bool addExtraNewLine = false)
+        {
+            if (OnMessage != null)
+            {
+                OnMessage(this, new MessageEventArgs(message, addExtraNewLine));
+            }
+        }
     }
 }
