@@ -18,6 +18,7 @@ namespace Engine
         private Room _currentLocation;                      // Not used as of yet!
         private Weapon _equipt;                             // To hold the currently equipt weapon
 
+        public List<InventoryItem> Inventory { get; set; }
         public event EventHandler<MessageEventArgs> OnMessage;
 
         /**
@@ -39,6 +40,8 @@ namespace Engine
         * plus passing the current and max hit points to the LivingCreature class that the Player class is 
         * derived from so that the player can inherate these values.
         */
+
+        
         public Player (String name, String PC, String PR, int gold, int currentHitPoints, int maximumHitPoints, Weapon equipt, bool isDead) 
             : base(currentHitPoints, maximumHitPoints, isDead)
         {
@@ -50,7 +53,60 @@ namespace Engine
             this.AC = 10;
             this.Equipt = equipt;
         }
-                
+
+        public static Player CreateDefaultPlayer()
+        {
+            Player player = new Player(10, 10, 20, 0);
+            player.Inventory.Add(new InventoryItem(World.ItemByID(World.ITEM_ID_RUSTY_SWORD), 1));
+            player.CurrentLocation = World.LocationByID(World.LOCATION_ID_HOME);
+
+            return player;
+        }
+
+        public static Player CreatePlayerFromXmlString(string xmlPlayerData)
+        {
+            try
+            {
+                XmlDocument playerData = new XmlDocument();
+
+                playerData.LoadXml(xmlPlayerData);
+
+                int currentHitPoints = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/CurrentHitPoints").InnerText);
+                int maximumHitPoints = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/MaximumHitPoints").InnerText);
+                int gold = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/Gold").InnerText);
+                int experiencePoints = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/ExperiencePoints").InnerText);
+
+                Player player = new Player(name, PC, PR, gold, currentHitPoints, maximumHitPoints, equipt, isDead);
+
+                int currentLocationID = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/CurrentLocation").InnerText);
+                player.CurrentLocation = World.Location(currentLocationID);
+
+                if (playerData.SelectSingleNode("/Player/Stats/CurrentWeapon") != null)
+                {
+                    int currentWeaponID = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/CurrentWeapon").InnerText);
+                    player.Equipt = (Weapon)World.ItemByID(currentWeaponID);
+                }
+
+                foreach (XmlNode node in playerData.SelectNodes("/Player/InventoryItems/InventoryItem"))
+                {
+                    int id = Convert.ToInt32(node.Attributes["ID"].Value);
+                    int quantity = Convert.ToInt32(node.Attributes["Quantity"].Value);
+
+                    for (int i = 0; i < quantity; i++)
+                    {
+                        player.AddItemToInventory(World.ItemByID(id));
+                    }
+                }                
+
+                return player;
+            }
+            catch
+            {
+                // If there was an error with the XML data, return a default player object
+                return CreateDefaultPlayer();
+            }
+        }
+
         /**
          * This method takes the new location and assigns it to the player's current location.
          */
