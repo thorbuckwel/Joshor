@@ -81,6 +81,7 @@
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
     <Content Include="Docs\dbo.Mobs.data.sql" />
+    <Content Include="Docs\dbo.Weapons.data.sql" />
     <Content Include="Docs\Monsters.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
