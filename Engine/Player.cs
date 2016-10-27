@@ -154,7 +154,7 @@ namespace Engine
             if (World.Location != null)
             {
                 int ele = World.Location.IndexOf(_currentLocation);
-                MoveTo(World.Location[--ele]);
+                MoveTo(World.Location.);
             }
         }
 
