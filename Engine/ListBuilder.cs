@@ -90,8 +90,8 @@ namespace Engine
             }
 
             /**
-             * We need to build each object to go into the Monster List. First we use the StreamReader
-             * to open the Monsters text file that stores all the information that is need to create
+             * We need to build each object to go into the Items List. First we use the StreamReader
+             * to open the Items text file that stores all the information that is need to create
              * the monsters. This file is formated to be in a certain order. Then we use the while loop
              * to assign the value to the variables one line at a time until we reach the end of the
              * text file. After we have assigned values to the variables we then pass the variables

@@ -104,6 +104,9 @@ namespace JosherConsole
             }
             else if (input == "stats" || input == "score")
             {
+                Console.WriteLine(_player.PlayerName);
+                Console.WriteLine(_player.PlayerClass);
+                Console.WriteLine(_player.PlayerRace);
                 Console.WriteLine("Current hit points: {0}", _player.CurrentHitPoints);
                 Console.WriteLine("Maximum hit points: {0}", _player.MaximumHitPoints);
                 Console.WriteLine("Experience Points: {0}", _player.ExperiencePoints);
@@ -168,7 +171,7 @@ namespace JosherConsole
                 {
                     Console.WriteLine("{0}: {1}", inventoryItem.Description, inventoryItem.Quantity);
                 }
-            }            
+            }
             //else if (input.Contains("attack"))
             //{
             //    if (_player.CurrentLocation.MonsterLivingHere == null)
@@ -194,32 +197,33 @@ namespace JosherConsole
             //        }
             //    }
             //}
-            //else if (input.StartsWith("equip "))
-            //{
-            //    string inputWeaponName = input.Substring(6).Trim();
+            else if (input.StartsWith("equip "))
+            {
+                string inputWeaponName = input.Substring(6).Trim();
 
-            //    if (string.IsNullOrEmpty(inputWeaponName))
-            //    {
-            //        Console.WriteLine("You must enter the name of the weapon to equip");
-            //    }
-            //    else
-            //    {
-            //        Weapon weaponToEquip =
-            //            _player.Weapons.SingleOrDefault(
-            //                x => x.Name.ToLower() == inputWeaponName || x.NamePlural.ToLower() == inputWeaponName);
+                if (string.IsNullOrEmpty(inputWeaponName))
+                {
+                    Console.WriteLine("You must enter the name of the weapon to equip");
+                }
+                else
+                {
+                    Weapon weaponToEquip =
+                        World.Weapons.SingleOrDefault(
+                            x => x.Name.ToLower() == inputWeaponName || x.NamePlural.ToLower() == inputWeaponName);
 
-            //        if (weaponToEquip == null)
-            //        {
-            //            Console.WriteLine("You do not have the weapon: {0}", inputWeaponName);
-            //        }
-            //        else
-            //        {
-            //            _player.Equipt = weaponToEquip;
-
-            //            Console.WriteLine("You equip your {0}", _player.Equipt.Name);
-            //        }
-            //    }
-            //} 
+                    if (weaponToEquip == null)
+                    {
+                        Console.WriteLine("You do not have the weapon: {0}", inputWeaponName);
+                    }
+                    else
+                    {
+                        
+                        _player.Inventory.Add(new InventoryItem( _player.Equipt, 1));
+                        _player.RemoveItemFromInventory(_player.Equipt, 1);
+                        Console.WriteLine("You equip your {0}", _player.Equipt.Name);
+                    }
+                }
+            }
             else
             {
                 Console.WriteLine("I do not understand");
@@ -251,7 +255,7 @@ namespace JosherConsole
             className = Console.ReadLine();
             Console.WriteLine("What race would you like?");
             raceName = Console.ReadLine();
-            _player = new Player(name, className, raceName, 100, 1000, 1000, World.WeaponByID(101), false);
+            _player = new Player(name, className, raceName, 100, 1000, 1000, World.WeaponByID(103), false);
 
         }
 

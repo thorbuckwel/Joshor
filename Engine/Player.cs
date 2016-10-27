@@ -33,6 +33,7 @@ namespace Engine
         public int AC { get { return _ac; } set { _ac = value; }}
         public Room CurrentLocation { get { return _currentLocation; } set { _currentLocation = value; } }
         public Weapon Equipt { get { return _equipt; } set { _equipt = value; } }
+        public Weapon CurrentWeapon { get; set; }
 
 
         /**
@@ -41,7 +42,7 @@ namespace Engine
         * derived from so that the player can inherate these values.
         */
 
-        
+
         public Player (String name, String PC, String PR, int gold, int currentHitPoints, int maximumHitPoints, Weapon equipt, bool isDead) 
             : base(currentHitPoints, maximumHitPoints, isDead)
         {
@@ -182,6 +183,69 @@ namespace Engine
             {
                 OnMessage(this, new MessageEventArgs(message, addExtraNewLine));
             }
+        }
+
+        public void AddItemToInventory(Item itemToAdd, int quantity = 1)
+        {
+            InventoryItem item = Inventory.SingleOrDefault(ii => ii.Details.ID == itemToAdd.ID);
+
+            if (item == null)
+            {
+                // They didn't have the item, so add it to their inventory
+                Inventory.Add(new InventoryItem(itemToAdd, quantity));
+            }
+            else
+            {
+                // They have the item in their inventory, so increase the quantity
+                item.Quantity += quantity;
+            }
+
+            RaiseInventoryChangedEvent(itemToAdd);
+        }
+
+        public void RemoveItemFromInventory(Item itemToRemove, int quantity = 1)
+        {
+            InventoryItem item = Inventory.SingleOrDefault(ii => ii.ItemID == itemToRemove.ID);
+
+            if (item == null)
+            {
+                // The item is not in the player's inventory, so ignore it.
+                // We might want to raise an error for this situation
+            }
+            else
+            {
+                // They have the item in their inventory, so decrease the quantity
+                item.Quantity -= quantity;
+
+                // Don't allow negative quantities.
+                // We might want to raise an error for this situation
+                if (item.Quantity < 0)
+                {
+                    item.Quantity = 0;
+                }
+
+                // If the quantity is zero, remove the item from the list
+                if (item.Quantity == 0)
+                {
+                    Inventory.Remove(item);
+                }
+
+                // Notify the UI that the inventory has changed
+                RaiseInventoryChangedEvent(itemToRemove);
+            }
+        }
+
+        private void RaiseInventoryChangedEvent(Item item)
+        {
+            if (item is Weapon)
+            {
+                OnPropertyChanged("Weapons");
+            }
+
+            //if (item is HealingPotion)
+            //{
+            //    OnPropertyChanged("Potions");
+            //}
         }
     }
 }

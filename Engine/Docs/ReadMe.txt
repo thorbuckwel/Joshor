@@ -24,9 +24,11 @@ text file.
 
 //ID
 //Weapon name
+//Weapon Pluarl
 //Weapon cost
 //Damage done by weapon
 //The type of damage the weapon does.
+//Equiptable
 
 The Room List is populated from a text file. The following is the format of the 
 text file.
@@ -39,3 +41,12 @@ text file.
 //If there is an exit South then true, or else false
 //If there is an exit West then true, or else false
 //Is there a monster in this room, -1 no, or the list element of the monster.
+
+The Items List is populated from a text file. The following is the format of the 
+text file.
+
+//ID
+//Item name
+//Item Pluarl
+//Item cost
+//Equiptable
