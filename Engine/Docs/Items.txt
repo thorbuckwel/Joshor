@@ -1,0 +1,24 @@
+﻿201
+Small Potion
+Small Potions
+This potion will heal 25 hp
+25
+False
+202
+Large Potion
+Large Potions
+This potion will heal 50 hps
+100
+false
+203
+Fork of Devining
+Fork of Devining
+A two prong piece of metal
+0
+false
+204
+Relic
+Relic
+Well what do relics look like?
+1000
+false

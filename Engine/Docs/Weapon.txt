@@ -1,24 +1,32 @@
 ﻿101
 Club
 Clubs
+A small stick
 0
 6
 Blunt
+true
 102
 Dagger
 Daggers
+Short piece of sharp metal
 2
 4
 Pierce
+true
 103
 Falchion
 Falchions
+A sword
 75
 8
 Slash
+true
 104
 Sai
 Sais
+Wierd looking
 1
 4
 Blunt
+true

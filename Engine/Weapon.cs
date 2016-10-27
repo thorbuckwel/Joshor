@@ -17,8 +17,6 @@ namespace Engine
         /**
          * Create properties to access the private variables.
          */
-        public int ID { get { return _id; } set { _id = value; } }
-        public String Name { get { return _name; } set { _name = value; } }
         public int Cost { get { return _cost; } set { _cost = value; } }
         public int Damage { get { return _damage; } set { _damage = value; } }
         public String DamageType { get { return _damageType; } set { _damageType = value; } }
@@ -27,13 +25,16 @@ namespace Engine
          * This is the Weapons constructor. It creates a Room object with the passed variables then assignd
          * those to the class variables.
          */
-        public Weapon(int id, String name, String namePluarl, int cost, int damage, String damageType) : base (id, name, namePluarl, cost)
+        public Weapon(int id, String name, String namePluarl, String desc, int cost, int damage, String damageType, bool equiptable) : base (id, name, namePluarl, desc, cost, equiptable)
         {
             this.ID = id;
             this.Name = name;
+            this.NamePlural = namePluarl;
+            this.Desc = desc;
             this.Cost = cost;
             this.Damage = damage;
             this.DamageType = damageType;
+            this.Equiptable = equiptable;
         }
     }
 }

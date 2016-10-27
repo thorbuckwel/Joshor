@@ -53,7 +53,7 @@ namespace Engine
             this.AC = 10;
             this.Equipt = equipt;
             Inventory = new List<InventoryItem>();
-            this.Inventory.Add(new InventoryItem(new Weapon(101, "Club", "Clubs", 100, 6, "Blunt"), 1));
+            this.Inventory.Add(new InventoryItem(new Weapon(101, "Club", "Clubs", "Short little stick", 100, 6, "Blunt", true), 1));
             this.CurrentLocation = World.Location[0];
         }
 
@@ -98,7 +98,7 @@ namespace Engine
         //            {
         //                player.AddItemToInventory(World.ItemByID(id));
         //            }
-        //        }                
+        //        }
 
         //        return player;
         //    }

@@ -88,6 +88,7 @@
     <Content Include="Docs\ReadMe.txt" />
     <Content Include="Docs\Room.txt" />
     <Content Include="Docs\SavedCode.txt" />
+    <Content Include="Docs\Items.txt" />
     <Content Include="Docs\Weapon.txt" />
     <Content Include="Image\BlackDragon.jpg" />
     <Content Include="Image\deathpic.jpg" />

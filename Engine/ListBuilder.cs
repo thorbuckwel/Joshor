@@ -54,11 +54,13 @@ namespace Engine
                     int id = int.Parse(reader.ReadLine());
                     String name = reader.ReadLine();
                     String namePluarl = reader.ReadLine();
+                    String desc = reader.ReadLine();
                     int cost = int.Parse(reader.ReadLine());
                     int damage = int.Parse(reader.ReadLine());
                     String type = reader.ReadLine();
+                    bool equiptable = bool.Parse(reader.ReadLine());
 
-                    World.Weapons.Add(new Weapon(id, name, namePluarl, cost, damage, type));
+                    World.Weapons.Add(new Weapon(id, name, namePluarl, desc, cost, damage, type, equiptable));
                 }
             }
 
@@ -86,6 +88,30 @@ namespace Engine
                     World.Location.Add(new Room(id, name, descript, exit1, exit2, exit3, exit4, idMonster));
                 }
             }
+
+            /**
+             * We need to build each object to go into the Monster List. First we use the StreamReader
+             * to open the Monsters text file that stores all the information that is need to create
+             * the monsters. This file is formated to be in a certain order. Then we use the while loop
+             * to assign the value to the variables one line at a time until we reach the end of the
+             * text file. After we have assigned values to the variables we then pass the variables
+             * to create the monster object that is then stored in the Monster List.
+             */
+            using (StreamReader reader = File.OpenText(@"../../../Engine/Docs/Items.txt"))
+            {
+                while (!reader.EndOfStream)
+                {
+                    int id = int.Parse(reader.ReadLine());
+                    String name = reader.ReadLine();
+                    String namePluarl = reader.ReadLine();
+                    String desc = reader.ReadLine();
+                    int cost = int.Parse(reader.ReadLine());
+                    bool equiptable = bool.Parse(reader.ReadLine());
+
+                    World.Items.Add(new Item(id, name, namePluarl, desc, cost, equiptable));
+                }
+            }
+
         }
     }    
 }
