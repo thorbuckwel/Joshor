@@ -122,6 +122,7 @@ namespace JosherConsole
                 else
                 {
                     _player.MoveNorth();
+                    DisplayCurrentLocation();
                 }
             }
             else if (input.Contains("east"))
@@ -133,6 +134,7 @@ namespace JosherConsole
                 else
                 {
                     _player.MoveEast();
+                    DisplayCurrentLocation();
                 }
             }
             else if (input.Contains("south"))
@@ -144,6 +146,7 @@ namespace JosherConsole
                 else
                 {
                     _player.MoveSouth();
+                    DisplayCurrentLocation();
                 }
             }
             else if (input.Contains("west"))
@@ -155,6 +158,7 @@ namespace JosherConsole
                 else
                 {
                     _player.MoveWest();
+                    DisplayCurrentLocation();
                 }
             }
             else if (input == "inventory")
