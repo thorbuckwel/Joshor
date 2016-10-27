@@ -1,0 +1,5 @@
+﻿INSERT INTO [dbo].[Mobs] ([Id], [Name], [XP], [AC], [HP], [Damage], [Base], [Desc]) VALUES (1, N'Goblin', 135, 16, 6, N'1d4       ', N'+1        ', N'Ugly')
+INSERT INTO [dbo].[Mobs] ([Id], [Name], [XP], [AC], [HP], [Damage], [Base], [Desc]) VALUES (2, N'Hobgoblin', 200, 16, 17, N'1d8+2     ', N'+1        ', N'Uglier')
+INSERT INTO [dbo].[Mobs] ([Id], [Name], [XP], [AC], [HP], [Damage], [Base], [Desc]) VALUES (3, N'Kobold', 100, 15, 5, N'1d6-1     ', N'+1        ', N'Short')
+INSERT INTO [dbo].[Mobs] ([Id], [Name], [XP], [AC], [HP], [Damage], [Base], [Desc]) VALUES (4, N'Dog', 135, 13, 6, N'1d4+1     ', N'0         ', N'Loud')
+INSERT INTO [dbo].[Mobs] ([Id], [Name], [XP], [AC], [HP], [Damage], [Base], [Desc]) VALUES (5, N'Black Dragon', 12800, 28, 16, N'2d6+10    ', N'+14       ', N'Huge')

@@ -58,7 +58,7 @@ namespace Engine
         {
             Player player = new Player("Killakia", "Warrior", "Human", 10, 10, 20, World.Weapons[1], false);
             //player.Inventory.Add(new InventoryItem(World.ItemByID(World.ITEM_ID_RUSTY_SWORD), 1));
-            //player.CurrentLocation = World.LocationByID(World.LOCATION_ID_HOME);
+            player.CurrentLocation = World.Location[0];
 
             return player;
         }

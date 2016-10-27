@@ -16,8 +16,10 @@ namespace JosherConsole
 
         private static void Main(string[] args)
         {
+            ListBuilder.Build();                // On load we need to call the ListBuilder to build all out List
             // Load the player
-            LoadGameData();
+            // LoadGameData();
+            _player = Player.CreateDefaultPlayer();
 
             Console.WriteLine("Type 'Help' to see a list of commands");
             Console.WriteLine("");
@@ -49,7 +51,7 @@ namespace JosherConsole
                 // Save the current game data, and break out of the "while(true)" loop
                 if (cleanedInput == "exit")
                 {
-                    SaveGameData();
+                    //SaveGameData();
 
                     break;
                 }
@@ -140,57 +142,57 @@ namespace JosherConsole
                     Console.WriteLine("{0}: {1}", inventoryItem.Description, inventoryItem.Quantity);
                 }
             }            
-            else if (input.Contains("attack"))
-            {
-                if (_player.CurrentLocation.MonsterLivingHere == null)
-                {
-                    Console.WriteLine("There is nothing here to attack");
-                }
-                else
-                {
-                    if (_player.Equipt == null)
-                    {
-                        // Select the first weapon in the player's inventory 
-                        // (or 'null', if they do not have any weapons)
-                        _player.Equipt = _player. .FirstOrDefault();
-                    }
+            //else if (input.Contains("attack"))
+            //{
+            //    if (_player.CurrentLocation.MonsterLivingHere == null)
+            //    {
+            //        Console.WriteLine("There is nothing here to attack");
+            //    }
+            //    else
+            //    {
+            //        if (_player.Equipt == null)
+            //        {
+            //            // Select the first weapon in the player's inventory 
+            //            // (or 'null', if they do not have any weapons)
+            //            _player.Equipt = _player. .FirstOrDefault();
+            //        }
 
-                    if (_player.Equipt == null)
-                    {
-                        Console.WriteLine("You do not have any weapons");
-                    }
-                    else
-                    {
-                        _player.UseWeapon(_player.Equipt);
-                    }
-                }
-            }
-            else if (input.StartsWith("equip "))
-            {
-                string inputWeaponName = input.Substring(6).Trim();
+            //        if (_player.Equipt == null)
+            //        {
+            //            Console.WriteLine("You do not have any weapons");
+            //        }
+            //        else
+            //        {
+            //            _player.UseWeapon(_player.Equipt);
+            //        }
+            //    }
+            //}
+            //else if (input.StartsWith("equip "))
+            //{
+            //    string inputWeaponName = input.Substring(6).Trim();
 
-                if (string.IsNullOrEmpty(inputWeaponName))
-                {
-                    Console.WriteLine("You must enter the name of the weapon to equip");
-                }
-                else
-                {
-                    Weapon weaponToEquip =
-                        _player.Weapons.SingleOrDefault(
-                            x => x.Name.ToLower() == inputWeaponName || x.NamePlural.ToLower() == inputWeaponName);
+            //    if (string.IsNullOrEmpty(inputWeaponName))
+            //    {
+            //        Console.WriteLine("You must enter the name of the weapon to equip");
+            //    }
+            //    else
+            //    {
+            //        Weapon weaponToEquip =
+            //            _player.Weapons.SingleOrDefault(
+            //                x => x.Name.ToLower() == inputWeaponName || x.NamePlural.ToLower() == inputWeaponName);
 
-                    if (weaponToEquip == null)
-                    {
-                        Console.WriteLine("You do not have the weapon: {0}", inputWeaponName);
-                    }
-                    else
-                    {
-                        _player.Equipt = weaponToEquip;
+            //        if (weaponToEquip == null)
+            //        {
+            //            Console.WriteLine("You do not have the weapon: {0}", inputWeaponName);
+            //        }
+            //        else
+            //        {
+            //            _player.Equipt = weaponToEquip;
 
-                        Console.WriteLine("You equip your {0}", _player.Equipt.Name);
-                    }
-                }
-            } 
+            //            Console.WriteLine("You equip your {0}", _player.Equipt.Name);
+            //        }
+            //    }
+            //} 
             else
             {
                 Console.WriteLine("I do not understand");
@@ -211,28 +213,28 @@ namespace JosherConsole
             }
         }
 
-        private static void LoadGameData()
-        {
-            _player = PlayerDataMapper.CreateFromDatabase();
+    //    private static void LoadGameData()
+    //    {
+    //        _player = PlayerDataMapper.CreateFromDatabase();
 
-            if (_player == null)
-            {
-                if (File.Exists(PLAYER_DATA_FILE_NAME))
-                {
-                    _player = Player.CreatePlayerFromXmlString(File.ReadAllText(PLAYER_DATA_FILE_NAME));
-                }
-                else
-                {
-                    _player = Player.CreateDefaultPlayer();
-                }
-            }
-        }
+    //        if (_player == null)
+    //        {
+    //            if (File.Exists(PLAYER_DATA_FILE_NAME))
+    //            {
+    //                _player = Player.CreatePlayerFromXmlString(File.ReadAllText(PLAYER_DATA_FILE_NAME));
+    //            }
+    //            else
+    //            {
+    //                _player = Player.CreateDefaultPlayer();
+    //            }
+    //        }
+    //    }
 
-        private static void SaveGameData()
-        {
-            File.WriteAllText(PLAYER_DATA_FILE_NAME, _player.ToXmlString());
+    //    private static void SaveGameData()
+    //    {
+    //        File.WriteAllText(PLAYER_DATA_FILE_NAME, _player.ToXmlString());
 
-            PlayerDataMapper.SaveToDatabase(_player);
-        }
+    //        PlayerDataMapper.SaveToDatabase(_player);
+    //    }
     }
 }
