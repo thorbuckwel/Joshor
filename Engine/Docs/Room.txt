@@ -10,10 +10,10 @@ false
 Hall
 A long hall leading into the darkness. 
 true
-false
+true
 true
 false
-3
+0
 403
 Small Room
 Littered with bones this room smells of death.
@@ -21,7 +21,7 @@ true
 false
 true
 false
-2
+0
 404
 A scorched hallway
 There seems to be plenty of burned tiles along this hall, not to mention bones.
@@ -38,3 +38,43 @@ false
 true
 false
 4
+406
+The Living Room
+A living room
+true
+true
+true
+true
+-1
+407
+Bedroom
+You need to clean your room
+true
+false
+false
+false
+0
+408
+Library
+There are a lot of books
+false
+false
+true
+false
+0
+409
+Dining Hall
+there are plates everywhere
+true
+false
+false
+true
+0
+410
+Kitchen
+Lots of cooking equipment
+false
+false
+true
+false
+0
