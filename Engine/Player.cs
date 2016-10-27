@@ -141,8 +141,16 @@ namespace Engine
             if (World.Location != null)
             {
                 int ele = World.Location.IndexOf(_currentLocation);
-                MoveTo(World.Location[(++ele)]);                                
+                MoveTo(World.Location[CurrentLocation.LocationToNorth]);                                
             }            
+        }
+        public void MoveEast()
+        {
+            if (World.Location != null)
+            {
+                int ele = World.Location.IndexOf(_currentLocation);
+                MoveTo(World.Location[CurrentLocation.LocationToEast]);
+            }
         }
 
         /**
@@ -154,7 +162,15 @@ namespace Engine
             if (World.Location != null)
             {
                 int ele = World.Location.IndexOf(_currentLocation);
-                MoveTo(World.Location.);
+                MoveTo(World.Location[CurrentLocation.LocationToSouth]);
+            }
+        }
+        public void MoveWest()
+        {
+            if (World.Location != null)
+            {
+                int ele = World.Location.IndexOf(_currentLocation);
+                MoveTo(World.Location[CurrentLocation.LocationToWest]);
             }
         }
 

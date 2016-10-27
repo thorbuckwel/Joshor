@@ -146,7 +146,7 @@ namespace Joshor
          */
         public void Exits(Player location)
         {
-            if (_player.CurrentLocation.LocationToNorth != true)
+            if (_player.CurrentLocation.LocationToNorth != -1)
             {
                 btnNorth.Visible = false;
             }
@@ -154,7 +154,7 @@ namespace Joshor
             {
                 btnNorth.Visible = true;
             }
-            if (_player.CurrentLocation.LocationToEast != true)
+            if (_player.CurrentLocation.LocationToEast != -1)
             {
                 btnEast.Visible = false;
             }
@@ -162,7 +162,7 @@ namespace Joshor
             {
                 btnEast.Visible = true;
             }
-            if (_player.CurrentLocation.LocationToSouth != true)
+            if (_player.CurrentLocation.LocationToSouth != -1)
             {
                 btnSouth.Visible = false;
             }
@@ -170,7 +170,7 @@ namespace Joshor
             {
                 btnSouth.Visible = true;
             }
-            if (_player.CurrentLocation.LocationToWest != true)
+            if (_player.CurrentLocation.LocationToWest != -1)
             {
                 btnWest.Visible = false;
             }

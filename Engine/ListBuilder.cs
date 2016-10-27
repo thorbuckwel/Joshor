@@ -76,10 +76,10 @@ namespace Engine
                     int id = int.Parse(reader.ReadLine());
                     String name = reader.ReadLine();
                     String descript = reader.ReadLine();
-                    bool exit1 = bool.Parse(reader.ReadLine());
-                    bool exit2 = bool.Parse(reader.ReadLine());
-                    bool exit3 = bool.Parse(reader.ReadLine());
-                    bool exit4 = bool.Parse(reader.ReadLine());
+                    int exit1 = int.Parse(reader.ReadLine());
+                    int exit2 = int.Parse(reader.ReadLine());
+                    int exit3 = int.Parse(reader.ReadLine());
+                    int exit4 = int.Parse(reader.ReadLine());
                     int idMonster = int.Parse(reader.ReadLine());
 
                     World.Location.Add(new Room(id, name, descript, exit1, exit2, exit3, exit4, idMonster));

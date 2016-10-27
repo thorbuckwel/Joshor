@@ -123,7 +123,18 @@ namespace JosherConsole
                 {
                     _player.MoveNorth();
                 }
-            }            
+            }
+            else if (input.Contains("east"))
+            {
+                if (_player.CurrentLocation.LocationToEast == -1)
+                {
+                    Console.WriteLine("You cannot move East");
+                }
+                else
+                {
+                    _player.MoveEast();
+                }
+            }
             else if (input.Contains("south"))
             {
                 if (_player.CurrentLocation.LocationToSouth == -1)
@@ -134,7 +145,18 @@ namespace JosherConsole
                 {
                     _player.MoveSouth();
                 }
-            }            
+            }
+            else if (input.Contains("west"))
+            {
+                if (_player.CurrentLocation.LocationToWest == -1)
+                {
+                    Console.WriteLine("You cannot move West");
+                }
+                else
+                {
+                    _player.MoveWest();
+                }
+            }
             else if (input == "inventory")
             {
                 foreach (InventoryItem inventoryItem in _player.Inventory)

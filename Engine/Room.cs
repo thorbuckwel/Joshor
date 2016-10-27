@@ -13,10 +13,10 @@ namespace Engine
         private string _roomName;                // To hold the Room's name
         private string _roomDescript;            // To hold the Room's description
         private Monster _monsters;
-        private bool _locationToNorth;           // To hold the Room's exit1 string
-        private bool _locationToEast;            // To hold the Room's exit2 string
-        private bool _locationToSouth;           // To hold the Room's exit3 string
-        private bool _locationToWest;            // To hold the Room's exit4 string        
+        private int _locationToNorth;           // To hold the Room's exit1 string
+        private int _locationToEast;            // To hold the Room's exit2 string
+        private int _locationToSouth;           // To hold the Room's exit3 string
+        private int _locationToWest;            // To hold the Room's exit4 string        
         //private List<Item> _roomItems;
         
         //int numMonsters;
