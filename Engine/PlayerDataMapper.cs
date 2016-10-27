@@ -8,104 +8,104 @@ namespace Engine
     {
         private static readonly string _connectionString = "Data Source=(local);Initial Catalog=SuperAdventure;Integrated Security=True";
 
-        public static Player CreateFromDatabase()
-        {
-            try
-            {
-                // This is our connection to the database
-                using (SqlConnection connection = new SqlConnection(_connectionString))
-                {
-                    // Open the connection, so we can perform SQL commands
-                    connection.Open();
+        //public static Player CreateFromDatabase()
+        //{
+        //    try
+        //    {
+        //        // This is our connection to the database
+        //        using (SqlConnection connection = new SqlConnection(_connectionString))
+        //        {
+        //            // Open the connection, so we can perform SQL commands
+        //            connection.Open();
 
-                    Player player;
+        //            Player player;
 
-                    // Create a SQL command object, that uses the connection to our database
-                    // The SqlCommand object is where we create our SQL statement
-                    using (SqlCommand savedGameCommand = connection.CreateCommand())
-                    {
-                        savedGameCommand.CommandType = CommandType.Text;
-                        // This SQL statement reads the first rows in teh SavedGame table.
-                        // For this program, we should only ever have one row,
-                        // but this will ensure we only get one record in our SQL query results.
-                        savedGameCommand.CommandText = "SELECT TOP 1 * FROM SavedGame";
+        //            // Create a SQL command object, that uses the connection to our database
+        //            // The SqlCommand object is where we create our SQL statement
+        //            using (SqlCommand savedGameCommand = connection.CreateCommand())
+        //            {
+        //                savedGameCommand.CommandType = CommandType.Text;
+        //                // This SQL statement reads the first rows in teh SavedGame table.
+        //                // For this program, we should only ever have one row,
+        //                // but this will ensure we only get one record in our SQL query results.
+        //                savedGameCommand.CommandText = "SELECT TOP 1 * FROM SavedGame";
 
-                        // Use ExecuteReader when you expect the query to return a row, or rows
-                        SqlDataReader reader = savedGameCommand.ExecuteReader();
+        //                // Use ExecuteReader when you expect the query to return a row, or rows
+        //                SqlDataReader reader = savedGameCommand.ExecuteReader();
 
-                        // Check if the query did not return a row/record of data
-                        if (!reader.HasRows)
-                        {
-                            // There is no data in the SavedGame table, 
-                            // so return null (no saved player data)
-                            return null;
-                        }
+        //                // Check if the query did not return a row/record of data
+        //                if (!reader.HasRows)
+        //                {
+        //                    // There is no data in the SavedGame table, 
+        //                    // so return null (no saved player data)
+        //                    return null;
+        //                }
 
-                        // Get the row/record from the data reader
-                        reader.Read();
+        //                // Get the row/record from the data reader
+        //                reader.Read();
 
-                        // Get the column values for the row/record
-                        int currentHitPoints = (int)reader["CurrentHitPoints"];
-                        int maximumHitPoints = (int)reader["MaximumHitPoints"];
-                        int gold = (int)reader["Gold"];
-                        int experiencePoints = (int)reader["ExperiencePoints"];
-                        int currentLocationID = (int)reader["CurrentLocationID"];
+        //                // Get the column values for the row/record
+        //                int currentHitPoints = (int)reader["CurrentHitPoints"];
+        //                int maximumHitPoints = (int)reader["MaximumHitPoints"];
+        //                int gold = (int)reader["Gold"];
+        //                int experiencePoints = (int)reader["ExperiencePoints"];
+        //                int currentLocationID = (int)reader["CurrentLocationID"];
 
-                        // Create the Player object, with the saved game values
-                        player = Player.CreatePlayerFromDatabase(currentHitPoints, maximumHitPoints, gold,
-                            experiencePoints, currentLocationID);
-                    }
+        //                //// Create the Player object, with the saved game values
+        //                //player = Player.CreatePlayerFromDatabase(currentHitPoints, maximumHitPoints, gold,
+        //                //    experiencePoints, currentLocationID);
+        //            }
 
-                    // Read the rows/records from the Quest table, and add them to the player
-                    using (SqlCommand questCommand = connection.CreateCommand())
-                    {
-                        questCommand.CommandType = CommandType.Text;
-                        questCommand.CommandText = "SELECT * FROM Quest";
+        //            // Read the rows/records from the Quest table, and add them to the player
+        //            using (SqlCommand questCommand = connection.CreateCommand())
+        //            {
+        //                questCommand.CommandType = CommandType.Text;
+        //                questCommand.CommandText = "SELECT * FROM Quest";
 
-                        SqlDataReader reader = questCommand.ExecuteReader();
+        //                SqlDataReader reader = questCommand.ExecuteReader();
 
-                        if (reader.HasRows)
-                        {
-                            while (reader.Read())
-                            {
-                                int questID = (int)reader["QuestID"];
-                                bool isCompleted = (bool)reader["IsCompleted"];                               
-                            }
-                        }
-                    }
+        //                if (reader.HasRows)
+        //                {
+        //                    while (reader.Read())
+        //                    {
+        //                        int questID = (int)reader["QuestID"];
+        //                        bool isCompleted = (bool)reader["IsCompleted"];
+        //                    }
+        //                }
+        //            }
 
-                    // Read the rows/records from the Inventory table, and add them to the player
-                    using (SqlCommand inventoryCommand = connection.CreateCommand())
-                    {
-                        inventoryCommand.CommandType = CommandType.Text;
-                        inventoryCommand.CommandText = "SELECT * FROM Inventory";
+        //            // Read the rows/records from the Inventory table, and add them to the player
+        //            using (SqlCommand inventoryCommand = connection.CreateCommand())
+        //            {
+        //                inventoryCommand.CommandType = CommandType.Text;
+        //                inventoryCommand.CommandText = "SELECT * FROM Inventory";
 
-                        SqlDataReader reader = inventoryCommand.ExecuteReader();
+        //                SqlDataReader reader = inventoryCommand.ExecuteReader();
 
-                        if (reader.HasRows)
-                        {
-                            while (reader.Read())
-                            {
-                                int inventoryItemID = (int)reader["InventoryItemID"];
-                                int quantity = (int)reader["Quantity"];
+        //                if (reader.HasRows)
+        //                {
+        //                    while (reader.Read())
+        //                    {
+        //                        int inventoryItemID = (int)reader["InventoryItemID"];
+        //                        int quantity = (int)reader["Quantity"];
 
-                                // Add the item to the player's inventory
-                                player.AddItemToInventory(World.ItemByID(inventoryItemID), quantity);
-                            }
-                        }
-                    }
+        //                        // Add the item to the player's inventory
+        //                        //player.AddItemToInventory(World.ItemByID(inventoryItemID), quantity);
+        //                    }
+        //                }
+        //            }
 
-                    // Now that the player has been built from the database, return it.
-                    return player;
-                }
-            }
-            catch (Exception ex)
-            {
-                // Ignore errors. If there is an error, this function will return a "null" player.
-            }
+        //            // Now that the player has been built from the database, return it.
+        //            return player;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Ignore errors. If there is an error, this function will return a "null" player.
+        //    }
 
-            return null;
-        }
+        //    return null;
+        //}
 
         public static void SaveToDatabase(Player player)
         {
@@ -205,21 +205,21 @@ namespace Engine
                     }
 
                     // Insert Quest rows, from the player object
-                    foreach (PlayerQuest playerQuest in player.Quests)
-                    {
-                        using (SqlCommand insertQuestCommand = connection.CreateCommand())
-                        {
-                            insertQuestCommand.CommandType = CommandType.Text;
-                            insertQuestCommand.CommandText = "INSERT INTO Quest (QuestID, IsCompleted) VALUES (@QuestID, @IsCompleted)";
+                    //foreach (PlayerQuest playerQuest in player.Quests)
+                    //{
+                    //    using (SqlCommand insertQuestCommand = connection.CreateCommand())
+                    //    {
+                    //        insertQuestCommand.CommandType = CommandType.Text;
+                    //        insertQuestCommand.CommandText = "INSERT INTO Quest (QuestID, IsCompleted) VALUES (@QuestID, @IsCompleted)";
 
-                            insertQuestCommand.Parameters.Add("@QuestID", SqlDbType.Int);
-                            insertQuestCommand.Parameters["@QuestID"].Value = playerQuest.Details.ID;
-                            insertQuestCommand.Parameters.Add("@IsCompleted", SqlDbType.Bit);
-                            insertQuestCommand.Parameters["@IsCompleted"].Value = playerQuest.IsCompleted;
+                    //        insertQuestCommand.Parameters.Add("@QuestID", SqlDbType.Int);
+                    //        insertQuestCommand.Parameters["@QuestID"].Value = playerQuest.Details.ID;
+                    //        insertQuestCommand.Parameters.Add("@IsCompleted", SqlDbType.Bit);
+                    //        insertQuestCommand.Parameters["@IsCompleted"].Value = playerQuest.IsCompleted;
 
-                            insertQuestCommand.ExecuteNonQuery();
-                        }
-                    }
+                    //        insertQuestCommand.ExecuteNonQuery();
+                    //    }
+                    //}
 
                     // Delete existing Inventory rows
                     using (SqlCommand deleteInventoryCommand = connection.CreateCommand())
@@ -254,3 +254,4 @@ namespace Engine
             }
         }
     }
+}

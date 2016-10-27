@@ -30,8 +30,8 @@ namespace Joshor
             InitializeComponent();
 
             ListBuilder.Build();                // On load we need to call the ListBuilder to build all out List
-            _player = new Player("Killakia", "Warrior", "Human", 100, 10, 10, World.Weapons[2], false);  // Creating a player object 
-
+            //_player = new Player("Killakia", "Warrior", "Human", 100, 10, 10, World.Weapons[2], false);  // Creating a player object 
+            _player = Player.CreateDefaultPlayer();
             /**
              * Displaying the players stats int the stat group
              */

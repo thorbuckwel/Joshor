@@ -17,10 +17,10 @@ namespace Engine
         private bool _locationToEast;            // To hold the Room's exit2 string
         private bool _locationToSouth;           // To hold the Room's exit3 string
         private bool _locationToWest;            // To hold the Room's exit4 string        
-        private List<Item> _roomItems;
+        //private List<Item> _roomItems;
         
-        int numMonsters;
-        int numItems;
+        //int numMonsters;
+        //int numItems;
 
         /**
          * Creating the properties to accesss the private variables
