@@ -17,9 +17,10 @@ namespace JosherConsole
         private static void Main(string[] args)
         {
             ListBuilder.Build();                // On load we need to call the ListBuilder to build all out List
+            CreatePlayer();
             // Load the player
             // LoadGameData();
-            _player = new Player("Killakia", "Warrior", "Human", 100, 1000, 1000, World.WeaponByID(101), false);
+            
 
             Console.WriteLine("Type 'Help' to see a list of commands");
             Console.WriteLine("");
@@ -34,7 +35,7 @@ namespace JosherConsole
             while (true)
             {
                 // Display a prompt, so the user knows to type something
-                Console.Write(">");
+                Console.Write(_player.CurrentHitPoints + "/" + _player.MaximumHitPoints + " Hp" +" >");
 
                 // Wait for the user to type something, and press the <Enter> key
                 string userInput = Console.ReadLine();
@@ -237,6 +238,21 @@ namespace JosherConsole
             {
                 Console.WriteLine(_player.CurrentLocation.RoomDescript);
             }
+        }       
+
+        private static void CreatePlayer()
+        {
+            String name;
+            String className;
+            String raceName;        
+            Console.WriteLine("Give me your name.");
+            name = Console.ReadLine();
+            Console.WriteLine("What class would you like to be?");
+            className = Console.ReadLine();
+            Console.WriteLine("What race would you like?");
+            raceName = Console.ReadLine();
+            _player = new Player(name, className, raceName, 100, 1000, 1000, World.WeaponByID(101), false);
+
         }
 
     //    private static void LoadGameData()
@@ -264,3 +280,4 @@ namespace JosherConsole
     //    }
     }
 }
+
