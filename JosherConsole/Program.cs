@@ -134,7 +134,30 @@ namespace JosherConsole
                 {
                     _player.MoveSouth();
                 }
-            }            
+            }
+            else if (input.Contains("east"))
+            {
+                if (_player.CurrentLocation.LocationToEast == false)
+                {
+                    Console.WriteLine("You cannot move East");
+                }
+                else
+                {
+                    _player.MoveEast();
+                }
+            }
+
+            else if (input.Contains("west"))
+            {
+                if (_player.CurrentLocation.LocationToWest == false)
+                {
+                    Console.WriteLine("You cannot move West");
+                }
+                else
+                {
+                    _player.MoveWest();
+                }
+            }
             else if (input == "inventory")
             {
                 foreach (InventoryItem inventoryItem in _player.Inventory)
