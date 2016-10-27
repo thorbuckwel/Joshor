@@ -96,6 +96,7 @@ namespace JosherConsole
                 Console.WriteLine("Trade - display your inventory and vendor's inventory");
                 Console.WriteLine("Buy <item name> - Buy an item from a vendor");
                 Console.WriteLine("Sell <item name> - Sell an item to a vendor");
+                Console.WriteLine("Drop <item name> - Drop an item");
                 Console.WriteLine("North - Move North");
                 Console.WriteLine("South - Move South");
                 Console.WriteLine("East - Move East");
@@ -197,6 +198,34 @@ namespace JosherConsole
             //        }
             //    }
             //}
+            else if (input.StartsWith("drop "))
+            {
+                string inputItemName = input.Substring(4).Trim();
+
+                if (string.IsNullOrEmpty(inputItemName))
+                {
+                    Console.WriteLine("You must enter the name of the item to drop");
+                }
+                else
+                {
+                    Item itemToDrop = World.Items.SingleOrDefault(
+                                       x => x.Name.ToLower() == inputItemName || x.NamePlural.ToLower() == inputItemName);
+                    Weapon weaponToDrop = World.Weapons.SingleOrDefault(
+                                       x => x.Name.ToLower() == inputItemName || x.NamePlural.ToLower() == inputItemName);
+                    if (itemToDrop == null || weaponToDrop == null)
+                    {
+                        Console.WriteLine("You do not have the item {0}", inputItemName);
+                    }
+                    else
+                    {                        
+                        
+                        _player.RemoveItemFromInventory(itemToDrop, 1);
+                        _player.RemoveItemFromInventory(weaponToDrop, 1);
+                        Console.WriteLine("You drop {0}", inputItemName);
+                    }
+
+                }
+            }
             else if (input.StartsWith("equip "))
             {
                 string inputWeaponName = input.Substring(6).Trim();
