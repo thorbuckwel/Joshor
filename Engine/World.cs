@@ -25,6 +25,10 @@ namespace Engine
         {
             return Monsters.SingleOrDefault(x => x.ID == id);
         }
+        public static Weapon WeaponByID(int id)
+        {
+            return Weapons.SingleOrDefault(x => x.ID == id);
+        }
     }
 
    

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public class Weapon
+    public class Weapon : Item
     {
         private int _id;                         // To hold the Weapon's ID number
         private String _name;                    // To hold the Weapon's name
@@ -27,7 +27,7 @@ namespace Engine
          * This is the Weapons constructor. It creates a Room object with the passed variables then assignd
          * those to the class variables.
          */
-        public Weapon(int id, String name, int cost, int damage, String damageType)
+        public Weapon(int id, String name, String namePluarl, int cost, int damage, String damageType) : base (id, name, namePluarl, cost)
         {
             this.ID = id;
             this.Name = name;

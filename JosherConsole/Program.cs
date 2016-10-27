@@ -19,7 +19,7 @@ namespace JosherConsole
             ListBuilder.Build();                // On load we need to call the ListBuilder to build all out List
             // Load the player
             // LoadGameData();
-            _player = Player.CreateDefaultPlayer();
+            _player = new Player("Killakia", "Warrior", "Human", 100, 1000, 1000, World.WeaponByID(101), false);
 
             Console.WriteLine("Type 'Help' to see a list of commands");
             Console.WriteLine("");

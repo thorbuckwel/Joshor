@@ -53,11 +53,12 @@ namespace Engine
                 {
                     int id = int.Parse(reader.ReadLine());
                     String name = reader.ReadLine();
+                    String namePluarl = reader.ReadLine();
                     int cost = int.Parse(reader.ReadLine());
                     int damage = int.Parse(reader.ReadLine());
                     String type = reader.ReadLine();
 
-                    World.Weapons.Add(new Weapon(id, name, cost, damage, type));
+                    World.Weapons.Add(new Weapon(id, name, namePluarl, cost, damage, type));
                 }
             }
 

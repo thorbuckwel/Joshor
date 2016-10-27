@@ -52,12 +52,14 @@ namespace Engine
             this.ExperiencePoints = 0;
             this.AC = 10;
             this.Equipt = equipt;
+            Inventory = new List<InventoryItem>();
+            this.Inventory.Add(new InventoryItem(new Weapon(101, "Club", "Clubs", 100, 6, "Blunt"), 1));
+            this.CurrentLocation = World.Location[0];
         }
 
         public static Player CreateDefaultPlayer()
         {
             Player player = new Player("Killakia", "Warrior", "Human", 10, 10, 20, World.Weapons[1], false);
-            //player.Inventory.Add(new InventoryItem(World.ItemByID(World.ITEM_ID_RUSTY_SWORD), 1));
             player.CurrentLocation = World.Location[0];
 
             return player;
