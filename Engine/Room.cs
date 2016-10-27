@@ -29,16 +29,16 @@ namespace Engine
         public string RoomName { get { return _roomName; } set { _roomName = value; } }
         public string RoomDescript { get { return _roomDescript; } set { _roomDescript = value; } }
         public Monster Monsters { get { return _monsters; } set { _monsters = value; } }
-        public bool LocationToNorth { get { return _locationToNorth; } set { _locationToNorth = value; } }
-        public bool LocationToEast { get { return _locationToEast; } set { _locationToEast = value; } }
-        public bool LocationToSouth { get { return _locationToSouth; } set { _locationToSouth = value; } }
-        public bool LocationToWest { get { return _locationToWest; } set { _locationToWest = value; } }
+        public int LocationToNorth { get { return _locationToNorth; } set { _locationToNorth = value; } }
+        public int LocationToEast { get { return _locationToEast; } set { _locationToEast = value; } }
+        public int LocationToSouth { get { return _locationToSouth; } set { _locationToSouth = value; } }
+        public int LocationToWest { get { return _locationToWest; } set { _locationToWest = value; } }
 
         /**
          * This is the Room constructor. It creates a Room object with the passed variables then assignd
          * those to the class variables.
          */
-        public Room(int id, String name, String descript, bool exit1, bool exit2, bool exit3, bool exit4, int idMonster)
+        public Room(int id, String name, String descript, int exit1, int exit2, int exit3, int exit4, int idMonster)
         {
             this.ID = id;
             this.RoomName = name;

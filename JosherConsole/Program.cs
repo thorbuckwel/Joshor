@@ -101,7 +101,7 @@ namespace JosherConsole
                 Console.WriteLine("West - Move West");
                 Console.WriteLine("Exit - Save the game and exit");
             }
-            else if (input == "stats")
+            else if (input == "stats" || input == "score")
             {
                 Console.WriteLine("Current hit points: {0}", _player.CurrentHitPoints);
                 Console.WriteLine("Maximum hit points: {0}", _player.MaximumHitPoints);
@@ -115,7 +115,7 @@ namespace JosherConsole
             }
             else if (input.Contains("north"))
             {
-                if (_player.CurrentLocation.LocationToNorth == false)
+                if (_player.CurrentLocation.LocationToNorth == -1)
                 {
                     Console.WriteLine("You cannot move North");
                 }
@@ -126,7 +126,7 @@ namespace JosherConsole
             }            
             else if (input.Contains("south"))
             {
-                if (_player.CurrentLocation.LocationToSouth == false)
+                if (_player.CurrentLocation.LocationToSouth == -1)
                 {
                     Console.WriteLine("You cannot move South");
                 }

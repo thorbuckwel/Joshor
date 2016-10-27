@@ -1,80 +1,80 @@
 ﻿401
 Entrence
 A shabby little door opened into a small dark room. The is a hall leading further north.
-true
-false
-false
-false
+1
+-1
+-1
+-1
 -1
 402
 Hall
 A long hall leading into the darkness. 
-true
-true
-true
-false
+2
+5
+0
+-1
 0
 403
 Small Room
 Littered with bones this room smells of death.
-true
-false
-true
-false
+3
+-1
+1
+-1
 0
 404
 A scorched hallway
 There seems to be plenty of burned tiles along this hall, not to mention bones.
-true
-false
-true
-false
+4
+-1
+2
+-1
 -1
 405
 The Great Room
 A large room that seems to have a....hmmmm.....Think thats a dragon.
-false
-false
-true
-false
+-1
+-1
+3
+-1
 4
 406
 The Living Room
 A living room
-true
-true
-true
-true
+7
+8
+6
+1
 -1
 407
 Bedroom
 You need to clean your room
-true
-false
-false
-false
+5
+-1
+-1
+-1
 0
 408
 Library
 There are a lot of books
-false
-false
-true
-false
+-1
+-1
+5
+-1
 0
 409
 Dining Hall
 there are plates everywhere
-true
-false
-false
-true
+9
+-1
+-1
+5
 0
 410
 Kitchen
 Lots of cooking equipment
-false
-false
-true
-false
+-1
+-1
+8
+-1
 0
