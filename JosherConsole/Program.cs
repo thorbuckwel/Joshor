@@ -18,10 +18,12 @@ namespace JosherConsole
         {
             Console.ForegroundColor = ConsoleColor.White;
             ListBuilder.Build();                // On load we need to call the ListBuilder to build all our List
+            WelcomeScreen welcome = new WelcomeScreen();
+            welcome.Welcome();
             CreatePlayer();
             // Load the player
             // LoadGameData();
-            
+
 
             Console.WriteLine("Type 'Help' to see a list of commands");
             Console.WriteLine("");
@@ -183,6 +185,7 @@ namespace JosherConsole
                 }
                 else
                 {
+                    
                     //if (_player.Equipt == null)
                     //{
                     //    // Select the first weapon in the player's inventory 
@@ -196,7 +199,9 @@ namespace JosherConsole
                     }
                     else
                     {
-                        _player.UseWeapon(_player.Equipt);
+                        Combat fight = new Combat();
+                        fight.Fight(_player.CurrentMonster, _player, _player.Equipt);
+                        //_player.UseWeapon(_player.Equipt);
                     }
                 }
             }
@@ -305,12 +310,19 @@ namespace JosherConsole
             String className;
             String raceName;        
             Console.WriteLine("Give me your name.");
+            Console.Write("> ");
             name = Console.ReadLine();
             Console.WriteLine("What class would you like to be?");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("Warrior, Mage, Thief > ");
             className = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("What race would you like?");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("Human, Elf, Dwarf > ");
             raceName = Console.ReadLine();
-            _player = new Player(name, className, raceName, 100, 1000, 1000, World.WeaponByID(103), false);
+            Console.ForegroundColor = ConsoleColor.White;
+            _player = new Player(name, className, raceName, 100, 100, 100, World.WeaponByID(103), false);
 
         }
 
