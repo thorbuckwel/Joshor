@@ -20,9 +20,7 @@ namespace JosherConsole
             ListBuilder.Build();                // On load we need to call the ListBuilder to build all our List
             WelcomeScreen welcome = new WelcomeScreen();
             welcome.Welcome();
-            CreatePlayer();
-            // Load the player
-            // LoadGameData();
+            NewPlayer();
 
 
             Console.WriteLine("Type 'Help' to see a list of commands");
@@ -260,6 +258,10 @@ namespace JosherConsole
                     }
                 }
             }
+            else if (input.StartsWith("save"))
+            {
+                SaveGameData();
+            }
             else
             {
                 Console.WriteLine("I do not understand");
@@ -309,7 +311,8 @@ namespace JosherConsole
             String name;
             String className = "";
             String raceName = "";
-            int Hp = 100;
+            int gold = 0;
+            int hp = 0;
             bool validRace = false;
             bool validClass = false;
                     
@@ -325,8 +328,19 @@ namespace JosherConsole
                 className = Console.ReadLine().ToLower();
                 Console.ForegroundColor = ConsoleColor.White;
                 
-                if (className == "warrior" || className == "mage" || className == "thief")
+                if (className == "warrior")
                 {
+                    gold = 100;
+                    validClass = true;
+                }
+                else if (className == "mage")
+                {
+                    gold = 150;
+                    validClass = true;
+                }
+                else if (className == "thief")
+                {
+                    gold = 200;
                     validClass = true;
                 }
                 else
@@ -346,17 +360,17 @@ namespace JosherConsole
                 if (raceName == "human")
                 {
                     validRace = true;
-                    Hp = 100;
+                    hp = 100;
                 }
                 else if (raceName == "elf")
                 {
                     validRace = true;
-                    Hp -= 20;
+                    hp = 80;
                 }
                 else if (raceName == "dwarf")
                 {
                     validRace = true;
-                    Hp += 20;
+                    hp = 120;
                 }
                 else
                 {
@@ -364,33 +378,47 @@ namespace JosherConsole
                 }
             }
             Console.ForegroundColor = ConsoleColor.White;
-            _player = new Player(name, className, raceName, 100, Hp, Hp, World.WeaponByID(103), false);
+            _player = new Player(name, className, raceName, gold, hp, hp, World.WeaponByID(103), false);
 
         }
 
-        //    private static void LoadGameData()
-        //    {
-        //        _player = PlayerDataMapper.CreateFromDatabase();
+        private static void SaveGameData()
+        {
+            File.WriteAllText(PLAYER_DATA_FILE_NAME, _player.ToXmlString());            
 
-        //        if (_player == null)
-        //        {
-        //            if (File.Exists(PLAYER_DATA_FILE_NAME))
-        //            {
-        //                _player = Player.CreatePlayerFromXmlString(File.ReadAllText(PLAYER_DATA_FILE_NAME));
-        //            }
-        //            else
-        //            {
-        //                _player = Player.CreateDefaultPlayer();
-        //            }
-        //        }
-        //    }
+            PlayerDataMapper.SaveToDatabase(_player);
+        }
 
-        //private static void SaveGameData()
-        //{
-        //    File.WriteAllText(PLAYER_DATA_FILE_NAME, _player.ToXmlString());
+        private static void LoadGameData()
+        {
+            
+            if (_player == null)
+            {
+                if (File.Exists(PLAYER_DATA_FILE_NAME))
+                {
+                    _player = Player.CreatePlayerFromXmlString(File.ReadAllText(PLAYER_DATA_FILE_NAME));
+                }
+                else
+                {
+                    _player = Player.CreateDefaultPlayer();
+                }
+            }
+        }
 
-        //    PlayerDataMapper.SaveToDatabase(_player);
-        //}
+        private static void NewPlayer()
+        {
+            Console.WriteLine("Are you a new Player?");
+            string userInput = Console.ReadLine();
+            if (userInput.ToLower() == "no")
+            {
+                LoadGameData();
+            }
+            else
+            {
+                CreatePlayer();
+            }
+        }
+
     }
 }
 

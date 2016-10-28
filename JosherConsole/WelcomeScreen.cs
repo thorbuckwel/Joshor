@@ -20,18 +20,7 @@ namespace JosherConsole
             Console.WriteLine("                   ###  ##      ##       ##   ######  ##      ##  ###  #    ");
             Console.WriteLine("            ##########   ##    ##   ##   ##   ##  ##   ##    ##   ##        ");
             Console.WriteLine("            ##########     ####     #######   ##  ##     ####     ##        ");
-            Console.WriteLine("________________________________________________________________________________");
-
-            //Console.WriteLine("Are you a new Player?");
-            //string userInput = Console.ReadLine();
-            //if (userInput.ToLower() == "yes")
-            //{
-                
-            //}
-            //else
-            //{
-
-            //}
+            Console.WriteLine("________________________________________________________________________________");          
 
 
         }

@@ -29,6 +29,23 @@ namespace Engine
         {
             return Weapons.SingleOrDefault(x => x.ID == id);
         }
+        public static Weapon WeaponByName(string name)
+        {
+            return Weapons.SingleOrDefault(x => x.Name == name);
+        }
+
+        public static Room LocationByID(int id)
+        {
+            foreach (Room location in Location)
+            {
+                if (location.ID == id)
+                {
+                    return location;
+                }
+            }
+
+            return null;
+        }
     }
 
    
