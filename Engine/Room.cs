@@ -47,8 +47,9 @@ namespace Engine
             this.LocationToEast = exit2;
             this.LocationToSouth = exit3;
             this.LocationToWest = exit4;
-            if (idMonster > 0)
+            if (idMonster > -1)
             {
+                Random rand = new Random();
                 this.Monsters = World.Monsters[idMonster];
             }
         }                          

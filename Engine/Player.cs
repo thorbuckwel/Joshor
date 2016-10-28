@@ -135,10 +135,7 @@ namespace Engine
             MoveTo(World.Location[0]);
         }
 
-        /**
-         * This method will add one to the element in the list to move to the next
-         * room north
-         */
+        
         public void MoveNorth()
         {
             if (World.Location != null)
@@ -155,11 +152,7 @@ namespace Engine
                 MoveTo(World.Location[CurrentLocation.LocationToEast]);
             }
         }
-
-        /**
-         * This method will subtract one to the element in the list to move to the next
-         * room to the south
-         */
+       
         public void MoveSouth()
         {
             if (World.Location != null)

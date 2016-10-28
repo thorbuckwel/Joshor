@@ -16,7 +16,8 @@ namespace JosherConsole
 
         private static void Main(string[] args)
         {
-            ListBuilder.Build();                // On load we need to call the ListBuilder to build all out List
+            Console.ForegroundColor = ConsoleColor.White;
+            ListBuilder.Build();                // On load we need to call the ListBuilder to build all our List
             CreatePlayer();
             // Load the player
             // LoadGameData();
@@ -87,6 +88,7 @@ namespace JosherConsole
                 Console.WriteLine("Available commands");
                 Console.WriteLine("====================================");
                 Console.WriteLine("Stats - Display player information");
+                Console.WriteLine("Score - Display player information");
                 Console.WriteLine("Look - Get the description of your location");
                 Console.WriteLine("Inventory - Display your inventory");
                 Console.WriteLine("Quests - Display your quests");
@@ -105,9 +107,9 @@ namespace JosherConsole
             }
             else if (input == "stats" || input == "score")
             {
-                Console.WriteLine(_player.PlayerName);
-                Console.WriteLine(_player.PlayerClass);
-                Console.WriteLine(_player.PlayerRace);
+                Console.WriteLine("Player Name: " + _player.PlayerName);
+                Console.WriteLine("Player Class: " + _player.PlayerClass);
+                Console.WriteLine("Player Race: " + _player.PlayerRace);
                 Console.WriteLine("Current hit points: {0}", _player.CurrentHitPoints);
                 Console.WriteLine("Maximum hit points: {0}", _player.MaximumHitPoints);
                 Console.WriteLine("Experience Points: {0}", _player.ExperiencePoints);
@@ -166,7 +168,7 @@ namespace JosherConsole
                     DisplayCurrentLocation();
                 }
             }
-            else if (input == "inventory")
+            else if (input == "inventory" || input == "inv")
             {
                 foreach (InventoryItem inventoryItem in _player.Inventory)
                 {
@@ -198,7 +200,7 @@ namespace JosherConsole
             //        }
             //    }
             //}
-            else if (input.StartsWith("drop "))
+            else if (input.StartsWith("drop ") || input.StartsWith("drop"))
             {
                 string inputItemName = input.Substring(4).Trim();
 
@@ -226,7 +228,7 @@ namespace JosherConsole
 
                 }
             }
-            else if (input.StartsWith("equip "))
+            else if (input.StartsWith("equip ") || input.StartsWith("equip"))
             {
                 string inputWeaponName = input.Substring(6).Trim();
 
@@ -271,7 +273,29 @@ namespace JosherConsole
             {
                 Console.WriteLine(_player.CurrentLocation.RoomDescript);
             }
-        }       
+
+            if (_player.CurrentLocation.Monsters != null)
+            {
+                Monster inhab;
+                if (_player.CurrentLocation.Monsters.ID != 5)
+                {
+
+                    inhab = new Monster(World.Monsters[RandomNumberGenerator.NumberBetween(0, 3)]);
+                    Console.WriteLine("");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine(" A " + inhab.Name + " is wondering around here.");
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+                else
+                {
+                    inhab = new Monster(World.Monsters[4]);
+                    Console.WriteLine("");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine(" A large " + _player.CurrentLocation.Monsters.Name + " fills the room with its massive body.");
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+            }
+        }      
 
         private static void CreatePlayer()
         {
@@ -288,29 +312,29 @@ namespace JosherConsole
 
         }
 
-    //    private static void LoadGameData()
-    //    {
-    //        _player = PlayerDataMapper.CreateFromDatabase();
+        //    private static void LoadGameData()
+        //    {
+        //        _player = PlayerDataMapper.CreateFromDatabase();
 
-    //        if (_player == null)
-    //        {
-    //            if (File.Exists(PLAYER_DATA_FILE_NAME))
-    //            {
-    //                _player = Player.CreatePlayerFromXmlString(File.ReadAllText(PLAYER_DATA_FILE_NAME));
-    //            }
-    //            else
-    //            {
-    //                _player = Player.CreateDefaultPlayer();
-    //            }
-    //        }
-    //    }
+        //        if (_player == null)
+        //        {
+        //            if (File.Exists(PLAYER_DATA_FILE_NAME))
+        //            {
+        //                _player = Player.CreatePlayerFromXmlString(File.ReadAllText(PLAYER_DATA_FILE_NAME));
+        //            }
+        //            else
+        //            {
+        //                _player = Player.CreateDefaultPlayer();
+        //            }
+        //        }
+        //    }
 
-    //    private static void SaveGameData()
-    //    {
-    //        File.WriteAllText(PLAYER_DATA_FILE_NAME, _player.ToXmlString());
+        //private static void SaveGameData()
+        //{
+        //    File.WriteAllText(PLAYER_DATA_FILE_NAME, _player.ToXmlString());
 
-    //        PlayerDataMapper.SaveToDatabase(_player);
-    //    }
+        //    PlayerDataMapper.SaveToDatabase(_player);
+        //}
     }
 }
 
