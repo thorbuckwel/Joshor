@@ -175,31 +175,31 @@ namespace JosherConsole
                     Console.WriteLine("{0}: {1}", inventoryItem.Description, inventoryItem.Quantity);
                 }
             }
-            //else if (input.Contains("attack"))
-            //{
-            //    if (_player.CurrentLocation.MonsterLivingHere == null)
-            //    {
-            //        Console.WriteLine("There is nothing here to attack");
-            //    }
-            //    else
-            //    {
-            //        if (_player.Equipt == null)
-            //        {
-            //            // Select the first weapon in the player's inventory 
-            //            // (or 'null', if they do not have any weapons)
-            //            _player.Equipt = _player. .FirstOrDefault();
-            //        }
+            else if (input.Contains("attack") || input.Contains("kill"))
+            {
+                if (_player.CurrentLocation.Monsters == null)
+                {
+                    Console.WriteLine("There is nothing here to attack");
+                }
+                else
+                {
+                    //if (_player.Equipt == null)
+                    //{
+                    //    // Select the first weapon in the player's inventory 
+                    //    // (or 'null', if they do not have any weapons)
+                    //    _player.Equipt = _player. .FirstOrDefault();
+                    //}
 
-            //        if (_player.Equipt == null)
-            //        {
-            //            Console.WriteLine("You do not have any weapons");
-            //        }
-            //        else
-            //        {
-            //            _player.UseWeapon(_player.Equipt);
-            //        }
-            //    }
-            //}
+                    if (_player.Equipt == null)
+                    {
+                        Console.WriteLine("You do not have any weapons");
+                    }
+                    else
+                    {
+                        _player.UseWeapon(_player.Equipt);
+                    }
+                }
+            }
             else if (input.StartsWith("drop ") || input.StartsWith("drop"))
             {
                 string inputItemName = input.Substring(4).Trim();
@@ -281,6 +281,7 @@ namespace JosherConsole
                 {
 
                     inhab = new Monster(World.Monsters[RandomNumberGenerator.NumberBetween(0, 3)]);
+                    _player.CurrentMonster = inhab;
                     Console.WriteLine("");
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine(" A " + inhab.Name + " is wondering around here.");
@@ -289,6 +290,7 @@ namespace JosherConsole
                 else
                 {
                     inhab = new Monster(World.Monsters[4]);
+                    _player.CurrentMonster = inhab;
                     Console.WriteLine("");
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine(" A large " + _player.CurrentLocation.Monsters.Name + " fills the room with its massive body.");
