@@ -307,22 +307,64 @@ namespace JosherConsole
         private static void CreatePlayer()
         {
             String name;
-            String className;
-            String raceName;        
+            String className = "";
+            String raceName = "";
+            int Hp = 100;
+            bool validRace = false;
+            bool validClass = false;
+                    
             Console.WriteLine("Give me your name.");
             Console.Write("> ");
             name = Console.ReadLine();
-            Console.WriteLine("What class would you like to be?");
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("Warrior, Mage, Thief > ");
-            className = Console.ReadLine();
+
+            while (validClass == false)
+            {
+                Console.WriteLine("What class would you like to be?");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write("Warrior, Mage, Thief > ");
+                className = Console.ReadLine().ToLower();
+                Console.ForegroundColor = ConsoleColor.White;
+                
+                if (className == "warrior" || className == "mage" || className == "thief")
+                {
+                    validClass = true;
+                }
+                else
+                {
+                    Console.WriteLine("Not a valid class");                    
+                }
+            }           
+            
+            while (validRace == false)
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("What race would you like?");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write("Human, Elf, Dwarf > ");
+                raceName = Console.ReadLine().ToLower();
+
+                if (raceName == "human")
+                {
+                    validRace = true;
+                    Hp = 100;
+                }
+                else if (raceName == "elf")
+                {
+                    validRace = true;
+                    Hp -= 20;
+                }
+                else if (raceName == "dwarf")
+                {
+                    validRace = true;
+                    Hp += 20;
+                }
+                else
+                {
+                    Console.WriteLine("Not a Valid entry.");
+                }
+            }
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("What race would you like?");
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("Human, Elf, Dwarf > ");
-            raceName = Console.ReadLine();
-            Console.ForegroundColor = ConsoleColor.White;
-            _player = new Player(name, className, raceName, 100, 100, 100, World.WeaponByID(103), false);
+            _player = new Player(name, className, raceName, 100, Hp, Hp, World.WeaponByID(103), false);
 
         }
 
