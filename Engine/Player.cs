@@ -80,13 +80,21 @@ namespace Engine
 
                 playerData.LoadXml(xmlPlayerData);
                 string playerName = playerData.SelectSingleNode("/Player/Stats/Name").InnerText;
+                Console.WriteLine("Got name: " + playerName);
                 string PC = playerData.SelectSingleNode("/Player/Stats/Class").InnerText;
+                Console.WriteLine("Got class: " + PC);
                 string PR = playerData.SelectSingleNode("/Player/Stats/Race").InnerText;
+                Console.WriteLine("Got race: " + PR);
                 int currentHitPoints = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/CurrentHitPoints").InnerText);
+                Console.WriteLine("Got current hit points: " + currentHitPoints.ToString());
                 int maximumHitPoints = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/MaximumHitPoints").InnerText);
+                Console.WriteLine("Got max hit points: " + maximumHitPoints.ToString());
                 int gold = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/Gold").InnerText);
+                Console.WriteLine("Got gold: " + gold.ToString());
                 int experiencePoints = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/ExperiencePoints").InnerText);
+                Console.WriteLine("Got experience: " + experiencePoints.ToString());
                 int equiptString = Convert.ToInt16(GetXMLFromObject("/Player/Stats/CurrentWeapon"));
+                Console.WriteLine("Got equipt weapon: " + equiptString.ToString());
                 Weapon equipt = World.WeaponByID(equiptString);
 
                 Player player = new Player(playerName, PC, PR, gold, currentHitPoints, maximumHitPoints, equipt, true);
@@ -113,10 +121,12 @@ namespace Engine
 
                 return player;
             }
-            catch
+            catch(Exception ex)
             {
                 // If there was an error with the XML data, return a default player object
+                //Console.WriteLine(ex.ToString());
                 return CreateDefaultPlayer();
+                //return null;
             }
         }
 
@@ -364,11 +374,11 @@ namespace Engine
             stats.AppendChild(playerName);
 
             XmlNode playerClass = playerData.CreateElement("Class");
-            playerClass.AppendChild(playerData.CreateTextNode(this.PlayerName.ToString()));
+            playerClass.AppendChild(playerData.CreateTextNode(this.PlayerClass.ToString()));
             stats.AppendChild(playerClass);
 
             XmlNode playerRace = playerData.CreateElement("Race");
-            playerRace.AppendChild(playerData.CreateTextNode(this.PlayerName.ToString()));
+            playerRace.AppendChild(playerData.CreateTextNode(this.PlayerRace.ToString()));
             stats.AppendChild(playerRace);
 
             XmlNode currentHitPoints = playerData.CreateElement("CurrentHitPoints");
