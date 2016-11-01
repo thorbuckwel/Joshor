@@ -24,6 +24,12 @@ namespace Engine
             Quantity = quantity;
         }
 
+        public InventoryItem(Weapon details, int quantity)
+        {
+            Details = details;
+            Quantity = quantity;
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged(string name)

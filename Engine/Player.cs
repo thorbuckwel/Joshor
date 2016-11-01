@@ -93,11 +93,14 @@ namespace Engine
                 Console.WriteLine("Got gold: " + gold.ToString());
                 int experiencePoints = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/ExperiencePoints").InnerText);
                 Console.WriteLine("Got experience: " + experiencePoints.ToString());
-                int equiptString = Convert.ToInt16(GetXMLFromObject("/Player/Stats/CurrentWeapon"));
+                int equiptString = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/CurrentWeapon").InnerText);
                 Console.WriteLine("Got equipt weapon: " + equiptString.ToString());
-                Weapon equipt = World.WeaponByID(equiptString);
+                Weapon equipt = new Weapon(World.WeaponByID(equiptString).ID, World.WeaponByID(equiptString).Name, World.WeaponByID(equiptString).NamePlural,
+                 World.WeaponByID(equiptString).Desc, World.WeaponByID(equiptString).Cost, World.WeaponByID(equiptString).Damage, World.WeaponByID(equiptString).DamageType,
+                 true);
 
                 Player player = new Player(playerName, PC, PR, gold, currentHitPoints, maximumHitPoints, equipt, true);
+                //player.RemoveItemFromInventory(World.WeaponByID(101));
 
                 int currentLocationID = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/CurrentLocation").InnerText);
                 player.CurrentLocation = World.LocationByID(currentLocationID);
@@ -105,7 +108,7 @@ namespace Engine
                 if (playerData.SelectSingleNode("/Player/Stats/CurrentWeapon") != null)
                 {
                     int currentWeaponID = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/CurrentWeapon").InnerText);
-                    player.Equipt = (Weapon)World.ItemByID(currentWeaponID);
+                    player.Equipt = World.WeaponByID(currentWeaponID);
                 }
 
                 foreach (XmlNode node in playerData.SelectNodes("/Player/InventoryItems/InventoryItem"))
@@ -113,9 +116,19 @@ namespace Engine
                     int id = Convert.ToInt32(node.Attributes["ID"].Value);
                     int quantity = Convert.ToInt32(node.Attributes["Quantity"].Value);
 
-                    for (int i = 0; i < quantity; i++)
+                    if (id > 100 && id <= 200)
                     {
-                        player.AddItemToInventory(World.ItemByID(id));
+                        for (int i = 0; i < quantity; i++)
+                        {
+                            player.AddItemToInventory(World.WeaponByID(id));
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < quantity; i++)
+                        {
+                            player.AddItemToInventory(World.ItemByID(id));
+                        }
                     }
                 }
 
@@ -216,6 +229,24 @@ namespace Engine
             RaiseInventoryChangedEvent(itemToAdd);
         }
 
+        public void AddItemToInventory(Weapon itemToAdd, int quantity = 1)
+        {
+            InventoryItem item = Inventory.SingleOrDefault(ii => ii.Details.ID == itemToAdd.ID);
+
+            if (item == null)
+            {
+                // They didn't have the item, so add it to their inventory
+                Inventory.Add(new InventoryItem(itemToAdd, quantity));
+            }
+            else
+            {
+                // They have the item in their inventory, so increase the quantity
+                item.Quantity += quantity;
+            }
+
+            RaiseInventoryChangedEvent(itemToAdd);
+        }
+
         public void RemoveItemFromInventory(Item itemToRemove, int quantity = 1)
         {
             InventoryItem item = Inventory.SingleOrDefault(ii => ii.ItemID == itemToRemove.ID);
@@ -245,6 +276,39 @@ namespace Engine
 
                 // Notify the UI that the inventory has changed
                 RaiseInventoryChangedEvent(itemToRemove);
+            }
+        }
+
+        public void RemoveItemFromInventory(Weapon weaponToRemove, int quantity = 1)
+        {
+            Item weapon = weaponToRemove;
+            InventoryItem item = Inventory.SingleOrDefault(ii => ii.ItemID == weapon.ID);
+
+            if (item == null)
+            {
+                // The item is not in the player's inventory, so ignore it.
+                // We might want to raise an error for this situation
+            }
+            else
+            {
+                // They have the item in their inventory, so decrease the quantity
+                item.Quantity -= quantity;
+
+                // Don't allow negative quantities.
+                // We might want to raise an error for this situation
+                if (item.Quantity < 0)
+                {
+                    item.Quantity = 0;
+                }
+
+                // If the quantity is zero, remove the item from the list
+                if (item.Quantity == 0)
+                {
+                    Inventory.Remove(item);
+                }
+
+                // Notify the UI that the inventory has changed
+                RaiseInventoryChangedEvent(weaponToRemove);
             }
         }
 

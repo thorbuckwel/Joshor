@@ -237,7 +237,7 @@ namespace JosherConsole
             }
             else if (input.StartsWith("equip ") || input.StartsWith("equip"))
             {
-                string inputWeaponName = input.Substring(6).Trim();
+                string inputWeaponName = input.Substring(5).Trim();
 
                 if (string.IsNullOrEmpty(inputWeaponName))
                 {
@@ -255,10 +255,11 @@ namespace JosherConsole
                     }
                     else
                     {                        
-                        _player.Inventory.Add(new InventoryItem( _player.Equipt, 1));
+                        //_player.Inventory.Add(new InventoryItem( _player.Equipt, 1));
+                        _player.Equipt = weaponToEquip;
                         _player.RemoveItemFromInventory(weaponToEquip, 1);                        
                         Console.WriteLine("You equip your {0}", weaponToEquip.Name.ToString());
-                        _player.Equipt = weaponToEquip;                           
+                                              
                             
                     }
                 }
