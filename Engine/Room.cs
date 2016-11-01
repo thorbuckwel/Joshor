@@ -33,12 +33,13 @@ namespace Engine
         public int LocationToEast { get { return _locationToEast; } set { _locationToEast = value; } }
         public int LocationToSouth { get { return _locationToSouth; } set { _locationToSouth = value; } }
         public int LocationToWest { get { return _locationToWest; } set { _locationToWest = value; } }
+        public List<Item> RoomLoot = new List<Item>();
 
         /**
          * This is the Room constructor. It creates a Room object with the passed variables then assignd
          * those to the class variables.
          */
-        public Room(int id, String name, String descript, int exit1, int exit2, int exit3, int exit4, int idMonster)
+        public Room(int id, String name, String descript, int exit1, int exit2, int exit3, int exit4, int idMonster, int idRmLoot)
         {
             this.ID = id;
             this.RoomName = name;
@@ -51,6 +52,21 @@ namespace Engine
             {
                 Random rand = new Random();
                 this.Monsters = World.Monsters[idMonster];
+            }
+
+            if (idRmLoot > -1)
+            {
+                if (idRmLoot > 200 && idRmLoot <= 300)
+                {
+                    Item rmLoot = World.Items.SingleOrDefault(ii => ii.ID == idRmLoot);
+                    RoomLoot.Add(new Item(rmLoot.ID, rmLoot.Name, rmLoot.NamePlural, rmLoot.Desc, rmLoot.Price, rmLoot.Equiptable));
+                    
+                }
+                else if (idRmLoot > 100 && idRmLoot <= 200)
+                {
+                    Weapon rmLoot = World.Weapons.SingleOrDefault(ii => ii.ID == idRmLoot);
+                    RoomLoot.Add(new Weapon(rmLoot.ID, rmLoot.Name, rmLoot.NamePlural, rmLoot.Desc, rmLoot.Price, rmLoot.Damage, rmLoot.DamageType, rmLoot.Equiptable));
+                }
             }
         }                          
     }

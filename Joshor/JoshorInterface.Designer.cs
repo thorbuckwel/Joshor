@@ -343,7 +343,7 @@
             this.btnSouth.Text = "South";
             this.btnSouth.UseVisualStyleBackColor = true;
             this.btnSouth.Visible = false;
-            this.btnSouth.Click += new System.EventHandler(this.btnSouth_Click);
+            //this.btnSouth.Click += new System.EventHandler(this.btnSouth_Click);
             // 
             // btnEast
             // 
@@ -373,7 +373,7 @@
             this.btnNorth.TabIndex = 0;
             this.btnNorth.Text = "North";
             this.btnNorth.UseVisualStyleBackColor = true;
-            this.btnNorth.Click += new System.EventHandler(this.btnNorth_Click);
+            //this.btnNorth.Click += new System.EventHandler(this.btnNorth_Click);
             // 
             // grpEnvironmentItems
             // 
@@ -402,7 +402,7 @@
             this.btnInspectWeapon.TabIndex = 9;
             this.btnInspectWeapon.Text = "Inspect";
             this.btnInspectWeapon.UseVisualStyleBackColor = true;
-            this.btnInspectWeapon.Click += new System.EventHandler(this.btnInspectWeapon_Click);
+            //this.btnInspectWeapon.Click += new System.EventHandler(this.btnInspectWeapon_Click);
             // 
             // btnAttack
             // 
@@ -412,7 +412,7 @@
             this.btnAttack.TabIndex = 8;
             this.btnAttack.Text = "Attack With";
             this.btnAttack.UseVisualStyleBackColor = true;
-            this.btnAttack.Click += new System.EventHandler(this.btnAttack_Click);
+            //this.btnAttack.Click += new System.EventHandler(this.btnAttack_Click);
             // 
             // cboWeapons
             // 
@@ -465,7 +465,7 @@
             this.btnEnemyView.TabIndex = 2;
             this.btnEnemyView.Text = "View";
             this.btnEnemyView.UseVisualStyleBackColor = true;
-            this.btnEnemyView.Click += new System.EventHandler(this.btnEnemyView_Click);
+            //this.btnEnemyView.Click += new System.EventHandler(this.btnEnemyView_Click);
             // 
             // cboEnemies
             // 
@@ -487,7 +487,7 @@
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            //this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // JoshorInterface
             // 
@@ -503,8 +503,8 @@
             this.KeyPreview = true;
             this.Name = "JoshorInterface";
             this.Text = "Joshor";
-            this.Load += new System.EventHandler(this.JoshorInterface_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.JoshorInterface_KeyDown);
+           // this.Load += new System.EventHandler(this.JoshorInterface_Load);
+            //this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.JoshorInterface_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.grbInventory.ResumeLayout(false);
             this.grbStats.ResumeLayout(false);

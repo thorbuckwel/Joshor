@@ -18,7 +18,7 @@ namespace Engine
         private int _gold;                                  // To hold the player's gold
         private int _lvl;                                   // To hold the player's level
         private int _ac;                                    // To hold the player's armor
-        private Room _currentLocation;                      // Not used as of yet!
+        private static Room _currentLocation;                      // Not used as of yet!
         private Weapon _equipt;                             // To hold the currently equipt weapon
         private Monster _currentMonster;
 
@@ -35,7 +35,7 @@ namespace Engine
         public int Gold { get { return _gold; } set { _gold = value;} }
         public int Level { get { return ((ExperiencePoints / 100) + 1); }}
         public int AC { get { return _ac; } set { _ac = value; }}
-        public Room CurrentLocation { get { return _currentLocation; } set { _currentLocation = value; } }
+        public static Room CurrentLocation { get { return _currentLocation; } set { _currentLocation = value; } }
         public Weapon Equipt { get { return _equipt; } set { _equipt = value; } }
         public Monster CurrentMonster { get { return _currentMonster; } set { _currentMonster = value; } }
         
@@ -60,17 +60,16 @@ namespace Engine
             this.Equipt = equipt;
             Inventory = new List<InventoryItem>();
             this.Inventory.Add(new InventoryItem(new Weapon(101, "Club", "Clubs", "Short little stick", 100, 6, "Blunt", true), 1));
-            this.CurrentLocation = World.Location[0];
+            CurrentLocation = World.Location[0];
         }
 
         public static Player CreateDefaultPlayer()
         {
             Player player = new Player("Killakia", "Warrior", "Human", 10, 10, 20, World.Weapons[1], false);
-            player.CurrentLocation = World.Location[0];
+            CurrentLocation = World.Location[0];
 
             return player;
         }
-
 
         public static Player CreatePlayerFromXmlString(string xmlPlayerData)
         {
@@ -101,7 +100,7 @@ namespace Engine
                 player.RemoveItemFromInventory(World.WeaponByID(101));
 
                 int currentLocationID = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/CurrentLocation").InnerText);
-                player.CurrentLocation = World.LocationByID(currentLocationID);
+                CurrentLocation = World.LocationByID(currentLocationID);
 
                 if (playerData.SelectSingleNode("/Player/Stats/CurrentWeapon") != null)
                 {
@@ -139,67 +138,7 @@ namespace Engine
                 return CreateDefaultPlayer();
                 //return null;
             }
-        }
-
-        /**
-         * This method takes the new location and assigns it to the player's current location.
-         */
-        public void ChangeLocation(Room location)
-        {
-            _currentLocation = location;
-            
-        }
-
-        public void MoveTo(Room location)
-        {
-            // The player can enter this location
-            ChangeLocation(location);  
-                   
-        }
-
-        /**
-         * If the player were to die or for any reason we need to send the player
-         * back to the starting postion this will be the method called to do so.
-         */
-        private void MoveHome()
-        {
-            MoveTo(World.Location[0]);
-        }
-
-        
-        public void MoveNorth()
-        {
-            if (World.Location != null)
-            {
-                int ele = World.Location.IndexOf(_currentLocation);
-                MoveTo(World.Location[CurrentLocation.LocationToNorth]);                                
-            }            
-        }
-        public void MoveEast()
-        {
-            if (World.Location != null)
-            {
-                int ele = World.Location.IndexOf(_currentLocation);
-                MoveTo(World.Location[CurrentLocation.LocationToEast]);
-            }
-        }
-       
-        public void MoveSouth()
-        {
-            if (World.Location != null)
-            {
-                int ele = World.Location.IndexOf(_currentLocation);
-                MoveTo(World.Location[CurrentLocation.LocationToSouth]);
-            }
-        }
-        public void MoveWest()
-        {
-            if (World.Location != null)
-            {
-                int ele = World.Location.IndexOf(_currentLocation);
-                MoveTo(World.Location[CurrentLocation.LocationToWest]);
-            }
-        }
+        }        
 
         private void RaiseMessage(string message, bool addExtraNewLine = false)
         {
@@ -392,7 +331,7 @@ namespace Engine
                 RaiseMessage("");
 
                 // Move player to current location (to heal player and create a new monster to fight)
-                MoveTo(CurrentLocation);
+                Move.MoveTo(CurrentLocation);
             }
             else
             {
@@ -413,7 +352,7 @@ namespace Engine
                     RaiseMessage("The " + _currentMonster.Name + " killed you.");
 
                     // Move player to "Home"
-                    MoveHome();
+                    Move.MoveHome();
                 }
             }
         }
@@ -460,7 +399,7 @@ namespace Engine
             stats.AppendChild(experiencePoints);
 
             XmlNode currentLocation = playerData.CreateElement("CurrentLocation");
-            currentLocation.AppendChild(playerData.CreateTextNode(this.CurrentLocation.ID.ToString()));
+            currentLocation.AppendChild(playerData.CreateTextNode(CurrentLocation.ID.ToString()));
             stats.AppendChild(currentLocation);
 
             if (Equipt != null)

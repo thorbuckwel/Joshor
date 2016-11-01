@@ -10,18 +10,16 @@ namespace JosherConsole
 {
     public class Program
     {
-        private const string PLAYER_DATA_FILE_NAME = "PlayerData.xml";
+        public const string PLAYER_DATA_FILE_NAME = "PlayerData.xml";
 
-        private static Player _player;
-
+        public static Player _player;
+                
         private static void Main(string[] args)
         {
             Console.ForegroundColor = ConsoleColor.White;
             ListBuilder.Build();                // On load we need to call the ListBuilder to build all our List
             WelcomeScreen welcome = new WelcomeScreen();
-            welcome.Welcome();
-            NewPlayer();
-
+            welcome.Welcome(); 
 
             Console.WriteLine("Type 'Help' to see a list of commands");
             Console.WriteLine("");
@@ -120,54 +118,16 @@ namespace JosherConsole
             {
                 DisplayCurrentLocation();
             }
-            else if (input.Contains("north"))
+            else if (input.Contains("north") || input.Contains("east") || input.Contains("south") || input.Contains("west"))
             {
-                if (_player.CurrentLocation.LocationToNorth == -1)
+                Move.MoveToNew(input);
+                DisplayCurrentLocation();
+                if (Move.canGo == false)
                 {
-                    Console.WriteLine("You cannot move North");
-                }
-                else
-                {
-                    _player.MoveNorth();
-                    DisplayCurrentLocation();
+                    Console.WriteLine("You can not go " + input);
                 }
             }
-            else if (input.Contains("east"))
-            {
-                if (_player.CurrentLocation.LocationToEast == -1)
-                {
-                    Console.WriteLine("You cannot move East");
-                }
-                else
-                {
-                    _player.MoveEast();
-                    DisplayCurrentLocation();
-                }
-            }
-            else if (input.Contains("south"))
-            {
-                if (_player.CurrentLocation.LocationToSouth == -1)
-                {
-                    Console.WriteLine("You cannot move South");
-                }
-                else
-                {
-                    _player.MoveSouth();
-                    DisplayCurrentLocation();
-                }
-            }
-            else if (input.Contains("west"))
-            {
-                if (_player.CurrentLocation.LocationToWest == -1)
-                {
-                    Console.WriteLine("You cannot move West");
-                }
-                else
-                {
-                    _player.MoveWest();
-                    DisplayCurrentLocation();
-                }
-            }
+            
             else if (input == "inventory" || input == "inv")
             {
                 foreach (InventoryItem inventoryItem in _player.Inventory)
@@ -177,7 +137,7 @@ namespace JosherConsole
             }
             else if (input.Contains("attack") || input.Contains("kill"))
             {
-                if (_player.CurrentLocation.Monsters == null)
+                if (Player.CurrentLocation.Monsters == null)
                 {
                     Console.WriteLine("There is nothing here to attack");
                 }
@@ -266,7 +226,8 @@ namespace JosherConsole
             }
             else if (input.StartsWith("save"))
             {
-                SaveGameData();
+                WelcomeScreen welcome = new WelcomeScreen();
+                welcome.SaveGameData();
             }
             else
             {
@@ -280,17 +241,25 @@ namespace JosherConsole
 
         private static void DisplayCurrentLocation()
         {
-            Console.WriteLine("You are at: {0}", _player.CurrentLocation.RoomName);
+            Console.WriteLine("You are at: {0}", Player.CurrentLocation.RoomName);
 
-            if (_player.CurrentLocation.RoomDescript != "")
+            if (Player.CurrentLocation.RoomDescript != "")
             {
-                Console.WriteLine(_player.CurrentLocation.RoomDescript);
+                Console.WriteLine(Player.CurrentLocation.RoomDescript);
             }
 
-            if (_player.CurrentLocation.Monsters != null)
+            if (Player.CurrentLocation.RoomLoot != null)
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+                string itemName = (Player.CurrentLocation.RoomLoot;
+                Console.WriteLine(itemName);
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+
+            if (Player.CurrentLocation.Monsters != null)
             {
                 Monster inhab;
-                if (_player.CurrentLocation.Monsters.ID != 5)
+                if (Player.CurrentLocation.Monsters.ID != 5)
                 {
 
                     inhab = new Monster(World.Monsters[RandomNumberGenerator.NumberBetween(0, 3)]);
@@ -306,126 +275,11 @@ namespace JosherConsole
                     _player.CurrentMonster = inhab;
                     Console.WriteLine("");
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine(" A large " + _player.CurrentLocation.Monsters.Name + " fills the room with its massive body.");
+                    Console.WriteLine(" A large " + Player.CurrentLocation.Monsters.Name + " fills the room with its massive body.");
                     Console.ForegroundColor = ConsoleColor.White;
                 }
             }
-        }      
-
-        private static void CreatePlayer()
-        {
-            String name;
-            String className = "";
-            String raceName = "";
-            int gold = 0;
-            int hp = 0;
-            bool validRace = false;
-            bool validClass = false;
-                    
-            Console.WriteLine("Give me your name.");
-            Console.Write("> ");
-            name = Console.ReadLine();
-
-            while (validClass == false)
-            {
-                Console.WriteLine("What class would you like to be?");
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write("Warrior, Mage, Thief > ");
-                className = Console.ReadLine().ToLower();
-                Console.ForegroundColor = ConsoleColor.White;
-                
-                if (className == "warrior")
-                {
-                    gold = 100;
-                    validClass = true;
-                }
-                else if (className == "mage")
-                {
-                    gold = 150;
-                    validClass = true;
-                }
-                else if (className == "thief")
-                {
-                    gold = 200;
-                    validClass = true;
-                }
-                else
-                {
-                    Console.WriteLine("Not a valid class");                    
-                }
-            }           
-            
-            while (validRace == false)
-            {
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("What race would you like?");
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write("Human, Elf, Dwarf > ");
-                raceName = Console.ReadLine().ToLower();
-
-                if (raceName == "human")
-                {
-                    validRace = true;
-                    hp = 100;
-                }
-                else if (raceName == "elf")
-                {
-                    validRace = true;
-                    hp = 80;
-                }
-                else if (raceName == "dwarf")
-                {
-                    validRace = true;
-                    hp = 120;
-                }
-                else
-                {
-                    Console.WriteLine("Not a Valid entry.");
-                }
-            }
-            Console.ForegroundColor = ConsoleColor.White;
-            _player = new Player(name, className, raceName, gold, hp, hp, World.WeaponByID(103), false);
-
-        }
-
-        private static void SaveGameData()
-        {
-            File.WriteAllText(PLAYER_DATA_FILE_NAME, _player.ToXmlString());            
-
-            PlayerDataMapper.SaveToDatabase(_player);
-        }
-
-        private static void LoadGameData()
-        {
-            
-            if (_player == null)
-            {
-                if (File.Exists(PLAYER_DATA_FILE_NAME))
-                {
-                    _player = null;
-                    _player = Player.CreatePlayerFromXmlString(File.ReadAllText(PLAYER_DATA_FILE_NAME));
-                }
-                else
-                {
-                   // _player = Player.CreateDefaultPlayer();
-                }
-            }
-        }
-
-        private static void NewPlayer()
-        {
-            Console.WriteLine("Are you a new Player?");
-            string userInput = Console.ReadLine();
-            if (userInput.ToLower() == "no")
-            {
-                LoadGameData();
-            }
-            else
-            {
-                CreatePlayer();
-            }
-        }
-
+        }       
     }
 }
 

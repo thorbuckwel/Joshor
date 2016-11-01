@@ -147,7 +147,7 @@ namespace Engine
                                 insertSavedGame.Parameters.Add("@ExperiencePoints", SqlDbType.Int);
                                 insertSavedGame.Parameters["@ExperiencePoints"].Value = player.ExperiencePoints;
                                 insertSavedGame.Parameters.Add("@CurrentLocationID", SqlDbType.Int);
-                                insertSavedGame.Parameters["@CurrentLocationID"].Value = player.CurrentLocation.ID;
+                                insertSavedGame.Parameters["@CurrentLocationID"].Value = Player.CurrentLocation.ID;
 
                                 // Perform the SQL command.
                                 // Use ExecuteNonQuery, because this query does not return any results.
@@ -180,7 +180,7 @@ namespace Engine
                                 updateSavedGame.Parameters.Add("@ExperiencePoints", SqlDbType.Int);
                                 updateSavedGame.Parameters["@ExperiencePoints"].Value = player.ExperiencePoints;
                                 updateSavedGame.Parameters.Add("@CurrentLocationID", SqlDbType.Int);
-                                updateSavedGame.Parameters["@CurrentLocationID"].Value = player.CurrentLocation.ID;
+                                updateSavedGame.Parameters["@CurrentLocationID"].Value = Player.CurrentLocation.ID;
 
                                 // Perform the SQL command.
                                 // Use ExecuteNonQuery, because this query does not return any results.
