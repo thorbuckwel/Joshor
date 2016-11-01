@@ -217,19 +217,23 @@ namespace JosherConsole
                                        x => x.Name.ToLower() == inputItemName || x.NamePlural.ToLower() == inputItemName);
                     Weapon weaponToDrop = World.Weapons.SingleOrDefault(
                                        x => x.Name.ToLower() == inputItemName || x.NamePlural.ToLower() == inputItemName);
-                    if (itemToDrop == null || weaponToDrop == null)
+                    if (itemToDrop != null)
                     {
-                        Console.WriteLine("You do not have the item {0}", inputItemName);
-                    }
-                    else
-                    {                        
-                        
                         _player.RemoveItemFromInventory(itemToDrop, 1);
+                        Console.WriteLine("You drop {0}", inputItemName);
+                    }
+                    else if (weaponToDrop != null)
+                    {   
                         _player.RemoveItemFromInventory(weaponToDrop, 1);
                         Console.WriteLine("You drop {0}", inputItemName);
                     }
+                    else
+                    {
+                        Console.WriteLine("You do not have the item {0}", inputItemName);
+                    }
 
                 }
+                //&& weaponToDrop == null, Console.WriteLine("You do not have the item {0}", inputItemName);
             }
             else if (input.StartsWith("equip ") || input.StartsWith("equip"))
             {
@@ -247,14 +251,15 @@ namespace JosherConsole
 
                     if (weaponToEquip == null)
                     {
-                        Console.WriteLine("You do not have the weapon: {0}", inputWeaponName);
+                        Console.WriteLine("You do not have the weapon: {0}", weaponToEquip);
                     }
                     else
-                    {
-                        
+                    {                        
                         _player.Inventory.Add(new InventoryItem( _player.Equipt, 1));
-                        _player.RemoveItemFromInventory(_player.Equipt, 1);
-                        Console.WriteLine("You equip your {0}", _player.Equipt.Name);
+                        _player.RemoveItemFromInventory(weaponToEquip, 1);                        
+                        Console.WriteLine("You equip your {0}", weaponToEquip.Name.ToString());
+                        _player.Equipt = weaponToEquip;                           
+                            
                     }
                 }
             }
