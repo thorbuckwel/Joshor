@@ -138,9 +138,10 @@ namespace JosherConsole
                                 else if (item.ID > 100 && item.ID <= 200)
                                 {
                                     Weapon weaponToGet =
-                                        World.Weapons.SingleOrDefault(x => x.Name.ToLower() == item.Name || x.NamePlural.ToLower() == item.Name);
+                                        World.Weapons.SingleOrDefault(x => x.ID == item.ID);
 
-                                    _player.Inventory.Add(new InventoryItem(weaponToGet, 1));
+                                    _player.Inventory.Add(new InventoryItem(new Weapon(weaponToGet.ID, weaponToGet.Name, weaponToGet.NamePlural, weaponToGet.Desc,
+                                                            weaponToGet.Cost, weaponToGet.Damage, weaponToGet.DamageType, weaponToGet.Equiptable), 1));
                                     Player.CurrentLocation.RoomLoot.Remove(item);
                                 }
                             }

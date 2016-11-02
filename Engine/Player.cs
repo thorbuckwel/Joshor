@@ -58,8 +58,7 @@ namespace Engine
             this.ExperiencePoints = 0;
             this.AC = 10;
             this.Equipt = equipt;
-            Inventory = new List<InventoryItem>();
-            this.Inventory.Add(new InventoryItem(new Weapon(101, "Club", "Clubs", "Short little stick", 100, 6, "Blunt", true), 1));
+            Inventory = new List<InventoryItem>();            
             CurrentLocation = World.Location[0];
         }
 
