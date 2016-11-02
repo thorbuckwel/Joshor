@@ -114,6 +114,40 @@ namespace JosherConsole
                 Console.WriteLine("Level: {0}", _player.Level);
                 Console.WriteLine("Gold: {0}", _player.Gold);
             }
+            else if (input.StartsWith("get ") || input.StartsWith("get"))
+            {
+                string inputItemName = input.Substring(4).Trim();
+
+                if (string.IsNullOrEmpty(inputItemName))
+                {
+                    Console.WriteLine("You must enter the name of the item to get");
+                }
+                else
+                {
+                    if (inputItemName != null)
+                    {
+                        foreach (Item item in Player.CurrentLocation.RoomLoot.ToList())
+                        {
+                            if (item.Name.ToLower() == inputItemName)
+                            {
+                                if (item.ID > 200 && item.ID <= 300)
+                                {
+                                    _player.Inventory.Add(new InventoryItem(item, 1));
+                                    Player.CurrentLocation.RoomLoot.Remove(item);
+                                }
+                                else if (item.ID > 100 && item.ID <= 200)
+                                {
+                                    Weapon weaponToGet =
+                                        World.Weapons.SingleOrDefault(x => x.Name.ToLower() == item.Name || x.NamePlural.ToLower() == item.Name);
+
+                                    _player.Inventory.Add(new InventoryItem(weaponToGet, 1));
+                                    Player.CurrentLocation.RoomLoot.Remove(item);
+                                }
+                            }
+                        }
+                    }
+                }
+             }            
             else if (input == "look")
             {
                 DisplayCurrentLocation();
@@ -180,11 +214,13 @@ namespace JosherConsole
                     if (itemToDrop != null)
                     {
                         _player.RemoveItemFromInventory(itemToDrop, 1);
+                        Player.CurrentLocation.RoomLoot.Add(itemToDrop);
                         Console.WriteLine("You drop {0}", inputItemName);
                     }
                     else if (weaponToDrop != null)
                     {   
                         _player.RemoveItemFromInventory(weaponToDrop, 1);
+                        Player.CurrentLocation.RoomLoot.Add(weaponToDrop);
                         Console.WriteLine("You drop {0}", inputItemName);
                     }
                     else
@@ -251,8 +287,10 @@ namespace JosherConsole
             if (Player.CurrentLocation.RoomLoot != null)
             {
                 Console.ForegroundColor = ConsoleColor.Blue;
-                string itemName = (Player.CurrentLocation.RoomLoot;
-                Console.WriteLine(itemName);
+                foreach (Item item in Player.CurrentLocation.RoomLoot)
+                {
+                    Console.WriteLine(item.Name);
+                }                
                 Console.ForegroundColor = ConsoleColor.White;
             }
 
