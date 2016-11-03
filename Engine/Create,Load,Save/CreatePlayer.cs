@@ -1,0 +1,98 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Engine
+{
+    public static class CreatePlayer
+    {
+        public static Player _player;
+
+        public static void CreatePlayerInst()
+        {
+            String name;
+            String className = "";
+            String raceName = "";
+            int gold = 0;
+            int hp = 0;
+            bool validRace = false;
+            bool validClass = false;
+            
+
+            Console.WriteLine("Give me your name.");
+            Console.Write("> ");
+            name = Console.ReadLine();
+
+            while (validClass == false)
+            {
+                Console.WriteLine("What class would you like to be?");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write("Warrior, Mage, Thief > ");
+                className = Console.ReadLine().ToLower();
+                Console.ForegroundColor = ConsoleColor.White;
+
+                if (className == "warrior")
+                {
+                    gold = 100;
+                    validClass = true;
+                }
+                else if (className == "mage")
+                {
+                    gold = 150;
+                    validClass = true;
+                }
+                else if (className == "thief")
+                {
+                    gold = 200;
+                    validClass = true;
+                }
+                else
+                {
+                    Console.WriteLine("Not a valid class");
+                }
+            }
+
+            while (validRace == false)
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("What race would you like?");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write("Human, Elf, Dwarf > ");
+                raceName = Console.ReadLine().ToLower();
+
+                if (raceName == "human")
+                {
+                    validRace = true;
+                    hp = 100;
+                }
+                else if (raceName == "elf")
+                {
+                    validRace = true;
+                    hp = 80;
+                }
+                else if (raceName == "dwarf")
+                {
+                    validRace = true;
+                    hp = 120;
+                }
+                else
+                {
+                    Console.WriteLine("Not a Valid entry.");
+                }
+            }
+            Console.ForegroundColor = ConsoleColor.White;
+            _player = new Player(name, className, raceName, gold, hp, hp, World.WeaponByID(103), false);
+            Console.WriteLine("Creating character data, please wait!");
+            SaveData.SaveGameData(_player);
+        }
+
+        public static void CreateFromLoad(Player loadPlayer)
+        {
+            _player = new Player(loadPlayer.PlayerName, loadPlayer.PlayerClass, loadPlayer.PlayerRace, loadPlayer.Gold, loadPlayer.CurrentHitPoints,
+                                    loadPlayer.MaximumHitPoints, loadPlayer.Equipt, loadPlayer.IsDead);
+        }
+
+    }
+}

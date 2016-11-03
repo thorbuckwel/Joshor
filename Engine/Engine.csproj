@@ -55,11 +55,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Combat.cs" />
+    <Compile Include="Commands\Attack.cs" />
+    <Compile Include="Commands\Command.cs" />
+    <Compile Include="Commands\Equipt.cs" />
+    <Compile Include="Commands\Get.cs" />
+    <Compile Include="Commands\HelpFile.cs" />
+    <Compile Include="Commands\Inventory.cs" />
+    <Compile Include="Commands\ItemDrop.cs" />
+    <Compile Include="Commands\PlayerMove.cs" />
+    <Compile Include="Commands\Score.cs" />
+    <Compile Include="Create,Load,Save\CreatePlayer.cs" />
+    <Compile Include="Create,Load,Save\IsNewPlayer.cs" />
+    <Compile Include="Create,Load,Save\Load.cs" />
+    <Compile Include="Create,Load,Save\SaveData.cs" />
+    <Compile Include="Create,Load,Save\WelcomeScreen.cs" />
+    <Compile Include="CurrentLocationClass.cs" />
     <Compile Include="Dice.cs" />
     <Compile Include="InventoryItem.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ListBuilder.cs" />
     <Compile Include="LivingCreature.cs" />
+    <Compile Include="Commands\Look.cs" />
     <Compile Include="MessageEventArgs.cs" />
     <Compile Include="Monster.cs" />
     <Compile Include="Move.cs" />
@@ -110,6 +127,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

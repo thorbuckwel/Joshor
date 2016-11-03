@@ -2,9 +2,8 @@
 using System.ComponentModel;
 using System.Linq;
 using System.IO;
-using Engine;
 
-namespace JosherConsole
+namespace Engine
 {
     internal class Combat
     {

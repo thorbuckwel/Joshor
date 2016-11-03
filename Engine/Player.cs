@@ -21,7 +21,7 @@ namespace Engine
         private int _ac;                                    // To hold the player's armor
         private static Room _currentLocation;                      // Not used as of yet!
         private Weapon _equipt;                             // To hold the currently equipt weapon
-        private Monster _currentMonster;
+        private static Monster _currentMonster;
 
         public List<InventoryItem> Inventory { get; set; }
         public event EventHandler<MessageEventArgs> OnMessage;
@@ -40,7 +40,7 @@ namespace Engine
         public int AC { get { return _ac; } set { _ac = value; }}
         public static Room CurrentLocation { get { return _currentLocation; } set { _currentLocation = value; } }
         public Weapon Equipt { get { return _equipt; } set { _equipt = value; } }
-        public Monster CurrentMonster { get { return _currentMonster; } set { _currentMonster = value; } }
+        public static  Monster CurrentMonster { get { return _currentMonster; } set { _currentMonster = value; } }
         #endregion
 
         /**
