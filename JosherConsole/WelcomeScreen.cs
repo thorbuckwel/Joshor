@@ -126,6 +126,8 @@ namespace JosherConsole
             }
             Console.ForegroundColor = ConsoleColor.White;
            Program._player = new Player(name, className, raceName, gold, hp, hp, World.WeaponByID(103), false);
+            Console.WriteLine("Creating character data, please wait!");
+            SaveGameData();
         }
 
         public static void LoadGameData()

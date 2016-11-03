@@ -3,8 +3,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.IO;
 using Engine;
-
-
+using System.Timers;
 
 namespace JosherConsole
 {
@@ -13,6 +12,10 @@ namespace JosherConsole
         public const string PLAYER_DATA_FILE_NAME = "PlayerData.xml";
 
         public static Player _player;
+
+        //public static WelcomeScreen save;
+
+        //Timer autoSave = new Timer(300000);
                 
         private static void Main(string[] args)
         {
@@ -34,6 +37,12 @@ namespace JosherConsole
             // Infinite loop, until the user types "exit"
             while (true)
             {
+                //Run timer every 5 minutes (300,000 millisec's) for autosave feature
+                System.Timers.Timer autoSave = new System.Timers.Timer();
+                autoSave.Elapsed += new ElapsedEventHandler(OnTimedEvent);
+                autoSave.Interval = 60000;
+                autoSave.Enabled = true;
+
                 // Display a prompt, so the user knows to type something
                 Console.Write(_player.CurrentHitPoints + "/" + _player.MaximumHitPoints + " Hp" +" >");
 
@@ -52,7 +61,8 @@ namespace JosherConsole
                 // Save the current game data, and break out of the "while(true)" loop
                 if (cleanedInput == "exit")
                 {
-                    //SaveGameData();
+                    Console.WriteLine("Saving character, will close when finished!");
+                    welcome.SaveGameData();
 
                     break;
                 }
@@ -322,7 +332,16 @@ namespace JosherConsole
                 }
                 Console.ForegroundColor = ConsoleColor.White;
             }
-        }       
+        }
+        private static void OnTimedEvent(object source, ElapsedEventArgs e)
+        {
+            WelcomeScreen save = new WelcomeScreen();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\nAutosaving data, please wait!\n");
+            save.SaveGameData();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write(_player.CurrentHitPoints + "/" + _player.MaximumHitPoints + " Hp" + " >");
+        }
     }
 }
 

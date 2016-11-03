@@ -340,6 +340,7 @@ namespace Engine
             {
                 // The item is not in the player's inventory, so ignore it.
                 // We might want to raise an error for this situation
+                Console.WriteLine("Cannot drop an item you do not have.");
             }
             else
             {
