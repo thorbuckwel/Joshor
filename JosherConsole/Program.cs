@@ -16,6 +16,7 @@ namespace JosherConsole
                 
         private static void Main(string[] args)
         {
+            #region Start
             Console.ForegroundColor = ConsoleColor.White;
             ListBuilder.Build();                // On load we need to call the ListBuilder to build all our List
             WelcomeScreen welcome = new WelcomeScreen();
@@ -30,7 +31,9 @@ namespace JosherConsole
             // Connect player events to functions that will display in the UI
             _player.PropertyChanged += Player_OnPropertyChanged;
             _player.OnMessage += Player_OnMessage;
+            #endregion
 
+            #region While loop
             // Infinite loop, until the user types "exit"
             while (true)
             {
@@ -61,7 +64,9 @@ namespace JosherConsole
                 ParseInput(cleanedInput);
             }
         }
+        #endregion
 
+        #region Player PropertyChange, OnMessage
         private static void Player_OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "CurrentLocation")
@@ -79,9 +84,11 @@ namespace JosherConsole
                 Console.WriteLine("");
             }
         }
+        #endregion
 
         private static void ParseInput(string input)
         {
+            #region Help
             if (input.Contains("help") || input == "?")
             {
                 Console.WriteLine("Available commands");
@@ -104,6 +111,9 @@ namespace JosherConsole
                 Console.WriteLine("West - Move West");
                 Console.WriteLine("Exit - Save the game and exit");
             }
+            #endregion
+
+            #region Stat, Score
             else if (input == "stats" || input == "score")
             {
                 Console.WriteLine("Player Name: " + _player.PlayerName);
@@ -115,6 +125,9 @@ namespace JosherConsole
                 Console.WriteLine("Level: {0}", _player.Level);
                 Console.WriteLine("Gold: {0}", _player.Gold);
             }
+            #endregion
+
+            #region Get
             else if (input.StartsWith("get ") || input.StartsWith("get"))
             {
                 string inputItemName = input.Substring(4).Trim();
@@ -128,7 +141,7 @@ namespace JosherConsole
                     if (inputItemName != null)
                     {
                         foreach (Item item in Player.CurrentLocation.RoomLoot.ToList())
-                        {
+                        {                            
                             if (item.Name.ToLower() == inputItemName)
                             {
                                 if (item.ID > 200 && item.ID <= 300)
@@ -149,11 +162,17 @@ namespace JosherConsole
                         }
                     }
                 }
-             }            
+             }
+            #endregion
+
+            #region Look
             else if (input == "look")
             {
                 DisplayCurrentLocation();
             }
+            #endregion
+
+            #region Move
             else if (input.Contains("north") || input.Contains("east") || input.Contains("south") || input.Contains("west"))
             {
                 Move.MoveToNew(input);
@@ -163,7 +182,9 @@ namespace JosherConsole
                     Console.WriteLine("You can not go " + input);
                 }
             }
-            
+            #endregion
+
+            #region Inventory
             else if (input == "inventory" || input == "inv")
             {
                 foreach (InventoryItem inventoryItem in _player.Inventory)
@@ -199,6 +220,9 @@ namespace JosherConsole
                     }
                 }
             }
+            #endregion
+
+            #region Drop
             else if (input.StartsWith("drop ") || input.StartsWith("drop"))
             {
                 string inputItemName = input.Substring(4).Trim();
@@ -213,55 +237,75 @@ namespace JosherConsole
                                        x => x.Name.ToLower() == inputItemName || x.NamePlural.ToLower() == inputItemName);
                     Weapon weaponToDrop = World.Weapons.SingleOrDefault(
                                        x => x.Name.ToLower() == inputItemName || x.NamePlural.ToLower() == inputItemName);
-                    if (itemToDrop != null)
-                    {
-                        _player.RemoveItemFromInventory(itemToDrop, 1);
-                        Player.CurrentLocation.RoomLoot.Add(itemToDrop);
-                        Console.WriteLine("You drop {0}", inputItemName);
-                    }
-                    else if (weaponToDrop != null)
-                    {   
-                        _player.RemoveItemFromInventory(weaponToDrop, 1);
-                        Player.CurrentLocation.RoomLoot.Add(weaponToDrop);
-                        Console.WriteLine("You drop {0}", inputItemName);
-                    }
-                    else
-                    {
-                        Console.WriteLine("You do not have the item {0}", inputItemName);
-                    }
 
+                    foreach (InventoryItem item in _player.Inventory.ToList())
+                    {
+                        if (item.Details.Name.ToLower() == inputItemName.ToString())
+                        {
+                            if (itemToDrop != null)
+                            {
+                                _player.RemoveItemFromInventory(itemToDrop, 1);
+                                Player.CurrentLocation.RoomLoot.Add(itemToDrop);
+                                Console.WriteLine("You drop {0}", inputItemName);
+                            }
+                            else if (weaponToDrop != null)
+                            {
+                                _player.RemoveItemFromInventory(weaponToDrop, 1);
+                                Player.CurrentLocation.RoomLoot.Add(weaponToDrop);
+                                Console.WriteLine("You drop {0}", inputItemName);
+                            }
+                        }
+                        else if (item.Details.Name == null)
+                        {
+                            Console.WriteLine("You do not have the item {0}", inputItemName);
+                        }
+                    }
                 }
-                //&& weaponToDrop == null, Console.WriteLine("You do not have the item {0}", inputItemName);
+                
             }
+            #endregion
+
+            #region Equip
             else if (input.StartsWith("equip ") || input.StartsWith("equip"))
             {
                 string inputWeaponName = input.Substring(5).Trim();
 
-                if (string.IsNullOrEmpty(inputWeaponName))
+                foreach (InventoryItem item in _player.Inventory.ToList())
                 {
-                    Console.WriteLine("You must enter the name of the weapon to equip");
-                }
-                else
-                {
-                    Weapon weaponToEquip =
-                        World.Weapons.SingleOrDefault(
-                            x => x.Name.ToLower() == inputWeaponName || x.NamePlural.ToLower() == inputWeaponName);
-
-                    if (weaponToEquip == null)
+                    if (item.Details.Name.ToLower() == inputWeaponName.ToString())
                     {
-                        Console.WriteLine("You do not have the weapon: {0}", weaponToEquip);
+                        if (string.IsNullOrEmpty(inputWeaponName))
+                        {
+                            Console.WriteLine("You must enter the name of the weapon to equip");
+                        }
+                        else
+                        {
+                            Weapon weaponToEquip =
+                                World.Weapons.SingleOrDefault(
+                                    x => x.Name.ToLower() == inputWeaponName || x.NamePlural.ToLower() == inputWeaponName);
+
+                            if (weaponToEquip == null)
+                            {
+                                Console.WriteLine("You do not have the weapon: {0}", weaponToEquip);
+                            }
+                            else
+                            {
+                                _player.Inventory.Add(new InventoryItem(_player.Equipt, 1));
+                                _player.Equipt = weaponToEquip;
+                                _player.RemoveItemFromInventory(weaponToEquip, 1);
+                                Console.WriteLine("You equip your {0}", weaponToEquip.Name.ToString());
+                            }
+                        }
                     }
                     else
-                    {                        
-                        _player.Inventory.Add(new InventoryItem( _player.Equipt, 1));
-                        _player.Equipt = weaponToEquip;
-                        _player.RemoveItemFromInventory(weaponToEquip, 1);                        
-                        Console.WriteLine("You equip your {0}", weaponToEquip.Name.ToString());
-                                              
-                            
+                    {
+                        Console.WriteLine("No such weapon in inventory");
                     }
                 }
             }
+            #endregion
+
+            #region Save
             else if (input.StartsWith("save"))
             {
                 WelcomeScreen welcome = new WelcomeScreen();
@@ -276,7 +320,9 @@ namespace JosherConsole
             // Write a blank line, to keep the UI a little cleaner
             Console.WriteLine("");
         }
+        #endregion
 
+            #region DisplayCurrentLocation
         private static void DisplayCurrentLocation()
         {
             Console.WriteLine("You are at: {0}", Player.CurrentLocation.RoomName);
@@ -322,7 +368,8 @@ namespace JosherConsole
                 }
                 Console.ForegroundColor = ConsoleColor.White;
             }
-        }       
+        }
+        #endregion       
     }
 }
 
