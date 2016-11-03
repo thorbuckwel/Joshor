@@ -5,6 +5,7 @@ namespace Engine
 {
     public class Monster
     {
+        #region Fields
         private int _id;                         // To hold the ID number of the Monster
         private string _name;                    // To hold the Monster's name
         private int _exp;                        // To hold the amount of XP recieved for killing
@@ -16,10 +17,12 @@ namespace Engine
         private int _currentHitPoints;           // To hold the Monster's current hit points
         private int _maxHitPoints;               // To hold the Monster's max hit points
         private bool _isDead;                    // To tell is the Monster is dead or alive
+        #endregion
 
         /**
          * Set the properties so that we have access to the private variables
          */
+        #region Properties
         public int ID { get { return _id; } set { _id = value; } }
         public string Name { get { return _name; } set { _name = value; } }
         public int Experiance { get { return _exp; } set { _exp = value; } }
@@ -31,11 +34,14 @@ namespace Engine
         public int CurrentHitPoints { get { return _currentHitPoints; } set { _currentHitPoints = value; } }
         public int MaxHitPoints { get { return _maxHitPoints; } set { _maxHitPoints = value; } }
         public bool IsDead { get { return _isDead; } set { _isDead = value; } }
+        #endregion
+
         /**
          * This is the constructor for the Monster class. It accepts values to be assigned to the class variables
          * plus passing the current and max hit points to the LivingCreature class that the Monster class is 
          * derived from so that the monster can inherate these values.
          */
+        #region Constructors
         public Monster(int id, string name, int xp, int gold, int armor, int dam, int ba, int mobcurrentHitpoints, int mobmaximumHitpoints, string image, bool mobIsDead) 
             
         { 
@@ -70,5 +76,6 @@ namespace Engine
             this.MaxHitPoints = m.MaxHitPoints;
             this.IsDead = m.IsDead;
         }
+        #endregion
     }
 }

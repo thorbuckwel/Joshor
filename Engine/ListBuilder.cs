@@ -20,6 +20,7 @@ namespace Engine
              * text file. After we have assigned values to the variables we then pass the variables
              * to create the monster object that is then stored in the Monster List.
              */
+            #region Build Monster
             using (StreamReader reader = File.OpenText(@"../../../Engine/Docs/Monsters.txt"))
             {
                 while (!reader.EndOfStream)
@@ -38,6 +39,7 @@ namespace Engine
                     World.Monsters.Add(new Monster(id, name, xp, gold, armor, damage, baseAttack, currentHitpoints, maxHitpoints, image, isDead));
                 }
             }
+            #endregion
 
             /**
              * We need to build each object to go into the Weapon List. First we use the StreamReader
@@ -47,6 +49,7 @@ namespace Engine
              * text file. After we have assigned values to the variables we then pass the variables
              * to create the weapon object that is then stored in the Weapon List.
              */
+            #region Build Weapon
             using (StreamReader reader = File.OpenText(@"../../../Engine/Docs/Weapon.txt"))
             {
                 while (!reader.EndOfStream)
@@ -63,6 +66,7 @@ namespace Engine
                     World.Weapons.Add(new Weapon(id, name, namePluarl, desc, cost, damage, type, equiptable));
                 }
             }
+            #endregion
 
             /**
              * We need to build each object to go into the Room List. First we use the StreamReader
@@ -72,6 +76,7 @@ namespace Engine
              * text file. After we have assigned values to the variables we then pass the variables
              * to create the room object that is then stored in the Rooms List.
              */
+            #region Build Room
             using (StreamReader reader = File.OpenText(@"../../../Engine/Docs/Room.txt"))
             {
                 while (!reader.EndOfStream)
@@ -89,6 +94,7 @@ namespace Engine
                     World.Location.Add(new Room(id, name, descript, exit1, exit2, exit3, exit4, idMonster, idRmLoot));
                 }
             }
+            #endregion
 
             /**
              * We need to build each object to go into the Items List. First we use the StreamReader
@@ -98,6 +104,7 @@ namespace Engine
              * text file. After we have assigned values to the variables we then pass the variables
              * to create the monster object that is then stored in the Monster List.
              */
+            #region Build Item
             using (StreamReader reader = File.OpenText(@"../../../Engine/Docs/Items.txt"))
             {
                 while (!reader.EndOfStream)
@@ -112,6 +119,7 @@ namespace Engine
                     World.Items.Add(new Item(id, name, namePluarl, desc, cost, equiptable));
                 }
             }
+            #endregion
 
         }
     }    

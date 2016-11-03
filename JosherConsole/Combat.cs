@@ -8,40 +8,36 @@ namespace JosherConsole
 {
     internal class Combat
     {
+        #region Fields
         private int _round;         // To keep track of the rounds
         private int _attackResult;  // To hold the value of the attack roll.
         private int _damageResult; // To hold the value of the damage roll.
+        #endregion
 
         // Create the Combat Properties
-        public int Round
-        {
-            get { return _round; }
-            set { _round = value; }
-        }
-
-        public int AttackResults
-        {
-            get { return _attackResult; }
-        }
-
-        public int DamageResults
-        {
-            get { return _damageResult; }
-        }
+        #region Properties
+        public int Round { get { return _round; } set { _round = value; }}
+        public int AttackResults { get { return _attackResult; }}
+        public int DamageResults { get { return _damageResult; }}
+        #endregion
 
         // Create a no arg constructor
+        #region Constructor
         public Combat()
         {
             _round = 1;
         }
+        #endregion
 
+        /**
+         * This method takes the Mob, player and weapon then runs a battle until one of them is dead.
+         */
         public void Fight(Monster enemy, Player player, Weapon equipt)
         {
 
             // Create the Dice objects
             Dice attack = new Dice(20);
             Dice damage = new Dice(6);
-
             while (enemy.IsDead != true && player.IsDead != true)
             {
                 _attackResult = attack.DiceResult;
@@ -62,6 +58,7 @@ namespace JosherConsole
                     {
                         Console.WriteLine("The " + enemy.Name + " is dead!");
                         enemy.IsDead = true;
+                        Player.CurrentLocation.RoomMob.Remove(enemy);
                         player.ExperiencePoints += enemy.Experiance;
                         player.Gold += enemy.Gold;
                         break;
@@ -86,9 +83,9 @@ namespace JosherConsole
 
                     if (player.CurrentHitPoints <= 0)
                     {
-                        Console.WriteLine("You are dead!");
+                        Console.WriteLine("You are dead!");                        
                         player.IsDead = true;
-                        break;
+                                         
                     }
                 }
                 else
@@ -101,6 +98,10 @@ namespace JosherConsole
             }
 
             Console.WriteLine("The fight took " + Round + " rounds to finish.");
+            if (player.IsDead == true)
+            {
+                player.PlayerName += "-Dead";
+            }            
         }
     }
 }

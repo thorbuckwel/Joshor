@@ -19,7 +19,8 @@ namespace JosherConsole
             Console.ForegroundColor = ConsoleColor.White;
             ListBuilder.Build();                // On load we need to call the ListBuilder to build all our List
             WelcomeScreen welcome = new WelcomeScreen();
-            welcome.Welcome(); 
+            welcome.Welcome();
+
 
             Console.WriteLine("Type 'Help' to see a list of commands");
             Console.WriteLine("");
@@ -172,7 +173,7 @@ namespace JosherConsole
             }
             else if (input.Contains("attack") || input.Contains("kill"))
             {
-                if (Player.CurrentLocation.Monsters == null)
+                if (Player.CurrentLocation.RoomMob == null)
                 {
                     Console.WriteLine("There is nothing here to attack");
                 }
@@ -295,28 +296,31 @@ namespace JosherConsole
                 Console.ForegroundColor = ConsoleColor.White;
             }
 
-            if (Player.CurrentLocation.Monsters != null)
+            if (Player.CurrentLocation.RoomMob != null)
             {
-                Monster inhab;
-                if (Player.CurrentLocation.Monsters.ID != 5)
-                {
-
-                    inhab = new Monster(World.Monsters[RandomNumberGenerator.NumberBetween(0, 3)]);
-                    _player.CurrentMonster = inhab;
-                    Console.WriteLine("");
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine(" A " + inhab.Name + " is wondering around here.");
-                    Console.ForegroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                foreach (Monster mob in Player.CurrentLocation.RoomMob)
+                {                        
+                    if (mob.ID != 5)
+                    {
+                        
+                        _player.CurrentMonster = mob;
+                        
+                        Console.WriteLine("");
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine(" A " + mob.Name + " is wondering around here.");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    else
+                    {
+                        _player.CurrentMonster = mob;
+                        Console.WriteLine("");
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine(" A large " + mob.Name + " fills the room with its massive body.");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }                   
                 }
-                else
-                {
-                    inhab = new Monster(World.Monsters[4]);
-                    _player.CurrentMonster = inhab;
-                    Console.WriteLine("");
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine(" A large " + Player.CurrentLocation.Monsters.Name + " fills the room with its massive body.");
-                    Console.ForegroundColor = ConsoleColor.White;
-                }
+                Console.ForegroundColor = ConsoleColor.White;
             }
         }       
     }

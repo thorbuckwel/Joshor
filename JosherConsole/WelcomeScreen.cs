@@ -128,7 +128,7 @@ namespace JosherConsole
            Program._player = new Player(name, className, raceName, gold, hp, hp, World.WeaponByID(103), false);
         }
 
-        private void LoadGameData()
+        public static void LoadGameData()
         {
 
             if (Program._player == null)

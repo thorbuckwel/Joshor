@@ -9,6 +9,7 @@ namespace Engine
     public static class Move
     {
         public static bool canGo = true;
+
         /**
         * This method takes the new location and assigns it to the player's current location.
         */
@@ -46,7 +47,7 @@ namespace Engine
             switch (input)
             {                
                 case "north" :
-                    if (World.Location != null)
+                    if (Player.CurrentLocation.LocationToNorth != -1)
                     {
                         MoveTo(World.Location[Player.CurrentLocation.LocationToNorth]);
                     }
@@ -56,7 +57,7 @@ namespace Engine
                     }                
                     break;
                 case "east":
-                    if(World.Location != null)
+                    if(Player.CurrentLocation.LocationToEast != -1)
                     {
                         MoveTo(World.Location[Player.CurrentLocation.LocationToEast]);
                     }
@@ -66,7 +67,7 @@ namespace Engine
                     }                    
                     break;
                 case "south":
-                    if (World.Location != null)
+                    if (Player.CurrentLocation.LocationToSouth != -1)
                     {
                         MoveTo(World.Location[Player.CurrentLocation.LocationToSouth]);
                     }
@@ -76,7 +77,7 @@ namespace Engine
                     }
                     break;
                 case "west":
-                    if (World.Location != null)
+                    if (Player.CurrentLocation.LocationToWest != -1)
                     {
                         MoveTo(World.Location[Player.CurrentLocation.LocationToWest]);
                     }

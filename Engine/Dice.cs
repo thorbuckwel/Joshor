@@ -7,27 +7,20 @@ using System.Threading.Tasks;
 namespace Engine
 {
     public class Dice
-    { 
+    {
+        #region Fields
         private int _diceSize;      // To hold the number of size of the die
         private int _diceResult;    // To hold the result of the Roll method
+        #endregion
 
         // Create the Class Properties
-        public int DiceSize
-        {
-            get { return _diceSize; }
-            set { _diceSize = value; }
-        }
-
-        public int DiceResult
-        {
-            get
-            {
-                Roll();
-                return _diceResult;
-            }
-        }
+        #region Properties
+        public int DiceSize { get { return _diceSize; } set { _diceSize = value; }}
+        public int DiceResult { get { Roll(); return _diceResult; }}
+        #endregion
 
         // Create Constructor
+        #region Constructors
         public Dice()
         {
             DiceSize = 6;
@@ -37,7 +30,7 @@ namespace Engine
         {
             DiceSize = Size;
         }
-
+        #endregion
 
         // Create random object
         Random rand = new Random();
