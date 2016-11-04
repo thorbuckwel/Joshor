@@ -55,7 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Combat.cs" />
+    <Compile Include="Core\Combat.cs" />
     <Compile Include="Commands\Attack.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\Equipt.cs" />
@@ -65,30 +65,33 @@
     <Compile Include="Commands\ItemDrop.cs" />
     <Compile Include="Commands\PlayerMove.cs" />
     <Compile Include="Commands\Score.cs" />
+    <Compile Include="Core\Mob,Player,NPC\NPC.cs" />
     <Compile Include="Create,Load,Save\CreatePlayer.cs" />
     <Compile Include="Create,Load,Save\IsNewPlayer.cs" />
     <Compile Include="Create,Load,Save\Load.cs" />
     <Compile Include="Create,Load,Save\SaveData.cs" />
     <Compile Include="Create,Load,Save\WelcomeScreen.cs" />
-    <Compile Include="CurrentLocationClass.cs" />
-    <Compile Include="Dice.cs" />
-    <Compile Include="InventoryItem.cs" />
-    <Compile Include="Item.cs" />
-    <Compile Include="ListBuilder.cs" />
-    <Compile Include="LivingCreature.cs" />
+    <Compile Include="Core\Loaction classes\CurrentLocationClass.cs" />
+    <Compile Include="Core\Dice.cs" />
+    <Compile Include="Core\Item,Weapon,Treasure\InventoryItem.cs" />
+    <Compile Include="Core\Item,Weapon,Treasure\Item.cs" />
+    <Compile Include="Core\Build\ListBuilder.cs" />
+    <Compile Include="Core\Mob,Player,NPC\LivingCreature.cs" />
     <Compile Include="Commands\Look.cs" />
-    <Compile Include="MessageEventArgs.cs" />
-    <Compile Include="Monster.cs" />
-    <Compile Include="Move.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="PlayerDataMapper.cs" />
-    <Compile Include="Potion.cs" />
+    <Compile Include="Core\MessageEventArgs.cs" />
+    <Compile Include="Core\Mob,Player,NPC\Monster.cs" />
+    <Compile Include="Core\Move.cs" />
+    <Compile Include="Core\Mob,Player,NPC\Player.cs" />
+    <Compile Include="Create,Load,Save\PlayerDataMapper.cs" />
+    <Compile Include="Core\Item,Weapon,Treasure\Potion.cs" />
+    <Compile Include="Enum\Factions.cs" />
+    <Compile Include="Enum\WearLocations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RandomNumberGenerator.cs" />
-    <Compile Include="Room.cs" />
-    <Compile Include="Treasure.cs" />
-    <Compile Include="Weapon.cs" />
-    <Compile Include="World.cs" />
+    <Compile Include="Core\RandomNumberGenerator.cs" />
+    <Compile Include="Core\Loaction classes\Room.cs" />
+    <Compile Include="Core\Item,Weapon,Treasure\Treasure.cs" />
+    <Compile Include="Core\Item,Weapon,Treasure\Weapon.cs" />
+    <Compile Include="Core\Build\World.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database1.mdf">
@@ -107,6 +110,7 @@
     <Content Include="Docs\Room.txt" />
     <Content Include="Docs\SavedCode.txt" />
     <Content Include="Docs\Items.txt" />
+    <Content Include="Docs\NPCs.txt" />
     <Content Include="Docs\Weapon.txt" />
     <Content Include="Image\BlackDragon.jpg" />
     <Content Include="Image\deathpic.jpg" />

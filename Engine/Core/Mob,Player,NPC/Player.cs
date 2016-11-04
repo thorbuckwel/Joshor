@@ -22,6 +22,7 @@ namespace Engine
         private static Room _currentLocation;                      // Not used as of yet!
         private Weapon _equipt;                             // To hold the currently equipt weapon
         private static Monster _currentMonster;
+        private static NPC _currentNPC;
 
         public List<InventoryItem> Inventory { get; set; }
         public event EventHandler<MessageEventArgs> OnMessage;
@@ -42,6 +43,7 @@ namespace Engine
         public static Room CurrentLocation { get { return _currentLocation; } set { _currentLocation = value; } }
         public Weapon Equipt { get { return _equipt; } set { _equipt = value; } }
         public static  Monster CurrentMonster { get { return _currentMonster; } set { _currentMonster = value; } }
+        public static NPC CurrentNPC { get { return _currentNPC; } set { _currentNPC = value; } }
         #endregion
 
         /**
@@ -50,8 +52,8 @@ namespace Engine
         * derived from so that the player can inherate these values.
         */
         #region Constructors
-        public Player (String name, String PC, String PR, int gold, int currentHitPoints, int maximumHitPoints, Weapon equipt, bool isDead) 
-            : base(currentHitPoints, maximumHitPoints, isDead)
+        public Player(String name, String PC, String PR, int gold, int currentHitPoints, int maximumHitPoints, Weapon equipt, bool isDead, bool canBeAttacked)
+            : base(currentHitPoints, maximumHitPoints, isDead, canBeAttacked)
         {
             this.PlayerName = name;
             this.PlayerClass = PC;
@@ -60,17 +62,9 @@ namespace Engine
             this.ExperiencePoints = 0;
             this.AC = 10;
             this.Equipt = equipt;
-            Inventory = new List<InventoryItem>();            
+            Inventory = new List<InventoryItem>();
             CurrentLocation = World.Location[0];
-        }
-
-        public static Player CreateDefaultPlayer()
-        {
-            Player player = new Player("Killakia", "Warrior", "Human", 10, 10, 20, World.Weapons[1], false);
-            CurrentLocation = World.Location[0];
-
-            return player;
-        }
+        }        
         #endregion
 
         #region Save,Load XML

@@ -54,6 +54,31 @@ namespace Engine
                 }
                 Console.ForegroundColor = ConsoleColor.White;
             }
+
+            if (Player.CurrentLocation.RoomNPC != null)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                foreach (NPC npc in Player.CurrentLocation.RmNPC)
+                {
+                    if (npc.ID == 601)
+                    {
+
+                        Player.CurrentNPC = npc;
+
+                        Console.WriteLine("");                        
+                        Console.WriteLine(" A " + npc.NPCName + " is slamming puts around.");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    else if (npc.ID == 602)
+                    {
+                        Player.CurrentNPC = npc;
+                        Console.WriteLine("");                        
+                        Console.WriteLine(" A " + npc.NPCName + " Cracks a whip here.");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                }
+                Console.ForegroundColor = ConsoleColor.White;
+            }
         }
         #endregion
     }

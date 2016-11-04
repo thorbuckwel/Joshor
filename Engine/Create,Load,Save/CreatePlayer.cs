@@ -81,7 +81,7 @@ namespace Engine
                 }
             }
             Console.ForegroundColor = ConsoleColor.White;
-            Player._player = new Player(name, className, raceName, gold, hp, hp, World.WeaponByID(103), false);
+            Player._player = new Player(name, className, raceName, gold, hp, hp, World.WeaponByID(103), false, true);
             Console.WriteLine("Creating character data, please wait!");
             SaveData.SaveGameData(Player._player);
         }
@@ -89,7 +89,7 @@ namespace Engine
         public static void CreateFromLoad(Player loadPlayer)
         {
             Player _player = new Player(loadPlayer.PlayerName, loadPlayer.PlayerClass, loadPlayer.PlayerRace, loadPlayer.Gold, loadPlayer.CurrentHitPoints,
-                                    loadPlayer.MaximumHitPoints, loadPlayer.Equipt, loadPlayer.IsDead);
+                                    loadPlayer.MaximumHitPoints, loadPlayer.Equipt, loadPlayer.IsDead, loadPlayer.CanBeAttacked);
         }
 
     }

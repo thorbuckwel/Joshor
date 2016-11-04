@@ -38,15 +38,8 @@ namespace JosherConsole
             autoSave.Enabled = true;
             while (true)
             {
-                //Run timer every 5 minutes (300,000 millisec's) for autosave feature
-                //System.Timers.Timer autoSave = new System.Timers.Timer();
-                //autoSave.Elapsed += new ElapsedEventHandler(OnTimedEvent);
-                //autoSave.Interval = 60000;
-                //autoSave.Enabled = true;
-
                 // Display a prompt, so the user knows to type something
-                Console.Write(Player._player.CurrentHitPoints + "/" + Player._player.MaximumHitPoints + " Hp" +" >");
-                
+                Console.Write(Player._player.CurrentHitPoints + "/" + Player._player.MaximumHitPoints + " Hp" +" >");                
 
                 // Wait for the user to type something, and press the <Enter> key
                 string userInput = Console.ReadLine();
@@ -63,6 +56,7 @@ namespace JosherConsole
                 // Save the current game data, and break out of the "while(true)" loop
                 if (cleanedInput == "exit")
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Saving character, will close when finished!");
                     SaveData.SaveGameData(Player._player);
 
@@ -97,17 +91,21 @@ namespace JosherConsole
 
         private static void ParseInput(string input)
         {
-           Command.CommandCase(input, Player._player);
+            // Call the command class to figure out what to do.
+            Command.CommandCase(input, Player._player);
 
             // Write a blank line, to keep the UI a little cleaner
             Console.WriteLine("");
         }
 
+        /**
+         * This method will save player data everytime there is a tick for it.
+         */
         private static void OnTimedEvent(object source, ElapsedEventArgs e)
         {
             SaveData.SaveGameData(Player._player);
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("Autosaving, Please wait!");
+            Console.WriteLine("Autosaving, Please wait!");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write(Player._player.CurrentHitPoints + "/" + Player._player.MaximumHitPoints + " Hp" + " >");
         }

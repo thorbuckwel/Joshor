@@ -17,15 +17,8 @@ namespace Engine
             {
                 Player._player = null;
                 Player._player = CreatePlayerFromXmlString(File.ReadAllText(name + ".xml"));
-                
-
-            }
-            else
-            {
-                // _player = Player.CreateDefaultPlayer();
-            }
+            }            
         }
-
 
         public static Player CreatePlayerFromXmlString(string PLAYER_DATA_FILE_NAME)
         {
@@ -52,8 +45,7 @@ namespace Engine
                 Console.WriteLine("Got equipt weapon: " + equiptString.ToString());
                 Weapon equipt = World.WeaponByID(equiptString);
 
-                Player player = new Player(playerName, PC, PR, gold, currentHitPoints, maximumHitPoints, equipt, false);
-
+                Player player = new Player(playerName, PC, PR, gold, currentHitPoints, maximumHitPoints, equipt, false, true);
 
                 int currentLocationID = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/CurrentLocation").InnerText);
                 Player.CurrentLocation = World.LocationByID(currentLocationID);

@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Engine
 {
-    public class Monster
+    public class Monster : LivingCreature
     {
         #region Fields
         private int _id;                         // To hold the ID number of the Monster
@@ -42,7 +42,8 @@ namespace Engine
          * derived from so that the monster can inherate these values.
          */
         #region Constructors
-        public Monster(int id, string name, int xp, int gold, int armor, int dam, int ba, int mobcurrentHitpoints, int mobmaximumHitpoints, string image, bool mobIsDead) 
+        public Monster(int id, string name, int xp, int gold, int armor, int dam, int ba, int mobcurrentHitpoints, int mobmaximumHitpoints, string image, bool mobIsDead, bool canBeAttacked):
+            base(mobcurrentHitpoints, mobmaximumHitpoints, mobIsDead, canBeAttacked)
             
         { 
             this.ID = id;
@@ -62,7 +63,7 @@ namespace Engine
          * At the moment this will be used to make a deep copy of a monster object so we can use it and
          * not mess with the object that is in the list.
          */
-        public Monster(Monster m)
+        public Monster(Monster m) : base(m.CurrentHitPoints, m.MaxHitPoints, m.IsDead, m.CanBeAttacked)
         {
             this.ID = m.ID;
             this.Name = m.Name;

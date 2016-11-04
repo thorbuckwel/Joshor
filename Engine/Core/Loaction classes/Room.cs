@@ -13,6 +13,7 @@ namespace Engine
         private string _roomName;                // To hold the Room's name
         private string _roomDescript;            // To hold the Room's description
         private Monster _monsters;
+        private NPC _npc;
         private int _locationToNorth;           // To hold the Room's exit1 string
         private int _locationToEast;            // To hold the Room's exit2 string
         private int _locationToSouth;           // To hold the Room's exit3 string
@@ -31,12 +32,14 @@ namespace Engine
         public string RoomName { get { return _roomName; } set { _roomName = value; } }
         public string RoomDescript { get { return _roomDescript; } set { _roomDescript = value; } }
         public Monster RoomMonsters { get { return _monsters; } set { _monsters = value; } }
+        public NPC RoomNPC { get { return _npc; } set { _npc = value; } }
         public int LocationToNorth { get { return _locationToNorth; } set { _locationToNorth = value; } }
         public int LocationToEast { get { return _locationToEast; } set { _locationToEast = value; } }
         public int LocationToSouth { get { return _locationToSouth; } set { _locationToSouth = value; } }
         public int LocationToWest { get { return _locationToWest; } set { _locationToWest = value; } }
         public List<Item> RoomLoot = new List<Item>();
         public List<Monster> RoomMob = new List<Monster>();
+        public List<NPC> RmNPC = new List<NPC>();
         #endregion
 
         /**
@@ -44,7 +47,7 @@ namespace Engine
          * those to the class variables.
          */
         #region Constructor
-        public Room(int id, String name, String descript, int exit1, int exit2, int exit3, int exit4, int idMonster, int idRmLoot)
+        public Room(int id, String name, String descript, int exit1, int exit2, int exit3, int exit4, int idMonster, int idRmLoot, int idRmNPC)
         {
             this.ID = id;
             this.RoomName = name;
@@ -54,6 +57,7 @@ namespace Engine
             this.LocationToSouth = exit3;
             this.LocationToWest = exit4;
 
+            #region Monster List Add
             if (idMonster != 5) // 5 == dragon (Monster.Txt)
             {
                 if (idMonster > -1)
@@ -71,7 +75,9 @@ namespace Engine
             {
                 this.RoomMob.Add(World.MonsterByID(idMonster));
             }
+            #endregion
 
+            #region Room Loot
             if (idRmLoot > -1)
             {
                 if (idRmLoot > 200 && idRmLoot <= 300)
@@ -86,6 +92,25 @@ namespace Engine
                     RoomLoot.Add(new Weapon(rmLoot.ID, rmLoot.Name, rmLoot.NamePlural, rmLoot.Desc, rmLoot.Price, rmLoot.Damage, rmLoot.DamageType, rmLoot.Equiptable));
                 }
             }
+            #endregion
+
+            #region NPC Load
+            if (idRmNPC != -1)
+            {
+                if (idRmNPC == 601) // 601== Bob the Cook (NPC.Txt)
+                {
+                    this.RoomNPC = new NPC(World.NpcByID(idRmNPC));
+                    this.RmNPC.Add(RoomNPC);
+                }
+                else if (idRmNPC == 602) // 602== Dragon Trainer (NPC.Txt)
+                {
+                    this.RoomNPC = new NPC(World.NpcByID(idRmNPC));
+                    this.RmNPC.Add(World.NpcByID(idRmNPC));
+                }
+            }
+            #endregion
+
+
         }
         #endregion
     }

@@ -8,13 +8,13 @@ namespace Engine
 {
     class Equipt
     {
-        public static void Equip(string verb, Player _player)
+        public static void Equip(string noun, Player _player)
         {
             foreach (InventoryItem item in _player.Inventory.ToList())
             {
-                if (item.Details.Name.ToLower() == verb.ToString())
+                if (item.Details.Name.ToLower() == noun.ToString())
                 {
-                    if (string.IsNullOrEmpty(verb))
+                    if (string.IsNullOrEmpty(noun))
                     {
                         Console.WriteLine("You must enter the name of the weapon to equip");
                     }
@@ -22,7 +22,7 @@ namespace Engine
                     {
                         Weapon weaponToEquip =
                             World.Weapons.SingleOrDefault(
-                                x => x.Name.ToLower() == verb || x.NamePlural.ToLower() == verb);
+                                x => x.Name.ToLower() == noun || x.NamePlural.ToLower() == noun);
 
                         if (weaponToEquip == null)
                         {
