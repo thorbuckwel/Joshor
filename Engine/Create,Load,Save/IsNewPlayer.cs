@@ -22,7 +22,9 @@ namespace Engine
                 if (userInput.ToLower() == "no")
                 {
                     validAnswer = true;
-                    Load.LoadGameData();
+                    Console.WriteLine("What is your name?");
+                    userInput = Console.ReadLine();
+                    Load.LoadGameData(userInput.ToLower());
                 }
                 else if (userInput.ToLower() == "yes")
                 {

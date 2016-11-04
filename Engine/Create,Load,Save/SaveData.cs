@@ -9,7 +9,7 @@ namespace Engine
 {
     public static class SaveData
     {
-        public const string PLAYER_DATA_FILE_NAME = "PlayerData.xml";
+        public static string PLAYER_DATA_FILE_NAME = (Player._player.PlayerName.ToLower() +".xml");
 
         public static void SaveGameData(Player _player)
         {

@@ -8,15 +8,7 @@ using System.Timers;
 namespace JosherConsole
 {
     public class Program
-    {
-        
-
-        public static Player _player;
-
-        //public static WelcomeScreen save;
-
-        //Timer autoSave = new Timer(300000);
-                
+    {        
         private static void Main(string[] args)
         {
             #region Start
@@ -38,6 +30,12 @@ namespace JosherConsole
 
             #region While loop
             // Infinite loop, until the user types "exit"
+
+            //Run timer every 5 minutes (300,000 millisec's) for autosave feature
+            System.Timers.Timer autoSave = new System.Timers.Timer();
+            autoSave.Elapsed += new ElapsedEventHandler(OnTimedEvent);
+            autoSave.Interval = 60000;
+            autoSave.Enabled = true;
             while (true)
             {
                 //Run timer every 5 minutes (300,000 millisec's) for autosave feature
@@ -47,7 +45,7 @@ namespace JosherConsole
                 //autoSave.Enabled = true;
 
                 // Display a prompt, so the user knows to type something
-                Console.Write(CreatePlayer._player.CurrentHitPoints + "/" + CreatePlayer._player.MaximumHitPoints + " Hp" +" >");
+                Console.Write(Player._player.CurrentHitPoints + "/" + Player._player.MaximumHitPoints + " Hp" +" >");
                 
 
                 // Wait for the user to type something, and press the <Enter> key
@@ -66,7 +64,7 @@ namespace JosherConsole
                 if (cleanedInput == "exit")
                 {
                     Console.WriteLine("Saving character, will close when finished!");
-                    SaveData.SaveGameData(_player);
+                    SaveData.SaveGameData(Player._player);
 
                     break;
                 }
@@ -99,11 +97,20 @@ namespace JosherConsole
 
         private static void ParseInput(string input)
         {
-           Command.CommandCase(input, CreatePlayer._player);
+           Command.CommandCase(input, Player._player);
 
             // Write a blank line, to keep the UI a little cleaner
             Console.WriteLine("");
-        }                
+        }
+
+        private static void OnTimedEvent(object source, ElapsedEventArgs e)
+        {
+            SaveData.SaveGameData(Player._player);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("Autosaving, Please wait!");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write(Player._player.CurrentHitPoints + "/" + Player._player.MaximumHitPoints + " Hp" + " >");
+        }
     }
 }
 

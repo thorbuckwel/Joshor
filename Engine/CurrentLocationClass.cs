@@ -11,7 +11,7 @@ namespace Engine
         #region DisplayCurrentLocation
         public static void DisplayCurrentLocation()
         {
-            Console.WriteLine("You are at: {0}", Player.CurrentLocation.RoomName);
+            Console.WriteLine("You are at: {0}", Player.CurrentLocation.RoomName);            
 
             if (Player.CurrentLocation.RoomDescript != "")
             {

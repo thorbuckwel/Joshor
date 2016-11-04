@@ -8,8 +8,6 @@ namespace Engine
 {
     public static class CreatePlayer
     {
-        public static Player _player;
-
         public static void CreatePlayerInst()
         {
             String name;
@@ -83,14 +81,14 @@ namespace Engine
                 }
             }
             Console.ForegroundColor = ConsoleColor.White;
-            _player = new Player(name, className, raceName, gold, hp, hp, World.WeaponByID(103), false);
+            Player._player = new Player(name, className, raceName, gold, hp, hp, World.WeaponByID(103), false);
             Console.WriteLine("Creating character data, please wait!");
-            SaveData.SaveGameData(_player);
+            SaveData.SaveGameData(Player._player);
         }
 
         public static void CreateFromLoad(Player loadPlayer)
         {
-            _player = new Player(loadPlayer.PlayerName, loadPlayer.PlayerClass, loadPlayer.PlayerRace, loadPlayer.Gold, loadPlayer.CurrentHitPoints,
+            Player _player = new Player(loadPlayer.PlayerName, loadPlayer.PlayerClass, loadPlayer.PlayerRace, loadPlayer.Gold, loadPlayer.CurrentHitPoints,
                                     loadPlayer.MaximumHitPoints, loadPlayer.Equipt, loadPlayer.IsDead);
         }
 

@@ -31,10 +31,10 @@ namespace Engine
                     HelpFile.HelpInfo();
                     break;
                 case "score":
-                    Score.Stats(CreatePlayer._player);
+                    Score.Stats(Player._player);
                     break;
                 case "get":
-                    Get.GetCommand(noun, CreatePlayer._player);
+                    Get.GetCommand(noun, Player._player);
                     break;
                 case "north":
                     PlayerMove.MoveTo(verb);
@@ -49,19 +49,19 @@ namespace Engine
                     PlayerMove.MoveTo(verb);
                     break;
                 case "inventory":
-                    Inventory.Inv(CreatePlayer._player);
+                    Inventory.Inv(Player._player);
                     break;
                 case "attack":
-                    Attack.Attacking(noun, CreatePlayer._player);
+                    Attack.Attacking(noun, Player._player);
                     break;
                 case "drop":
-                    ItemDrop.Drop(noun, CreatePlayer._player);
+                    ItemDrop.Drop(noun, Player._player);
                     break;
                 case "equip":
-                    Equipt.Equip(noun, CreatePlayer._player);
+                    Equipt.Equip(noun, Player._player);
                     break;
                 case "save":
-                    SaveData.SaveGameData(CreatePlayer._player);
+                    SaveData.SaveGameData(Player._player);
                     break;
 
 
