@@ -14,6 +14,11 @@ namespace Engine
             determineVerbType(CapNoun);
         }
 
+        public static void Looking()
+        {
+            CurrentLocationClass.DisplayCurrentLocation();
+        }
+
         public static void determineVerbType(string noun)
         {
             Item itemToLook = World.ItemByName(noun);
@@ -21,6 +26,7 @@ namespace Engine
             Monster monsterToLook = World.MonsterByName(noun);
             NPC NpcToLook = World.NpcByName(noun);
 
+            #region Item to look
             if (itemToLook != null)
             { 
                 foreach (InventoryItem item in Player._player.Inventory.ToList())
@@ -38,43 +44,56 @@ namespace Engine
                                 LookAtItem(item);
                             }
                         }
-                    }
-                    
+                    }                    
                 }           
             }
+            #endregion
+
+            #region Weapon to look
             else if (weaponToLook != null)
             {
-                //foreach (InventoryItem weapon in Player._player.Inventory.ToList())
-                //{
-                //    if (weapon.Details.Name.ToLower() == itemToLook.ToString())
-                //    {
-                //        LookAtWeapon(weapon);
-                //    }
-                //    else
-                //    {
-                //        foreach (Weapon rmWeapon in Player.CurrentLocation.RoomLoot.ToList())
-                //        {
-                //            if (rmWeapon.Name.ToLower() == weaponToLook.ToString())
-                //            {
-                //                //LookAtWeapon(rmWeapon);
-                //            }
-                //        }
-                //    }
-                //}
-                LookAtWeapon(weaponToLook);
+                foreach (InventoryItem weapon in Player._player.Inventory.ToList())
+                {
+                    if (weapon.Details.Name == weaponToLook.Name)
+                    {
+                        LookAtWeapon(weapon);
+                    }
+                }
+               
+                foreach (Weapon rmWeapon in Player.CurrentLocation.RoomLoot.ToList())
+                {
+                    if (rmWeapon.Name == weaponToLook.Name)
+                    {
+                        LookAtWeapon(rmWeapon);
+                    }
+                }
+                
             }
+            #endregion
+
+            #region Monster to look
             else if (monsterToLook != null)
             {
-                LookAtMonster(monsterToLook);
+                foreach (Monster mob in Player.CurrentLocation.RoomMob.ToList())
+                {
+                    if (mob.Name == monsterToLook.Name)
+                    {
+                        LookAtMonster(mob);
+                    }                   
+                }
             }
+            #endregion
+
             else if (NpcToLook != null)
             {
-                LookAtNpc(NpcToLook);
-            }
-            else
-            {
-                CurrentLocationClass.DisplayCurrentLocation();
-            }
+                foreach (NPC npc in Player.CurrentLocation.RmNPC.ToList())
+                {
+                    if (npc.NPCName == NpcToLook.NPCName)
+                    {
+                        LookAtNpc(npc);
+                    }
+                }               
+            }            
         }
 
         public static void LookAtItem(InventoryItem itemToLook)
@@ -84,12 +103,20 @@ namespace Engine
             Console.WriteLine("Item Price: " + itemToLook.Price);            
         }
 
+        public static void LookAtWeapon(InventoryItem weaponToLook)
+        {
+            Console.WriteLine("Weapon Name: " + weaponToLook.Details.Name);
+            Console.WriteLine("Description: " + weaponToLook.Details.Desc);
+            //Console.WriteLine("Damage: " + weaponToLook.Description.);
+            //Console.WriteLine("Damage Type", weaponToLook.DamageType);
+            //Console.WriteLine("Price: ", weaponToLook.Price.ToString());
+        }
         public static void LookAtWeapon(Weapon weaponToLook)
         {
             Console.WriteLine("Weapon Name: " + weaponToLook.Name);
             Console.WriteLine("Description: " + weaponToLook.Desc);
             Console.WriteLine("Damage: " + weaponToLook.Damage);
-            Console.WriteLine("Damage Type", weaponToLook.DamageType);
+            Console.WriteLine("Damage Type", weaponToLook.DamageType.ToString());
             Console.WriteLine("Price: ", weaponToLook.Price.ToString());
         }
 

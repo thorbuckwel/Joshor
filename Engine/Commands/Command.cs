@@ -25,7 +25,14 @@ namespace Engine
             switch(verb)
             {
                 case "look":
-                    Look.Looking(noun);
+                    if (noun != "")
+                    {
+                        Look.Looking(noun);
+                    }
+                    else
+                    {
+                        Look.Looking();
+                    }
                     break;
                 case "help":
                     HelpFile.HelpInfo();
