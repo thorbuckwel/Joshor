@@ -23,5 +23,8 @@
 
         /// <summary>Faction for Mages.</summary>
         Mage = 32,
+
+        /// <summary>Faction for Mages.</summary>
+        Admin = 64,
     }
 }

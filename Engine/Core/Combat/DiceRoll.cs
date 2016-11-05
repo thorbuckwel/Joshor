@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    class DiceRoll
+    public class DiceRoll
     {
         #region Fields
         private int _numDice;       // To hold how many of that dice to roll

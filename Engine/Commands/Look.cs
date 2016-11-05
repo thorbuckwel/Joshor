@@ -24,7 +24,7 @@ namespace Engine
             Item itemToLook = World.ItemByName(noun);
             Weapon weaponToLook = World.WeaponByName(noun);
             Monster monsterToLook = World.MonsterByName(noun);
-            NPC NpcToLook = World.NpcByName(noun);
+            NPC NpcToLook = World.NPCByName(noun);
 
             #region Item to look
             if (itemToLook != null)

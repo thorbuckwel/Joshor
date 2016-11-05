@@ -99,13 +99,13 @@ namespace Engine
             {
                 if (idRmNPC == 601) // 601== Bob the Cook (NPC.Txt)
                 {
-                    this.RoomNPC = new NPC(World.NpcByID(idRmNPC));
+                    this.RoomNPC = new NPC(World.NPCByID(idRmNPC));
                     this.RmNPC.Add(RoomNPC);
                 }
                 else if (idRmNPC == 602) // 602== Dragon Trainer (NPC.Txt)
                 {
-                    this.RoomNPC = new NPC(World.NpcByID(idRmNPC));
-                    this.RmNPC.Add(World.NpcByID(idRmNPC));
+                    this.RoomNPC = new NPC(World.NPCByID(idRmNPC));
+                    this.RmNPC.Add(World.NPCByID(idRmNPC));
                 }
             }
             #endregion

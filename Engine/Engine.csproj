@@ -55,6 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Build\ListBuilder.cs" />
+    <Compile Include="Core\Build\World.cs" />
     <Compile Include="Core\Combat\Combat.cs" />
     <Compile Include="Commands\Attack.cs" />
     <Compile Include="Commands\Command.cs" />
@@ -75,7 +77,6 @@
     <Compile Include="Core\Loaction classes\CurrentLocationClass.cs" />
     <Compile Include="Core\Item,Weapon,Treasure\InventoryItem.cs" />
     <Compile Include="Core\Item,Weapon,Treasure\Item.cs" />
-    <Compile Include="Core\Build\ListBuilder.cs" />
     <Compile Include="Core\Mob,Player,NPC\LivingCreature.cs" />
     <Compile Include="Commands\Look.cs" />
     <Compile Include="Core\MessageEventArgs.cs" />
@@ -91,7 +92,6 @@
     <Compile Include="Core\Loaction classes\Room.cs" />
     <Compile Include="Core\Item,Weapon,Treasure\Treasure.cs" />
     <Compile Include="Core\Item,Weapon,Treasure\Weapon.cs" />
-    <Compile Include="Core\Build\World.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database1.mdf">
