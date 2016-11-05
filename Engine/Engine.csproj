@@ -55,7 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\Combat.cs" />
+    <Compile Include="Core\Combat\Combat.cs" />
     <Compile Include="Commands\Attack.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\Equipt.cs" />
@@ -65,6 +65,7 @@
     <Compile Include="Commands\ItemDrop.cs" />
     <Compile Include="Commands\PlayerMove.cs" />
     <Compile Include="Commands\Score.cs" />
+    <Compile Include="Core\Combat\DiceRoll.cs" />
     <Compile Include="Core\Mob,Player,NPC\NPC.cs" />
     <Compile Include="Create,Load,Save\CreatePlayer.cs" />
     <Compile Include="Create,Load,Save\IsNewPlayer.cs" />
@@ -72,7 +73,6 @@
     <Compile Include="Create,Load,Save\SaveData.cs" />
     <Compile Include="Create,Load,Save\WelcomeScreen.cs" />
     <Compile Include="Core\Loaction classes\CurrentLocationClass.cs" />
-    <Compile Include="Core\Dice.cs" />
     <Compile Include="Core\Item,Weapon,Treasure\InventoryItem.cs" />
     <Compile Include="Core\Item,Weapon,Treasure\Item.cs" />
     <Compile Include="Core\Build\ListBuilder.cs" />

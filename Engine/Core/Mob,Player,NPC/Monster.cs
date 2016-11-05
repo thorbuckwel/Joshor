@@ -11,7 +11,7 @@ namespace Engine
         private int _exp;                        // To hold the amount of XP recieved for killing
         private int _gold;                       // To hold amount of gold recieved from killing
         private int _ac;                         // To hold how much armor the monster has
-        private int _damage;                     // To hold how much damage the monster does
+        private string _damage;                  // To hold how much damage the monster does
         private int _baseAttack;                 // To hold the plus or minus amount to ToHit
         private string _image;                   // To hold the Monster's image string
         private int _currentHitPoints;           // To hold the Monster's current hit points
@@ -28,7 +28,7 @@ namespace Engine
         public int Experiance { get { return _exp; } set { _exp = value; } }
         public int Gold { get { return _gold; } set { _gold = value; } }
         public int AC { get { return _ac; } set { _ac = value; } }
-        public int Damage { get { return _damage; } set { _damage = value; } }
+        public string Damage { get { return _damage; } set { _damage = value; } }
         public int BaseAttack { get { return _baseAttack; } set { _baseAttack = value; } }
         public string Image { get { return _image; } set { _image = value; } }
         public int CurrentHitPoints { get { return _currentHitPoints; } set { _currentHitPoints = value; } }
@@ -42,7 +42,7 @@ namespace Engine
          * derived from so that the monster can inherate these values.
          */
         #region Constructors
-        public Monster(int id, string name, int xp, int gold, int armor, int dam, int ba, int mobcurrentHitpoints, int mobmaximumHitpoints, string image, bool mobIsDead, bool canBeAttacked):
+        public Monster(int id, string name, int xp, int gold, int armor, string dam, int ba, int mobcurrentHitpoints, int mobmaximumHitpoints, string image, bool mobIsDead, bool canBeAttacked):
             base(mobcurrentHitpoints, mobmaximumHitpoints, mobIsDead, canBeAttacked)
             
         { 

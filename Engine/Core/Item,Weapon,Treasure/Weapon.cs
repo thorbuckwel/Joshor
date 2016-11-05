@@ -10,10 +10,10 @@ namespace Engine
     {
         #region Fields
         private int _id;                         // To hold the Weapon's ID number
-        private String _name;                    // To hold the Weapon's name
+        private string _name;                    // To hold the Weapon's name
         private int _cost;                       // To hold the Weapon's cost
-        private int _damage;                     // To hold the Weapon's damage
-        private String _damageType;              // To hold the Weapon's damage type
+        private string _damage;                  // To hold the Weapon's damage
+        private string _damageType;              // To hold the Weapon's damage type
         #endregion
 
         /**
@@ -21,8 +21,8 @@ namespace Engine
          */
         #region Properties
         public int Cost { get { return _cost; } set { _cost = value; } }
-        public int Damage { get { return _damage; } set { _damage = value; } }
-        public String DamageType { get { return _damageType; } set { _damageType = value; } }
+        public string Damage { get { return _damage; } set { _damage = value; } }
+        public string DamageType { get { return _damageType; } set { _damageType = value; } }
         #endregion
 
         /**
@@ -30,7 +30,7 @@ namespace Engine
          * those to the class variables.
          */
         #region Constructor
-        public Weapon(int id, String name, String namePluarl, String desc, int cost, int damage, String damageType, bool equiptable) : base (id, name, namePluarl, desc, cost, equiptable)
+        public Weapon(int id, string name, string namePluarl, string desc, int cost, string damage, string damageType, bool equiptable) : base (id, name, namePluarl, desc, cost, equiptable)
         {
             this.ID = id;
             this.Name = name;

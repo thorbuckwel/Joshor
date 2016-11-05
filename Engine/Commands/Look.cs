@@ -84,6 +84,7 @@ namespace Engine
             }
             #endregion
 
+            #region Npc to look
             else if (NpcToLook != null)
             {
                 foreach (NPC npc in Player.CurrentLocation.RmNPC.ToList())
@@ -93,7 +94,8 @@ namespace Engine
                         LookAtNpc(npc);
                     }
                 }               
-            }            
+            }
+            #endregion
         }
 
         public static void LookAtItem(InventoryItem itemToLook)
@@ -103,6 +105,7 @@ namespace Engine
             Console.WriteLine("Item Price: " + itemToLook.Price);            
         }
 
+        #region Weapon
         public static void LookAtWeapon(InventoryItem weaponToLook)
         {
             Console.WriteLine("Weapon Name: " + weaponToLook.Details.Name);
@@ -119,6 +122,7 @@ namespace Engine
             Console.WriteLine("Damage Type", weaponToLook.DamageType.ToString());
             Console.WriteLine("Price: ", weaponToLook.Price.ToString());
         }
+        #endregion
 
         public static void LookAtMonster(Monster monsterToLook)
         {

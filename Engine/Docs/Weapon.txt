@@ -3,7 +3,7 @@ Club
 Clubs
 A small stick
 0
-6
+1D4
 Blunt
 true
 102
@@ -11,7 +11,7 @@ Dagger
 Daggers
 Short piece of sharp metal
 2
-4
+1D4
 Pierce
 true
 103
@@ -19,7 +19,7 @@ Falchion
 Falchions
 A sword
 75
-8
+1D6
 Slash
 true
 104
@@ -27,6 +27,6 @@ Sai
 Sais
 Wierd looking
 1
-4
+1D4
 Blunt
 true

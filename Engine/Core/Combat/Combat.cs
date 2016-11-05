@@ -35,11 +35,12 @@ namespace Engine
         {
 
             // Create the Dice objects
-            Dice attack = new Dice(20);
-            Dice damage = new Dice(6);
+            DiceRoll attack = new DiceRoll(1, 20);      //Repersents 1D20 die
+            DiceRoll pDamage = new DiceRoll(equipt.Damage);
+            DiceRoll mobDamage = new DiceRoll(enemy.Damage);
             while (enemy.IsDead != true && player.IsDead != true)
             {
-                _attackResult = attack.DiceResult;
+                _attackResult = attack.Roll();
 
                 Console.WriteLine("Your attack with your " + player.Equipt + ": " + AttackResults);
 
@@ -47,7 +48,7 @@ namespace Engine
                 {
                     Console.WriteLine("You hit the " + enemy.Name);
 
-                    _damageResult = damage.DiceResult;
+                    _damageResult = pDamage.Roll();
                     Console.WriteLine("You did " + DamageResults + " points of damage.");
 
                     enemy.CurrentHitPoints -= DamageResults;
@@ -68,14 +69,14 @@ namespace Engine
                     Console.WriteLine("You Missed your attack!");
                 }
 
-                _attackResult = attack.DiceResult;
+                _attackResult = attack.Roll();
                 Console.WriteLine(enemy.Name + " attacks you: " + AttackResults);
 
                 if (AttackResults > player.AC)
                 {
                     Console.WriteLine("The " + enemy.Name + " hits you!");
 
-                    _damageResult = damage.DiceResult;
+                    _damageResult = mobDamage.Roll();
                     Console.WriteLine("The " + enemy.Name + " did " + DamageResults + " points of damage.");
 
                     player.CurrentHitPoints -= DamageResults;
