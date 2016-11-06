@@ -56,15 +56,6 @@ namespace Engine
             {
                 while (!reader.EndOfStream)
                 {
-                    //ID
-                    //NPC Name
-                    //NPC Class
-                    //NPC Race
-                    //NPC Gold
-                    //NPC CurrentHP
-                    //NPC MaxHP
-                    //NPC isDead
-                    //NPC canBeAttacked
                     int id = int.Parse(reader.ReadLine());
                     string npcName = reader.ReadLine();
                     string npcClass = reader.ReadLine();

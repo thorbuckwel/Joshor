@@ -15,7 +15,7 @@ namespace Engine
         private String _npcClass;                        // To hold the player's class
         private String _npcRace;                         // To hold the player's race
         private int _gold;                               // To hold the player's gold
-        private static Monster _currentMonster;
+        
 
         public List<InventoryItem> Inventory { get; set; }
         public event EventHandler<MessageEventArgs> OnMessage;

@@ -22,9 +22,3 @@ Relic
 Well what do relics look like?
 1000
 false
-209
-pencil
-pencils
-writing tool
-1
-False
