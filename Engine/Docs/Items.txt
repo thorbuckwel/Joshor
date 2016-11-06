@@ -1,4 +1,4 @@
-﻿201
+201
 Small Potion
 Small Potions
 This potion will heal 25 hp
@@ -22,3 +22,9 @@ Relic
 Well what do relics look like?
 1000
 false
+209
+pencil
+pencils
+writing tool
+1
+False

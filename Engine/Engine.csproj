@@ -55,6 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Admin Commands\Create.cs" />
+    <Compile Include="Core\CapWord.cs" />
     <Compile Include="Core\ListBuilder.cs" />
     <Compile Include="Core\World.cs" />
     <Compile Include="Core\Combat\Combat.cs" />

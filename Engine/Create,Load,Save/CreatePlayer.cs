@@ -91,9 +91,11 @@ namespace Engine
                 Console.Write("Hero, Villion > ");
                 faction = Console.ReadLine().ToLower();
 
-                if (faction == "hero" || faction == "villion")
+                if (faction == "hero" || faction == "villion" || faction == "admin")
                 {
                     validFaction = true;
+                    string capFaction = CapWord.FirstCharToUpper(faction);
+                    faction = capFaction;
                 }
 
             }

@@ -22,7 +22,19 @@ namespace Engine
                 noun = "";
             }
 
-            switch(verb)
+            if(_player.Factions != "Admin")
+            {
+                NormalCommands(verb, noun);
+            }
+            else
+            {
+                AdminCommands(verb, noun);
+            }
+        }
+
+        public static void NormalCommands(string verb, string noun)
+        {
+            switch (verb)
             {
                 case "look":
                     if (noun != "")
@@ -70,10 +82,21 @@ namespace Engine
                 case "save":
                     SaveData.SaveGameData(Player._player);
                     break;
+            }
+        }
 
+        public static void AdminCommands(string verb, string noun)
+        {
+            switch (verb)
+            {
+                case "create":
+                    Create.WhatToCreate();
+                    break;
+                default:
+                    NormalCommands(verb, noun);
+                    break;
 
             }
-
         }
     }
 }

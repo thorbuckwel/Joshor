@@ -18,6 +18,7 @@ namespace Engine
             Console.WriteLine("Experience Points: {0}", _player.ExperiencePoints);
             Console.WriteLine("Level: {0}", _player.Level);
             Console.WriteLine("Gold: {0}", _player.Gold);
+            Console.WriteLine("Faction: {0}", _player.Factions);
         }
     }
 }
