@@ -7,6 +7,7 @@ Human
 0
 false
 false
+Ventor
 602
 DragonTrainer
 Trainer
@@ -16,3 +17,4 @@ Elf
 0
 false
 false
+Ventor

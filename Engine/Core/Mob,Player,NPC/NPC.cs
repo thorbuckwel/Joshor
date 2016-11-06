@@ -36,8 +36,8 @@ namespace Engine
         * derived from so that the player can inherate these values.
         */
         #region Constructor
-        public NPC(int id, String name, String PC, String PR, int gold, int currentHitPoints, int maximumHitPoints,bool isDead, bool canBeAttacked)
-            : base(currentHitPoints, maximumHitPoints, isDead, canBeAttacked)
+        public NPC(int id, String name, String PC, String PR, int gold, int currentHitPoints, int maximumHitPoints,bool isDead, bool canBeAttacked, string faction)
+            : base(currentHitPoints, maximumHitPoints, isDead, canBeAttacked, faction)
         {
             this.ID = id;
             this.NPCName = name;
@@ -51,7 +51,7 @@ namespace Engine
          * At the moment this will be used to make a deep copy of a monster object so we can use it and
          * not mess with the object that is in the list.
          */
-        public NPC(NPC m) : base(m.CurrentHitPoints, m.MaximumHitPoints, m.IsDead, m.CanBeAttacked)
+        public NPC(NPC m) : base(m.CurrentHitPoints, m.MaximumHitPoints, m.IsDead, m.CanBeAttacked, m.Factions)
         {
             this.ID = m.ID;
             this.NPCName = m.NPCName;

@@ -42,8 +42,8 @@ namespace Engine
          * derived from so that the monster can inherate these values.
          */
         #region Constructors
-        public Monster(int id, string name, int xp, int gold, int armor, string dam, int ba, int mobcurrentHitpoints, int mobmaximumHitpoints, string image, bool mobIsDead, bool canBeAttacked):
-            base(mobcurrentHitpoints, mobmaximumHitpoints, mobIsDead, canBeAttacked)
+        public Monster(int id, string name, int xp, int gold, int armor, string dam, int ba, int mobcurrentHitpoints, int mobmaximumHitpoints, string image, bool mobIsDead, bool canBeAttacked, string faction):
+            base(mobcurrentHitpoints, mobmaximumHitpoints, mobIsDead, canBeAttacked, faction)
             
         { 
             this.ID = id;
@@ -63,7 +63,7 @@ namespace Engine
          * At the moment this will be used to make a deep copy of a monster object so we can use it and
          * not mess with the object that is in the list.
          */
-        public Monster(Monster m) : base(m.CurrentHitPoints, m.MaxHitPoints, m.IsDead, m.CanBeAttacked)
+        public Monster(Monster m) : base(m.CurrentHitPoints, m.MaxHitPoints, m.IsDead, m.CanBeAttacked, m.Factions)
         {
             this.ID = m.ID;
             this.Name = m.Name;

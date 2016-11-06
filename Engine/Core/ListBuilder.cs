@@ -34,10 +34,11 @@ namespace Engine
                     int baseAttack = int.Parse(reader.ReadLine());
                     int currentHitpoints = int.Parse(reader.ReadLine());
                     int maxHitpoints = int.Parse(reader.ReadLine());
-                    String image = reader.ReadLine();
+                    string image = reader.ReadLine();
                     bool isDead = bool.Parse(reader.ReadLine());
                     bool canBeattacked = bool.Parse(reader.ReadLine());
-                    World.Monsters.Add(new Monster(id, name, xp, gold, armor, damage, baseAttack, currentHitpoints, maxHitpoints, image, isDead, canBeattacked));
+                    string faction = reader.ReadLine();
+                    World.Monsters.Add(new Monster(id, name, xp, gold, armor, damage, baseAttack, currentHitpoints, maxHitpoints, image, isDead, canBeattacked, faction));
                 }
             }
             #endregion
@@ -73,7 +74,8 @@ namespace Engine
                     int maxHitpoints = int.Parse(reader.ReadLine());
                     bool isDead = bool.Parse(reader.ReadLine());                    
                     bool canBeattacked = bool.Parse(reader.ReadLine());
-                    World.NPCs.Add(new NPC(id, npcName, npcClass, npcRace, gold, currentHitpoints, maxHitpoints, isDead, canBeattacked));
+                    string faction = reader.ReadLine();
+                    World.NPCs.Add(new NPC(id, npcName, npcClass, npcRace, gold, currentHitpoints, maxHitpoints, isDead, canBeattacked, faction));
                 }
             }
             #endregion

@@ -13,11 +13,13 @@ namespace Engine
             String name;
             String className = "";
             String raceName = "";
+            string faction = "";
             int gold = 0;
             int hp = 0;
             bool validRace = false;
             bool validClass = false;
-            
+            bool validFaction = false;
+
 
             Console.WriteLine("Give me your name.");
             Console.Write("> ");
@@ -80,16 +82,33 @@ namespace Engine
                     Console.WriteLine("Not a Valid entry.");
                 }
             }
+
+            while (validFaction == false)
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("To what faction do you belong?");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write("Hero, Villion > ");
+                faction = Console.ReadLine().ToLower();
+
+                if (faction == "hero" || faction == "villion")
+                {
+                    validFaction = true;
+                }
+
+            }
+        
             Console.ForegroundColor = ConsoleColor.White;
-            Player._player = new Player(name, className, raceName, gold, hp, hp, World.WeaponByID(103), false, true);
+            Player._player = new Player(name, className, raceName, gold, hp, hp, World.WeaponByID(103), false, true, faction);
             Console.WriteLine("Creating character data, please wait!");
             SaveData.SaveGameData(Player._player);
+            
         }
 
         public static void CreateFromLoad(Player loadPlayer)
         {
             Player _player = new Player(loadPlayer.PlayerName, loadPlayer.PlayerClass, loadPlayer.PlayerRace, loadPlayer.Gold, loadPlayer.CurrentHitPoints,
-                                    loadPlayer.MaximumHitPoints, loadPlayer.Equipt, loadPlayer.IsDead, loadPlayer.CanBeAttacked);
+                                    loadPlayer.MaximumHitPoints, loadPlayer.Equipt, loadPlayer.IsDead, loadPlayer.CanBeAttacked, loadPlayer.Faction);
         }
 
     }

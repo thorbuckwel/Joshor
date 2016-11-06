@@ -19,6 +19,7 @@ namespace Engine
         private int _gold;                                  // To hold the player's gold
         private int _lvl;                                   // To hold the player's level
         private int _ac;                                    // To hold the player's armor
+        private string _faction;
         private static Room _currentLocation;                      // Not used as of yet!
         private Weapon _equipt;                             // To hold the currently equipt weapon
         private static Monster _currentMonster;
@@ -40,6 +41,7 @@ namespace Engine
         public int Gold { get { return _gold; } set { _gold = value;} }
         public int Level { get { return ((ExperiencePoints / 100) + 1); }}
         public int AC { get { return _ac; } set { _ac = value; }}
+        public string Faction { get { return _faction; } set { _faction = value; } }
         public static Room CurrentLocation { get { return _currentLocation; } set { _currentLocation = value; } }
         public Weapon Equipt { get { return _equipt; } set { _equipt = value; } }
         public static  Monster CurrentMonster { get { return _currentMonster; } set { _currentMonster = value; } }
@@ -52,8 +54,8 @@ namespace Engine
         * derived from so that the player can inherate these values.
         */
         #region Constructors
-        public Player(String name, String PC, String PR, int gold, int currentHitPoints, int maximumHitPoints, Weapon equipt, bool isDead, bool canBeAttacked)
-            : base(currentHitPoints, maximumHitPoints, isDead, canBeAttacked)
+        public Player(String name, String PC, String PR, int gold, int currentHitPoints, int maximumHitPoints, Weapon equipt, bool isDead, bool canBeAttacked, string faction)
+            : base(currentHitPoints, maximumHitPoints, isDead, canBeAttacked, faction)
         {
             this.PlayerName = name;
             this.PlayerClass = PC;
@@ -112,6 +114,10 @@ namespace Engine
             XmlNode currentLocation = playerData.CreateElement("CurrentLocation");
             currentLocation.AppendChild(playerData.CreateTextNode(CurrentLocation.ID.ToString()));
             stats.AppendChild(currentLocation);
+
+            XmlNode faction = playerData.CreateElement("Faction");
+            faction.AppendChild(playerData.CreateTextNode(this.Factions.ToString()));
+            stats.AppendChild(playerName);
 
             if (Equipt != null)
             {

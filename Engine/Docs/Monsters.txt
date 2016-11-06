@@ -10,6 +10,7 @@ Goblin
 Goblin.PNG
 false
 true
+Evil
 2
 Hobgoblin
 200
@@ -22,6 +23,7 @@ Hobgoblin
 Hobgoblin.jpg
 false
 true
+Evil
 3
 Kobold
 100
@@ -34,6 +36,7 @@ Kobold
 Kobold.jpg
 false
 true
+Evil
 4
 Dog
 135
@@ -46,6 +49,7 @@ Dog
 Dog.jpg
 false
 true
+Evil
 5
 Black Dragon
 12800
@@ -58,3 +62,4 @@ Black Dragon
 BlackDragon.jpg
 false
 true
+Evil

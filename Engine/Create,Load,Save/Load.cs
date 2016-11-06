@@ -43,9 +43,11 @@ namespace Engine
                 Console.WriteLine("Got experience: " + experiencePoints.ToString());
                 int equiptString = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/CurrentWeapon").InnerText);
                 Console.WriteLine("Got equipt weapon: " + equiptString.ToString());
+                string factionString = (playerData.SelectSingleNode("/Player/Stats/Faction").InnerText);
+                Console.WriteLine("Got Faction: " + factionString.ToString());
                 Weapon equipt = World.WeaponByID(equiptString);
 
-                Player player = new Player(playerName, PC, PR, gold, currentHitPoints, maximumHitPoints, equipt, false, true);
+                Player player = new Player(playerName, PC, PR, gold, currentHitPoints, maximumHitPoints, equipt, false, true, factionString);
 
                 int currentLocationID = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/CurrentLocation").InnerText);
                 Player.CurrentLocation = World.LocationByID(currentLocationID);

@@ -26,5 +26,11 @@
 
         /// <summary>Faction for Mages.</summary>
         Admin = 64,
+
+        /// <summary>Faction for Mages.</summary>
+        Evil = 128,
+
+        /// <summary>Faction for Mages.</summary>
+        Good = 256,
     }
 }
