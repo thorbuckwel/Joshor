@@ -92,6 +92,9 @@ namespace Engine
                 case "create":
                     Create.WhatToCreate();
                     break;
+                case "spawn":
+                    Spawn.WhatToSpawn();
+                    break; 
                 default:
                     NormalCommands(verb, noun);
                     break;

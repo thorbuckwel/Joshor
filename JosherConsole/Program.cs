@@ -12,32 +12,29 @@ namespace JosherConsole
         private static void Main(string[] args)
         {
             #region Start
-            Console.ForegroundColor = ConsoleColor.White;
-            ListBuilder.Build();                // On load we need to call the ListBuilder to build all our List
-            WelcomeScreen welcome = new WelcomeScreen();
-            welcome.Welcome();
+            Console.ForegroundColor = ConsoleColor.White;       // The text will be White.
+            ListBuilder.Build();                                // On load we need to call the ListBuilder to build all our List
+            WelcomeScreen welcome = new WelcomeScreen();        // Create a new welcome screen
+            welcome.Welcome();                                  // Call that screen.
 
 
             Console.WriteLine("Type 'Help' to see a list of commands");
             Console.WriteLine("");
 
-            CurrentLocationClass.DisplayCurrentLocation();
-
-            // Connect player events to functions that will display in the UI
-            //_player.PropertyChanged += Player_OnPropertyChanged;
-            //_player.OnMessage += Player_OnMessage;
-            #endregion
-
-            #region While loop
-            // Infinite loop, until the user types "exit"
-
             //Run timer every 5 minutes (300,000 millisec's) for autosave feature
             System.Timers.Timer autoSave = new System.Timers.Timer();
             autoSave.Elapsed += new ElapsedEventHandler(OnTimedEvent);
-            autoSave.Interval = 60000;
+            autoSave.Interval = 300000;
             autoSave.Enabled = true;
+            #endregion
+
+            CurrentLocationClass.DisplayCurrentLocation();
+            Console.WriteLine("");                              // Do this to make the first room desc look like the others
+
+            #region While loop
+            // Infinite loop, until the user types "exit"
             while (true)
-            {
+            { 
                 // Display a prompt, so the user knows to type something
                 Console.Write(Player._player.CurrentHitPoints + "/" + Player._player.MaximumHitPoints + " Hp" +" >");                
 
@@ -59,7 +56,6 @@ namespace JosherConsole
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Saving character, will close when finished!");
                     SaveData.SaveGameData(Player._player);
-
                     break;
                 }
 

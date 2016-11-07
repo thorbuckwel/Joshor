@@ -10,9 +10,13 @@ namespace Engine
     {
         public static void NewPlayer()
         {
-            string userInput;
-            bool validAnswer = false;
+            string userInput;                   // To hold the user's input.
+            bool validAnswer = false;           // This will stay false until the user's answers yes or no.
 
+            /**
+             * This loop will stay going until a valid answer is recieved from 
+             * the user.
+             */
             while (validAnswer == false)
             {
                 Console.WriteLine("Are you a new Player?");
@@ -24,12 +28,12 @@ namespace Engine
                     validAnswer = true;
                     Console.WriteLine("What is your name?");
                     userInput = Console.ReadLine();
-                    Load.LoadGameData(userInput.ToLower());
+                    Load.LoadGameData(userInput.ToLower());         // Go to the Load class and exacute the LoadGame method.
                 }
                 else if (userInput.ToLower() == "yes")
                 {
                     validAnswer = true;
-                    CreatePlayer.CreatePlayerInst();
+                    CreatePlayer.CreatePlayerInst();                // Go to CreatePlayer and exacute the CreatePlayerInst method. 
                 }
                 else
                 {

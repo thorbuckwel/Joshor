@@ -31,21 +31,19 @@ namespace Engine
             { 
                 foreach (InventoryItem item in Player._player.Inventory.ToList())
                 {
-                    if (item.Details.Name.ToLower() == itemToLook.ToString())
+                    if (item.Details.Name == itemToLook.ToString())
                     {
                         LookAtItem(item);
-                    }
-                    else
+                    }                                      
+                }
+
+                foreach (Item rmItem in Player.CurrentLocation.RoomLoot.ToList())
+                {
+                    if (rmItem.Name == itemToLook.Name)
                     {
-                        foreach (Item rmitem in Player.CurrentLocation.RoomLoot.ToList())
-                        {
-                            if (item.Details.Name.ToLower() == itemToLook.ToString())
-                            {
-                                LookAtItem(item);
-                            }
-                        }
-                    }                    
-                }           
+                        LookAtItem(rmItem);
+                    }
+                }
             }
             #endregion
 
@@ -98,12 +96,20 @@ namespace Engine
             #endregion
         }
 
+        #region Item
         public static void LookAtItem(InventoryItem itemToLook)
         {
             Console.WriteLine("Item Name: " + itemToLook.Details);
             Console.WriteLine("Description: " + itemToLook.Details);
             Console.WriteLine("Item Price: " + itemToLook.Price);            
         }
+        public static void LookAtItem(Item itemToLook)
+        {
+            Console.WriteLine("Item Name: " + itemToLook.Name);
+            Console.WriteLine("Description: " + itemToLook.Desc);
+            Console.WriteLine("Item Price: " + itemToLook.Price);
+        }
+        #endregion
 
         #region Weapon
         public static void LookAtWeapon(InventoryItem weaponToLook)
@@ -124,18 +130,22 @@ namespace Engine
         }
         #endregion
 
+        #region Monster
         public static void LookAtMonster(Monster monsterToLook)
         {
             Console.WriteLine("Name: " + monsterToLook.Name);
             Console.WriteLine("Armor Class: " + monsterToLook.AC);
             Console.WriteLine("Current Hitpoints: " + monsterToLook.CurrentHitPoints);            
         }
+        #endregion
 
+        #region NPC
         public static void LookAtNpc(NPC npcToLook)
         {
             Console.WriteLine("Name: " + npcToLook.NPCName);
             Console.WriteLine("Class: " + npcToLook.NPCClass);
             Console.WriteLine("Race: " + npcToLook.NPCRace);            
         }
+        #endregion
     }
 }

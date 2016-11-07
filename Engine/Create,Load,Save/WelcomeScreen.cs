@@ -21,7 +21,7 @@ namespace Engine
             Console.WriteLine("            ##########   ##    ##   ##   ##   ##  ##   ##    ##   ##        ");
             Console.WriteLine("            ##########     ####     #######   ##  ##     ####     ##        ");
             Console.WriteLine("________________________________________________________________________________");
-            IsNewPlayer.NewPlayer();
+            IsNewPlayer.NewPlayer();            // Next determine if they are a new player.
         }    
     }
 }
