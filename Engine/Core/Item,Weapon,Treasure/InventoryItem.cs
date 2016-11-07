@@ -10,8 +10,15 @@ namespace Engine
     public class InventoryItem : INotifyPropertyChanged
     {
         #region Fields
+
         private Item _details;
         private int _quantity;
+        private string _wName;
+        private string _wDesc;
+        private string _wDamage;
+        private string _wDamageType;
+        private int _wPrice;
+
         #endregion
 
         #region Properties
@@ -20,6 +27,12 @@ namespace Engine
         public int ItemID { get { return Details.ID; }}
         public string Description { get { return Quantity > 1 ? Details.NamePlural : Details.Name; }}
         public int Price { get { return Details.Price; }}
+        public string WeaponName { get { return _wName; } set { _wName = value; } }
+        public string WeaponDesc { get { return _wDesc; } set { _wDesc = value; } }
+        public string WeaponDamage { get { return _wDamage; } set { _wDamage = value; } }
+        public string WeaponDamageType { get { return _wDamageType; } set { _wDamageType = value; } }
+        public int WeaponPrice { get { return _wPrice; } set { _wPrice = value; } }
+        
         #endregion
 
         #region Constructors
@@ -29,9 +42,14 @@ namespace Engine
             Quantity = quantity;
         }
 
-        public InventoryItem(Weapon details, int quantity)
-        {
-            Details = details;
+        public InventoryItem(Weapon weapon, int quantity)
+        {            
+            WeaponName = weapon.Name;
+            WeaponDesc = weapon.Desc;
+            WeaponDamage = weapon.Damage;
+            WeaponDamageType = weapon.DamageType;
+            WeaponPrice = weapon.Price;
+            Details = weapon;
             Quantity = quantity;
         }
         #endregion

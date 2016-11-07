@@ -108,18 +108,18 @@ namespace Engine
         #region Weapon
         public static void LookAtWeapon(InventoryItem weaponToLook)
         {
-            Console.WriteLine("Weapon Name: " + weaponToLook.Details.Name);
-            Console.WriteLine("Description: " + weaponToLook.Details.Desc);
-            //Console.WriteLine("Damage: " + weaponToLook.Description.);
-            //Console.WriteLine("Damage Type", weaponToLook.DamageType);
-            //Console.WriteLine("Price: ", weaponToLook.Price.ToString());
+            Console.WriteLine("Weapon Name: " + weaponToLook.WeaponName);
+            Console.WriteLine("Description: " + weaponToLook.WeaponDesc);
+            Console.WriteLine("Damage: " + weaponToLook.WeaponDamage);
+            Console.WriteLine("Damage Type", weaponToLook.WeaponDamageType);
+            Console.WriteLine("Price: ", weaponToLook.WeaponPrice.ToString());
         }
         public static void LookAtWeapon(Weapon weaponToLook)
         {
             Console.WriteLine("Weapon Name: " + weaponToLook.Name);
             Console.WriteLine("Description: " + weaponToLook.Desc);
             Console.WriteLine("Damage: " + weaponToLook.Damage);
-            Console.WriteLine("Damage Type", weaponToLook.DamageType.ToString());
+            Console.WriteLine("Damage Type", weaponToLook.DamageType);
             Console.WriteLine("Price: ", weaponToLook.Price.ToString());
         }
         #endregion

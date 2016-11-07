@@ -15,7 +15,7 @@ namespace Engine
         {
             File.WriteAllText(PLAYER_DATA_FILE_NAME, _player.ToXmlString());
 
-            PlayerDataMapper.SaveToDatabase(_player);
+            //PlayerDataMapper.SaveToDatabase(_player);
         }
     }
 }

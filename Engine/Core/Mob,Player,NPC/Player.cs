@@ -81,8 +81,7 @@ namespace Engine
             // Create the "Stats" child node to hold the other player statistics nodes
             XmlNode stats = playerData.CreateElement("Stats");
             player.AppendChild(stats);
-
-            // Create the child nodes for the "Stats" node
+            
             XmlNode playerName = playerData.CreateElement("Name");
             playerName.AppendChild(playerData.CreateTextNode(this.PlayerName.ToString()));
             stats.AppendChild(playerName);
@@ -117,7 +116,7 @@ namespace Engine
 
             XmlNode faction = playerData.CreateElement("Faction");
             faction.AppendChild(playerData.CreateTextNode(this.Factions.ToString()));
-            stats.AppendChild(playerName);
+            stats.AppendChild(faction);
 
             if (Equipt != null)
             {

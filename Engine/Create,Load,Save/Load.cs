@@ -41,10 +41,10 @@ namespace Engine
                 Console.WriteLine("Got gold: " + gold.ToString());
                 int experiencePoints = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/ExperiencePoints").InnerText);
                 Console.WriteLine("Got experience: " + experiencePoints.ToString());
-                int equiptString = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/CurrentWeapon").InnerText);
-                Console.WriteLine("Got equipt weapon: " + equiptString.ToString());
                 string factionString = (playerData.SelectSingleNode("/Player/Stats/Faction").InnerText);
                 Console.WriteLine("Got Faction: " + factionString.ToString());
+                int equiptString = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/CurrentWeapon").InnerText);
+                Console.WriteLine("Got equipt weapon: " + equiptString.ToString());                
                 Weapon equipt = World.WeaponByID(equiptString);
 
                 Player player = new Player(playerName, PC, PR, gold, currentHitPoints, maximumHitPoints, equipt, false, true, factionString);
