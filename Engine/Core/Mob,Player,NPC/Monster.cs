@@ -14,8 +14,8 @@ namespace Engine
         private string _damage;                  // To hold how much damage the monster does
         private int _baseAttack;                 // To hold the plus or minus amount to ToHit
         private string _image;                   // To hold the Monster's image string
-        private int _currentHitPoints;           // To hold the Monster's current hit points
-        private int _maxHitPoints;               // To hold the Monster's max hit points
+        //private int _currentHitPoints;           // To hold the Monster's current hit points
+        //private int _maxHitPoints;               // To hold the Monster's max hit points
         private bool _isDead;                    // To tell is the Monster is dead or alive
         #endregion
 
@@ -31,8 +31,8 @@ namespace Engine
         public string Damage { get { return _damage; } set { _damage = value; } }
         public int BaseAttack { get { return _baseAttack; } set { _baseAttack = value; } }
         public string Image { get { return _image; } set { _image = value; } }
-        public int CurrentHitPoints { get { return _currentHitPoints; } set { _currentHitPoints = value; } }
-        public int MaxHitPoints { get { return _maxHitPoints; } set { _maxHitPoints = value; } }
+        //public int CurrentHitPoints { get { return _currentHitPoints; } set { _currentHitPoints = value; } }
+        //public int MaxHitPoints { get { return _maxHitPoints; } set { _maxHitPoints = value; } }
         public bool IsDead { get { return _isDead; } set { _isDead = value; } }
         #endregion
 
@@ -54,8 +54,8 @@ namespace Engine
             this.Damage = dam;
             this.BaseAttack = ba;
             this.Image = image;
-            this.CurrentHitPoints = mobcurrentHitpoints;
-            this.MaxHitPoints = mobmaximumHitpoints;
+            //this.CurrentHitPoints = mobcurrentHitpoints;
+            //this.MaxHitPoints = mobmaximumHitpoints;
             this.IsDead = mobIsDead;
         }        
 
@@ -63,7 +63,7 @@ namespace Engine
          * At the moment this will be used to make a deep copy of a monster object so we can use it and
          * not mess with the object that is in the list.
          */
-        public Monster(Monster m) : base(m.CurrentHitPoints, m.MaxHitPoints, m.IsDead, m.CanBeAttacked, m.Factions)
+        public Monster(Monster m) : base(m.CurrentHitPoints, m.MaximumHitPoints, m.IsDead, m.CanBeAttacked, m.Factions)
         {
             this.ID = m.ID;
             this.Name = m.Name;
@@ -74,7 +74,7 @@ namespace Engine
             this.BaseAttack = m.BaseAttack;
             this.Image = m.Image;
             this.CurrentHitPoints = m.CurrentHitPoints;
-            this.MaxHitPoints = m.MaxHitPoints;
+            //this.MaximumHitPoints = m.MaxHitPoints;
             this.IsDead = m.IsDead;
         }
         #endregion

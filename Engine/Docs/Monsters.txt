@@ -1,65 +1,78 @@
-﻿1
-Goblin
-135
-6
-16
-1D6
-1
-6
-6
-Goblin.PNG
-false
-true
-Evil
-2
-Hobgoblin
-200
-16
-17
-1D10
-1
-17
-17
-Hobgoblin.jpg
-false
-true
-Evil
-3
-Kobold
-100
-15
-5
-1D6
-1
-5
-5
-Kobold.jpg
-false
-true
-Evil
-4
-Dog
-135
-13
-6
-1D6
-0
-6
-6
-Dog.jpg
-false
-true
-Evil
-5
-Black Dragon
-12800
-28
-161
-3D8
-14
-161
-161
-BlackDragon.jpg
-false
-true
-Evil
+﻿ID: 1
+Name: Goblin
+XP: 135
+Armor: 6
+Gold: 16
+Damage: 1D6
+BaseAttack: 1
+CurrentHp: 6
+MaxHp: 6
+Image: Goblin.PNG
+IsDead: false
+CanBeAttacked: true
+Faction: Evil
+ID: 2
+Name: Hobgoblin
+XP: 200
+Armor: 16
+Gold: 17
+Damage: 1D10
+BaseAttack: 1
+CurrentHp: 17
+MaxHp: 17
+Image: Hobgoblin.jpg
+IsDead: false
+CanBeAttacked: true
+Faction: Evil
+ID: 3
+Name: Kobold
+XP: 100
+Armor: 15
+Gold: 5
+Damage: 1D6
+BaseAttack: 1
+CurrentHp: 5
+MaxHp: 5
+Image: Kobold.jpg
+IsDead: false
+CanBeAttacked: true
+Faction: Evil
+ID: 4
+Name: Dog
+XP: 135
+Armor: 13
+Gold: 6
+Damage: 1D6
+BaseAttack: 0
+CurrentHp: 6
+MaxHp: 6
+Image: Dog.jpg
+IsDead: false
+CanBeAttacked: true
+Faction: Evil
+ID: 5
+Name: Black Dragon
+XP: 12800
+Armor: 28
+Gold: 161
+Damage: 3D8
+BaseAttack: 14
+CurrentHp: 161
+MaxHp: 161
+Image: BlackDragon.jpg
+IsDead: false
+CanBeAttacked: true
+Faction: Evil
+ID: 6
+Name: Bird
+XP: 100
+Gold: 100
+Armor: 10
+Damage: 1D3
+BaseAttack: 0
+CurrentHp: 100
+MaxHp: 100
+Image: 
+IsDead: False
+CanBeAttacked: True
+Faction: Good

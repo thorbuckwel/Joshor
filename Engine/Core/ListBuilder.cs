@@ -10,6 +10,12 @@ namespace Engine
     public static class ListBuilder
     {
 
+        private static string[] GetNextLine(StreamReader reader)
+        {
+            string[] line = reader.ReadLine().Split(' ');
+            return line;
+        }
+
         public static void Build()
         {
             /**
@@ -25,19 +31,35 @@ namespace Engine
             {
                 while (!reader.EndOfStream)
                 {
-                    int id = int.Parse(reader.ReadLine());
-                    string name = reader.ReadLine();
-                    int xp = int.Parse(reader.ReadLine());
-                    int armor = int.Parse(reader.ReadLine());
-                    int gold = int.Parse(reader.ReadLine());
-                    string damage = reader.ReadLine();
-                    int baseAttack = int.Parse(reader.ReadLine());
-                    int currentHitpoints = int.Parse(reader.ReadLine());
-                    int maxHitpoints = int.Parse(reader.ReadLine());
-                    string image = reader.ReadLine();
-                    bool isDead = bool.Parse(reader.ReadLine());
-                    bool canBeattacked = bool.Parse(reader.ReadLine());
-                    string faction = reader.ReadLine();
+                    //string line = reader.ReadLine();
+                    //string[] properties = GetNextLine(reader);
+
+                    int id = int.Parse(GetNextLine(reader)[1]);
+                    
+                    string name = GetNextLine(reader)[1];
+                    
+                    int xp = int.Parse(GetNextLine(reader)[1]);
+                    
+                    int armor = int.Parse(GetNextLine(reader)[1]);
+                   
+                    int gold = int.Parse(GetNextLine(reader)[1]);
+                    
+                    string damage = GetNextLine(reader)[1];
+                    
+                    int baseAttack = int.Parse(GetNextLine(reader)[1]);
+                    
+                    int currentHitpoints = int.Parse(GetNextLine(reader)[1]);
+                    
+                    int maxHitpoints = int.Parse(GetNextLine(reader)[1]);
+
+                    string image = GetNextLine(reader)[1];
+
+                    bool isDead = bool.Parse(GetNextLine(reader)[1]);
+
+                    bool canBeattacked = bool.Parse(GetNextLine(reader)[1]);
+
+                    string faction = GetNextLine(reader)[1];
+
                     World.Monsters.Add(new Monster(id, name, xp, gold, armor, damage, baseAttack, currentHitpoints, maxHitpoints, image, isDead, canBeattacked, faction));
                 }
             }
@@ -112,8 +134,8 @@ namespace Engine
                 while (!reader.EndOfStream)
                 {
                     int id = int.Parse(reader.ReadLine());
-                    String name = reader.ReadLine();
-                    String descript = reader.ReadLine();
+                    string name = reader.ReadLine();
+                    string descript = reader.ReadLine();
                     int exit1 = int.Parse(reader.ReadLine());
                     int exit2 = int.Parse(reader.ReadLine());
                     int exit3 = int.Parse(reader.ReadLine());

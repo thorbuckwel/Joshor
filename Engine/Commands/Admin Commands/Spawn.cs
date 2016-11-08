@@ -115,7 +115,7 @@ namespace Engine
                 else
                 {
                     Player.CurrentLocation.RoomMob.Add(new Monster(mob.ID, mob.Name, mob.Experiance, mob.Gold, mob.AC, mob.Damage,
-                                                    mob.BaseAttack, mob.CurrentHitPoints, mob.MaxHitPoints, mob.Image, mob.IsDead, mob.CanBeAttacked, mob.Factions));
+                                                    mob.BaseAttack, mob.CurrentHitPoints, mob.MaximumHitPoints, mob.Image, mob.IsDead, mob.CanBeAttacked, mob.Factions));
                     exist = true;
                     break;
                 }
@@ -124,7 +124,7 @@ namespace Engine
             if (exist == false)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Item does not exist, maybe create it first?");
+                Console.WriteLine("Mob does not exist, maybe create it first?");
                 Console.ForegroundColor = ConsoleColor.White;
             }
         }

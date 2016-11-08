@@ -10,10 +10,11 @@ namespace Engine
     {
         public static void CreatePlayerInst()
         {
-            String name;
-            String className = "";
-            String raceName = "";
+            string name;
+            string className = "";
+            string raceName = "";
             string faction = "";
+            int alignment = 0;
             int gold = 0;
             int hp = 0;
             bool validRace = false;
@@ -101,7 +102,7 @@ namespace Engine
             }
         
             Console.ForegroundColor = ConsoleColor.White;
-            Player._player = new Player(name, className, raceName, gold, hp, hp, World.WeaponByID(103), false, true, faction);
+            Player._player = new Player(name, className, raceName, gold, hp, hp, World.WeaponByID(103), false, true, faction, alignment);
             Console.WriteLine("Creating character data, please wait!");
             SaveData.SaveGameData(Player._player);
             
@@ -110,7 +111,7 @@ namespace Engine
         public static void CreateFromLoad(Player loadPlayer)
         {
             Player _player = new Player(loadPlayer.PlayerName, loadPlayer.PlayerClass, loadPlayer.PlayerRace, loadPlayer.Gold, loadPlayer.CurrentHitPoints,
-                                    loadPlayer.MaximumHitPoints, loadPlayer.Equipt, loadPlayer.IsDead, loadPlayer.CanBeAttacked, loadPlayer.Faction);
+                                    loadPlayer.MaximumHitPoints, loadPlayer.Equipt, loadPlayer.IsDead, loadPlayer.CanBeAttacked, loadPlayer.Faction, loadPlayer.Alignment);
         }
 
     }

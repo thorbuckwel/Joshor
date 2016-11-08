@@ -12,13 +12,14 @@ namespace Engine
     public class Player : LivingCreature
     {
         #region Fields
-        private String _playerName;                         // To hold the player's name
-        private String _playerClass;                        // To hold the player's class
-        private String _playerRace;                         // To hold the player's race
+        private string _playerName;                         // To hold the player's name
+        private string _playerClass;                        // To hold the player's class
+        private string _playerRace;                         // To hold the player's race
         private int _xp;                                    // To hold the player's xp
         private int _gold;                                  // To hold the player's gold
         private int _lvl;                                   // To hold the player's level
         private int _ac;                                    // To hold the player's armor
+        private int _alignment;
         private string _faction;
         private static Room _currentLocation;                      // Not used as of yet!
         private Weapon _equipt;                             // To hold the currently equipt weapon
@@ -34,14 +35,15 @@ namespace Engine
          * Setting Properties to be able to access the private variables.
          */
         #region Properties
-        public String PlayerClass { get { return _playerClass; } set { _playerClass = value; } }
-        public String PlayerName { get { return _playerName; } set { _playerName = value; } }
-        public String PlayerRace { get { return _playerRace; } set { _playerRace = value; } }
+        public string PlayerClass { get { return _playerClass; } set { _playerClass = value; } }
+        public string PlayerName { get { return _playerName; } set { _playerName = value; } }
+        public string PlayerRace { get { return _playerRace; } set { _playerRace = value; } }
         public int ExperiencePoints { get { return _xp; } set { _xp = value;}}
         public int Gold { get { return _gold; } set { _gold = value;} }
         public int Level { get { return ((ExperiencePoints / 100) + 1); }}
         public int AC { get { return _ac; } set { _ac = value; }}
         public string Faction { get { return _faction; } set { _faction = value; } }
+        public int Alignment { get { return _alignment; } set { _alignment = value; } }
         public static Room CurrentLocation { get { return _currentLocation; } set { _currentLocation = value; } }
         public Weapon Equipt { get { return _equipt; } set { _equipt = value; } }
         public static  Monster CurrentMonster { get { return _currentMonster; } set { _currentMonster = value; } }
@@ -54,7 +56,7 @@ namespace Engine
         * derived from so that the player can inherate these values.
         */
         #region Constructors
-        public Player(String name, String PC, String PR, int gold, int currentHitPoints, int maximumHitPoints, Weapon equipt, bool isDead, bool canBeAttacked, string faction)
+        public Player(String name, String PC, String PR, int gold, int currentHitPoints, int maximumHitPoints, Weapon equipt, bool isDead, bool canBeAttacked, string faction, int alignment)
             : base(currentHitPoints, maximumHitPoints, isDead, canBeAttacked, faction)
         {
             this.PlayerName = name;
@@ -64,6 +66,7 @@ namespace Engine
             this.ExperiencePoints = 0;
             this.AC = 10;
             this.Equipt = equipt;
+            this.Alignment = alignment;
             Inventory = new List<InventoryItem>();
             CurrentLocation = World.Location[0];
         }        
@@ -117,6 +120,10 @@ namespace Engine
             XmlNode faction = playerData.CreateElement("Faction");
             faction.AppendChild(playerData.CreateTextNode(this.Factions.ToString()));
             stats.AppendChild(faction);
+
+            XmlNode alignment = playerData.CreateElement("Alignment");
+            alignment.AppendChild(playerData.CreateTextNode(this.Alignment.ToString()));
+            stats.AppendChild(alignment);
 
             if (Equipt != null)
             {

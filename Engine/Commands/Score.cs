@@ -19,6 +19,7 @@ namespace Engine
             Console.WriteLine("Level: {0}", _player.Level);
             Console.WriteLine("Gold: {0}", _player.Gold);
             Console.WriteLine("Faction: {0}", _player.Factions);
+            Console.WriteLine("Alignment: {0}", _player.Alignment);
         }
     }
 }

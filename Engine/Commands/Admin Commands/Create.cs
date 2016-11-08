@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Windows.Forms;
+using JosherConsole;
+
 
 namespace Engine
 {
@@ -17,10 +20,17 @@ namespace Engine
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Item, NPC, MOB, Weapon, Room > ");
             Console.ForegroundColor = ConsoleColor.White;
+            //CreateScreen createForm = new CreateScreen();
+            //createForm.Show();
             userInput = Console.ReadLine();
 
-            if (userInput.ToLower() == "item") 
+
+
+            if (userInput.ToLower() == "item")
             {
+
+
+
                 CreateItem();
             }
             else if (userInput.ToLower() == "npc")
@@ -252,7 +262,7 @@ namespace Engine
                         name = Console.ReadLine();
 
                         Console.WriteLine("How much Xp does Mob contain?");
-                        xp = Convert.ToInt32(Console.ReadLine());
+                        xp = Convert.ToInt32(Console.ReadLine());                        
 
                         Console.WriteLine("How much Armor does Mob have?");
                         armor = Convert.ToInt32(Console.ReadLine());
@@ -283,19 +293,19 @@ namespace Engine
                         if (File.Exists(@"../../../Engine/Docs/Monsters.txt"))
                         {
                             File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", "" + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", id.ToString() + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", name + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", xp.ToString() + Environment.NewLine);                            
-                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", gold.ToString() + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", armor.ToString() + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", damage + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", baseAttack.ToString() + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", currentHitpoints.ToString() + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", maxHitpoints.ToString());
-                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", image + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", isDead.ToString());
-                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", canBeattacked.ToString());
-                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", faction.ToString());
+                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", "ID: " + id.ToString() + Environment.NewLine);
+                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", "Name: " + name + Environment.NewLine);
+                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", "XP: " + xp.ToString() + Environment.NewLine);                            
+                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", "Gold: " + gold.ToString() + Environment.NewLine);
+                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", "Armor: " + armor.ToString() + Environment.NewLine);
+                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", "Damage: " + damage + Environment.NewLine);
+                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", "BaseAttack: " + baseAttack.ToString() + Environment.NewLine);
+                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", "CurrentHp: " + currentHitpoints.ToString() + Environment.NewLine);
+                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", "MaxHp: " + maxHitpoints.ToString() + Environment.NewLine);
+                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", "Image: " + image + Environment.NewLine);
+                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", "IsDead: " + isDead.ToString() + Environment.NewLine);
+                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", "CanBeAttacked: " + canBeattacked.ToString() + Environment.NewLine);
+                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", "Faction: " + faction.ToString());
                         }
 
                         exist = true;
