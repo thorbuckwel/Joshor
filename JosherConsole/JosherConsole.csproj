@@ -45,12 +45,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreateScreen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateScreen.Designer.cs">
-      <DependentUpon>CreateScreen.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -68,11 +62,6 @@
       <Project>{f56990c2-883e-428d-b13e-1ece4098dde8}</Project>
       <Name>Joshor</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="CreateScreen.resx">
-      <DependentUpon>CreateScreen.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

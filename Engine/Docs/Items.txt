@@ -22,3 +22,9 @@ Relic
 Well what do relics look like?
 1000
 false
+205
+Key
+Keys
+unlocks things
+100
+False

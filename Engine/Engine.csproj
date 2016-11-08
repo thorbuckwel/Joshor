@@ -90,11 +90,11 @@
     <Compile Include="Core\Mob,Player,NPC\Player.cs" />
     <Compile Include="Create,Load,Save\PlayerDataMapper.cs" />
     <Compile Include="Core\Item,Weapon,Treasure\Potion.cs" />
-    <Compile Include="CreateScreen.cs">
+    <Compile Include="CreateItem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateScreen.Designer.cs">
-      <DependentUpon>CreateScreen.cs</DependentUpon>
+    <Compile Include="CreateItem.Designer.cs">
+      <DependentUpon>CreateItem.cs</DependentUpon>
     </Compile>
     <Compile Include="Enum\Factions.cs" />
     <Compile Include="Enum\WearLocations.cs" />
@@ -143,8 +143,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CreateScreen.resx">
-      <DependentUpon>CreateScreen.cs</DependentUpon>
+    <EmbeddedResource Include="CreateItem.resx">
+      <DependentUpon>CreateItem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
