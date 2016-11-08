@@ -94,6 +94,7 @@ namespace Engine
             }
             #endregion
 
+
             #region NPC Load
             if (idRmNPC != -1)
             {
@@ -112,6 +113,7 @@ namespace Engine
 
 
         }
-        #endregion
+        #endregion       
     }
 }
+

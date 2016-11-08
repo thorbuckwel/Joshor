@@ -85,6 +85,7 @@ namespace Engine
                 {
                     Player.CurrentLocation.RmNPC.Add(new NPC(npc.ID, npc.NPCName, npc.NPCClass, npc.NPCRace, npc.Gold, npc.CurrentHitPoints,
                                                     npc.MaximumHitPoints, npc.IsDead, npc.CanBeAttacked, npc.Factions));
+
                     exist = true;
                     break;
                 }
@@ -115,7 +116,7 @@ namespace Engine
                 else
                 {
                     Player.CurrentLocation.RoomMob.Add(new Monster(mob.ID, mob.Name, mob.Experiance, mob.Gold, mob.AC, mob.Damage,
-                                                    mob.BaseAttack, mob.CurrentHitPoints, mob.MaximumHitPoints, mob.Image, mob.IsDead, mob.CanBeAttacked, mob.Factions));
+                                                    mob.BaseAttack, mob.CurrentHitPoints, mob.MaxHitPoints, mob.Image, mob.IsDead, mob.CanBeAttacked, mob.Factions));
                     exist = true;
                     break;
                 }

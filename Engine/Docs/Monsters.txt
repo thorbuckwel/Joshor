@@ -65,13 +65,13 @@ CanBeAttacked: true
 Faction: Evil
 ID: 6
 Name: Bird
-XP: 100
-Gold: 100
+XP: 1
+Gold: 2
 Armor: 10
 Damage: 1D3
 BaseAttack: 0
-CurrentHp: 100
-MaxHp: 100
+CurrentHp: 10
+MaxHp: 10
 Image: 
 IsDead: False
 CanBeAttacked: True

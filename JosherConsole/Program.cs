@@ -36,7 +36,7 @@ namespace JosherConsole
             while (true)
             { 
                 // Display a prompt, so the user knows to type something
-                Console.Write(Player._player.CurrentHitPoints + "/" + Player._player.MaximumHitPoints + " Hp" +" >");                
+                Console.Write(Player._player.CurrentHitPoints + "/" + Player._player.MaxHitPoints + " Hp" +" >");                
 
                 // Wait for the user to type something, and press the <Enter> key
                 string userInput = Console.ReadLine();

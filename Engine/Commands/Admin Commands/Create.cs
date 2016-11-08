@@ -259,16 +259,16 @@ namespace Engine
 
 
                         Console.WriteLine("Name of the Mob.");
-                        name = Console.ReadLine();
+                        name = CapWord.FirstCharToUpper(Console.ReadLine());
 
                         Console.WriteLine("How much Xp does Mob contain?");
-                        xp = Convert.ToInt32(Console.ReadLine());                        
-
-                        Console.WriteLine("How much Armor does Mob have?");
-                        armor = Convert.ToInt32(Console.ReadLine());
+                        xp = Convert.ToInt32(Console.ReadLine());
 
                         Console.WriteLine("Gold on the NPC.");
                         gold = Convert.ToInt32(Console.ReadLine());
+
+                        Console.WriteLine("How much Armor does Mob have?");
+                        armor = Convert.ToInt32(Console.ReadLine());                        
 
                         Console.WriteLine("What is the Mob's damage rating?");
                         damage = Console.ReadLine();
@@ -286,7 +286,7 @@ namespace Engine
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("Evil, Good > ");
                         Console.ForegroundColor = ConsoleColor.White;
-                        faction = Console.ReadLine();
+                        faction = CapWord.FirstCharToUpper(Console.ReadLine());
 
                         World.Monsters.Add(new Monster(id, name, xp, gold, armor, damage, baseAttack, currentHitpoints, maxHitpoints, image, isDead, canBeattacked, faction));
 

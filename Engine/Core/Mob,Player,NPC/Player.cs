@@ -19,6 +19,8 @@ namespace Engine
         private int _gold;                                  // To hold the player's gold
         private int _lvl;                                   // To hold the player's level
         private int _ac;                                    // To hold the player's armor
+        private int _currentHitPoints;                      // To hold the player's current hit points
+        private int _maxHitPoints;                          // To hold the playerr's max hit points
         private int _alignment;
         private string _faction;
         private static Room _currentLocation;                      // Not used as of yet!
@@ -42,6 +44,8 @@ namespace Engine
         public int Gold { get { return _gold; } set { _gold = value;} }
         public int Level { get { return ((ExperiencePoints / 100) + 1); }}
         public int AC { get { return _ac; } set { _ac = value; }}
+        public int CurrentHitPoints { get { return _currentHitPoints; } set { _currentHitPoints = value; } }
+        public int MaxHitPoints { get { return _maxHitPoints; } set { _maxHitPoints = value; } }
         public string Faction { get { return _faction; } set { _faction = value; } }
         public int Alignment { get { return _alignment; } set { _alignment = value; } }
         public static Room CurrentLocation { get { return _currentLocation; } set { _currentLocation = value; } }
@@ -56,7 +60,7 @@ namespace Engine
         * derived from so that the player can inherate these values.
         */
         #region Constructors
-        public Player(String name, String PC, String PR, int gold, int currentHitPoints, int maximumHitPoints, Weapon equipt, bool isDead, bool canBeAttacked, string faction, int alignment)
+        public Player(string name, string PC, string PR, int gold, int currentHitPoints, int maximumHitPoints, Weapon equipt, bool isDead, bool canBeAttacked, string faction, int alignment)
             : base(currentHitPoints, maximumHitPoints, isDead, canBeAttacked, faction)
         {
             this.PlayerName = name;
@@ -65,6 +69,8 @@ namespace Engine
             this.Gold = gold;
             this.ExperiencePoints = 0;
             this.AC = 10;
+            this.CurrentHitPoints = currentHitPoints;
+            this.MaxHitPoints = maximumHitPoints;
             this.Equipt = equipt;
             this.Alignment = alignment;
             Inventory = new List<InventoryItem>();

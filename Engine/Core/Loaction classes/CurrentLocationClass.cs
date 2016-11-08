@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public static class CurrentLocationClass
+    public static class CurrentLocationClass 
     {
         #region DisplayCurrentLocation
         public static void DisplayCurrentLocation()
@@ -55,7 +55,7 @@ namespace Engine
                 Console.ForegroundColor = ConsoleColor.White;
             }
 
-            if (Player.CurrentLocation.RoomNPC != null)
+            if (Player.CurrentLocation.RmNPC != null)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 foreach (NPC npc in Player.CurrentLocation.RmNPC)
