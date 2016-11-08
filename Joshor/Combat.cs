@@ -25,6 +25,8 @@ namespace Joshor
     //        get { return _attackResult; }
     //    }
 
+    //USELESS, IGNORE
+
     //    public int DamageResults
     //    {
     //        get { return _damageResult; }
