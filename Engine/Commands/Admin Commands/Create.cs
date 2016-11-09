@@ -28,9 +28,6 @@ namespace Engine
 
             if (userInput.ToLower() == "item")
             {
-
-
-
                 CreateItem();
             }
             else if (userInput.ToLower() == "npc")
@@ -55,75 +52,14 @@ namespace Engine
         public static void CreateItem()
         {
             CreateScreen createItem = new CreateScreen();
-            //createForm.Show();
+            //This gives the newly instantiated copy of the form
+            //focus, instead of the console window    
+            createItem.Show();
+            createItem.Activate();
+            //
+
             Application.Run(createItem);
-            //string userInput;
-            //int id;
-            //string name;
-            //string namePlural;
-            //string desc;
-            //int price;
-            //bool equiptable;
-            //bool exist = false;
-
-
-            //while (exist == false)
-            //{
-            //    Console.WriteLine("What is the item's ID?");
-            //    Console.ForegroundColor = ConsoleColor.Yellow;
-            //    Console.WriteLine("201 - 300 >");
-            //    Console.ForegroundColor = ConsoleColor.White;
-            //    userInput = Console.ReadLine();
-            //    if (userInput != null)
-            //    {
-            //        id = Convert.ToInt32(userInput);
-            //        if (id > 200 && id < 300)
-            //        {
-            //            foreach (Item item in World.Items.ToList())
-            //            {
-            //                if (item.ID == id)
-            //                {
-            //                    Console.WriteLine("That item already exist");
-            //                }
-            //            }
-
-
-            //            Console.WriteLine("Name of the item.");
-            //            name = Console.ReadLine();
-
-            //            Console.WriteLine("Pluarl name of the item.");
-            //            namePlural = Console.ReadLine();
-
-            //            Console.WriteLine("Description of the item.");
-            //            desc = Console.ReadLine();
-
-            //            Console.WriteLine("Price of the item.");
-            //            price = Convert.ToInt32(Console.ReadLine());
-
-            //            Console.WriteLine("Can item be equipt.");
-            //            Console.ForegroundColor = ConsoleColor.Yellow;
-            //            Console.WriteLine("True or False > ");
-            //            Console.ForegroundColor = ConsoleColor.White;
-            //            equiptable = bool.Parse(Console.ReadLine());
-
-            //            World.Items.Add(new Item(id, name, namePlural, desc, price, equiptable));
-
-            //            if (File.Exists(@"../../../Engine/Docs/Items.txt"))
-            //            {
-            //                File.AppendAllText(@"../../../Engine/Docs/Items.txt", "" + Environment.NewLine);
-            //                File.AppendAllText(@"../../../Engine/Docs/Items.txt", id.ToString() + Environment.NewLine);
-            //                File.AppendAllText(@"../../../Engine/Docs/Items.txt", name + Environment.NewLine);
-            //                File.AppendAllText(@"../../../Engine/Docs/Items.txt", namePlural + Environment.NewLine);
-            //                File.AppendAllText(@"../../../Engine/Docs/Items.txt", desc + Environment.NewLine);
-            //                File.AppendAllText(@"../../../Engine/Docs/Items.txt", price.ToString() + Environment.NewLine);
-            //                File.AppendAllText(@"../../../Engine/Docs/Items.txt", equiptable.ToString());
-            //            }
-
-            //            exist = true;
-            //        }
-
-            //    }
-            //}    
+           
         }
         #endregion
 
@@ -223,6 +159,7 @@ namespace Engine
         #region Create Mob
         public static void CreateMob()
         {
+           
             string userInput;
             int id;
             string name;
@@ -324,78 +261,8 @@ namespace Engine
         #region Create Weapon
         public static void CreateWeapon()
         {
-            string userInput;
-            int id;                         // To hold the Weapon's ID number
-            string name;                    // To hold the Weapon's name
-            string namePluarl;
-            string desc;
-            int cost;                       // To hold the Weapon's cost
-            string damage;                  // To hold the Weapon's damage
-            string damageType;              // To hold the Weapon's damage type
-            bool equiptable = true;
-            bool exist = false;
-
-
-            while (exist == false)
-            {
-                Console.WriteLine("What is the weapon's ID?");
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("101 - 200 >");
-                Console.ForegroundColor = ConsoleColor.White;
-                userInput = Console.ReadLine();
-                if (userInput != null)
-                {
-                    id = Convert.ToInt32(userInput);
-                    if (id > 100 && id <= 200)
-                    {
-                        foreach (Item item in World.Items.ToList())
-                        {
-                            if (item.ID == id)
-                            {
-                                Console.WriteLine("That weapon already exist");
-                            }
-                        }
-
-
-                        Console.WriteLine("Name of the weapon.");
-                        name = Console.ReadLine();
-
-                        Console.WriteLine("Pluarl name of the weapon.");
-                        namePluarl =Console.ReadLine();
-
-                        Console.WriteLine("Give it a description.");
-                        desc = Console.ReadLine();
-
-                        Console.WriteLine("Cost of the weapon.");
-                        cost = Convert.ToInt32(Console.ReadLine());
-
-                        Console.WriteLine("Damge rate of the weapon.");
-                        damage = Console.ReadLine();
-
-                        Console.WriteLine("Type of damage of the weapon.");
-                        damageType = Console.ReadLine();
-                        
-
-                        World.Weapons.Add(new Weapon(id, name, namePluarl, desc, cost, damage, damageType, equiptable));
-
-                        if (File.Exists(@"../../../Engine/Docs/Weapon.txt"))
-                        {
-                            File.AppendAllText(@"../../../Engine/Docs/Weapon.txt", "" + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Weapon.txt", id.ToString() + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Weapon.txt", name + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Weapon.txt", namePluarl + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Weapon.txt", desc + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Weapon.txt", cost.ToString() + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Weapon.txt", damage.ToString() + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Weapon.txt", damageType + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Weapon.txt", equiptable.ToString());
-                        }
-
-                        exist = true;
-                    }
-
-                }
-            }
+            CreateWeapon createWeapon = new CreateWeapon();
+            Application.Run(createWeapon);
         }
         #endregion
 

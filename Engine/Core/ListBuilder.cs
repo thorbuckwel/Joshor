@@ -112,7 +112,7 @@ namespace Engine
                     string desc = reader.ReadLine();
                     int cost = int.Parse(reader.ReadLine());
                     string damage = reader.ReadLine();
-                    String type = reader.ReadLine();
+                    string type = reader.ReadLine();
                     bool equiptable = bool.Parse(reader.ReadLine());
 
                     World.Weapons.Add(new Weapon(id, name, namePluarl, desc, cost, damage, type, equiptable));

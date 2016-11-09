@@ -11,19 +11,58 @@ namespace Engine
         #region DisplayCurrentLocation
         public static void DisplayCurrentLocation()
         {
+            
             Console.WriteLine("You are at: {0}", Player.CurrentLocation.RoomName);            
 
             if (Player.CurrentLocation.RoomDescript != "")
             {
-                Console.WriteLine(Player.CurrentLocation.RoomDescript);
+                Console.WriteLine(Player.CurrentLocation.RoomDescript);                
             }
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            string exits = "\n[Exits: ";
+            //Console.Write("[Exits: ");
+            List<string> validExits = new List<string>();
+            if (Player.CurrentLocation.LocationToNorth != -1)
+                validExits.Add("north");
+            if (Player.CurrentLocation.LocationToEast != -1)
+                validExits.Add("east");
+            if (Player.CurrentLocation.LocationToSouth != -1)
+                validExits.Add("south");
+            if (Player.CurrentLocation.LocationToWest != -1)
+                validExits.Add("west");
+            if (validExits.Count == 1)
+                exits += validExits[0] + " ";
+            else
+            {
+                for (int i = 0; i < validExits.Count; i++)
+                {
+                    exits += validExits[i];
+                    if (i < validExits.Count - 1)
+                        exits += ", ";
+                }
+            }
+            
+            
+            //etc
+            //if (Player.CurrentLocation.LocationToNorth != -1)
+            //    exits += "north ";
+            //if (Player.CurrentLocation.LocationToEast != -1)
+            //    exits += "east ";
+            //if (Player.CurrentLocation.LocationToSouth != -1)
+            //    exits += "south ";
+            //if (Player.CurrentLocation.LocationToWest != -1)
+            //    exits += "west ";
+
+            Console.WriteLine(exits + "]");
+
 
             if (Player.CurrentLocation.RoomLoot != null)
             {
-                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.ForegroundColor = ConsoleColor.Gray;
                 foreach (Item item in Player.CurrentLocation.RoomLoot)
                 {
-                    Console.WriteLine(item.Name);
+                    Console.WriteLine("      " + item.Name);
                 }
                 Console.ForegroundColor = ConsoleColor.White;
             }
@@ -37,10 +76,9 @@ namespace Engine
                     {
 
                         Player.CurrentMonster = mob;
-
-                        Console.WriteLine("");
+                        
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine(" A " + mob.Name + " is wondering around here.");
+                        Console.WriteLine("A " + mob.Name + " is wondering around here.");
                         Console.ForegroundColor = ConsoleColor.White;
                     }
                     else

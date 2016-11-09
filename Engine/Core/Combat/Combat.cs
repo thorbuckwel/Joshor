@@ -31,18 +31,24 @@ namespace Engine
         /**
          * This method takes the Mob, player and weapon then runs a battle until one of them is dead.
          */
-        public void Fight(Monster enemy, Player player, Weapon equipt)
+        public void Fight(Monster enemy, Player player)
         {
 
             // Create the Dice objects
             DiceRoll attack = new DiceRoll(1, 20);      //Repersents 1D20 die
-            DiceRoll pDamage = new DiceRoll(equipt.Damage);
+            DiceRoll pDamage = new DiceRoll(player.Equipt.Damage);
             DiceRoll mobDamage = new DiceRoll(enemy.Damage);
+            if (enemy.CanBeAttacked == false)
+            {
+                Console.WriteLine("Can't be attacked for whatever reason");
+                return;
+            }
+
             while (enemy.IsDead != true && player.IsDead != true)
             {
                 _attackResult = attack.Roll();
 
-                Console.WriteLine("Your attack with your " + player.Equipt + ": " + AttackResults);
+                Console.WriteLine("Your attack with your " + player.Equipt.ToString() + ": " + AttackResults);
 
                 if (AttackResults >= enemy.AC)
                 {

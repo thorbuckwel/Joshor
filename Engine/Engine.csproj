@@ -96,6 +96,30 @@
     <Compile Include="CreateItem.Designer.cs">
       <DependentUpon>CreateItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateMob.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateMob.Designer.cs">
+      <DependentUpon>CreateMob.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateNPC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateNPC.Designer.cs">
+      <DependentUpon>CreateNPC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateRoom.Designer.cs">
+      <DependentUpon>CreateRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateWeapon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateWeapon.Designer.cs">
+      <DependentUpon>CreateWeapon.cs</DependentUpon>
+    </Compile>
     <Compile Include="Enum\Factions.cs" />
     <Compile Include="Enum\WearLocations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -145,6 +169,12 @@
   <ItemGroup>
     <EmbeddedResource Include="CreateItem.resx">
       <DependentUpon>CreateItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateRoom.resx">
+      <DependentUpon>CreateRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateWeapon.resx">
+      <DependentUpon>CreateWeapon.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

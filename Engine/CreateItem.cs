@@ -18,7 +18,7 @@ namespace JosherConsole
         public CreateScreen()
         {
             InitializeComponent();
-            BuildLists();
+            BuildLists();            
         }
 
         private void BuildLists()
