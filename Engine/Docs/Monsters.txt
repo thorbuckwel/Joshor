@@ -76,3 +76,16 @@ Image:
 IsDead: False
 CanBeAttacked: True
 Faction: Good
+ID: 9
+Name: Worm
+XP: 5
+Gold: 4
+Armor: 4
+Damage: 1D3
+BaseAttack: 0
+CurrentHp: 4
+MaxHp: 4
+Image: 
+IsDead: false
+CanBeAttacked: True
+Faction: Villain

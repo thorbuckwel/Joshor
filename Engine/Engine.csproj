@@ -176,6 +176,9 @@
     <EmbeddedResource Include="Form\CreateItem.resx">
       <DependentUpon>CreateItem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form\CreateMob.resx">
+      <DependentUpon>CreateMob.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\CreateNPC.resx">
       <DependentUpon>CreateNPC.cs</DependentUpon>
     </EmbeddedResource>
@@ -188,6 +191,9 @@
     <EmbeddedResource Include="Form\Spawning.resx">
       <DependentUpon>Spawning.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

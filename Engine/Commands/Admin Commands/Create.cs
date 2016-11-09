@@ -97,102 +97,12 @@ namespace Engine
         #region Create Mob
         public static void CreateMob()
         {
-           
-            string userInput;
-            int id;
-            string name;
-            int xp;
-            int armor;
-            int gold;
-            string damage;
-            int baseAttack;
-            int currentHitpoints;
-            int maxHitpoints;
-            string image = "";
-            bool isDead = false;
-            bool canBeattacked = true;
-            Factions faction;
-            bool exist = false;
-
-            while (exist == false)
-            {
-                Console.WriteLine("What is the Mob's ID?");
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("1 - 100 >");
-                Console.ForegroundColor = ConsoleColor.White;
-                userInput = Console.ReadLine();
-
-                if (userInput != null)
-                {
-                    id = Convert.ToInt32(userInput);
-                    if (id > 0 && id <= 100)
-                    {
-                        foreach (Monster mob in World.Monsters.ToList())
-                        {
-                            if (mob.ID == id)
-                            {
-                                Console.WriteLine("That Mob already exist");
-                            }
-                        }
-
-
-                        Console.WriteLine("Name of the Mob.");
-                        name = CapWord.FirstCharToUpper(Console.ReadLine());
-
-                        Console.WriteLine("How much Xp does Mob contain?");
-                        xp = Convert.ToInt32(Console.ReadLine());
-
-                        Console.WriteLine("Gold on the NPC.");
-                        gold = Convert.ToInt32(Console.ReadLine());
-
-                        Console.WriteLine("How much Armor does Mob have?");
-                        armor = Convert.ToInt32(Console.ReadLine());                        
-
-                        Console.WriteLine("What is the Mob's damage rating?");
-                        damage = Console.ReadLine();
-
-                        Console.WriteLine("What is the Mob's base attack?");
-                        baseAttack = Convert.ToInt32(Console.ReadLine());
-
-                        Console.WriteLine("What is the NPC's current hitpoints?");
-                        currentHitpoints = Convert.ToInt32(Console.ReadLine());
-
-                        Console.WriteLine("What is the NPC's max hitpoints?");
-                        maxHitpoints = Convert.ToInt32(Console.ReadLine());                        
-
-                        Console.WriteLine("To what faction does the NPC belong?");
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("Evil, Good > ");
-                        Console.ForegroundColor = ConsoleColor.White;
-                        faction = (Factions)Enum.Parse(typeof(Factions), CapWord.FirstCharToUpper(Console.ReadLine()), true);
-
-                        World.Monsters.Add(new Monster(id, name, xp, gold, armor, damage, baseAttack, currentHitpoints, maxHitpoints, image, isDead, canBeattacked, faction));
-
-                        if (File.Exists(@"../../../Engine/Docs/Monsters.txt"))
-                        {
-                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", "" + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", "ID: " + id.ToString() + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", "Name: " + name + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", "XP: " + xp.ToString() + Environment.NewLine);                            
-                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", "Gold: " + gold.ToString() + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", "Armor: " + armor.ToString() + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", "Damage: " + damage + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", "BaseAttack: " + baseAttack.ToString() + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", "CurrentHp: " + currentHitpoints.ToString() + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", "MaxHp: " + maxHitpoints.ToString() + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", "Image: " + image + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", "IsDead: " + isDead.ToString() + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", "CanBeAttacked: " + canBeattacked.ToString() + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/Monsters.txt", "Faction: " + faction.ToString());
-                        }
-
-                        exist = true;
-                    }
-
-                }
-            }
-
-
+            CreateMob createMob = new CreateMob();
+            //This gives the newly instantiated copy of the form
+            //focus, instead of the console window    
+            createMob.Show();
+            createMob.Activate();
+            Application.Run(createMob); 
         }
         #endregion
 
