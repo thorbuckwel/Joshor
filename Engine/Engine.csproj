@@ -90,34 +90,34 @@
     <Compile Include="Core\Mob,Player,NPC\Player.cs" />
     <Compile Include="Create,Load,Save\PlayerDataMapper.cs" />
     <Compile Include="Core\Item,Weapon,Treasure\Potion.cs" />
-    <Compile Include="CreateItem.cs">
+    <Compile Include="Form\CreateItem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateItem.Designer.cs">
+    <Compile Include="Form\CreateItem.Designer.cs">
       <DependentUpon>CreateItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateMob.cs">
+    <Compile Include="Form\CreateMob.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateMob.Designer.cs">
+    <Compile Include="Form\CreateMob.Designer.cs">
       <DependentUpon>CreateMob.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateNPC.cs">
+    <Compile Include="Form\CreateNPC.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateNPC.Designer.cs">
+    <Compile Include="Form\CreateNPC.Designer.cs">
       <DependentUpon>CreateNPC.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateRoom.cs">
+    <Compile Include="Form\CreateRoom.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateRoom.Designer.cs">
+    <Compile Include="Form\CreateRoom.Designer.cs">
       <DependentUpon>CreateRoom.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateWeapon.cs">
+    <Compile Include="Form\CreateWeapon.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateWeapon.Designer.cs">
+    <Compile Include="Form\CreateWeapon.Designer.cs">
       <DependentUpon>CreateWeapon.cs</DependentUpon>
     </Compile>
     <Compile Include="Enum\Factions.cs" />
@@ -127,6 +127,12 @@
     <Compile Include="Core\Loaction classes\Room.cs" />
     <Compile Include="Core\Item,Weapon,Treasure\Treasure.cs" />
     <Compile Include="Core\Item,Weapon,Treasure\Weapon.cs" />
+    <Compile Include="Form\Spawning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Spawning.Designer.cs">
+      <DependentUpon>Spawning.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database1.mdf">
@@ -167,14 +173,17 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CreateItem.resx">
+    <EmbeddedResource Include="Form\CreateItem.resx">
       <DependentUpon>CreateItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateRoom.resx">
+    <EmbeddedResource Include="Form\CreateRoom.resx">
       <DependentUpon>CreateRoom.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateWeapon.resx">
+    <EmbeddedResource Include="Form\CreateWeapon.resx">
       <DependentUpon>CreateWeapon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Spawning.resx">
+      <DependentUpon>Spawning.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
