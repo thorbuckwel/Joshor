@@ -176,6 +176,9 @@
     <EmbeddedResource Include="Form\CreateItem.resx">
       <DependentUpon>CreateItem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form\CreateNPC.resx">
+      <DependentUpon>CreateNPC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\CreateRoom.resx">
       <DependentUpon>CreateRoom.cs</DependentUpon>
     </EmbeddedResource>

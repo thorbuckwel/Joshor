@@ -56,8 +56,6 @@ namespace Engine
             //focus, instead of the console window    
             createItem.Show();
             createItem.Activate();
-            //
-
             Application.Run(createItem);
            
         }
@@ -66,93 +64,33 @@ namespace Engine
         #region Create NPC
         public static void CreateNPC()
         {
-            string userInput;
-            int id;                                 // To hold the ID number of the Monster
-            string npcName;                         // To hold the player's name
-            string npcClass;                        // To hold the player's class
-            string npcRace;                         // To hold the player's race            
-            int gold;                               // To hold the player's gold
-            int currentHP;
-            int maxHP;
-            bool isDead = false;
-            bool canBeAttacked;
-            string faction;
-            bool exist = false;
-
-            while (exist == false)
-            {
-                Console.WriteLine("What is the item's ID?");
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("201 - 300 >");
-                Console.ForegroundColor = ConsoleColor.White;
-                userInput = Console.ReadLine();
-
-                if (userInput != null)
-                {
-                    id = Convert.ToInt32(userInput);
-                    if (id > 600 && id <= 700)
-                    {
-                        foreach (NPC npc in World.NPCs.ToList())
-                        {
-                            if (npc.ID == id)
-                            {
-                                Console.WriteLine("That NPC already exist");
-                            }
-                        }
+            CreateNPC createNpc = new CreateNPC();
+            //This gives the newly instantiated copy of the form
+            //focus, instead of the console window    
+            createNpc.Show();
+            createNpc.Activate();
+            Application.Run(createNpc);
 
 
-                        Console.WriteLine("Name of the NPC.");
-                        npcName = Console.ReadLine();
+            //    World.NPCs.Add(new NPC(id, npcName, npcClass, npcRace, gold, currentHP, maxHP, false, canBeAttacked, faction));
 
-                        Console.WriteLine("Class of NPC.");
-                        npcClass = Console.ReadLine();
+            //    if (File.Exists(@"../../../Engine/Docs/NPCs.txt"))
+            //    {
+            //        File.AppendAllText(@"../../../Engine/Docs/NPCs.txt", "" + Environment.NewLine);
+            //        File.AppendAllText(@"../../../Engine/Docs/NPCs.txt", id.ToString() + Environment.NewLine);
+            //        File.AppendAllText(@"../../../Engine/Docs/NPCs.txt", npcName + Environment.NewLine);
+            //        File.AppendAllText(@"../../../Engine/Docs/NPCs.txt", npcClass + Environment.NewLine);
+            //        File.AppendAllText(@"../../../Engine/Docs/NPCs.txt", npcRace + Environment.NewLine);
+            //        File.AppendAllText(@"../../../Engine/Docs/NPCs.txt", gold + Environment.NewLine);
+            //        File.AppendAllText(@"../../../Engine/Docs/NPCs.txt", currentHP.ToString() + Environment.NewLine);
+            //        File.AppendAllText(@"../../../Engine/Docs/NPCs.txt", maxHP.ToString());
+            //        File.AppendAllText(@"../../../Engine/Docs/NPCs.txt", isDead.ToString());
+            //        File.AppendAllText(@"../../../Engine/Docs/NPCs.txt", canBeAttacked.ToString());
+            //        File.AppendAllText(@"../../../Engine/Docs/NPCs.txt", faction.ToString());
+            //    }
 
-                        Console.WriteLine("Race of NPC.");
-                        npcRace = Console.ReadLine();
-
-                        Console.WriteLine("Gold on the NPC.");
-                        gold = Convert.ToInt32(Console.ReadLine());
-
-                        Console.WriteLine("What is the NPC's current hitpointd?");
-                        currentHP = Convert.ToInt32(Console.ReadLine());
-
-                        Console.WriteLine("What is the NPC's max hitpointd?");
-                        maxHP = Convert.ToInt32(Console.ReadLine());
-
-                        Console.WriteLine("Can this NPC be attacked?");
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("True or False > ");
-                        Console.ForegroundColor = ConsoleColor.White;
-                        canBeAttacked = bool.Parse(Console.ReadLine());
-
-                        Console.WriteLine("To what faction does the NPC belong?");
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("Hero, Villion, Ventor, Evil, Good, Warrior, Mage, Thief > ");
-                        Console.ForegroundColor = ConsoleColor.White;
-                        faction = Console.ReadLine();
-
-                        World.NPCs.Add(new NPC(id, npcName, npcClass, npcRace, gold, currentHP, maxHP, false, canBeAttacked, faction));
-
-                        if (File.Exists(@"../../../Engine/Docs/NPCs.txt"))
-                        {
-                            File.AppendAllText(@"../../../Engine/Docs/NPCs.txt", "" + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/NPCs.txt", id.ToString() + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/NPCs.txt", npcName + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/NPCs.txt", npcClass + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/NPCs.txt", npcRace + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/NPCs.txt", gold + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/NPCs.txt", currentHP.ToString() + Environment.NewLine);
-                            File.AppendAllText(@"../../../Engine/Docs/NPCs.txt", maxHP.ToString());
-                            File.AppendAllText(@"../../../Engine/Docs/NPCs.txt", isDead.ToString());
-                            File.AppendAllText(@"../../../Engine/Docs/NPCs.txt", canBeAttacked.ToString());
-                            File.AppendAllText(@"../../../Engine/Docs/NPCs.txt", faction.ToString());
-                        }
-
-                        exist = true;
-                    }
-
-                }
-            }
+            //    exist = true;
+            //}
         }
         #endregion
 
@@ -173,7 +111,7 @@ namespace Engine
             string image = "";
             bool isDead = false;
             bool canBeattacked = true;
-            string faction;
+            Factions faction;
             bool exist = false;
 
             while (exist == false)
@@ -226,7 +164,7 @@ namespace Engine
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("Evil, Good > ");
                         Console.ForegroundColor = ConsoleColor.White;
-                        faction = CapWord.FirstCharToUpper(Console.ReadLine());
+                        faction = (Factions)Enum.Parse(typeof(Factions), CapWord.FirstCharToUpper(Console.ReadLine()), true);
 
                         World.Monsters.Add(new Monster(id, name, xp, gold, armor, damage, baseAttack, currentHitpoints, maxHitpoints, image, isDead, canBeattacked, faction));
 

@@ -13,7 +13,7 @@ namespace Engine
             string name;
             string className = "";
             string raceName = "";
-            string faction = "";
+            Factions faction = Factions.Admin;
             int alignment = 0;
             int gold = 0;
             int hp = 0;
@@ -90,15 +90,14 @@ namespace Engine
                 Console.WriteLine("To what faction do you belong?");
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write("Hero, Villion > ");
-                faction = Console.ReadLine().ToLower();
+                string strFaction =  CapWord.FirstCharToUpper(Console.ReadLine());
 
-                if (faction == "hero" || faction == "villion" || faction == "admin")
+                if (strFaction == Factions.Hero.ToString() || strFaction == Factions.Evil.ToString() || strFaction == Factions.Admin.ToString()) 
                 {
+                    faction = (Factions)Enum.Parse(typeof(Factions), strFaction, true);
                     validFaction = true;
-                    string capFaction = CapWord.FirstCharToUpper(faction);
-                    faction = capFaction;
-                }
-
+                    
+                }                
             }
         
             Console.ForegroundColor = ConsoleColor.White;

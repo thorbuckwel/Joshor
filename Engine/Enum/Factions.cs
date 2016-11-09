@@ -7,30 +7,30 @@
     public enum Factions : ulong
     {
         /// <summary>Faction for heros.</summary>
-        Hero = 1,
+        Hero,
 
         /// <summary>Faction for Villains.</summary>
-        Villain = 2,
+        Villain,
 
         /// <summary>Faction for Ventors.</summary>
-        Ventor = 4,
+        Ventor,
 
         /// <summary>Faction for Thiefs.</summary>
-        Thief = 8,
+        Thief,
 
         /// <summary>Faction for Warriors.</summary>
-        Warrior = 16,
+        Warrior,
 
         /// <summary>Faction for Mages.</summary>
-        Mage = 32,
+        Mage,
 
         /// <summary>Faction for Mages.</summary>
-        Admin = 64,
+        Admin,
 
         /// <summary>Faction for Mages.</summary>
-        Evil = 128,
+        Evil,
 
         /// <summary>Faction for Mages.</summary>
-        Good = 256,
+        Good,
     }
 }

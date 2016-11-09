@@ -42,7 +42,7 @@ namespace Engine
          * derived from so that the monster can inherate these values.
          */
         #region Constructors
-        public Monster(int id, string name, int xp, int gold, int armor, string dam, int ba, int mobcurrentHitpoints, int mobmaximumHitpoints, string image, bool mobIsDead, bool canBeAttacked, string faction):
+        public Monster(int id, string name, int xp, int gold, int armor, string dam, int ba, int mobcurrentHitpoints, int mobmaximumHitpoints, string image, bool mobIsDead, bool canBeAttacked, Factions faction):
             base(mobcurrentHitpoints, mobmaximumHitpoints, mobIsDead, canBeAttacked, faction)
             
         { 

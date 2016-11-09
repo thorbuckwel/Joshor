@@ -22,7 +22,7 @@ namespace Engine
         private int _currentHitPoints;                      // To hold the player's current hit points
         private int _maxHitPoints;                          // To hold the playerr's max hit points
         private int _alignment;
-        private string _faction;
+        private Factions _faction;
         private static Room _currentLocation;                      // Not used as of yet!
         private Weapon _equipt;                             // To hold the currently equipt weapon
         private static Monster _currentMonster;
@@ -46,7 +46,7 @@ namespace Engine
         public int AC { get { return _ac; } set { _ac = value; }}
         public int CurrentHitPoints { get { return _currentHitPoints; } set { _currentHitPoints = value; } }
         public int MaxHitPoints { get { return _maxHitPoints; } set { _maxHitPoints = value; } }
-        public string Faction { get { return _faction; } set { _faction = value; } }
+        public Factions Faction { get { return _faction; } set { _faction = value; } }
         public int Alignment { get { return _alignment; } set { _alignment = value; } }
         public static Room CurrentLocation { get { return _currentLocation; } set { _currentLocation = value; } }
         public Weapon Equipt { get { return _equipt; } set { _equipt = value; } }
@@ -60,7 +60,7 @@ namespace Engine
         * derived from so that the player can inherate these values.
         */
         #region Constructors
-        public Player(string name, string PC, string PR, int gold, int currentHitPoints, int maximumHitPoints, Weapon equipt, bool isDead, bool canBeAttacked, string faction, int alignment)
+        public Player(string name, string PC, string PR, int gold, int currentHitPoints, int maximumHitPoints, Weapon equipt, bool isDead, bool canBeAttacked, Factions faction, int alignment)
             : base(currentHitPoints, maximumHitPoints, isDead, canBeAttacked, faction)
         {
             this.PlayerName = name;

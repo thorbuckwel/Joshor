@@ -41,7 +41,7 @@ namespace Engine
                 Console.WriteLine("Got gold: " + gold.ToString());
                 int experiencePoints = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/ExperiencePoints").InnerText);
                 Console.WriteLine("Got experience: " + experiencePoints.ToString());
-                string factionString = (playerData.SelectSingleNode("/Player/Stats/Faction").InnerText);
+                Factions factionString = (Factions)Enum.Parse(typeof(Factions), (playerData.SelectSingleNode("/Player/Stats/Faction").InnerText), true);
                 Console.WriteLine("Got Faction: " + factionString.ToString());
                 int alignment = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/Alignment").InnerText);
                 Console.WriteLine("Got Faction: " + factionString.ToString());

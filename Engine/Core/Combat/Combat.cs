@@ -67,11 +67,11 @@ namespace Engine
                         Player.CurrentLocation.RoomMob.Remove(enemy);
                         player.ExperiencePoints += enemy.Experiance;
                         player.Gold += enemy.Gold;
-                        if(enemy.Factions == "Evil")
+                        if(enemy.Factions == Factions.Evil)
                         {
                             player.Alignment++;
                         }
-                        else if (enemy.Factions == "Good")
+                        else if (enemy.Factions == Factions.Good)
                         {
                             player.Alignment--;
                         }

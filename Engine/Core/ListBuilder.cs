@@ -58,7 +58,7 @@ namespace Engine
 
                     bool canBeattacked = bool.Parse(GetNextLine(reader)[1]);
 
-                    string faction = GetNextLine(reader)[1];
+                    Factions faction = (Factions)Enum.Parse(typeof(Factions), GetNextLine(reader)[1], true);
 
                     World.Monsters.Add(new Monster(id, name, xp, gold, armor, damage, baseAttack, currentHitpoints, maxHitpoints, image, isDead, canBeattacked, faction));
                 }
@@ -87,7 +87,7 @@ namespace Engine
                     int maxHitpoints = int.Parse(reader.ReadLine());
                     bool isDead = bool.Parse(reader.ReadLine());                    
                     bool canBeattacked = bool.Parse(reader.ReadLine());
-                    string faction = reader.ReadLine();
+                    Factions faction = (Factions)Enum.Parse(typeof(Factions), reader.ReadLine(), true); 
                     World.NPCs.Add(new NPC(id, npcName, npcClass, npcRace, gold, currentHitpoints, maxHitpoints, isDead, canBeattacked, faction));
                 }
             }

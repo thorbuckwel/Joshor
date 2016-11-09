@@ -36,7 +36,7 @@ namespace Engine
         * derived from so that the player can inherate these values.
         */
         #region Constructor
-        public NPC(int id, String name, String PC, String PR, int gold, int currentHitPoints, int maximumHitPoints,bool isDead, bool canBeAttacked, string faction)
+        public NPC(int id, String name, String PC, String PR, int gold, int currentHitPoints, int maximumHitPoints,bool isDead, bool canBeAttacked, Factions faction)
             : base(currentHitPoints, maximumHitPoints, isDead, canBeAttacked, faction)
         {
             this.ID = id;
