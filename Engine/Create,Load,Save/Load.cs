@@ -17,6 +17,7 @@ namespace Engine
             {
                 if (!File.Exists(name + ".xml"))
                 {
+                    Console.WriteLine("Player does not exist.");
                     IsNewPlayer.NewPlayer();
                     continue;
                 }
