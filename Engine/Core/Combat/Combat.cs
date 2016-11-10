@@ -101,6 +101,7 @@ namespace Engine
                     {
                         Console.WriteLine("You are dead!");                        
                         player.IsDead = true;
+                        Load.LoadGameData(player.PlayerName);
                                          
                     }
                 }

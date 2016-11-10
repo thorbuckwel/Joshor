@@ -13,20 +13,16 @@ namespace Engine
     { 
         public static void LoadGameData(string name)
         {
-            while (Player._player == null)
-            {
                 if (!File.Exists(name + ".xml"))
                 {
                     Console.WriteLine("Player does not exist.");
                     IsNewPlayer.NewPlayer();
-                    continue;
                 }
                 else
                 {
                     Player._player = null;
                     Player._player = CreatePlayerFromXmlString(File.ReadAllText(name + ".xml"));
                 }
-            }
             
         }
 
