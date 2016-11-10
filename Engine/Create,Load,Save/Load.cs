@@ -13,11 +13,20 @@ namespace Engine
     { 
         public static void LoadGameData(string name)
         {
-            if (File.Exists(name + ".xml"))
+            while (Player._player == null)
             {
-                Player._player = null;
-                Player._player = CreatePlayerFromXmlString(File.ReadAllText(name + ".xml"));
-            }            
+                if (!File.Exists(name + ".xml"))
+                {
+                    IsNewPlayer.NewPlayer();
+                    continue;
+                }
+                else
+                {
+                    Player._player = null;
+                    Player._player = CreatePlayerFromXmlString(File.ReadAllText(name + ".xml"));
+                }
+            }
+            
         }
 
         public static Player CreatePlayerFromXmlString(string PLAYER_DATA_FILE_NAME)
@@ -86,7 +95,7 @@ namespace Engine
             catch (Exception ex)
             {
                 // If there was an error with the XML data, return a default player object
-                //Console.WriteLine(ex.ToString());
+                Console.WriteLine(ex.ToString());
                 //return CreateDefaultPlayer();
                 return null;
             }
