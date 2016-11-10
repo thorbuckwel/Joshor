@@ -133,6 +133,11 @@
     <Compile Include="Form\Spawning.Designer.cs">
       <DependentUpon>Spawning.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database1.mdf">
@@ -159,6 +164,11 @@
     <Content Include="Image\Goblin.PNG" />
     <Content Include="Image\Hobgoblin.jpg" />
     <Content Include="Image\Kobold.jpg" />
+    <None Include="Resources\Rooms.jpg" />
+    <None Include="Resources\Npc.jpg" />
+    <None Include="Resources\Mob.jpg" />
+    <None Include="Resources\Weapons.jpg" />
+    <None Include="Resources\Items.jpg" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
@@ -190,6 +200,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\Spawning.resx">
       <DependentUpon>Spawning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

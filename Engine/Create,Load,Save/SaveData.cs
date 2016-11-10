@@ -9,7 +9,7 @@ namespace Engine
 {
     public static class SaveData
     {
-        public static string PLAYER_DATA_FILE_NAME = (Player._player.PlayerName.ToLower() +".xml");
+        public static string PLAYER_DATA_FILE_NAME = (CapWord.FirstCharToUpper(Player._player.PlayerName) +".xml");
 
         public static void SaveGameData(Player _player)
         {

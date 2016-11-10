@@ -234,6 +234,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::Engine.Properties.Resources.Npc;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(381, 234);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnCreate);

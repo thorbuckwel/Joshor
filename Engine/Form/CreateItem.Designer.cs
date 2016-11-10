@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.lblTitle = new System.Windows.Forms.Label();
-            this.gboItem = new System.Windows.Forms.GroupBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
             this.txtDescription = new System.Windows.Forms.TextBox();
@@ -44,7 +43,6 @@
             this.lblNamePlural = new System.Windows.Forms.Label();
             this.lblID = new System.Windows.Forms.Label();
             this.lblItemName = new System.Windows.Forms.Label();
-            this.gboItem.SuspendLayout();
             this.gboEquiptable.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,31 +56,9 @@
             this.lblTitle.TabIndex = 1;
             this.lblTitle.Text = "Create Item";
             // 
-            // gboItem
-            // 
-            this.gboItem.Controls.Add(this.btnClear);
-            this.gboItem.Controls.Add(this.btnCreate);
-            this.gboItem.Controls.Add(this.txtDescription);
-            this.gboItem.Controls.Add(this.lblDescription);
-            this.gboItem.Controls.Add(this.txtPrice);
-            this.gboItem.Controls.Add(this.txtNamePlural);
-            this.gboItem.Controls.Add(this.txtName);
-            this.gboItem.Controls.Add(this.txtID);
-            this.gboItem.Controls.Add(this.gboEquiptable);
-            this.gboItem.Controls.Add(this.lblCost);
-            this.gboItem.Controls.Add(this.lblNamePlural);
-            this.gboItem.Controls.Add(this.lblID);
-            this.gboItem.Controls.Add(this.lblItemName);
-            this.gboItem.Location = new System.Drawing.Point(12, 43);
-            this.gboItem.Name = "gboItem";
-            this.gboItem.Size = new System.Drawing.Size(325, 337);
-            this.gboItem.TabIndex = 2;
-            this.gboItem.TabStop = false;
-            this.gboItem.Text = "Items";
-            // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(170, 297);
+            this.btnClear.Location = new System.Drawing.Point(190, 350);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 12;
@@ -92,7 +68,7 @@
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(79, 297);
+            this.btnCreate.Location = new System.Drawing.Point(99, 350);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(75, 23);
             this.btnCreate.TabIndex = 11;
@@ -102,7 +78,7 @@
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(9, 153);
+            this.txtDescription.Location = new System.Drawing.Point(29, 206);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(292, 130);
@@ -111,7 +87,7 @@
             // lblDescription
             // 
             this.lblDescription.AutoSize = true;
-            this.lblDescription.Location = new System.Drawing.Point(117, 133);
+            this.lblDescription.Location = new System.Drawing.Point(137, 186);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(63, 13);
             this.lblDescription.TabIndex = 9;
@@ -119,28 +95,28 @@
             // 
             // txtPrice
             // 
-            this.txtPrice.Location = new System.Drawing.Point(107, 94);
+            this.txtPrice.Location = new System.Drawing.Point(127, 147);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(100, 20);
             this.txtPrice.TabIndex = 8;
             // 
             // txtNamePlural
             // 
-            this.txtNamePlural.Location = new System.Drawing.Point(107, 68);
+            this.txtNamePlural.Location = new System.Drawing.Point(127, 121);
             this.txtNamePlural.Name = "txtNamePlural";
             this.txtNamePlural.Size = new System.Drawing.Size(100, 20);
             this.txtNamePlural.TabIndex = 7;
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(107, 42);
+            this.txtName.Location = new System.Drawing.Point(127, 95);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(100, 20);
             this.txtName.TabIndex = 6;
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(107, 16);
+            this.txtID.Location = new System.Drawing.Point(127, 69);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(100, 20);
             this.txtID.TabIndex = 5;
@@ -148,7 +124,7 @@
             // gboEquiptable
             // 
             this.gboEquiptable.Controls.Add(this.cboItemEquiptable);
-            this.gboEquiptable.Location = new System.Drawing.Point(213, 19);
+            this.gboEquiptable.Location = new System.Drawing.Point(233, 72);
             this.gboEquiptable.Name = "gboEquiptable";
             this.gboEquiptable.Size = new System.Drawing.Size(88, 72);
             this.gboEquiptable.TabIndex = 4;
@@ -169,7 +145,7 @@
             // lblCost
             // 
             this.lblCost.AutoSize = true;
-            this.lblCost.Location = new System.Drawing.Point(6, 97);
+            this.lblCost.Location = new System.Drawing.Point(26, 150);
             this.lblCost.Name = "lblCost";
             this.lblCost.Size = new System.Drawing.Size(34, 13);
             this.lblCost.TabIndex = 3;
@@ -178,7 +154,7 @@
             // lblNamePlural
             // 
             this.lblNamePlural.AutoSize = true;
-            this.lblNamePlural.Location = new System.Drawing.Point(6, 71);
+            this.lblNamePlural.Location = new System.Drawing.Point(26, 124);
             this.lblNamePlural.Name = "lblNamePlural";
             this.lblNamePlural.Size = new System.Drawing.Size(67, 13);
             this.lblNamePlural.TabIndex = 2;
@@ -187,7 +163,7 @@
             // lblID
             // 
             this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(10, 19);
+            this.lblID.Location = new System.Drawing.Point(30, 72);
             this.lblID.Name = "lblID";
             this.lblID.Size = new System.Drawing.Size(21, 13);
             this.lblID.TabIndex = 1;
@@ -196,7 +172,7 @@
             // lblItemName
             // 
             this.lblItemName.AutoSize = true;
-            this.lblItemName.Location = new System.Drawing.Point(6, 45);
+            this.lblItemName.Location = new System.Drawing.Point(26, 98);
             this.lblItemName.Name = "lblItemName";
             this.lblItemName.Size = new System.Drawing.Size(38, 13);
             this.lblItemName.TabIndex = 0;
@@ -206,13 +182,25 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(350, 400);
-            this.Controls.Add(this.gboItem);
+            this.BackgroundImage = global::Engine.Properties.Resources.Items;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(352, 399);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.txtDescription);
+            this.Controls.Add(this.lblID);
+            this.Controls.Add(this.lblDescription);
+            this.Controls.Add(this.lblItemName);
+            this.Controls.Add(this.txtPrice);
+            this.Controls.Add(this.lblNamePlural);
+            this.Controls.Add(this.txtNamePlural);
+            this.Controls.Add(this.lblCost);
+            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.gboEquiptable);
+            this.Controls.Add(this.txtID);
             this.Name = "CreateScreen";
             this.Text = "CreateItem";
-            this.gboItem.ResumeLayout(false);
-            this.gboItem.PerformLayout();
             this.gboEquiptable.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -222,7 +210,6 @@
         #endregion
 
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.GroupBox gboItem;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.TextBox txtDescription;

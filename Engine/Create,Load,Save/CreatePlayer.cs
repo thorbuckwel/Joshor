@@ -24,7 +24,7 @@ namespace Engine
 
             Console.WriteLine("Give me your name.");
             Console.Write("> ");
-            name = Console.ReadLine();
+            name = CapWord.FirstCharToUpper(Console.ReadLine());
 
             while (validClass == false)
             {
@@ -92,7 +92,7 @@ namespace Engine
                 Console.Write("Hero, Villion > ");
                 string strFaction =  CapWord.FirstCharToUpper(Console.ReadLine());
 
-                if (strFaction == Factions.Hero.ToString() || strFaction == Factions.Evil.ToString() || strFaction == Factions.Admin.ToString()) 
+                if (strFaction == Factions.Hero.ToString() || strFaction == Factions.Villain.ToString() || strFaction == Factions.Admin.ToString()) 
                 {
                     faction = (Factions)Enum.Parse(typeof(Factions), strFaction, true);
                     validFaction = true;
@@ -101,7 +101,7 @@ namespace Engine
             }
         
             Console.ForegroundColor = ConsoleColor.White;
-            Player._player = new Player(name, className, raceName, gold, hp, hp, World.WeaponByID(103), false, true, faction, alignment);
+            Player._player = new Player(name, CapWord.FirstCharToUpper(className), CapWord.FirstCharToUpper(raceName), gold, hp, hp, World.WeaponByID(103), false, true, faction, alignment);
             Console.WriteLine("Creating character data, please wait!");
             SaveData.SaveGameData(Player._player);
             

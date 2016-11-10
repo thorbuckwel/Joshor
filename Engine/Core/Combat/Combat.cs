@@ -48,7 +48,7 @@ namespace Engine
             {
                 _attackResult = attack.Roll();
 
-                Console.WriteLine("Your attack with your " + player.Equipt.ToString() + ": " + AttackResults);
+                Console.WriteLine("Your attack with your " + player.Equipt.Name.ToString() + ": " + AttackResults);
 
                 if (AttackResults >= enemy.AC)
                 {

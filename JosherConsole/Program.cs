@@ -4,6 +4,8 @@ using System.Linq;
 using System.IO;
 using Engine;
 using System.Timers;
+using System.Diagnostics;
+
 
 namespace JosherConsole
 {
@@ -29,7 +31,7 @@ namespace JosherConsole
             #endregion
 
             CurrentLocationClass.DisplayCurrentLocation();
-            Console.WriteLine("");                              // Do this to make the first room desc look like the others
+            Console.WriteLine("");
 
             #region While loop
             // Infinite loop, until the user types "exit"
