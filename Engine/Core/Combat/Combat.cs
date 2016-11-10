@@ -64,6 +64,7 @@ namespace Engine
                     {
                         Console.WriteLine("The " + enemy.Name + " is dead!");
                         enemy.IsDead = true;
+                        Console.WriteLine("The fight took " + Round + " rounds to finish.");
                         Player.CurrentLocation.RoomMob.Remove(enemy);
                         player.ExperiencePoints += enemy.Experiance;
                         player.Gold += enemy.Gold;
@@ -99,9 +100,11 @@ namespace Engine
 
                     if (player.CurrentHitPoints <= 0)
                     {
-                        Console.WriteLine("You are dead!");                        
+                        Console.WriteLine("You are dead!");                                                
                         player.IsDead = true;
+                        Console.WriteLine("The fight took " + Round + " rounds to finish.\n");
                         Load.LoadGameData(player.PlayerName);
+                        CurrentLocationClass.DisplayCurrentLocation();
                                          
                     }
                 }
@@ -114,7 +117,7 @@ namespace Engine
 
             }
 
-            Console.WriteLine("The fight took " + Round + " rounds to finish.");
+            //Console.WriteLine("The fight took " + Round + " rounds to finish.");
             if (player.IsDead == true)
             {
                 player.PlayerName += "-Dead";

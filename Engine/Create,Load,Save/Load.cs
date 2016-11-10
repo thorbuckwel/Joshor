@@ -34,26 +34,26 @@ namespace Engine
 
                 playerData.LoadXml(PLAYER_DATA_FILE_NAME);
                 string playerName = playerData.SelectSingleNode("/Player/Stats/Name").InnerText;
-                Console.WriteLine("Got name: " + playerName);
+               // Console.WriteLine("Got name: " + playerName);
                 string PC = playerData.SelectSingleNode("/Player/Stats/Class").InnerText;
-                Console.WriteLine("Got class: " + PC);
+               // Console.WriteLine("Got class: " + PC);
                 string PR = playerData.SelectSingleNode("/Player/Stats/Race").InnerText;
-                Console.WriteLine("Got race: " + PR);
+                //Console.WriteLine("Got race: " + PR);
                 int currentHitPoints = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/CurrentHitPoints").InnerText);
-                Console.WriteLine("Got current hit points: " + currentHitPoints.ToString());
+               // Console.WriteLine("Got current hit points: " + currentHitPoints.ToString());
                 int maximumHitPoints = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/MaximumHitPoints").InnerText);
-                Console.WriteLine("Got max hit points: " + maximumHitPoints.ToString());
+               // Console.WriteLine("Got max hit points: " + maximumHitPoints.ToString());
                 int gold = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/Gold").InnerText);
-                Console.WriteLine("Got gold: " + gold.ToString());
+               // Console.WriteLine("Got gold: " + gold.ToString());
                 int experiencePoints = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/ExperiencePoints").InnerText);
-                Console.WriteLine("Got experience: " + experiencePoints.ToString());
+                //Console.WriteLine("Got experience: " + experiencePoints.ToString());
                 Factions factionString = (Factions)Enum.Parse(typeof(Factions), (playerData.SelectSingleNode("/Player/Stats/Faction").InnerText), true);
-                Console.WriteLine("Got Faction: " + factionString.ToString());
+                //Console.WriteLine("Got Faction: " + factionString.ToString());
                 int alignment = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/Alignment").InnerText);
-                Console.WriteLine("Got Faction: " + factionString.ToString());
+                //Console.WriteLine("Got Alignment: " + alignment.ToString());
                 int equiptString = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/CurrentWeapon").InnerText);
-                Console.WriteLine("Got equipt weapon: " + equiptString.ToString());                
                 Weapon equipt = World.WeaponByID(equiptString);
+               // Console.WriteLine("Got equipt weapon: " + equipt.Name.ToString());
 
                 Player player = new Player(playerName, PC, PR, gold, currentHitPoints, maximumHitPoints, equipt, false, true, factionString, alignment);
 
