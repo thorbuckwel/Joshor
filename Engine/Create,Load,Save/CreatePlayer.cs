@@ -13,7 +13,8 @@ namespace Engine
             string name;
             string className = "";
             string raceName = "";
-            Factions faction = Factions.Admin;
+            Factions faction = Factions.Hero;
+            bool admin = false;
             int alignment = 0;
             int gold = 0;
             int hp = 0;
@@ -92,7 +93,7 @@ namespace Engine
                 Console.Write("Hero, Villion > ");
                 string strFaction =  CapWord.FirstCharToUpper(Console.ReadLine());
 
-                if (strFaction == Factions.Hero.ToString() || strFaction == Factions.Villain.ToString() || strFaction == Factions.Admin.ToString()) 
+                if (strFaction == Factions.Hero.ToString() || strFaction == Factions.Villain.ToString()) 
                 {
                     faction = (Factions)Enum.Parse(typeof(Factions), strFaction, true);
                     validFaction = true;
@@ -101,7 +102,7 @@ namespace Engine
             }
         
             Console.ForegroundColor = ConsoleColor.White;
-            Player._player = new Player(name, CapWord.FirstCharToUpper(className), CapWord.FirstCharToUpper(raceName), gold, hp, hp, World.WeaponByID(103), false, true, faction, alignment);
+            Player._player = Load.CreatePlayerFromDatabase(name, CapWord.FirstCharToUpper(className), CapWord.FirstCharToUpper(raceName), gold, hp, hp, World.WeaponByID(103), false, true, faction, alignment);
             Console.WriteLine("Creating character data, please wait!");
             SaveData.SaveGameData(Player._player);
             

@@ -28,6 +28,17 @@ namespace JosherConsole
             autoSave.Elapsed += new ElapsedEventHandler(OnTimedEvent);
             autoSave.Interval = 300000;
             autoSave.Enabled = true;
+
+            //System.Timers.Timer mobSpawn = new System.Timers.Timer();
+            //mobSpawn.Elapsed += new ElapsedEventHandler(OnTimedEventMob);
+            //mobSpawn.Interval = 10000;
+            //mobSpawn.Enabled = true;
+
+            System.Timers.Timer heal = new System.Timers.Timer();
+            heal.Elapsed += new ElapsedEventHandler(OnTimedEventHeal);
+            heal.Interval = 10000;
+            heal.Enabled = true;
+
             #endregion
 
             CurrentLocationClass.DisplayCurrentLocation();
@@ -106,6 +117,17 @@ namespace JosherConsole
             Console.WriteLine("Autosaving, Please wait!");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write(Player._player.CurrentHitPoints + "/" + Player._player.MaximumHitPoints + " Hp" + " >");
+        }
+
+        private static void OnTimedEventMob(object source, ElapsedEventArgs e)
+        {
+            ListBuilder.Build();
+        }
+
+        private static void OnTimedEventHeal(object source, ElapsedEventArgs e)
+        {
+            Player._player.CurrentHitPoints += 2;
+            Console.Write("\n" + Player._player.CurrentHitPoints + "/" + Player._player.MaxHitPoints + " Hp" + " >");
         }
     }
 }

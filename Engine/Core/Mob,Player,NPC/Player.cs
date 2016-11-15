@@ -12,23 +12,23 @@ namespace Engine
     public class Player : LivingCreature
     {
         #region Fields
-        private string _playerName;                         // To hold the player's name
-        private string _playerClass;                        // To hold the player's class
-        private string _playerRace;                         // To hold the player's race
-        private int _xp;                                    // To hold the player's xp
-        private int _gold;                                  // To hold the player's gold
-        private int _lvl;                                   // To hold the player's level
-        private int _ac;                                    // To hold the player's armor
-        private int _currentHitPoints;                      // To hold the player's current hit points
-        private int _maxHitPoints;                          // To hold the playerr's max hit points
-        private int _alignment;
-        private Factions _faction;
-        private static Room _currentLocation;                      // Not used as of yet!
-        private Weapon _equipt;                             // To hold the currently equipt weapon
-        private static Monster _currentMonster;
-        private static NPC _currentNPC;
-
-        public List<InventoryItem> Inventory { get; set; }
+        private string _playerName;                             // To hold the player's name.
+        private string _playerClass;                            // To hold the player's class.
+        private string _playerRace;                             // To hold the player's race.
+        private int _xp;                                        // To hold the player's xp.
+        private int _gold;                                      // To hold the player's gold.
+        private int _lvl;                                       // To hold the player's level.
+        private int _ac;                                        // To hold the player's armor.
+        private int _currentHitPoints;                          // To hold the player's current hit points.
+        private int _maxHitPoints;                              // To hold the playerr's max hit points.
+        private int _alignment;                                 // To hold players alignment.
+        private bool _admin = false;                             // Is the player an Admin,
+        private Factions _faction;                              // What faction the player belongs to.
+        private static Room _currentLocation;                   // Not used as of yet!
+        private Weapon _equipt;                                 // To hold the currently equipt weapon
+        private static Monster _currentMonster;                 // The location the player is in.
+        private static NPC _currentNPC;                         // The NPC thats in the room with the player.
+        public List<InventoryItem> Inventory { get; set; }      // This players inventory.
         public event EventHandler<MessageEventArgs> OnMessage;
         public static Player _player;
         #endregion
@@ -46,8 +46,9 @@ namespace Engine
         public int AC { get { return _ac; } set { _ac = value; }}
         public int CurrentHitPoints { get { return _currentHitPoints; } set { _currentHitPoints = value; } }
         public int MaxHitPoints { get { return _maxHitPoints; } set { _maxHitPoints = value; } }
-        public Factions Faction { get { return _faction; } set { _faction = value; } }
         public int Alignment { get { return _alignment; } set { _alignment = value; } }
+        public Factions Faction { get { return _faction; } set { _faction = value; } }
+        public bool Admin { get { return _admin; } set { _admin = value; } }
         public static Room CurrentLocation { get { return _currentLocation; } set { _currentLocation = value; } }
         public Weapon Equipt { get { return _equipt; } set { _equipt = value; } }
         public static  Monster CurrentMonster { get { return _currentMonster; } set { _currentMonster = value; } }
@@ -73,6 +74,7 @@ namespace Engine
             this.MaxHitPoints = maximumHitPoints;
             this.Equipt = equipt;
             this.Alignment = alignment;
+            this.Admin = false;
             Inventory = new List<InventoryItem>();
             CurrentLocation = World.Location[0];
         }        

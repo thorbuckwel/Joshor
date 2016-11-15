@@ -22,7 +22,7 @@ namespace Engine
                 noun = "";
             }
 
-            if(_player.Factions != Factions.Admin)
+            if(_player.Admin != false)
             {
                 NormalCommands(verb, noun);
             }

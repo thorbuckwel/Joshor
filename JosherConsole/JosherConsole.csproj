@@ -58,10 +58,6 @@
       <Project>{2db84aae-d88a-4203-90d7-e6ac4a27d775}</Project>
       <Name>Engine</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Joshor\Joshor.csproj">
-      <Project>{f56990c2-883e-428d-b13e-1ece4098dde8}</Project>
-      <Name>Joshor</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

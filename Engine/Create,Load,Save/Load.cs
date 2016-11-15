@@ -6,6 +6,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace Engine
 {
@@ -21,9 +22,10 @@ namespace Engine
                 else
                 {
                     Player._player = null;
-                    Player._player = CreatePlayerFromXmlString(File.ReadAllText(name + ".xml"));
+                    //Player._player = CreatePlayerFromXmlString(File.ReadAllText(name + ".xml"));
+                    PlayerDataMapper.CreateFromDatabase(name);
                 }
-            
+
         }
 
         public static Player CreatePlayerFromXmlString(string PLAYER_DATA_FILE_NAME)
@@ -32,55 +34,55 @@ namespace Engine
             {
                 XmlDocument playerData = new XmlDocument();
 
-                playerData.LoadXml(PLAYER_DATA_FILE_NAME);
+        playerData.LoadXml(PLAYER_DATA_FILE_NAME);
                 string playerName = playerData.SelectSingleNode("/Player/Stats/Name").InnerText;
-               // Console.WriteLine("Got name: " + playerName);
-                string PC = playerData.SelectSingleNode("/Player/Stats/Class").InnerText;
-               // Console.WriteLine("Got class: " + PC);
-                string PR = playerData.SelectSingleNode("/Player/Stats/Race").InnerText;
-                //Console.WriteLine("Got race: " + PR);
-                int currentHitPoints = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/CurrentHitPoints").InnerText);
-               // Console.WriteLine("Got current hit points: " + currentHitPoints.ToString());
-                int maximumHitPoints = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/MaximumHitPoints").InnerText);
-               // Console.WriteLine("Got max hit points: " + maximumHitPoints.ToString());
-                int gold = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/Gold").InnerText);
-               // Console.WriteLine("Got gold: " + gold.ToString());
-                int experiencePoints = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/ExperiencePoints").InnerText);
-                //Console.WriteLine("Got experience: " + experiencePoints.ToString());
-                Factions factionString = (Factions)Enum.Parse(typeof(Factions), (playerData.SelectSingleNode("/Player/Stats/Faction").InnerText), true);
-                //Console.WriteLine("Got Faction: " + factionString.ToString());
-                int alignment = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/Alignment").InnerText);
-                //Console.WriteLine("Got Alignment: " + alignment.ToString());
-                int equiptString = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/CurrentWeapon").InnerText);
-                Weapon equipt = World.WeaponByID(equiptString);
-               // Console.WriteLine("Got equipt weapon: " + equipt.Name.ToString());
+        // Console.WriteLine("Got name: " + playerName);
+        string PC = playerData.SelectSingleNode("/Player/Stats/Class").InnerText;
+        // Console.WriteLine("Got class: " + PC);
+        string PR = playerData.SelectSingleNode("/Player/Stats/Race").InnerText;
+        //Console.WriteLine("Got race: " + PR);
+        int currentHitPoints = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/CurrentHitPoints").InnerText);
+        // Console.WriteLine("Got current hit points: " + currentHitPoints.ToString());
+        int maximumHitPoints = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/MaximumHitPoints").InnerText);
+        // Console.WriteLine("Got max hit points: " + maximumHitPoints.ToString());
+        int gold = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/Gold").InnerText);
+        // Console.WriteLine("Got gold: " + gold.ToString());
+        int experiencePoints = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/ExperiencePoints").InnerText);
+        //Console.WriteLine("Got experience: " + experiencePoints.ToString());
+        Factions factionString = (Factions)Enum.Parse(typeof(Factions), (playerData.SelectSingleNode("/Player/Stats/Faction").InnerText), true);
+        //Console.WriteLine("Got Faction: " + factionString.ToString());
+        int alignment = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/Alignment").InnerText);
+        //Console.WriteLine("Got Alignment: " + alignment.ToString());
+        int equiptString = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/CurrentWeapon").InnerText);
+        Weapon equipt = World.WeaponByID(equiptString);
+        // Console.WriteLine("Got equipt weapon: " + equipt.Name.ToString());
 
-                Player player = new Player(playerName, PC, PR, gold, currentHitPoints, maximumHitPoints, equipt, false, true, factionString, alignment);
+        Player player = new Player(playerName, PC, PR, gold, currentHitPoints, maximumHitPoints, equipt, false, true, factionString, alignment);
 
-                int currentLocationID = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/CurrentLocation").InnerText);
-                Player.CurrentLocation = World.LocationByID(currentLocationID);
+        int currentLocationID = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/CurrentLocation").InnerText);
+        Player.CurrentLocation = World.LocationByID(currentLocationID);
 
                 if (playerData.SelectSingleNode("/Player/Stats/CurrentWeapon") != null)
                 {
                     int currentWeaponID = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/CurrentWeapon").InnerText);
-                    player.Equipt = World.WeaponByID(currentWeaponID);
+        player.Equipt = World.WeaponByID(currentWeaponID);
                 }
 
                 foreach (XmlNode node in playerData.SelectNodes("/Player/InventoryItems/InventoryItem"))
                 {
                     int id = Convert.ToInt32(node.Attributes["ID"].Value);
-                    int quantity = Convert.ToInt32(node.Attributes["Quantity"].Value);
+    int quantity = Convert.ToInt32(node.Attributes["Quantity"].Value);
 
                     if (id > 100 && id <= 200)
                     {
-                        for (int i = 0; i < quantity; i++)
+                        for (int i = 0; i<quantity; i++)
                         {
                             player.AddItemToInventory(World.WeaponByID(id));
                         }
                     }
                     else
                     {
-                        for (int i = 0; i < quantity; i++)
+                        for (int i = 0; i<quantity; i++)
                         {
                             player.AddItemToInventory(World.ItemByID(id));
                         }
@@ -96,6 +98,15 @@ namespace Engine
                 //return CreateDefaultPlayer();
                 return null;
             }
+        }
+
+        public static Player CreatePlayerFromDatabase(string name, string PC, string PR, int gold, int currentHitPoints, int maximumHitPoints, Weapon equipt, bool isDead, bool canBeAttacked, Factions faction, int alignment)
+        {
+            Player player = new Player(name, PC, PR, gold, currentHitPoints, maximumHitPoints, equipt, isDead, canBeAttacked, faction, alignment);
+
+            Move.MoveTo(World.LocationByID(int.Parse(Player.CurrentLocation.ID.ToString())));
+
+            return player;
         }
     }
 }

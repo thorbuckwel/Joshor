@@ -1,8 +1,10 @@
-﻿using System;
+﻿using JosherConsole;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Engine
 {
@@ -28,12 +30,16 @@ namespace Engine
                     validAnswer = true;
                     Console.WriteLine("What is your name?");
                     userInput = CapWord.FirstCharToUpper(Console.ReadLine());
-                    Load.LoadGameData(userInput.ToLower());         // Go to the Load class and exacute the LoadGame method.
+                    Load.LoadGameData(CapWord.FirstCharToUpper(userInput));         // Go to the Load class and exacute the LoadGame method.
                 }
                 else if (userInput.ToLower() == "yes")
                 {
                     validAnswer = true;
-                    CreatePlayer.CreatePlayerInst();                // Go to CreatePlayer and exacute the CreatePlayerInst method. 
+                    //CreatePlayer.CreatePlayerInst();                // Go to CreatePlayer and exacute the CreatePlayerInst method. 
+                    PlayerCreate createPlayer = new PlayerCreate();
+                    createPlayer.Show();
+                    createPlayer.Activate();
+                    Application.Run(createPlayer);
                 }
                 else
                 {

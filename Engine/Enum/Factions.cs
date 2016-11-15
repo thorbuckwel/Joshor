@@ -25,9 +25,6 @@
         Mage,
 
         /// <summary>Faction for Mages.</summary>
-        Admin,
-
-        /// <summary>Faction for Mages.</summary>
         Evil,
 
         /// <summary>Faction for Mages.</summary>
