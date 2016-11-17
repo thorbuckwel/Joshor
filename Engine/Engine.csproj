@@ -61,6 +61,9 @@
     <Compile Include="Commands\Admin Commands\Spawn.cs" />
     <Compile Include="Core\CapWord.cs" />
     <Compile Include="Core\ListBuilder.cs" />
+    <Compile Include="Core\Mob,Player,NPC\Mob.cs" />
+    <Compile Include="Core\Mob,Player,NPC\MobleObject.cs" />
+    <Compile Include="Core\Mob,Player,NPC\NPCs.cs" />
     <Compile Include="Core\Mob,Player,NPC\Players.cs" />
     <Compile Include="Core\World.cs" />
     <Compile Include="Core\Combat\Combat.cs" />
@@ -92,6 +95,7 @@
     <Compile Include="Core\Mob,Player,NPC\PlayerDataMapper.cs" />
     <Compile Include="Core\Item,Weapon,Treasure\Potion.cs" />
     <Compile Include="Enum\Classes.cs" />
+    <Compile Include="Enum\NpcClasses.cs" />
     <Compile Include="Enum\Races.cs" />
     <Compile Include="Form\CreateItem.cs">
       <SubType>Form</SubType>
@@ -131,6 +135,7 @@
     <Compile Include="Form\Create Player\PlayerCreate.Designer.cs">
       <DependentUpon>PlayerCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modifiers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\RandomNumberGenerator.cs" />
     <Compile Include="Core\Loaction classes\Room.cs" />
