@@ -13,6 +13,7 @@ file.
 
 //ID
 //Name
+//
 //Experiance gained from killing
 //Amount of Gold gained from killing
 //Armor Class
