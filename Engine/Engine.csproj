@@ -59,7 +59,9 @@
   <ItemGroup>
     <Compile Include="Commands\Admin Commands\Create.cs" />
     <Compile Include="Commands\Admin Commands\Spawn.cs" />
+    <Compile Include="Commands\Worn.cs" />
     <Compile Include="Core\CapWord.cs" />
+    <Compile Include="Core\Item,Weapon,Treasure\IEquiptable.cs" />
     <Compile Include="Core\ListBuilder.cs" />
     <Compile Include="Core\World.cs" />
     <Compile Include="Core\Combat\Combat.cs" />

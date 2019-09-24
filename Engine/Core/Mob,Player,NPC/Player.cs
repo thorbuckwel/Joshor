@@ -27,8 +27,8 @@ namespace Engine
         private Weapon _equipt;                             // To hold the currently equipt weapon
         private static Monster _currentMonster;
         private static NPC _currentNPC;
-
         public List<InventoryItem> Inventory { get; set; }
+        public Dictionary<string, string> Equipted = new Dictionary<string, string>();
         public event EventHandler<MessageEventArgs> OnMessage;
         public static Player _player;
         #endregion
@@ -74,6 +74,18 @@ namespace Engine
             this.Equipt = equipt;
             this.Alignment = alignment;
             Inventory = new List<InventoryItem>();
+            Equipted = new Dictionary<string, string>()
+            {
+                {"Head","Nothing" },
+                {"Ears","Nothing" },
+                {"Neck","Nothing" },
+                {"Body","Nothing" },
+                {"Back","Nothing" },
+                {"Leg","Nothing" },
+                {"Feet","Nothing" },
+                {"Primary Hand","Nothing" },
+                {"Off Hand","Nothing" }
+            };
             CurrentLocation = World.Location[0];
         }        
         #endregion

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public class Weapon : Item
+    public class Weapon : Item, IEquiptable
     {
         #region Fields
         private int _id;                         // To hold the Weapon's ID number
@@ -14,6 +14,7 @@ namespace Engine
         private int _cost;                       // To hold the Weapon's cost
         private string _damage;                  // To hold the Weapon's damage
         private string _damageType;              // To hold the Weapon's damage type
+
         #endregion
 
         /**
@@ -23,6 +24,7 @@ namespace Engine
         public int Cost { get { return _cost; } set { _cost = value; } }
         public string Damage { get { return _damage; } set { _damage = value; } }
         public string DamageType { get { return _damageType; } set { _damageType = value; } }
+        public int WearLocation { get; set; }
         #endregion
 
         /**
@@ -40,6 +42,8 @@ namespace Engine
             this.Damage = damage;
             this.DamageType = damageType;
             this.Equiptable = equiptable;
+            this.WearLocation = 1;
+
         }
         #endregion
     }

@@ -82,6 +82,9 @@ namespace Engine
                 case "save":
                     SaveData.SaveGameData(Player._player);
                     break;
+                case "equipment":
+                    Worn.DisplayEquipment(Player._player);
+                    break;
             }
         }
 
