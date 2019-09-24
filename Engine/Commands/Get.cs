@@ -29,11 +29,11 @@ namespace Engine
                             }
                             else if (item.ID > 100 && item.ID <= 200)
                             {
-                                Weapon weaponToGet =
+                                IWeapon weaponToGet =
                                     World.Weapons.SingleOrDefault(x => x.ID == item.ID);
 
                                 _player.Inventory.Add(new InventoryItem(new Weapon(weaponToGet.ID, weaponToGet.Name, weaponToGet.NamePlural, weaponToGet.Desc,
-                                                        weaponToGet.Cost, weaponToGet.Damage, weaponToGet.DamageType, weaponToGet.Equiptable), 1));
+                                                        weaponToGet.Price, weaponToGet.Damage, weaponToGet.DamageType, weaponToGet.Equiptable, weaponToGet.WearLocation), 1));
                                 Player.CurrentLocation.RoomLoot.Remove(item);
                             }
                         }

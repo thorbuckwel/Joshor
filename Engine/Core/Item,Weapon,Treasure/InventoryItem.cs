@@ -49,7 +49,7 @@ namespace Engine
             WeaponDamage = weapon.Damage;
             WeaponDamageType = weapon.DamageType;
             WeaponPrice = weapon.Price;
-            Details = weapon;
+            //Details = weapon;
             Quantity = quantity;
         }
         #endregion

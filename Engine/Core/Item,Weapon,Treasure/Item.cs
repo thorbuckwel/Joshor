@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public class Item
+    public class Item : IItem
     {
         #region Fields
         private int _id;
@@ -20,7 +20,7 @@ namespace Engine
         #region Properties
         public int ID { get { return _id; } set { _id = value; } }
         public string Name { get { return _name; } set { _name = value; } }
-        public string NamePlural { get { return _namePlural; } set { _namePlural = value; }}
+        public string NamePlural { get { return _namePlural; } set { _namePlural = value; } }
         public string Desc { get { return _desc; } set { _desc = value; } }
         public int Price { get { return _price; } set { _price = value; } }
         public bool Equiptable { get { return _equiptable; } set { _equiptable = value; } }
@@ -37,5 +37,5 @@ namespace Engine
             Equiptable = equiptable;
         }
         #endregion
-    } 
+    }
 }

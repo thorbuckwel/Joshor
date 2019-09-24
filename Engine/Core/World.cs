@@ -13,7 +13,7 @@ namespace Engine
         #region Lists
         public static readonly List<Monster> Monsters = new List<Monster>();    // To hold objects of Mobs
         public static readonly List<NPC> NPCs = new List<NPC>();
-        public static readonly List<Weapon> Weapons = new List<Weapon>();       // To hold objects of weapons
+        public static readonly List<IWeapon> Weapons = new List<IWeapon>();       // To hold objects of weapons
         public static readonly List<Item> Items = new List<Item>();              // To hold objects of Items
         public static readonly List<Room> Location = new List<Room>();          // To hold objects of rooms 
         #endregion
@@ -47,11 +47,11 @@ namespace Engine
         #endregion
 
         #region Weapon
-        public static Weapon WeaponByID(int id)
+        public static IWeapon WeaponByID(int id)
         {
             return Weapons.SingleOrDefault(x => x.ID == id);
         }
-        public static Weapon WeaponByName(string name)
+        public static IWeapon WeaponByName(string name)
         {
             return Weapons.SingleOrDefault(x => x.Name == name);
         }

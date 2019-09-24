@@ -30,6 +30,7 @@ text file.
 //Damage done by weapon
 //The type of damage the weapon does.
 //Equiptable
+//Wear Location
 
 The Room List is populated from a text file. The following is the format of the 
 text file.

@@ -18,7 +18,7 @@ namespace Engine
             {
                 Item itemToDrop = World.Items.SingleOrDefault(
                                    x => x.Name.ToLower() == verb || x.NamePlural.ToLower() == verb);
-                Weapon weaponToDrop = World.Weapons.SingleOrDefault(
+                IWeapon weaponToDrop = World.Weapons.SingleOrDefault(
                                    x => x.Name.ToLower() == verb || x.NamePlural.ToLower() == verb);
 
                 foreach (InventoryItem item in _player.Inventory.ToList())
@@ -33,8 +33,8 @@ namespace Engine
                         }
                         else if (weaponToDrop != null)
                         {
-                            _player.RemoveItemFromInventory(weaponToDrop, 1);
-                            Player.CurrentLocation.RoomLoot.Add(weaponToDrop);
+                            _player.RemoveItemFromInventory((Weapon)weaponToDrop, 1);
+                            Player.CurrentLocation.RoomLoot.Add((Weapon)weaponToDrop);
                             Console.WriteLine("You drop {0}", verb);
                         }
                     }

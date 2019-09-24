@@ -37,7 +37,7 @@ namespace Engine
         public int LocationToEast { get { return _locationToEast; } set { _locationToEast = value; } }
         public int LocationToSouth { get { return _locationToSouth; } set { _locationToSouth = value; } }
         public int LocationToWest { get { return _locationToWest; } set { _locationToWest = value; } }
-        public List<Item> RoomLoot = new List<Item>();
+        public List<IItem> RoomLoot = new List<IItem>();
         public List<Monster> RoomMob = new List<Monster>();
         public List<NPC> RmNPC = new List<NPC>();
         #endregion
@@ -88,8 +88,8 @@ namespace Engine
                 }
                 else if (idRmLoot > 100 && idRmLoot <= 200)
                 {
-                    Weapon rmLoot = World.Weapons.SingleOrDefault(ii => ii.ID == idRmLoot);
-                    RoomLoot.Add(new Weapon(rmLoot.ID, rmLoot.Name, rmLoot.NamePlural, rmLoot.Desc, rmLoot.Price, rmLoot.Damage, rmLoot.DamageType, rmLoot.Equiptable));
+                    IWeapon rmLoot = World.Weapons.SingleOrDefault(ii => ii.ID == idRmLoot);
+                    RoomLoot.Add(new Weapon(rmLoot.ID, rmLoot.Name, rmLoot.NamePlural, rmLoot.Desc, rmLoot.Price, rmLoot.Damage, rmLoot.DamageType, rmLoot.Equiptable, rmLoot.WearLocation));
                 }
             }
             #endregion

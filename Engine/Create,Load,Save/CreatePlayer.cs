@@ -101,7 +101,7 @@ namespace Engine
             }
         
             Console.ForegroundColor = ConsoleColor.White;
-            Player._player = new Player(name, CapWord.FirstCharToUpper(className), CapWord.FirstCharToUpper(raceName), gold, hp, hp, World.WeaponByID(103), false, true, faction, alignment);
+            Player._player = new Player(name, CapWord.FirstCharToUpper(className), CapWord.FirstCharToUpper(raceName), gold, hp, hp, (Weapon)World.WeaponByID(103), false, true, faction, alignment);
             Console.WriteLine("Creating character data, please wait!");
             SaveData.SaveGameData(Player._player);
             

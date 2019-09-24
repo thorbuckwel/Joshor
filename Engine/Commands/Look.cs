@@ -22,7 +22,7 @@ namespace Engine
         public static void determineVerbType(string noun)
         {
             Item itemToLook = World.ItemByName(noun);
-            Weapon weaponToLook = World.WeaponByName(noun);
+            IWeapon weaponToLook = World.WeaponByName(noun);
             Monster monsterToLook = World.MonsterByName(noun);
             NPC NpcToLook = World.NPCByName(noun);
 

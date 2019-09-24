@@ -37,8 +37,8 @@ namespace Engine
                             MessageBox.Show("That item already exist");
                         }
                     }
-                    World.Weapons.Add(new Weapon(id, txtWeaponName.Text, txtWeaponNamePlural.Text, txtWeaponDescription.Text, Convert.ToInt32(txtWeaponPrice.Text),
-                                        txtWeaponDamage.Text, cboWeaponDamageType.Text, bool.Parse(cboWeaponEquiptable.Text)));
+                    //World.Weapons.Add(new Weapon(id, txtWeaponName.Text, txtWeaponNamePlural.Text, txtWeaponDescription.Text, Convert.ToInt32(txtWeaponPrice.Text),
+                                        //txtWeaponDamage.Text, cboWeaponDamageType.Text, bool.Parse(cboWeaponEquiptable.Text, int.Parse(cbo)));
                     MessageBox.Show("Weapon created!");
 
                     if (File.Exists(@"../../../Engine/Docs/Weapon.txt"))

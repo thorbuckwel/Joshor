@@ -60,7 +60,7 @@ namespace Engine
             if (Player.CurrentLocation.RoomLoot != null)
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
-                foreach (Item item in Player.CurrentLocation.RoomLoot)
+                foreach (IItem item in Player.CurrentLocation.RoomLoot)
                 {
                     Console.WriteLine("      " + item.Name);
                 }

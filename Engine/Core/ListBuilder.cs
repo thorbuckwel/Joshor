@@ -114,8 +114,9 @@ namespace Engine
                     string damage = reader.ReadLine();
                     string type = reader.ReadLine();
                     bool equiptable = bool.Parse(reader.ReadLine());
+                    int wearLocation = int.Parse(reader.ReadLine());
 
-                    World.Weapons.Add(new Weapon(id, name, namePluarl, desc, cost, damage, type, equiptable));
+                    World.Weapons.Add(new Weapon(id, name, namePluarl, desc, cost, damage, type, equiptable, wearLocation));
                 }
             }
             #endregion

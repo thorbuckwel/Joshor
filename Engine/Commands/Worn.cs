@@ -13,8 +13,18 @@ namespace Engine
             Console.WriteLine("You are wearing:");
             foreach(var location in _player.Equipted)
             {
-                Console.WriteLine($"{location.Key}- {location.Value}");
+                Console.WriteLine($"{location.Key}- {ReplaceNull(location.Value)}");
             }
+        }
+
+        public static string ReplaceNull(IEquiptable test)
+        {
+            if (test == null)
+            {
+                return "Nothing";
+            }
+
+            return test.Name.ToString();
         }
     }
 }

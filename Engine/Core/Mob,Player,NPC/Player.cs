@@ -28,7 +28,7 @@ namespace Engine
         private static Monster _currentMonster;
         private static NPC _currentNPC;
         public List<InventoryItem> Inventory { get; set; }
-        public Dictionary<string, string> Equipted = new Dictionary<string, string>();
+        public Dictionary<string, IEquiptable> Equipted = new Dictionary<string, IEquiptable>();
         public event EventHandler<MessageEventArgs> OnMessage;
         public static Player _player;
         #endregion
@@ -74,17 +74,17 @@ namespace Engine
             this.Equipt = equipt;
             this.Alignment = alignment;
             Inventory = new List<InventoryItem>();
-            Equipted = new Dictionary<string, string>()
+            Equipted = new Dictionary<string, IEquiptable>()
             {
-                {"Head","Nothing" },
-                {"Ears","Nothing" },
-                {"Neck","Nothing" },
-                {"Body","Nothing" },
-                {"Back","Nothing" },
-                {"Leg","Nothing" },
-                {"Feet","Nothing" },
-                {"Primary Hand","Nothing" },
-                {"Off Hand","Nothing" }
+                {"Head",null },
+                {"Ears",null },
+                {"Neck",null },
+                {"Body",null },
+                {"Back",null },
+                {"Leg",null },
+                {"Feet",null },
+                {"Primary Hand",null },
+                {"Off Hand",null }
             };
             CurrentLocation = World.Location[0];
         }        
@@ -354,7 +354,7 @@ namespace Engine
                 item.Quantity += quantity;
             }
 
-            RaiseInventoryChangedEvent(itemToAdd);
+            //RaiseInventoryChangedEvent(itemToAdd);
         }
 
         public void RemoveItemFromInventory(Item itemToRemove, int quantity = 1)
@@ -392,7 +392,7 @@ namespace Engine
 
         public void RemoveItemFromInventory(Weapon weaponToRemove, int quantity = 1)
         {
-            Item weapon = weaponToRemove;
+            IItem weapon = weaponToRemove;
             InventoryItem item = Inventory.SingleOrDefault(ii => ii.ItemID == weapon.ID);
 
             if (item == null)
@@ -419,7 +419,7 @@ namespace Engine
                 }
 
                 // Notify the UI that the inventory has changed
-                RaiseInventoryChangedEvent(weaponToRemove);
+                //RaiseInventoryChangedEvent(weaponToRemove);
             }
         }
         #endregion

@@ -72,7 +72,7 @@ namespace Engine
                 if (weapon.Name == cboWeaponList.Text)
                 {
                     Player.CurrentLocation.RoomLoot.Add(new Weapon(weapon.ID, weapon.Name, weapon.NamePlural, weapon.Desc, weapon.Price, weapon.Damage,
-                                                        weapon.DamageType, weapon.Equiptable));
+                                                        weapon.DamageType, weapon.Equiptable, weapon.WearLocation));
                     MessageBox.Show("Weapon has been spawned!");
                     break;
                 }

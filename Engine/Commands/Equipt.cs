@@ -20,7 +20,7 @@ namespace Engine
                     }
                     else
                     {
-                        Weapon weaponToEquip =
+                        IWeapon weaponToEquip =
                             World.Weapons.SingleOrDefault(
                                 x => x.Name.ToLower() == noun || x.NamePlural.ToLower() == noun);
 
@@ -31,8 +31,8 @@ namespace Engine
                         else
                         {
                             _player.Inventory.Add(new InventoryItem(_player.Equipt, 1));
-                            _player.Equipt = weaponToEquip;
-                            _player.RemoveItemFromInventory(weaponToEquip, 1);
+                            _player.Equipt = (Weapon)weaponToEquip;
+                            _player.RemoveItemFromInventory((Weapon)weaponToEquip, 1);
                             Console.WriteLine("You equip your {0}", weaponToEquip.Name.ToString());
                         }
                     }

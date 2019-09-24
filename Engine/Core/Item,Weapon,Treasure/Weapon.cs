@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public class Weapon : Item, IEquiptable
+    public class Weapon : IItem, IEquiptable, IWeapon
     {
         #region Fields
         private int _id;                         // To hold the Weapon's ID number
@@ -21,10 +21,15 @@ namespace Engine
          * Create properties to access the private variables.
          */
         #region Properties
-        public int Cost { get { return _cost; } set { _cost = value; } }
-        public string Damage { get { return _damage; } set { _damage = value; } }
-        public string DamageType { get { return _damageType; } set { _damageType = value; } }
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string NamePlural { get; set; }
+        public int Price { get; set; }
+        public string Damage { get; set; }
+        public string DamageType { get; set; }
         public int WearLocation { get; set; }
+        public string Desc { get; set; }
+        public bool Equiptable { get; set; }
         #endregion
 
         /**
@@ -32,17 +37,17 @@ namespace Engine
          * those to the class variables.
          */
         #region Constructor
-        public Weapon(int id, string name, string namePluarl, string desc, int cost, string damage, string damageType, bool equiptable) : base (id, name, namePluarl, desc, cost, equiptable)
+        public Weapon(int id, string name, string namePluarl, string desc, int cost, string damage, string damageType, bool equiptable, int wearLocation)
         {
             this.ID = id;
             this.Name = name;
             this.NamePlural = namePluarl;
             this.Desc = desc;
-            this.Cost = cost;
+            this.Price = cost;
             this.Damage = damage;
             this.DamageType = damageType;
             this.Equiptable = equiptable;
-            this.WearLocation = 1;
+            this.WearLocation = wearLocation;
 
         }
         #endregion

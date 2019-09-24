@@ -52,10 +52,10 @@ namespace Engine
                 int alignment = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/Alignment").InnerText);
                 //Console.WriteLine("Got Alignment: " + alignment.ToString());
                 int equiptString = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/CurrentWeapon").InnerText);
-                Weapon equipt = World.WeaponByID(equiptString);
+                IWeapon equipt = World.WeaponByID(equiptString);
                // Console.WriteLine("Got equipt weapon: " + equipt.Name.ToString());
 
-                Player player = new Player(playerName, PC, PR, gold, currentHitPoints, maximumHitPoints, equipt, false, true, factionString, alignment);
+                Player player = new Player(playerName, PC, PR, gold, currentHitPoints, maximumHitPoints, (Weapon)equipt, false, true, factionString, alignment);
 
                 int currentLocationID = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/CurrentLocation").InnerText);
                 Player.CurrentLocation = World.LocationByID(currentLocationID);
@@ -63,7 +63,7 @@ namespace Engine
                 if (playerData.SelectSingleNode("/Player/Stats/CurrentWeapon") != null)
                 {
                     int currentWeaponID = Convert.ToInt32(playerData.SelectSingleNode("/Player/Stats/CurrentWeapon").InnerText);
-                    player.Equipt = World.WeaponByID(currentWeaponID);
+                    player.Equipt = (Weapon)World.WeaponByID(currentWeaponID);
                 }
 
                 foreach (XmlNode node in playerData.SelectNodes("/Player/InventoryItems/InventoryItem"))
@@ -75,7 +75,7 @@ namespace Engine
                     {
                         for (int i = 0; i < quantity; i++)
                         {
-                            player.AddItemToInventory(World.WeaponByID(id));
+                            player.AddItemToInventory((Weapon)World.WeaponByID(id));
                         }
                     }
                     else

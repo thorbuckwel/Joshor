@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    interface IEquiptable
+    public interface IEquiptable
     {
         int WearLocation { get; set; }
+        string Name { get; set; }
     }
 }
