@@ -7,31 +7,19 @@ using System.ComponentModel;
 
 namespace Engine
 {
-    public class InventoryItem : INotifyPropertyChanged
+    public class InventoryItem
     {
-        #region Fields
-
-        private IItem _details;
-        private int _quantity;
-        private string _wName;
-        private string _wDesc;
-        private string _wDamage;
-        private string _wDamageType;
-        private int _wPrice;
-
-        #endregion
-
         #region Properties
-        public IItem Details { get { return _details; } set {_details = value; OnPropertyChanged("Details");}}
-        public int Quantity { get { return _quantity; } set { _quantity = value; OnPropertyChanged("Quantity"); OnPropertyChanged("Description"); } }
-        public int ItemID { get { return Details.ID; }}
+        public IItem Details { get; set; }
+        public int Quantity { get; set; }
+        public int ItemID { get; set; }
         public string Description { get; set; }
-        public int Price { get { return Details.Price; }}
-        public string WeaponName { get { return _wName; } set { _wName = value; } }
-        public string WeaponDesc { get { return _wDesc; } set { _wDesc = value; } }
-        public string WeaponDamage { get { return _wDamage; } set { _wDamage = value; } }
-        public string WeaponDamageType { get { return _wDamageType; } set { _wDamageType = value; } }
-        public int WeaponPrice { get { return _wPrice; } set { _wPrice = value; } }
+        public int Price { get; set; }
+        public string WeaponName { get; set; }
+        public string WeaponDesc { get; set; }
+        public string WeaponDamage { get; set; }
+        public string WeaponDamageType { get; set; }
+        public int WeaponPrice { get; set; }
         
         #endregion
 
@@ -51,18 +39,6 @@ namespace Engine
             WeaponPrice = weapon.Price;
             //Details = weapon;
             Quantity = quantity;
-        }
-        #endregion
-
-        #region Property Change
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged(string name)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
-            }
         }
         #endregion
     }

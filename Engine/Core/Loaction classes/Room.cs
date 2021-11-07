@@ -8,35 +8,20 @@ namespace Engine
 {
     public class Room
     {
-        #region Fields
-        private int _id;                         // To hold the Room's ID number
-        private string _roomName;                // To hold the Room's name
-        private string _roomDescript;            // To hold the Room's description
-        private Monster _monsters;
-        private NPC _npc;
-        private int _locationToNorth;           // To hold the Room's exit1 string
-        private int _locationToEast;            // To hold the Room's exit2 string
-        private int _locationToSouth;           // To hold the Room's exit3 string
-        private int _locationToWest;            // To hold the Room's exit4 string        
-                                                //private List<Item> _roomItems;
-
-        //int numMonsters;
-        //int numItems;
-        #endregion
-
         /**
          * Creating the properties to accesss the private variables
          */
         #region Properties
-        public int ID { get { return _id; } set { _id = value; } }
-        public string RoomName { get { return _roomName; } set { _roomName = value; } }
-        public string RoomDescript { get { return _roomDescript; } set { _roomDescript = value; } }
-        public Monster RoomMonsters { get { return _monsters; } set { _monsters = value; } }
-        public NPC RoomNPC { get { return _npc; } set { _npc = value; } }
-        public int LocationToNorth { get { return _locationToNorth; } set { _locationToNorth = value; } }
-        public int LocationToEast { get { return _locationToEast; } set { _locationToEast = value; } }
-        public int LocationToSouth { get { return _locationToSouth; } set { _locationToSouth = value; } }
-        public int LocationToWest { get { return _locationToWest; } set { _locationToWest = value; } }
+        public int ID { get; set; }
+        public string RoomName { get; set; }
+        public string RoomDescript { get; set; }
+        public Monster RoomMonsters { get; set; }
+        public NPC RoomNPC { get; set; }
+        public int LocationToNorth { get; set; }
+        public int LocationToEast { get; set; }
+        public int LocationToSouth { get; set; }
+        public int LocationToWest { get; set; }
+
         public List<IItem> RoomLoot = new List<IItem>();
         public List<Monster> RoomMob = new List<Monster>();
         public List<NPC> RmNPC = new List<NPC>();
