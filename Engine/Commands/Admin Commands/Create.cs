@@ -16,9 +16,9 @@ namespace Engine
         {
             string userInput;
 
-            Console.WriteLine("What do you want to create?");
+            World.message.SetMessage("What do you want to create?");
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Item, NPC, MOB, Weapon, Room > ");
+            World.message.SetMessage("Item, NPC, MOB, Weapon, Room > ");
             Console.ForegroundColor = ConsoleColor.White;
             //CreateScreen createForm = new CreateScreen();
             //createForm.Show();

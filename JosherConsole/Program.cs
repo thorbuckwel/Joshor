@@ -68,6 +68,7 @@ namespace JosherConsole
         }
         #endregion
 
+        #region Player Alert
         public static void AlertPlayer(string message)
         {
             Console.WriteLine(message);
@@ -77,6 +78,7 @@ namespace JosherConsole
         {
             Console.Write(message);
         }
+        #endregion
 
         #region Player PropertyChange, OnMessage
         private static void Player_OnPropertyChanged(object sender, PropertyChangedEventArgs e)
