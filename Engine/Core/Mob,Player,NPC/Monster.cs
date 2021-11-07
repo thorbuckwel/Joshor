@@ -5,35 +5,18 @@ namespace Engine
 {
     public class Monster : LivingCreature
     {
-        #region Fields
-        private int _id;                         // To hold the ID number of the Monster
-        private string _name;                    // To hold the Monster's name
-        private int _exp;                        // To hold the amount of XP recieved for killing
-        private int _gold;                       // To hold amount of gold recieved from killing
-        private int _ac;                         // To hold how much armor the monster has
-        private string _damage;                  // To hold how much damage the monster does
-        private int _baseAttack;                 // To hold the plus or minus amount to ToHit
-        private string _image;                   // To hold the Monster's image string
-        private int _currentHitPoints;           // To hold the Monster's current hit points
-        private int _maxHitPoints;               // To hold the Monster's max hit points
-        private bool _isDead;                    // To tell is the Monster is dead or alive
-        #endregion
-
         /**
          * Set the properties so that we have access to the private variables
          */
         #region Properties
-        public int ID { get { return _id; } set { _id = value; } }
-        public string Name { get { return _name; } set { _name = value; } }
-        public int Experiance { get { return _exp; } set { _exp = value; } }
-        public int Gold { get { return _gold; } set { _gold = value; } }
-        public int AC { get { return _ac; } set { _ac = value; } }
-        public string Damage { get { return _damage; } set { _damage = value; } }
-        public int BaseAttack { get { return _baseAttack; } set { _baseAttack = value; } }
-        public string Image { get { return _image; } set { _image = value; } }
-        public int CurrentHitPoints { get { return _currentHitPoints; } set { _currentHitPoints = value; } }
-        public int MaxHitPoints { get { return _maxHitPoints; } set { _maxHitPoints = value; } }
-        public bool IsDead { get { return _isDead; } set { _isDead = value; } }
+        public string Name { get; set; }
+        public int Experiance { get; set; }
+        public int Gold { get; set; }
+        public int AC { get; set; }
+        public string Damage { get; set; }
+        public int BaseAttack { get; set; }
+        public string Image { get; set; }
+        public int MaxHitPoints { get; set; }
         #endregion
 
         /**

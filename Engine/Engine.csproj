@@ -162,6 +162,7 @@
     <Content Include="Image\Goblin.PNG" />
     <Content Include="Image\Hobgoblin.jpg" />
     <Content Include="Image\Kobold.jpg" />
+    <None Include="JoshorDB.db" />
     <None Include="Resources\Rooms.jpg" />
     <None Include="Resources\Npc.jpg" />
     <None Include="Resources\Mob.jpg" />

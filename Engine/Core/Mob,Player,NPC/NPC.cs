@@ -7,27 +7,17 @@ using System.Threading.Tasks;
 namespace Engine
 {
     public class NPC : LivingCreature
-    {
-
-        #region Fields
-        private int _id;                                 // To hold the ID number of the Monster
-        private String _npcName;                         // To hold the player's name
-        private String _npcClass;                        // To hold the player's class
-        private String _npcRace;                         // To hold the player's race
-        private int _gold;                               // To hold the player's gold
-        
-
+    {-
         public List<InventoryItem> Inventory { get; set; }
         public event EventHandler<MessageEventArgs> OnMessage;
-        public static Player _player;
-        #endregion
+        public static Player _player; //Not sure why this is here
+        
 
         #region Properties
-        public int ID { get { return _id; } set { _id = value; } }
-        public String NPCClass { get { return _npcClass; } set { _npcClass = value; } }
-        public String NPCName { get { return _npcName; } set { _npcName = value; } }
-        public String NPCRace { get { return _npcRace; } set { _npcRace = value; } }
-        public int Gold { get { return _gold; } set { _gold = value; } }
+        public string NPCClass { get; set; }
+        public string NPCName { get; set; }
+        public string NPCRace { get; set; }
+        public int Gold { get; set; }
         #endregion
 
         /**

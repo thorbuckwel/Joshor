@@ -16,6 +16,7 @@ namespace Engine
          * The properties to allow use access to the private variables
          */
         #region Properties
+        public int ID { get; set; }
         public int CurrentHitPoints { get { return _currentHitPoints; } set { _currentHitPoints = value; } }
         public bool IsDead { get { return _isDead;} set { _isDead = value; }}
         public bool CanBeAttacked { get { return _canBeAttacked; } set { _canBeAttacked = value; } }

@@ -10,48 +10,31 @@ using System.IO;
 namespace Engine
 {
     public class Player : LivingCreature
-    {
-        #region Fields
-        private string _playerName;                         // To hold the player's name
-        private string _playerClass;                        // To hold the player's class
-        private string _playerRace;                         // To hold the player's race
-        private int _xp;                                    // To hold the player's xp
-        private int _gold;                                  // To hold the player's gold
-        //private int _lvl;                                   // To hold the player's level
-        private int _ac;                                    // To hold the player's armor
-        private int _currentHitPoints;                      // To hold the player's current hit points
-        private int _maxHitPoints;                          // To hold the playerr's max hit points
-        private int _alignment;
-        private Factions _faction;
-        private static Room _currentLocation;                      // Not used as of yet!
-        private Weapon _equipt;                             // To hold the currently equipt weapon
-        private static Monster _currentMonster;
-        private static NPC _currentNPC;
-        public List<InventoryItem> Inventory { get; set; }
+    {       
         public Dictionary<string, IEquiptable> Equipted = new Dictionary<string, IEquiptable>();
         public event EventHandler<MessageEventArgs> OnMessage;
-        public static Player _player;
-        #endregion
+        public static Player _player;  //Not sure why this is here
 
         /**
          * Setting Properties to be able to access the private variables.
          */
         #region Properties
-        public string PlayerClass { get { return _playerClass; } set { _playerClass = value; } }
-        public string PlayerName { get { return _playerName; } set { _playerName = value; } }
-        public string PlayerRace { get { return _playerRace; } set { _playerRace = value; } }
-        public int ExperiencePoints { get { return _xp; } set { _xp = value;}}
-        public int Gold { get { return _gold; } set { _gold = value;} }
-        public int Level { get { return ((ExperiencePoints / 100) + 1); }}
-        public int AC { get { return _ac; } set { _ac = value; }}
-       // public int CurrentHitPoints { get { return _currentHitPoints; } set { _currentHitPoints = value; } }
-        public int MaxHitPoints { get { return _maxHitPoints; } set { _maxHitPoints = value; } }
-        public Factions Faction { get { return _faction; } set { _faction = value; } }
-        public int Alignment { get { return _alignment; } set { _alignment = value; } }
-        public static Room CurrentLocation { get { return _currentLocation; } set { _currentLocation = value; } }
-        public Weapon Equipt { get { return _equipt; } set { _equipt = value; } }
-        public static  Monster CurrentMonster { get { return _currentMonster; } set { _currentMonster = value; } }
-        public static NPC CurrentNPC { get { return _currentNPC; } set { _currentNPC = value; } }
+        public List<InventoryItem> Inventory { get; set; }
+        public string PlayerClass { get; set; }
+        public string PlayerName { get; set; }
+        public string PlayerRace { get; set; }
+        public int ExperiencePoints { get; set; }
+        public int Gold { get; set; }
+        // TODO figure out how to work experanice
+        public int Level { get; set; }
+        public int AC { get; set; }
+        public int MaxHitPoints { get; set; }
+        public Factions Faction { get; set; }
+        public int Alignment { get; set; }
+        public static Room CurrentLocation { get; set; }
+        public Weapon Equipt { get; set; }
+        public static  Monster CurrentMonster { get; set; }
+        public static NPC CurrentNPC { get; set; }
         #endregion
 
         /**
@@ -87,10 +70,13 @@ namespace Engine
                 {"Off Hand",null }
             };
             CurrentLocation = World.Location[0];
-        }        
+        }
         #endregion
 
+        #region Commented out XML section
+        /** Need to do this from a DataBase
         #region Save,Load XML
+        
         public string ToXmlString()
         {
             XmlDocument playerData = new XmlDocument();
@@ -318,6 +304,8 @@ namespace Engine
             }
             return obj;
         }
+        #endregion
+        **/
         #endregion
 
         #region Modify Inventory
