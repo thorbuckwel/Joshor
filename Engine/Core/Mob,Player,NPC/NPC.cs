@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Engine
 {
     public class NPC : LivingCreature
-    {-
+    {
         public List<InventoryItem> Inventory { get; set; }
         public event EventHandler<MessageEventArgs> OnMessage;
         public static Player _player; //Not sure why this is here
