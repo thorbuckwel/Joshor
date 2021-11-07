@@ -126,6 +126,7 @@
     </Compile>
     <Compile Include="Enum\Factions.cs" />
     <Compile Include="Enum\WearLocations.cs" />
+    <Compile Include="InputParse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\RandomNumberGenerator.cs" />
     <Compile Include="Core\Loaction classes\Room.cs" />

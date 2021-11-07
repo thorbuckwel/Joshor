@@ -63,7 +63,7 @@ namespace JosherConsole
                 }
 
                 // If the user typed something, try to determine what to do
-                ParseInput(cleanedInput);
+                InputParse.ParseInput(cleanedInput);
             }
         }
         #endregion
@@ -97,15 +97,6 @@ namespace JosherConsole
             }
         }
         #endregion
-
-        private static void ParseInput(string input)
-        {
-            // Call the command class to figure out what to do.
-            Command.CommandCase(input, Player._player);
-
-            // Write a blank line, to keep the UI a little cleaner
-            World.message.SetMessage("");
-        }
 
         /**
          * This method will save player data everytime there is a tick for it.
