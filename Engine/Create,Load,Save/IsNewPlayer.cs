@@ -20,7 +20,7 @@ namespace Engine
             while (validAnswer == false)
             {
                 World.message.SetMessage("Are you a new Player?");
-                World.message.SetMessage("> ");
+                World.message.SetMessageWrite("> ");
                 userInput = Console.ReadLine();
 
                 if (userInput.ToLower() == "no")

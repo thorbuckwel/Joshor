@@ -16,13 +16,13 @@ namespace JosherConsole
             #region Start
             Console.ForegroundColor = ConsoleColor.White;       // The text will be White.
             ListBuilder.Build();                                // On load we need to call the ListBuilder to build all our List
-            World.message = new Alert(AlertPlayer);
+            World.message = new Alert(AlertPlayer, AlertPlayerWrite);
             WelcomeScreen welcome = new WelcomeScreen();        // Create a new welcome screen
             welcome.Welcome();                                  // Call that screen.
 
 
-            Console.WriteLine("Type 'Help' to see a list of commands");
-            Console.WriteLine("");
+            World.message.SetMessage("Type 'Help' to see a list of commands");
+            World.message.SetMessage("");
 
             //Run timer every 5 minutes (300,000 millisec's) for autosave feature
             System.Timers.Timer autoSave = new System.Timers.Timer();
@@ -32,7 +32,7 @@ namespace JosherConsole
             #endregion
 
             CurrentLocationClass.DisplayCurrentLocation();
-            Console.WriteLine("");
+            World.message.SetMessage("");
 
             #region While loop
             // Infinite loop, until the user types "exit"
@@ -57,7 +57,7 @@ namespace JosherConsole
                 if (cleanedInput == "exit")
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Saving character, will close when finished!");
+                    World.message.SetMessage("Saving character, will close when finished!");
                     SaveData.SaveGameData(Player._player);
                     break;
                 }
@@ -73,6 +73,11 @@ namespace JosherConsole
             Console.WriteLine(message);
         }
 
+        public static void AlertPlayerWrite(string message)
+        {
+            Console.Write(message);
+        }
+
         #region Player PropertyChange, OnMessage
         private static void Player_OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
@@ -84,11 +89,11 @@ namespace JosherConsole
 
         private static void Player_OnMessage(object sender, MessageEventArgs e)
         {
-            Console.WriteLine(e.Message);
+            World.message.SetMessage(e.Message);
 
             if (e.AddExtraNewLine)
             {
-                Console.WriteLine("");
+                World.message.SetMessage("");
             }
         }
         #endregion
@@ -99,7 +104,7 @@ namespace JosherConsole
             Command.CommandCase(input, Player._player);
 
             // Write a blank line, to keep the UI a little cleaner
-            Console.WriteLine("");
+            World.message.SetMessage("");
         }
 
         /**
@@ -109,9 +114,9 @@ namespace JosherConsole
         {
             SaveData.SaveGameData(Player._player);
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Autosaving, Please wait!");
+            World.message.SetMessage("Autosaving, Please wait!");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.Write(Player._player.CurrentHitPoints + "/" + Player._player.MaximumHitPoints + " Hp" + " >");
+            World.message.SetMessage($"{Player._player.CurrentHitPoints}/{Player._player.MaximumHitPoints} Hp > ");
         }
     }
 }

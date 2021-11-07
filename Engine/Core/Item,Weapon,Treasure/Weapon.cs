@@ -8,18 +8,10 @@ namespace Engine
 {
     public class Weapon : IItem, IEquiptable, IWeapon
     {
-        #region Fields
-        private int _id;                         // To hold the Weapon's ID number
-        private string _name;                    // To hold the Weapon's name
-        private int _cost;                       // To hold the Weapon's cost
-        private string _damage;                  // To hold the Weapon's damage
-        private string _damageType;              // To hold the Weapon's damage type
-
-        #endregion
-
         /**
          * Create properties to access the private variables.
          */
+
         #region Properties
         public int ID { get; set; }
         public string Name { get; set; }

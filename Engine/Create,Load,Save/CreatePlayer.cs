@@ -23,8 +23,7 @@ namespace Engine
 
 
             World.message.SetMessage("Give me your name.");
-            // TODO Dele for Console Write
-            Console.Write("> ");
+            World.message.SetMessageWrite("> ");
             name = CapWord.FirstCharToUpper(Console.ReadLine());
 
             while (validClass == false)
