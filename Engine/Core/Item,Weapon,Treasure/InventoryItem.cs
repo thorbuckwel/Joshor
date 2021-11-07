@@ -11,7 +11,7 @@ namespace Engine
     {
         #region Fields
 
-        private Item _details;
+        private IItem _details;
         private int _quantity;
         private string _wName;
         private string _wDesc;
@@ -22,10 +22,10 @@ namespace Engine
         #endregion
 
         #region Properties
-        public Item Details { get { return _details; } set {_details = value; OnPropertyChanged("Details");}}
+        public IItem Details { get { return _details; } set {_details = value; OnPropertyChanged("Details");}}
         public int Quantity { get { return _quantity; } set { _quantity = value; OnPropertyChanged("Quantity"); OnPropertyChanged("Description"); } }
         public int ItemID { get { return Details.ID; }}
-        public string Description { get { return Quantity > 1 ? Details.NamePlural : Details.Name; }}
+        public string Description { get; set; }
         public int Price { get { return Details.Price; }}
         public string WeaponName { get { return _wName; } set { _wName = value; } }
         public string WeaponDesc { get { return _wDesc; } set { _wDesc = value; } }
@@ -36,7 +36,7 @@ namespace Engine
         #endregion
 
         #region Constructors
-        public InventoryItem(Item details, int quantity)
+        public InventoryItem(IItem details, int quantity)
         {
             Details = details;
             Quantity = quantity;

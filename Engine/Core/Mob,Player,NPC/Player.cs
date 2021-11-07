@@ -17,7 +17,7 @@ namespace Engine
         private string _playerRace;                         // To hold the player's race
         private int _xp;                                    // To hold the player's xp
         private int _gold;                                  // To hold the player's gold
-        private int _lvl;                                   // To hold the player's level
+        //private int _lvl;                                   // To hold the player's level
         private int _ac;                                    // To hold the player's armor
         private int _currentHitPoints;                      // To hold the player's current hit points
         private int _maxHitPoints;                          // To hold the playerr's max hit points
@@ -44,7 +44,7 @@ namespace Engine
         public int Gold { get { return _gold; } set { _gold = value;} }
         public int Level { get { return ((ExperiencePoints / 100) + 1); }}
         public int AC { get { return _ac; } set { _ac = value; }}
-        public int CurrentHitPoints { get { return _currentHitPoints; } set { _currentHitPoints = value; } }
+       // public int CurrentHitPoints { get { return _currentHitPoints; } set { _currentHitPoints = value; } }
         public int MaxHitPoints { get { return _maxHitPoints; } set { _maxHitPoints = value; } }
         public Factions Faction { get { return _faction; } set { _faction = value; } }
         public int Alignment { get { return _alignment; } set { _alignment = value; } }
