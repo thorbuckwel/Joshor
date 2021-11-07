@@ -20,7 +20,7 @@ namespace Engine
                     }
                     else
                     {
-                        IWeapon weaponToEquip =
+                        IItem weaponToEquip =
                             World.Weapons.SingleOrDefault(
                                 x => x.Name.ToLower() == noun || x.NamePlural.ToLower() == noun);
 

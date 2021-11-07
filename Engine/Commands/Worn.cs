@@ -17,7 +17,7 @@ namespace Engine
             }
         }
 
-        public static string ReplaceNull(IEquiptable test)
+        public static string ReplaceNull(IItem test)
         {
             if (test == null)
             {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public class Weapon : IItem, IEquiptable, IWeapon
+    public class Weapon : IWeapon
     {
         /**
          * Create properties to access the private variables.
