@@ -16,7 +16,7 @@ namespace JosherConsole
             #region Start
             Console.ForegroundColor = ConsoleColor.White;       // The text will be White.
             ListBuilder.Build();                                // On load we need to call the ListBuilder to build all our List
-            World.tests.Add(new Test(AlertPlayer));
+            World.message = new Alert(AlertPlayer);
             WelcomeScreen welcome = new WelcomeScreen();        // Create a new welcome screen
             welcome.Welcome();                                  // Call that screen.
 

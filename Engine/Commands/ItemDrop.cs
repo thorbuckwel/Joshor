@@ -12,7 +12,7 @@ namespace Engine
         {
             if (string.IsNullOrEmpty(verb))
             {
-                Console.WriteLine("You must enter the name of the item to drop");
+                World.message.SetMessage("You must enter the name of the item to drop");
             }
             else
             {
@@ -29,18 +29,18 @@ namespace Engine
                         {
                             _player.RemoveItemFromInventory(itemToDrop, 1);
                             Player.CurrentLocation.RoomLoot.Add(itemToDrop);
-                            Console.WriteLine("You drop {0}", verb);
+                            World.message.SetMessage($"You drop {verb}");
                         }
                         else if (weaponToDrop != null)
                         {
                             _player.RemoveItemFromInventory((Weapon)weaponToDrop, 1);
                             Player.CurrentLocation.RoomLoot.Add((Weapon)weaponToDrop);
-                            Console.WriteLine("You drop {0}", verb);
+                            World.message.SetMessage($"You drop {verb}");
                         }
                     }
                     else if (item.Details.Name == null)
                     {
-                        Console.WriteLine("You do not have the item {0}", verb);
+                        World.message.SetMessage($"You do not have the item {verb}");
                     }
                 }
             }

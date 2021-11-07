@@ -14,7 +14,7 @@ namespace Engine
 
             if (Player.CurrentLocation.RoomMob == null)
             {
-                Console.WriteLine("There is nothing here to attack");
+                World.message.SetMessage("There is nothing here to attack");
             }
             else
             {

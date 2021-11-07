@@ -12,11 +12,11 @@ namespace Engine
         public static void DisplayCurrentLocation()
         {
             
-            Console.WriteLine("You are at: {0}", Player.CurrentLocation.RoomName);            
+            World.message.SetMessage($"You are at: {Player.CurrentLocation.RoomName}");            
 
             if (Player.CurrentLocation.RoomDescript != "")
             {
-                Console.WriteLine(Player.CurrentLocation.RoomDescript);                
+                World.message.SetMessage(Player.CurrentLocation.RoomDescript);                
             }
 
             Console.ForegroundColor = ConsoleColor.Green;
@@ -54,7 +54,7 @@ namespace Engine
             //if (Player.CurrentLocation.LocationToWest != -1)
             //    exits += "west ";
 
-            Console.WriteLine(exits + "]");
+            World.message.SetMessage(exits + "]");
 
 
             if (Player.CurrentLocation.RoomLoot != null)
@@ -62,7 +62,7 @@ namespace Engine
                 Console.ForegroundColor = ConsoleColor.Gray;
                 foreach (IItem item in Player.CurrentLocation.RoomLoot)
                 {
-                    Console.WriteLine("      " + item.Name);
+                    World.message.SetMessage("      " + item.Name);
                 }
                 Console.ForegroundColor = ConsoleColor.White;
             }
@@ -78,15 +78,15 @@ namespace Engine
                         Player.CurrentMonster = mob;
                         
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("A " + mob.Name + " is wondering around here.");
+                        World.message.SetMessage($"A {mob.Name} is wondering around here.");
                         Console.ForegroundColor = ConsoleColor.White;
                     }
                     else
                     {
                         Player.CurrentMonster = mob;
-                        Console.WriteLine("");
+                        World.message.SetMessage("");
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine(" A large " + mob.Name + " fills the room with its massive body.");
+                        World.message.SetMessage($"A large {mob.Name} fills the room with its massive body.");
                         Console.ForegroundColor = ConsoleColor.White;
                     }
                 }
@@ -103,15 +103,15 @@ namespace Engine
 
                         Player.CurrentNPC = npc;
 
-                        Console.WriteLine("");                        
-                        Console.WriteLine(" A " + npc.NPCName + " is slamming puts around.");
+                        World.message.SetMessage("");                        
+                        World.message.SetMessage($"A {npc.NPCName} is slamming puts around.");
                         Console.ForegroundColor = ConsoleColor.White;
                     }
                     else if (npc.ID == 602)
                     {
                         Player.CurrentNPC = npc;
-                        Console.WriteLine("");                        
-                        Console.WriteLine(" A " + npc.NPCName + " Cracks a whip here.");
+                        World.message.SetMessage("");                        
+                        World.message.SetMessage($"A {npc.NPCName} Cracks a whip here.");
                         Console.ForegroundColor = ConsoleColor.White;
                     }
                 }

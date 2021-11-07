@@ -12,7 +12,7 @@ namespace Engine
         {
             foreach (InventoryItem inventoryItem in _player.Inventory)
             {
-                Console.WriteLine("{0}: {1}", inventoryItem.Description, inventoryItem.Quantity);
+                World.message.SetMessage($"{inventoryItem.Description}: {inventoryItem.Quantity}");
             }
         }
     }

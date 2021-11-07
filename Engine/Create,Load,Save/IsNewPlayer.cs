@@ -19,14 +19,14 @@ namespace Engine
              */
             while (validAnswer == false)
             {
-                Console.WriteLine("Are you a new Player?");
-                Console.Write("> ");
+                World.message.SetMessage("Are you a new Player?");
+                World.message.SetMessage("> ");
                 userInput = Console.ReadLine();
 
                 if (userInput.ToLower() == "no")
                 {
                     validAnswer = true;
-                    Console.WriteLine("What is your name?");
+                    World.message.SetMessage("What is your name?");
                     userInput = CapWord.FirstCharToUpper(Console.ReadLine());
                     Load.LoadGameData(userInput.ToLower());         // Go to the Load class and exacute the LoadGame method.
                 }
@@ -37,7 +37,7 @@ namespace Engine
                 }
                 else
                 {
-                    Console.WriteLine("Not a valid answer.");
+                    World.message.SetMessage("Not a valid answer.");
                 }
             }
         }

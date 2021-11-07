@@ -10,7 +10,7 @@ namespace Engine
     {
         public static void DisplayEquipment(Player _player)
         {
-            Console.WriteLine("You are wearing:");
+            World.message.SetMessage("You are wearing:");
             foreach(var location in _player.Equipted)
             {
                 Console.WriteLine($"{location.Key}- {ReplaceNull(location.Value)}");

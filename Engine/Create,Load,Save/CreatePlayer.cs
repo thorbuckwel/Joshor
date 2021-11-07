@@ -22,13 +22,14 @@ namespace Engine
             bool validFaction = false;
 
 
-            Console.WriteLine("Give me your name.");
+            World.message.SetMessage("Give me your name.");
+            // TODO Dele for Console Write
             Console.Write("> ");
             name = CapWord.FirstCharToUpper(Console.ReadLine());
 
             while (validClass == false)
             {
-                Console.WriteLine("What class would you like to be?");
+                World.message.SetMessage("What class would you like to be?");
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write("Warrior, Mage, Thief > ");
                 className = Console.ReadLine().ToLower();
@@ -51,14 +52,14 @@ namespace Engine
                 }
                 else
                 {
-                    Console.WriteLine("Not a valid class");
+                    World.message.SetMessage("Not a valid class");
                 }
             }
 
             while (validRace == false)
             {
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("What race would you like?");
+                World.message.SetMessage("What race would you like?");
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write("Human, Elf, Dwarf > ");
                 raceName = Console.ReadLine().ToLower();
@@ -80,14 +81,14 @@ namespace Engine
                 }
                 else
                 {
-                    Console.WriteLine("Not a Valid entry.");
+                    World.message.SetMessage("Not a Valid entry.");
                 }
             }
 
             while (validFaction == false)
             {
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("To what faction do you belong?");
+                World.message.SetMessage("To what faction do you belong?");
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write("Hero, Villion > ");
                 string strFaction =  CapWord.FirstCharToUpper(Console.ReadLine());
@@ -102,7 +103,7 @@ namespace Engine
         
             Console.ForegroundColor = ConsoleColor.White;
             Player._player = new Player(name, CapWord.FirstCharToUpper(className), CapWord.FirstCharToUpper(raceName), gold, hp, hp, (Weapon)World.WeaponByID(103), false, true, faction, alignment);
-            Console.WriteLine("Creating character data, please wait!");
+            World.message.SetMessage("Creating character data, please wait!");
             SaveData.SaveGameData(Player._player);
             
         }

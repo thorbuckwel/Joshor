@@ -10,17 +10,17 @@ namespace Engine
     {  
         public void Welcome()
         {
-            Console.WriteLine("           ####################                 ");
-            Console.WriteLine("           ####################                 ");
-            Console.WriteLine("                   ###                        ##");
-            Console.WriteLine("                   ###              #######   ##");
-            Console.WriteLine("                   ###              ##   ##   ##");
-            Console.WriteLine("                   ###     ####     ##        ##         ####     ##        ");
-            Console.WriteLine("                   ###   ##    ##   #######   ######   ##    ##   ######    ");
-            Console.WriteLine("                   ###  ##      ##       ##   ######  ##      ##  ###  #    ");
-            Console.WriteLine("            ##########   ##    ##   ##   ##   ##  ##   ##    ##   ##        ");
-            Console.WriteLine("            ##########     ####     #######   ##  ##     ####     ##        ");
-            Console.WriteLine("________________________________________________________________________________");
+            World.message.SetMessage("           ####################                 ");
+            World.message.SetMessage("           ####################                 ");
+            World.message.SetMessage("                   ###                        ##");
+            World.message.SetMessage("                   ###              #######   ##");
+            World.message.SetMessage("                   ###              ##   ##   ##");
+            World.message.SetMessage("                   ###     ####     ##        ##         ####     ##        ");
+            World.message.SetMessage("                   ###   ##    ##   #######   ######   ##    ##   ######    ");
+            World.message.SetMessage("                   ###  ##      ##       ##   ######  ##      ##  ###  #    ");
+            World.message.SetMessage("            ##########   ##    ##   ##   ##   ##  ##   ##    ##   ##        ");
+            World.message.SetMessage("            ##########     ####     #######   ##  ##     ####     ##        ");
+            World.message.SetMessage("________________________________________________________________________________");
             IsNewPlayer.NewPlayer();            // Next determine if they are a new player.
         }    
     }

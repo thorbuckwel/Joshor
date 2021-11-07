@@ -28,13 +28,13 @@ namespace Engine
 
             #region Item to look
             if (itemToLook != null)
-            { 
+            {
                 foreach (InventoryItem item in Player._player.Inventory.ToList())
                 {
                     if (item.Details.Name == itemToLook.ToString())
                     {
                         LookAtItem(item);
-                    }                                      
+                    }
                 }
 
                 foreach (Item rmItem in Player.CurrentLocation.RoomLoot.ToList())
@@ -57,7 +57,7 @@ namespace Engine
                         LookAtWeapon(weapon);
                     }
                 }
-               
+
                 foreach (Weapon rmWeapon in Player.CurrentLocation.RoomLoot.ToList())
                 {
                     if (rmWeapon.Name == weaponToLook.Name)
@@ -65,7 +65,7 @@ namespace Engine
                         LookAtWeapon(rmWeapon);
                     }
                 }
-                
+
             }
             #endregion
 
@@ -77,7 +77,7 @@ namespace Engine
                     if (mob.Name == monsterToLook.Name)
                     {
                         LookAtMonster(mob);
-                    }                   
+                    }
                 }
             }
             #endregion
@@ -91,7 +91,7 @@ namespace Engine
                     {
                         LookAtNpc(npc);
                     }
-                }               
+                }
             }
             #endregion
         }
@@ -99,52 +99,52 @@ namespace Engine
         #region Item
         public static void LookAtItem(InventoryItem itemToLook)
         {
-            Console.WriteLine("Item Name: " + itemToLook.Details);
-            Console.WriteLine("Description: " + itemToLook.Details);
-            Console.WriteLine("Item Price: " + itemToLook.Price);            
+            World.message.SetMessage($"Item Name: {itemToLook.Details}");
+            World.message.SetMessage($"Description: {itemToLook.Details}");
+            World.message.SetMessage($"Item Price: {itemToLook.Price}");
         }
         public static void LookAtItem(Item itemToLook)
         {
-            Console.WriteLine("Item Name: " + itemToLook.Name);
-            Console.WriteLine("Description: " + itemToLook.Desc);
-            Console.WriteLine("Item Price: " + itemToLook.Price);
+            World.message.SetMessage($"Item Name: {itemToLook.Name}");
+            World.message.SetMessage($"Description: {itemToLook.Desc }");
+            World.message.SetMessage($"Item Price: {itemToLook.Price }");
         }
         #endregion
 
         #region Weapon
         public static void LookAtWeapon(InventoryItem weaponToLook)
         {
-            Console.WriteLine("Weapon Name: " + weaponToLook.WeaponName);
-            Console.WriteLine("Description: " + weaponToLook.WeaponDesc);
-            Console.WriteLine("Damage: " + weaponToLook.WeaponDamage);
-            Console.WriteLine("Damage Type", weaponToLook.WeaponDamageType);
-            Console.WriteLine("Price: ", weaponToLook.WeaponPrice.ToString());
+            World.message.SetMessage($"Weapon Name: {weaponToLook.WeaponName}");
+            World.message.SetMessage($"Description: {weaponToLook.WeaponDesc}");
+            World.message.SetMessage($"Damage: {weaponToLook.WeaponDamage}");
+            World.message.SetMessage($"Damage Type: {weaponToLook.WeaponDamageType}");
+            World.message.SetMessage($"Price: {weaponToLook.WeaponPrice.ToString()}");
         }
         public static void LookAtWeapon(Weapon weaponToLook)
         {
-            Console.WriteLine("Weapon Name: " + weaponToLook.Name);
-            Console.WriteLine("Description: " + weaponToLook.Desc);
-            Console.WriteLine("Damage: " + weaponToLook.Damage);
-            Console.WriteLine("Damage Type", weaponToLook.DamageType);
-            Console.WriteLine("Price: ", weaponToLook.Price.ToString());
+            World.message.SetMessage($"Weapon Name: {weaponToLook.Name}");
+            World.message.SetMessage($"Description: {weaponToLook.Desc}");
+            World.message.SetMessage($"Damage: {weaponToLook.Damage}");
+            World.message.SetMessage($"Damage Type: {weaponToLook.DamageType}");
+            World.message.SetMessage($"Price: {weaponToLook.Price.ToString()}");
         }
         #endregion
 
         #region Monster
         public static void LookAtMonster(Monster monsterToLook)
         {
-            Console.WriteLine("Name: " + monsterToLook.Name);
-            Console.WriteLine("Armor Class: " + monsterToLook.AC);
-            Console.WriteLine("Current Hitpoints: " + monsterToLook.CurrentHitPoints);            
+            World.message.SetMessage($"Name: {monsterToLook.Name}");
+            World.message.SetMessage($"Armor Class: {monsterToLook.AC}");
+            World.message.SetMessage($"Current Hitpoints: {monsterToLook.CurrentHitPoints}");            
         }
         #endregion
 
         #region NPC
         public static void LookAtNpc(NPC npcToLook)
         {
-            Console.WriteLine("Name: " + npcToLook.NPCName);
-            Console.WriteLine("Class: " + npcToLook.NPCClass);
-            Console.WriteLine("Race: " + npcToLook.NPCRace);            
+            World.message.SetMessage($"Name: {npcToLook.NPCName}");
+            World.message.SetMessage($"Class: {npcToLook.NPCClass}");
+            World.message.SetMessage($"Race: {npcToLook.NPCRace}");            
         }
         #endregion
     }

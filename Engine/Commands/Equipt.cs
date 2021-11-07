@@ -16,7 +16,7 @@ namespace Engine
                 {
                     if (string.IsNullOrEmpty(noun))
                     {
-                        Console.WriteLine("You must enter the name of the weapon to equip");
+                        World.message.SetMessage("You must enter the name of the weapon to equip");
                     }
                     else
                     {
@@ -26,20 +26,20 @@ namespace Engine
 
                         if (weaponToEquip == null)
                         {
-                            Console.WriteLine("You do not have the weapon: {0}", weaponToEquip);
+                            World.message.SetMessage($"You do not have the weapon: {weaponToEquip}");
                         }
                         else
                         {
                             _player.Inventory.Add(new InventoryItem(_player.Equipt, 1));
                             _player.Equipt = (Weapon)weaponToEquip;
                             _player.RemoveItemFromInventory((Weapon)weaponToEquip, 1);
-                            Console.WriteLine("You equip your {0}", weaponToEquip.Name.ToString());
+                            World.message.SetMessage($"You equip your {weaponToEquip.Name.ToString()}");
                         }
                     }
                 }
                 else
                 {
-                    Console.WriteLine("No such weapon in inventory");
+                    World.message.SetMessage("No such weapon in inventory");
                 }
             }
         }

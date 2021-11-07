@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public class Test
-    {
-        public delegate void TestMessage(string message);
+    public class Alert
+            {
+        public delegate void AlertMessage(string message);
 
-        public Test(TestMessage messageTest)
+        public Alert(AlertMessage messageTest)
         {
             Send = messageTest;
         }
 
         public string Message { get; set; }
-        public TestMessage Send { get; set; }
+        public AlertMessage Send { get; set; }
 
-        public void AlertUser(TestMessage message)
+        public void AlertUser(AlertMessage message)
         {
             message(Message);
         }

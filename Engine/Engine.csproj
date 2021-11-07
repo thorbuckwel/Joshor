@@ -142,7 +142,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Test.cs" />
+    <Compile Include="Alert.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Docs\dbo.Mobs.data.sql" />

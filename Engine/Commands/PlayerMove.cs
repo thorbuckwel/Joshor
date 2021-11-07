@@ -14,7 +14,7 @@ namespace Engine
             CurrentLocationClass.DisplayCurrentLocation();
             if (Move.canGo == false)
             {
-                Console.WriteLine("You can not go " + verb);
+                World.message.SetMessage("You can not go " + verb);
             }
         }
     }    

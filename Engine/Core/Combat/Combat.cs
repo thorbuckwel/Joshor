@@ -40,7 +40,7 @@ namespace Engine
             DiceRoll mobDamage = new DiceRoll(enemy.Damage);
             if (enemy.CanBeAttacked == false)
             {
-                World.tests[0].SetMessage("Can't be attacked for whatever reason");
+                World.message.SetMessage("Can't be attacked for whatever reason");
                 Console.WriteLine("Can't be attacked for whatever reason");
                 return;
             }
@@ -49,23 +49,23 @@ namespace Engine
             {
                 _attackResult = attack.Roll();
 
-                World.tests[0].SetMessage("Your attack with your " + player.Equipt.Name.ToString() + ": " + AttackResults);
+                World.message.SetMessage("Your attack with your " + player.Equipt.Name.ToString() + ": " + AttackResults);
 
                 if (AttackResults >= enemy.AC)
                 {
-                    World.tests[0].SetMessage("You hit the " + enemy.Name);
+                    World.message.SetMessage("You hit the " + enemy.Name);
 
                     _damageResult = pDamage.Roll();
-                    World.tests[0].SetMessage("You did " + DamageResults + " points of damage.");
+                    World.message.SetMessage("You did " + DamageResults + " points of damage.");
 
                     enemy.CurrentHitPoints -= DamageResults;
-                    World.tests[0].SetMessage(enemy.Name + " has " + enemy.CurrentHitPoints + " hitpoints left");
+                    World.message.SetMessage(enemy.Name + " has " + enemy.CurrentHitPoints + " hitpoints left");
 
                     if (enemy.CurrentHitPoints <= 0)
                     {
-                        World.tests[0].SetMessage("The " + enemy.Name + " is dead!");
+                        World.message.SetMessage("The " + enemy.Name + " is dead!");
                         enemy.IsDead = true;
-                        World.tests[0].SetMessage("The fight took " + Round + " rounds to finish.");
+                        World.message.SetMessage("The fight took " + Round + " rounds to finish.");
                         Player.CurrentLocation.RoomMob.Remove(enemy);
                         player.ExperiencePoints += enemy.Experiance;
                         player.Gold += enemy.Gold;
@@ -84,26 +84,26 @@ namespace Engine
                 }
                 else
                 {
-                    World.tests[0].SetMessage("You Missed your attack!");
+                    World.message.SetMessage("You Missed your attack!");
                 }
 
                 _attackResult = attack.Roll();
-                World.tests[0].SetMessage(enemy.Name + " attacks you: " + AttackResults);
+                World.message.SetMessage(enemy.Name + " attacks you: " + AttackResults);
 
                 if (AttackResults > player.AC)
                 {
-                    World.tests[0].SetMessage("The " + enemy.Name + " hits you!");
+                    World.message.SetMessage("The " + enemy.Name + " hits you!");
 
                     _damageResult = mobDamage.Roll();
-                    World.tests[0].SetMessage("The " + enemy.Name + " did " + DamageResults + " points of damage.");
+                    World.message.SetMessage("The " + enemy.Name + " did " + DamageResults + " points of damage.");
 
                     player.CurrentHitPoints -= DamageResults;
 
                     if (player.CurrentHitPoints <= 0)
                     {
-                        World.tests[0].SetMessage("You are dead!");                                                
+                        World.message.SetMessage("You are dead!");                                                
                         player.IsDead = true;
-                        World.tests[0].SetMessage("The fight took " + Round + " rounds to finish.\n");
+                        World.message.SetMessage("The fight took " + Round + " rounds to finish.\n");
                         Load.LoadGameData(player.PlayerName);
                         CurrentLocationClass.DisplayCurrentLocation();
                                          
@@ -111,7 +111,7 @@ namespace Engine
                 }
                 else
                 {
-                    World.tests[0].SetMessage("The " + enemy.Name + " missed you!");
+                    World.message.SetMessage("The " + enemy.Name + " missed you!");
                 }
 
                 Round++;

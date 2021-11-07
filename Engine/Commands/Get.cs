@@ -12,7 +12,7 @@ namespace Engine
         {
             if (string.IsNullOrEmpty(verb))
             {
-                Console.WriteLine("You must enter the name of the item to get");
+                World.message.SetMessage("You must enter the name of the item to get");
             }
             else
             {
