@@ -16,6 +16,7 @@ namespace JosherConsole
             #region Start
             Console.ForegroundColor = ConsoleColor.White;       // The text will be White.
             ListBuilder.Build();                                // On load we need to call the ListBuilder to build all our List
+            World.tests.Add(new Test(AlertPlayer));
             WelcomeScreen welcome = new WelcomeScreen();        // Create a new welcome screen
             welcome.Welcome();                                  // Call that screen.
 
@@ -66,6 +67,11 @@ namespace JosherConsole
             }
         }
         #endregion
+
+        public static void AlertPlayer(string message)
+        {
+            Console.WriteLine(message);
+        }
 
         #region Player PropertyChange, OnMessage
         private static void Player_OnPropertyChanged(object sender, PropertyChangedEventArgs e)

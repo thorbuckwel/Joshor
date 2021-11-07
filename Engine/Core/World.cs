@@ -15,7 +15,8 @@ namespace Engine
         public static readonly List<NPC> NPCs = new List<NPC>();
         public static readonly List<IWeapon> Weapons = new List<IWeapon>();       // To hold objects of weapons
         public static readonly List<Item> Items = new List<Item>();              // To hold objects of Items
-        public static readonly List<Room> Location = new List<Room>();          // To hold objects of rooms 
+        public static readonly List<Room> Location = new List<Room>();          // To hold objects of rooms
+        public static readonly List<Test> tests = new List<Test>();
         #endregion
 
 
@@ -77,6 +78,5 @@ namespace Engine
 
         #endregion
     }
-
 
 }
